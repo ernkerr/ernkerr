@@ -1,4 +1,5 @@
 import turtle as t
+
 def rectangle(horizontal, vertical, color):
     t.pendown()
     t.pensize(1)
@@ -13,7 +14,7 @@ def rectangle(horizontal, vertical, color):
     t.penup()
 
 t.penup()
-t.speed('slow')
+# t.speed('slow')
 t.bgcolor('Light blue')
 
 # feet
