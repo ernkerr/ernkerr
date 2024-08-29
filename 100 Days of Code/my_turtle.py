@@ -20,3 +20,7 @@ print(timmy)
 my_screen = Screen()
 print(my_screen.canvheight)
 my_screen.exitonclick()
+
+# directory:
+# cd "/Users/ern/Documents/ernkerr/100 Days of Code"
+# python3 my_turtle.py
