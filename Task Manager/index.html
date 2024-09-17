@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Listy</h1>
+
+        <!-- Form to create a new list -->
+         <div id="new-list-form">
+            <input type="'text" id="new-list-input" placeholder="new list" />
+            <button id="add-list-btn">new list</button>
+         </div>
+        
+         <!-- Sorting options for lists -->
+        <div id="sort-options">
+            <button id="sort-alpha-btn">sort lists alphabetically</button>
+            <button id="sort-date-btn">by date</button>
+        </div>
+
+            <!-- List of lists -->
+        <div id="lists-display">
+            <h2>Your Listys Lists</h2>
+            <ul id="lists-list"></ul> <!-- This is where all lists will be displayed -->
+        </div>
+
+        <!-- Task input form -->
+        <div id="task-form">
+            <input type="text" id="task-input" placeholder="new item" />
+            <button id="add-task-btn" disabled>add item</button>
+        </div>
+    
+        <!-- Lists container where all lists and tasks will appear -->
+        <div id="lists-container"></div>
+        </div>
+
+  <script src="script.js"></script> <!-- Link to JS file -->
+</body>
+</html>
