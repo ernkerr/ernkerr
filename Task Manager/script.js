@@ -10,6 +10,24 @@ const sortDateBtn = document.getElementById('sort-date-btn');
 
 let lists = []; // array to store lists and  their details
 
+
+// function to save lists to local storage 
+function saveToLocalStorage() {
+    console.log("Saving to localStorage:", lists); // Log what is being saved
+    localStorage.setItem('lists', JSON.stringify(lists));
+}
+
+// func to load lists from local storage
+function loadFromLocalStorage() {
+    const storedLists = localStorage.getItem('lists');
+    
+    if (storedLists) {
+      lists = JSON.parse(storedLists); // Convert the string back to an array of lists
+      console.log("Loaded from localStorage:", lists); // Log what is loaded
+      displayLists(lists); // Display the loaded lists
+    }
+  }
+
 // func to add a new list
 function addList() {
     const listName = newListInput.value.trim();
@@ -33,6 +51,9 @@ lists.push(newList);
 
 // update the list display
 displayLists(lists);
+
+// save to local storage 
+saveToLocalStorage();
 
 // clear the input field 
 newListInput.value = '';
@@ -113,13 +134,21 @@ function displayTasks(list) {
   
     // Update the task display for the selected list
     displayTasks(selectedList);
+
+    // save to local storage after adding a task 
+    saveToLocalStorage();
+
   
     // Clear the input field
     taskInput.value = '';
   }
-  
+
   // Event listeners
   addListBtn.addEventListener('click', addList);
   addTaskBtn.addEventListener('click', addTask);
   sortAlphaBtn.addEventListener('click', sortAlphabetically);
   sortDateBtn.addEventListener('click', sortByDate);
+
+
+  // retrieve lists from local storage when the window loads 
+  window.onload = loadFromLocalStorage;
