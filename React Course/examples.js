@@ -141,11 +141,91 @@ console.log(age);
 
 
 
-
-  // special spread operator ...
+// special spread operator ...
 
 const myHobbies = ["Sports", "Cooking"];
 const newHobbies = ["Reading"];
 
 const mergedHobbies = [...myHobbies, ...newHobbies]; // pulls out values from an aray and adds them to a new array  
 console.log(mergedHobbies);
+
+
+
+// control structures
+
+// if statements 
+
+// const password = prompt('Your password');
+// if password === "Hello" , etc. 
+
+if (10 === 10) {
+    // ... 
+} else if (5 === 5) {
+    // ..
+} else if (3 ===3) {
+    // ..
+} else {
+
+}
+
+// for loop 
+
+const hobbiesToLoop = ["Sports", "Cooking"]
+for (const hobby of hobbies) { // of will tell js to create a new constant for every item in the array
+  console.log(hobby)
+}   
+
+
+// Manipulating the DOM - will not be doing this in react 
+
+
+
+// using functions as values 
+
+function handleTimeout() {
+    console.log("Timed out!");
+}
+
+const handleTimeout2 = () => {
+    console.log("Timed out... again!")
+}
+
+setTimeout(handleTimeout, 2000);    // no parenthesis so that they func doesn't run as soon as it's called but is instead being passed in as a value
+                                    // second argument is not a function, it defines the amount of miliseconds js should wait to execute this function 
+setTimeout(handleTimeout2, 3000);
+setTimeout(() => {                  // can alsways make an annonomous function instead 
+    console.log("More timing out...");
+}, 4000)
+
+
+function greeter(greetFn) { // accepts a function as a parameter but it's not called until the code block where it has parenthesis 
+    greetFn();
+}
+
+greeter(() => console.log('Hi')); // passes a function into greeter
+
+
+
+// defining functions inside of functions 
+
+function init() {
+    function greet() {
+        console.log('Hi!');
+    }
+    greet()
+}
+
+init(); // can't call greet() because of scope 
+
+
+
+// reference vs primitive values 
+
+
+let userMessage = "Hello!";     // primitive, can't edit them 
+userMessage = "Hello there!";   // you can override it 
+
+// objects and arrays are reference values, they can be edited 
+
+const someHobbies = ["Sports", "Cooking"];
+hobbies.push("Working");         // push edits/mutates the original array 
