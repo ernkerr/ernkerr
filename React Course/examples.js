@@ -74,11 +74,78 @@ user1.greet()
 const hobbies = ["Sports", "Cooking", "Reading"]
 console.log(hobbies[0])
 
-hobbies("Working")
-console.log(hobbies)
+hobbies.push("Working");
+console.log(hobbies);
 
 const index = hobbies.findIndex((item) => {
     return item === 'Sports'; // if you were looking for the index of sports
 }) // compares item to sports and returns true if it's found 
-
 console.log(index);
+
+
+// another way to write this
+const sameIndex = hobbies.findIndex((item) => item === 'Sports'); 
+console.log(sameIndex)
+
+// using map allows you to transform every item in an array 
+const editedHobbies = hobbies.map((item) => item + "!");
+console.log(editedHobbies);
+
+// using map also allows you to convert the data type (ex: str to object)
+const editedHobbiesAsObjects = hobbies.map((item) => ({text: item})); // ({}) will not define the function body of this arrow function, it will define a new object
+console.log(editedHobbiesAsObjects);
+
+
+
+
+// destructing arrays
+const userNameData = ["Erin", "Kerr"];
+
+const firstName = userNameData[0]
+const lastName = userNameData[1]
+
+// alt way to do this 
+const [myFirstName, myLastName] = ["Erin", "Kerr"]
+
+
+
+// destructing objects
+const {name: userName, age} = {                // just like how we used [] to deconstruct an array 
+    name: 'Erin',                   // we have to use the names that are defined in the object(field names) 
+    age: 25,                        // except if you want to assign an alias by using a colon ex: name: userrName
+};
+
+console.log(userName);
+console.log(age);
+
+
+// destructuring in function parameter lists 
+
+// function storeOrder(order) {
+//     localStorage.setItem('id', order.id);
+//     localStorage.setItem('currency', order.currency);
+//   }
+
+//         // Instead of accessing the order properties via the "dot notation" 
+//         // inside the storeOrder function body, you could use destructuring like this:
+
+//   function storeOrder({id, currency}) { // destructuring
+//     localStorage.setItem('id', id);
+//     localStorage.setItem('currency', currency);
+//   }
+
+//         // storeOrder still only takes one parameter, not two
+//         // it's one single parameter - and object which is destructured internally 
+
+//   storeOrder({id: 5, currency: 'USD', amount: 15.99}); // one argument / value!
+
+
+
+
+  // special spread operator ...
+
+const myHobbies = ["Sports", "Cooking"];
+const newHobbies = ["Reading"];
+
+const mergedHobbies = [...myHobbies, ...newHobbies]; // pulls out values from an aray and adds them to a new array  
+console.log(mergedHobbies);
