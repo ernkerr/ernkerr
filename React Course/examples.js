@@ -225,7 +225,8 @@ init(); // can't call greet() because of scope
 let userMessage = "Hello!";     // primitive, can't edit them 
 userMessage = "Hello there!";   // you can override it 
 
-// objects and arrays are reference values, they can be edited 
+// objects and arrays are reference values, they can be edited and are accessed by reference (address)
+// the underlying value (object, array) can be edited without changing the address and can be edited without reassigning the variable 
 
 const someHobbies = ["Sports", "Cooking"];
 hobbies.push("Working");         // push edits/mutates the original array 
