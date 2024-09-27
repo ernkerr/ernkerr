@@ -9,7 +9,7 @@
 export default function TabButton({children}) {
     return (
       <li>
-        <button>{children}</button>
+        <button onClick>{children}</button>
       </li>
       );
 };

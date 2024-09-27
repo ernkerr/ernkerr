@@ -1,5 +1,9 @@
-
+import './Header.css'
 
 export default function Header() {
-    <h2>carpoolio </h2>
+    return (
+      <header>
+        <h2>carpoolio </h2>
+      </header>
+    );
 }
