@@ -50,10 +50,23 @@ const [ selectedTopic, setSelectedTopic ] = useState();
         <section id="examples"> 
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleSelect('components')}>Components</TabButton>
-            <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
-            <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
-            <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
+            <TabButton 
+              isSelected={selectedTopic === 'components'}
+              onSelect={() => handleSelect('components')}>
+              Components</TabButton>
+
+            <TabButton 
+              isSelected={selectedTopic === 'jsx'}
+              onSelect={() => handleSelect('jsx')}>
+              JSX</TabButton>
+
+            <TabButton onSelect={() => handleSelect('props')}
+              isSelected={selectedTopic === 'props'}>
+              Props</TabButton>
+
+            <TabButton onSelect={() => handleSelect('state')}
+              isSelected={selectedTopic === 'state'}>
+              State</TabButton>
           </menu>
           {tabContent}
         </section>
