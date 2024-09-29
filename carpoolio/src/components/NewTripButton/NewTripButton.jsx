@@ -1,10 +1,10 @@
 import './NewTripButton.css'
 
-export default function NewTripButton() {
+export default function NewTripButton({children}) {
     return (
-        <div id="new-trip">
-            <button>Try It Out</button>  
-        </div>
+        <a href="/trip/create" id="new-trip">
+            <button>{children}</button>  
+        </a>
             
 )
 }
