@@ -1,5 +1,10 @@
 import './NewTripButton.css'
 
 export default function NewTripButton() {
-    return ("New Trip")
+    return (
+        <div id="new-trip">
+            <button>Try It Out</button>  
+        </div>
+            
+)
 }
