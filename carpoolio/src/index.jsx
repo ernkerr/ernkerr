@@ -6,6 +6,7 @@ import {
 
 import HomePage from "./pages/HomePage.jsx";
 import NewTripPage from "./pages/NewTripPage.jsx";
+import InvitePage from "./pages/InvitePage.jsx";
 import TripPage from "./pages/TripPage.jsx";
 import "./index.css";
 
@@ -13,8 +14,13 @@ const router = createBrowserRouter([
     {
       path: "/",
       element: <HomePage />,
-    },    {
+    },    
+    {
       path: "/trip/:tripId",
+      element: <InvitePage />,
+    },
+    {
+      path: "/trip/:tripId/:adminId",
       element: <TripPage />,
     },
     {
