@@ -1,0 +1,19 @@
+.spin { 
+    width: 50px; 
+    height: 10px; 
+    border-radius: 50%; 
+    margin: auto; 
+    animation: GFG 5s infinite linear; 
+} 
+
+@keyframes GFG { 
+    0% { 
+        transform: rotate(0deg)  
+                translateY(30px) rotate(0deg); 
+    } 
+
+    100% { 
+        transform: rotate(360deg)  
+                translateY(30px) rotate(-360deg); 
+    } 
+} 
