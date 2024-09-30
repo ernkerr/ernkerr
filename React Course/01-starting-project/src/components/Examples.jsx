@@ -1,6 +1,6 @@
 import {useState} from 'react'; 
-import TabButton from './components/TabButton.jsx';
-import { EXAMPLES } from './data.js';
+import TabButton from '.././components/TabButton.jsx';
+import { EXAMPLES } from '.././data.js';
 
 
 export default function Examples() {
