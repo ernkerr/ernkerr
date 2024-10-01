@@ -25,7 +25,7 @@
   .user input {
     font: inherit;
     font-size: 1rem;
-    width: 10rem;
+    width: 15rem;
     border: none;
     padding: 0.5rem;
     animation: pulse-text 2s infinite;

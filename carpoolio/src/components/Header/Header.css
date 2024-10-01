@@ -14,16 +14,16 @@ header {
     margin: 0;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 5rem;
-    background: linear-gradient(40deg, #685b6a, #4d474e, #03d5ff, #03d5ff);
+    background: linear-gradient(40deg, #685b6a, #4d474e, #b06cfec3, #03d5ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
   }
   
-  header p {
+  header h4 {
     margin: 0;
     font-size: 1.25rem;
-    color: #646fb0;
+    color: #fefeffd3;
     font-family: "Roboto Condensed", sans-serif;
   }
   

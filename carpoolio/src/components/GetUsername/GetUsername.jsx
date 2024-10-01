@@ -30,7 +30,7 @@ export default function GetUsername() {
               required
               value={userName}
               onChange={handleChange}
-              placeholder=" "
+              placeholder="enter your name here"
             />
         </span>
         {/* <button onClick={handleClick}>{isEditing ? 'Save' : 'Edit'}</button>
