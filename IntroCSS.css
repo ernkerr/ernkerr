@@ -1,0 +1,65 @@
+
+/* targeting */
+/* this is not div specific (all elements with a matching class or id) */
+class-name {
+    color: maroon
+  }
+  
+  #id-name {
+    color: teal
+  }
+  
+  /* these are div specific: only elements in the div that have class-name or id-name */
+  div.class-name {
+    color: red
+  }
+  
+  div#id-name {
+    color: blue
+  }
+  
+  /* We can also get more specific by using the > symbol to select child elements, 
+  such as only <li> elements under unordered lists: */
+  /* When combining selectors, remember that only the child elements of the parent will be selected and styled. For example, 
+  ul > li will only select the li elements that are direct children of the ul element. */
+  ul > li {
+    border: 1px solid;
+    width: 50px;
+  }
+  
+  /* there are five generic font families built into css */
+  /* normal font-weight range is 400-700 */
+  p{
+    font-family: Arial, sans-serif;
+    font-size: 12em;
+    font-weight: 400; 
+    text-align: center;
+  }
+  
+  p{
+    font: 400 12em Arial, sans-serif
+  }
+
+  span{
+    span{
+        text-decoration: underline wavy 2px red;
+      }
+  }
+
+/* can also use an imag as a background color with url()*/
+  div{
+    background-color: rgb(128, 128, 128);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  /* some properties can be broken down into seperate more specific properties */
+  span {
+    border: 3px dashed #ff0000;
+  }
+  
+  span {
+    border-width: 3px;
+    border-style: dashed;
+    border-color: #ff0000;
+  }
