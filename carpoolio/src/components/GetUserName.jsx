@@ -1,5 +1,5 @@
 
-export default function GetUserName(){
+export default function GetUserName({ formData, setFormData }){
     return(<>
      <h4>What is your name?</h4>
      <span className='user'>
@@ -7,6 +7,12 @@ export default function GetUserName(){
               type="text"
               required
               placeholder="enter your name here"
+              onChange={(event) => {
+                setFormData({
+                  ...formData, 
+                  name: event.target.value,
+              });
+            }}
             />
         </span>
     </>

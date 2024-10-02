@@ -1,7 +1,7 @@
 import CarpoolioSpinner from "../components/CarpoolioSpinner/CarpoolioSpinner";
 import GetUsername from "../components/GetUsername/GetUsername";
 import NewCarButton from "../components/NewCarButton/NewCarButton";
-import NewTripForm from "../components/NewTripForm";
+import NewTripForm from './NewTripForm.jsx'
 
 
 export default function NewTripPage() {
