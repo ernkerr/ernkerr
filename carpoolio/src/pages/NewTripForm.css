@@ -74,33 +74,37 @@
 
 
 
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Position buttons on opposite sides */
+    width: 50%; /* Match the width of the input field */
+    
+}
 
-#continue{
+.glow-button {
     background-color: black;
     border-radius: 5px;
     border: 2px solid rgb(52, 189, 52);
-    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 20px #00BFFF; /* Glow intensifies on hover */
+    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 20px #00BFFF; /* Glow effect */
     color: #ebe7ef;
-    padding: 7px;
+    padding: 7px 14px;
+    margin-right: 30px;
     font-size: 1rem;
+    cursor: pointer;
+    flex: none; /* Prevent them from taking equal space */
 }
 
-#continue:hover{
-    background-color: rgb(52, 189, 52); /* Maintain hover background on active */
-    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 15px #00BFFF; /* Maintain glow when pressed */
+.glow-button:hover {
+    background-color: rgb(52, 189, 52); /* Green background on hover */
+    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 15px #00BFFF;
 }
 
-#new-trip button:active{
-    background-color: rgb(52, 189, 52); /* Maintain hover background on active */
-    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 15px #00BFFF; /* Maintain glow when pressed */
+/* Center the text and ensure no overlap */
+#continue {
+    margin-left: auto; /* Align to the right */
 }
 
-#back{
-        background-color: black;
-    border-radius: 5px;
-    border: 2px solid rgb(52, 189, 52);
-    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 20px #00BFFF; /* Glow intensifies on hover */
-    color: #ebe7ef;
-    padding: 7px;
-    font-size: 1rem;
+#back {
+    margin-right: auto; /* Align to the left */
 }
+

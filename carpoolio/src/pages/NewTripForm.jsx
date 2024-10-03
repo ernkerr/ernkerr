@@ -40,8 +40,8 @@ export default function NewTripForm(){
           <div className="container"> 
           {conditionalComponent()}
           <div className="button-group">
-          {page > 0 && <button className="glow-button" onClick={() => setPage(page - 1)}>back</button>}
-          {page < 2 && <button className="glow-button" onClick={handleContinue}>continue</button>}
+          {page > 0 && page < 2 && (<button id= "continue" className="glow-button" onClick={() => setPage(page - 1)}>back</button>)}
+          {page < 2 && <button id="back" className="glow-button" onClick={handleContinue}>continue</button>}
           </div>
           </div>
         </div>
