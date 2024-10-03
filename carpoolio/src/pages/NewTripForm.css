@@ -1,0 +1,106 @@
+
+/* Flexbox container to center .container-wrapper */
+.full-screen-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Full viewport height */
+    width: 100%;  /* Full viewport width */
+}
+
+.container-wrapper {
+    border-radius: 1.25rem;
+    overflow: clip;
+    max-width: 1500px;
+    background: linear-gradient(135deg, rgb(0, 106, 0), rgb(135, 202, 135));
+    box-shadow: 0 0 10px #04AA6D, 0 0 5px #04AA6D,0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
+    padding: 5px;
+
+    /* Set size relative to viewport */
+    width: 70vw;  /* 70% of the viewport width */
+    height: 80vh; /* 60% of the viewport height */
+
+    display: flex;
+    justify-content: center; /* Center contents */
+    align-items: center;
+}
+/* Container with gradient border and glow */
+.container{
+    padding: 20px;
+    border-radius: 1rem; 
+    background-color: black;
+    max-width: 1500px;
+    margin: auto;
+    /* overflow: clip; */
+
+    width: 100%;  
+    height: -webkit-fill-available; /* Fill the parent container */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center elements and space them nicely */
+.container > * {
+    margin-bottom: 20px;
+}
+
+#form-question{
+    font-size: 2.25em;
+    font-family: "Gruppo", sans-serif; 
+    margin-bottom: 1.5em;
+}
+
+#new-trip-input{
+    border: 2px solid rgb(52, 189, 52);
+    border-radius: 15px;
+    background-color: rgba(75, 254, 75, 0.323);
+    height: 50px;
+    width: 50%;
+    padding: 15px;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+}
+
+/* Ensures text cursor stays centered vertically */
+#new-trip-input::placeholder {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7); /* Lighten placeholder color for better contrast */
+}
+
+
+
+
+#continue{
+    background-color: black;
+    border-radius: 5px;
+    border: 2px solid rgb(52, 189, 52);
+    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 20px #00BFFF; /* Glow intensifies on hover */
+    color: #ebe7ef;
+    padding: 7px;
+    font-size: 1rem;
+}
+
+#continue:hover{
+    background-color: rgb(52, 189, 52); /* Maintain hover background on active */
+    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 15px #00BFFF; /* Maintain glow when pressed */
+}
+
+#new-trip button:active{
+    background-color: rgb(52, 189, 52); /* Maintain hover background on active */
+    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 15px #00BFFF; /* Maintain glow when pressed */
+}
+
+#back{
+        background-color: black;
+    border-radius: 5px;
+    border: 2px solid rgb(52, 189, 52);
+    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 20px #00BFFF; /* Glow intensifies on hover */
+    color: #ebe7ef;
+    padding: 7px;
+    font-size: 1rem;
+}

@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap");
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@200');
+
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100');
+
+@import url('https://fonts.googleapis.com/css2?family=Gruppo:wght@400');
 /* * {
   box-sizing: border-box;
 }
@@ -26,6 +31,25 @@ main {
 } */
 
 html{
-  font-family: "Quicksand", sans-serif;
+  /* font-family: "Quicksand", sans-serif; */
   background: black;
+  color: white;
+  
 }
+
+/* Hide scroll bar in most modern browsers */
+body {
+  overflow: auto;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@font-face{
+  font-family: "GrandSlang";
+  src: local("GrandSlang"), 
+  url("./assets/fonts/GrandSlang-Roman.ttf") format("truetype");
+}
+
