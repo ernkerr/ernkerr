@@ -2,20 +2,19 @@ body{
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     overflow: hidden;
 }
 .road {
     position: relative;
     width: 100vw;
     height: 200px;
-    margin-top: 50vh;
+    /* margin-top: 50vh; */
     overflow: hidden;
 }
 
 .car{
     position: absolute;
-    /* background-color: white; */
     width: 400px;
     height: 200px;
     background-image: url('../../assets/MovingCar.png');
