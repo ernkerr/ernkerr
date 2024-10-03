@@ -19,6 +19,13 @@ header {
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5)); */
   }
+
+  header h1:hover{
+    /* text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff; Electric blue glow */
+    text-shadow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00; /* Electric blue glow */
+
+
+  }
   
   #destination-message{
     margin: 0;
@@ -36,3 +43,11 @@ header {
     font-family: "Roboto Condensed", sans-serif;
   }
   
+
+.font-face {
+  font-family: "GrandSlang", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+

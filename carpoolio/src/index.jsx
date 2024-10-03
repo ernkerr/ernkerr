@@ -4,6 +4,8 @@ import {
     RouterProvider,
   } from "react-router-dom";
 
+  import './assets/fonts/GrandSlang-Roman.ttf';
+
 import HomePage from "./pages/HomePage.jsx";
 import NewTripPage from "./pages/NewTripPage.jsx";
 import InvitePage from "./pages/InvitePage.jsx";
