@@ -8,7 +8,7 @@ function HomePage(){
     
     return(
     <div>
-        <StickyNavBar />
+        <StickyNavBar showCreateTrip />
         <Header />
         <NewTripButton>Try It Out</NewTripButton>
         <MovingCar /> 
