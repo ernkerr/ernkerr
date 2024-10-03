@@ -4,6 +4,7 @@
     margin-top: 50px;
     font-size: 12px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 #new-trip button{
@@ -13,20 +14,22 @@
     padding: 15px 25px;
     outline: none;
     border-radius: 15px;
-    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 15px #00BFFF; /* Electric blue glow */
+    box-shadow: 0 0 5px #FF4500, 0 0 10px #ff1100, 0 0 20px #ff1100; /* Red glow */
     transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
-
-
+    cursor: pointer;
 }
 
 #new-trip button:hover {
-    background-color: #0000f68d;
+    background-color: #94e9d1c1;
     color: #ebe7ef;
     box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 20px #00BFFF; /* Glow intensifies on hover */
 
 }
 
 #new-trip button:active{
-    background-color: #0000f68d; /* Maintain hover background on active */
+    background-color: #94e9d1c1; /* Maintain hover background on active */
     box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 15px #00BFFF; /* Maintain glow when pressed */
 }
+
+
+/* box-shadow: 0 0 5px #00BFFF, 0 0 10px #00BFFF, 0 0 15px #00BFFF; Electric blue glow */
