@@ -3,6 +3,8 @@ import { useState } from 'react';
 import GetUserName from "../components/GetUserName";
 import IsUserDriving from "../components/IsUserDriving";
 import GetUserContact from '../components/GetUserContact';
+import CustomizeCar from '../components/CustomizeCar/CustomizeCar';
+import CustomizeTrip from '../components/CustomizeTrip/CustomizeTrip';
 import './NewTripForm.css'
 
 export default function NewTripForm(){
