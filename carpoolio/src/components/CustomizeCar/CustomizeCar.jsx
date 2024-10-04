@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ReactComponent as CarIcon} from '../../assets/default_car.svg'
+// import { CarIcon} from '../../assets/default_car.svg'
 
 import NumSeats from './NumSeats'
 import CustomizeTrip from '../CustomizeTrip/CustomizeTrip.jsx'
@@ -8,11 +8,11 @@ import './CustomizeCar.css'
 
 
 export default function CustomizeCar({formData}){
-    const [carColor, setCarColor ] = useState(rgb(52, 189, 52));
+    // const [carColor, setCarColor ] = useState(rgb(52, 189, 52));
 
-    function chandleCarColor(){
-        setCarColor(carColor === rgb(52, 189, 52) ? 'blue' : rgb(52, 189, 52)); // Toggle between colors
-    }
+    // function chandleCarColor(){
+    //     setCarColor(carColor === rgb(52, 189, 52) ? 'blue' : rgb(52, 189, 52)); // Toggle between colors
+    // }
 
     function handleClick(){
         <CustomizeTrip />
@@ -21,12 +21,20 @@ export default function CustomizeCar({formData}){
     return(
         <>
             <NumSeats /> 
+            {/* <CarIcon /> */}
 
             {/* render basic car */}
+
+            {/* // make  */}
+
+
+            {/* // spotify playlist 
+
+            // car chat  */}
            
-            {/* Your imported SVG here */}
-            <CarIcon fill={carColor} /> {/* Set the color dynamically */}
-            <button className="glow-button" onClick={changeCarColor}>Change Car Color</button>
+
+            {/* <CarIcon fill={carColor} /> {/* Set the color dynamically */}
+            {/* <button className="glow-button" onClick={changeCarColor}>Change Car Color</button> */} 
 
             
             

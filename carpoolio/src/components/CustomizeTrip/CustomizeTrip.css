@@ -1,59 +1,22 @@
-
-/* Flexbox container to center .container-wrapper */
-.full-screen-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%; /* Full viewport height */
-    width: 100%;  /* Full viewport width */
-}
-
-.container-wrapper {
-    border-radius: 1.25rem;
-    overflow: clip;
-    max-width: 1500px;
-    background: linear-gradient(135deg, rgb(0, 106, 0), rgb(135, 202, 135));
-    box-shadow: 0 0 10px #04AA6D, 0 0 5px #04AA6D,0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
-    padding: 5px;
-
-    /* Set size relative to viewport */
-    width: 70vw;  /* 70% of the viewport width */
-    height: 80vh; /* 60% of the viewport height */
-
-    display: flex;
-    justify-content: center; /* Center contents */
-    align-items: center;
-}
-/* Container with gradient border and glow */
-.container{
-    padding: 20px;
-    border-radius: 1rem; 
-    background-color: black;
-    max-width: 1500px;
-    margin: auto;
-    /* overflow: clip; */
-
-    width: 100%;  
-    height: -webkit-fill-available; /* Fill the parent container */
-
+#customize-trip{
+    color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 70vh;
+    width: 60vw;
+
 }
 
-/* Center elements and space them nicely */
-.container > * {
-    margin-bottom: 20px;
-}
+/* below are duplicates from nre trip form : change them */
 
-#form-question{
-    font-size: 2.25em;
+#form-title{
+    font-size: 2em;
     font-family: "Gruppo", sans-serif; 
-    margin-bottom: 1.5em;
+    /* margin-bottom: 1.5em; */
+    align-items: flex-start;
 }
 
-#new-trip-input{
+#customize-trip-input{
     border: 2px solid rgb(52, 189, 52);
     border-radius: 15px;
     background-color: rgba(75, 254, 75, 0.323);
@@ -64,14 +27,21 @@
     color: white;
     text-align: center;
     font-size: 1em;
+    margin-top: 10%;
+    align-items: flex-start;
 }
 
 /* Ensures text cursor stays centered vertically */
-#new-trip-input::placeholder {
+#customize-trip-input::placeholder {
     text-align: center;
     color: rgba(255, 255, 255, 0.7); /* Lighten placeholder color for better contrast */
 }
 
+/* //date field */
+#customized-trip-input::-webkit-calendar-picker-indicator {
+    filter: hue-rotate(120deg); /* Changes the color of the calendar icon */
+    cursor: pointer; /* Ensures the cursor is a pointer when hovering */
+}
 
 
 .button-container {
@@ -107,4 +77,10 @@
 #right-button {
     margin-right: auto; 
 }
+
+#bottom-button{
+    margin-top: 70%;
+
+}
+
 

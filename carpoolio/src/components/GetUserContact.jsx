@@ -4,7 +4,7 @@ export default function GetUserContact(){
                <input id="new-trip-input"
                  type="text"
                  required
-                 placeholder="we'll send you a link"
+                 placeholder="we'll send you a link, nothing else"
                />
        </>
        )

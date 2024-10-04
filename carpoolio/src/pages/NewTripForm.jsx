@@ -12,6 +12,8 @@ export default function NewTripForm(){
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        tripName: '',
+        tripDate: '',
     })
     const [isDriving, setIsDriving] = useState(null)
 
@@ -24,7 +26,8 @@ export default function NewTripForm(){
             case 2: 
               return <IsUserDriving setDrivingStatus={setIsDriving} onDrivingStatusChange={() => setPage(3)}/>; 
             case 3: 
-              return isDriving ? <CustomizeCar /> : <CustomizeTrip />;
+              return isDriving ? <CustomizeCar formData={formData} setFormData={setFormData}/> 
+                              : <CustomizeTrip formData={formData} setFormData={setFormData}/>;
             default: 
               return <GetUserName formData={formData} setFormData={setFormData}/> 
         }
@@ -34,16 +37,14 @@ export default function NewTripForm(){
         setPage(page + 1)
     }
 
-
-
     return(
       <div className="full-screen-wrapper">
         <div className="container-wrapper">
           <div className="container"> 
           {conditionalComponent()}
           <div className="button-group">
-          {page > 0 && page < 2 && (<button id= "continue" className="glow-button" onClick={() => setPage(page - 1)}>back</button>)}
-          {page < 2 && <button id="back" className="glow-button" onClick={handleContinue}>continue</button>}
+          {page > 0 && page < 2 && (<button id= "left-button" className="glow-button" onClick={() => setPage(page - 1)}>back</button>)}
+          {page < 2 && <button id="right-button" className="glow-button" onClick={handleContinue}>continue</button>}
           </div>
           </div>
         </div>
