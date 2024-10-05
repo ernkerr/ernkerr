@@ -28,6 +28,9 @@ export function DepartureTime({ formData, setFormData }) {
         <button
           className="confirm-button"
           onClick={() => setIsTimeSet(false)} // Clicking allows editing
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
         >
           {`${hour}:${minute.toString().padStart(2, "0")} ${period}`}
         </button>
@@ -36,7 +39,13 @@ export function DepartureTime({ formData, setFormData }) {
           <div className="time-column">
             <span>Hour</span>
             <div className="scrollable">
-              <select value={hour} onChange={handleHourChange}>
+              <select
+                value={hour}
+                onChange={handleHourChange}
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                }}
+              >
                 {[...Array(12).keys()].map((h) => (
                   <option key={h + 1} value={h + 1}>
                     {h + 1}
@@ -48,7 +57,13 @@ export function DepartureTime({ formData, setFormData }) {
           <div className="time-column">
             <span>Minute</span>
             <div className="scrollable">
-              <select value={minute} onChange={handleMinuteChange}>
+              <select
+                value={minute}
+                onChange={handleMinuteChange}
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                }}
+              >
                 {[...Array(12).keys()].map((m) => (
                   <option key={m * 5} value={m * 5}>
                     {m * 5}
@@ -60,14 +75,26 @@ export function DepartureTime({ formData, setFormData }) {
           <div className="time-column">
             <span>AM/PM</span>
             <div className="scrollable">
-              <select value={period} onChange={handlePeriodChange}>
+              <select
+                value={period}
+                onChange={handlePeriodChange}
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                }}
+              >
                 <option value="AM">AM</option>
                 <option value="PM">PM</option>
               </select>
             </div>
           </div>
-          <button className="confirm-button" onClick={handleTimeChange}>
-            Confirm Time
+          <button
+            className="confirm-button"
+            onClick={handleTimeChange}
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+            }}
+          >
+            ok
           </button>
         </div>
       )}
