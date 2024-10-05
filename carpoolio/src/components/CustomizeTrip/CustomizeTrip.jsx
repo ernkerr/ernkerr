@@ -14,94 +14,71 @@ export default function CustomizeTrip({ formData, setFormData }) {
     setIsCalendarVisible((prev) => !prev);
   };
 
-  const toggleDepartureTime = () => {
-    setIsDepartureTimeVisible((prev) => !prev); // Toggle the visibility of the time picker
-  };
-
   function handleClick() {
     // add to database
     console.log("send data to database");
+    console.log(formData);
   }
 
   return (
-    <div id="customize-trip">
+    <div className="customize-trip">
       <TripName formData={formData} />
+      {/* Date */}
+      {/* Date and Time Container */}
+      <div className="date-container">
+        <button
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
+          className="green-button"
+          onClick={toggleCalendar}
+        >
+          {formData.tripDate ? formData.tripDate : "Set a date"}
+        </button>
+        {/* ??
+      ??
+      ?? */}
+        {isCalendarVisible && (
+          <TripDate
+            formData={formData}
+            setFormData={setFormData}
+            onClose={toggleCalendar}
+          />
+        )}
+        {isCalendarVisible && (
+          <button
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+            }}
+            className="green-button"
+            id="not-sure-yet"
+            onClick={() => {
+              toggleCalendar();
+              formData.tripDate = "TBD";
+            }}
+          >
+            Not sure yet
+          </button>
+        )}
+      </div>
+      <DepartureTime formData={formData} setFormData={setFormData} />
+      {/* <Destination /> */}
+      {/* // destination 
+    // countdown to trip y/n */}
+      {/* (add stops?) */}
       {/* Include TripBackground */}
       <TripBackground formData={formData} setFormData={setFormData} />{" "}
-      {/* Date */}
-      <button
-        style={{
-          background: formData?.tripBackground?.scrim || "transparent",
-        }}
-        className="green-button"
-        onClick={toggleCalendar}
-      >
-        {formData.tripDate ? formData.tripDate : "Set a date.."}
-      </button>
-      {isCalendarVisible && (
-        <TripDate
-          formData={formData}
-          setFormData={setFormData}
-          onClose={toggleCalendar}
-        />
-      )}
-      {isCalendarVisible && (
+      <div className="continue-button-container">
         <button
           style={{
             background: formData?.tripBackground?.scrim || "transparent",
           }}
-          className="green-button"
-          onClick={() => {
-            toggleCalendar();
-            formData.tripDate = "TBD";
-          }}
+          className="glow-button"
+          onClick={handleClick}
         >
-          Not sure yet
+          continue
         </button>
-      )}
-      <h4>{formData.name}</h4>
-      {/* Departure Time  */}
-      {isCalendarVisible && (
-        <button
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-          }}
-          className="green-button"
-          onClick={toggleDepartureTime} // Toggle time picker on click
-        >
-          Add a departure time
-        </button>
-      )}
-      {/* Render DepartureTime if it's visible */}
-      {isCalendarVisible && isDepartureTimeVisible && (
-        <DepartureTime formData={formData} setFormData={setFormData} />
-      )}
-      {/* // destination 
-
-    // departure time (add stops?)
-          {isCalendarVisible && (
-        <button
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-          }}
-          className="green-button"
-          onClick={() => {
-            toggleCalendar();
-            formData.tripDate = "TBD";
-          }}
-        >
-          Not sure yet
-        </button>
-      )}
-
-    // countdown to trip y/n */}
-      <button
-        style={{ background: formData?.tripBackground?.scrim || "transparent" }}
-        className="glow-button"
-        onClick={handleClick}
-      >
-        continue
-      </button>
+      </div>
     </div>
   );
 }

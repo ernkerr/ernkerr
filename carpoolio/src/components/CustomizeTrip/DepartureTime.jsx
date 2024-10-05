@@ -1,29 +1,76 @@
+import "./DepartureTime.css";
+
 import React, { useState } from "react";
-import { setHours, setMinutes } from "date-fns";
 import "./CustomizeTrip.css";
 
 export function DepartureTime({ formData, setFormData }) {
-  const [selectedTime, setSelectedTime] = useState("00:00");
+  const [hour, setHour] = useState(12); // Default 12-hour format
+  const [minute, setMinute] = useState(0);
+  const [period, setPeriod] = useState("AM"); // Default period is AM
+  const [isTimeSet, setIsTimeSet] = useState(false);
 
-  const handleTimeChange = (e) => {
-    const time = e.target.value;
-    setSelectedTime(time);
-
-    // Set the selected time in formData
-    const [hours, minutes] = time.split(":").map((str) => parseInt(str, 10));
-    const newSelectedTime = setHours(setMinutes(new Date(), minutes), hours);
-
-    setFormData({ ...formData, departureTime: newSelectedTime });
+  const handleTimeChange = () => {
+    setIsTimeSet(true);
+    const formattedTime = `${hour}:${minute
+      .toString()
+      .padStart(2, "0")} ${period}`;
+    setFormData({ ...formData, departureTime: formattedTime });
   };
+
+  const handleHourChange = (e) => setHour(parseInt(e.target.value));
+  const handleMinuteChange = (e) => setMinute(parseInt(e.target.value));
+  const handlePeriodChange = (e) => setPeriod(e.target.value);
 
   return (
     <div className="departure-time-container">
-      <form style={{ marginBlockEnd: "1em" }}>
-        <label>
-          {" "}
-          <input type="time" value={selectedTime} onChange={handleTimeChange} />
-        </label>
-      </form>
+      {isTimeSet ? (
+        // Display the confirmed time and make it clickable for editing
+        <button
+          className="confirm-button"
+          onClick={() => setIsTimeSet(false)} // Clicking allows editing
+        >
+          {`${hour}:${minute.toString().padStart(2, "0")} ${period}`}
+        </button>
+      ) : (
+        <div className="time-picker-container">
+          <div className="time-column">
+            <span>Hour</span>
+            <div className="scrollable">
+              <select value={hour} onChange={handleHourChange}>
+                {[...Array(12).keys()].map((h) => (
+                  <option key={h + 1} value={h + 1}>
+                    {h + 1}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="time-column">
+            <span>Minute</span>
+            <div className="scrollable">
+              <select value={minute} onChange={handleMinuteChange}>
+                {[...Array(12).keys()].map((m) => (
+                  <option key={m * 5} value={m * 5}>
+                    {m * 5}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="time-column">
+            <span>AM/PM</span>
+            <div className="scrollable">
+              <select value={period} onChange={handlePeriodChange}>
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+          </div>
+          <button className="confirm-button" onClick={handleTimeChange}>
+            Confirm Time
+          </button>
+        </div>
+      )}
     </div>
   );
 }

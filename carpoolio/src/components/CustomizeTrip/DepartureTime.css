@@ -1,0 +1,36 @@
+.time-picker-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scrollable select {
+  width: 80px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #4caf50;
+  background-color: rgba(75, 254, 75, 0.323);
+  color: white;
+  border-radius: 5px;
+}
+
+.confirm-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: rgba(75, 254, 75, 0.323);
+  color: white;
+  border: 2px solid #4caf50;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  background-color: #4caf50;
+}

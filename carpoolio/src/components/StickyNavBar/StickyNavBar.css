@@ -1,12 +1,12 @@
-#navbar{
-    position: sticky;
-    top:0;
-    overflow: hidden;
-    /* height:50px; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2%;
+#navbar {
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  /* height:50px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
 }
 
 /* #navbar.transbox{
@@ -18,30 +18,30 @@
     font-weight: bold;
 } */
 
-#logo{
-    font-size: 1.25rem;
-    text-align: left;
-    color: white;
-    text-decoration: none;
-    font-family: "DM Sans", sans-serif;
+#logo {
+  font-size: 1.25rem;
+  text-align: left;
+  color: white;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
 }
 
-#create-trip{
+#create-trip {
   font-size: 1.5rem;
   text-align: right;
   color: white;
   text-decoration: none;
   font-family: "DM Sans", sans-serif;
-  text-shadow: 0 0 5px #FF4500, 0 0 10px #ff1100, 0 0 20px #ff1100; /* Red glow */
+  text-shadow: 0 0 5px #ff4500, 0 0 10px #ff1100, 0 0 20px #ff1100; /* Red glow */
   transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
 }
 
-#create-trip:hover{
+#create-trip:hover {
   color: rgb(52, 189, 52);
-  text-shadow:0 0 5px #04AA6D, 0 0 20px #04AA6D,0 0 20px rgba(0, 255, 0, 0.5); /* Green glow effect */;
+  text-shadow: 0 0 5px #04aa6d, 0 0 20px #04aa6d, 0 0 20px rgba(0, 255, 0, 0.5); /* Green glow effect */
 }
 
-#create-trip:active{
+#create-trip:active {
   color: rgb(52, 189, 52);
-  text-shadow:0 0 5px #04AA6D, 0 0 20px #04AA6D,0 0 20px rgba(0, 255, 0, 0.5); /* Green glow effect */;
+  text-shadow: 0 0 5px #04aa6d, 0 0 20px #04aa6d, 0 0 20px rgba(0, 255, 0, 0.5); /* Green glow effect */
 }
