@@ -1,110 +1,137 @@
-
 /* Flexbox container to center .container-wrapper */
 .full-screen-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%; /* Full viewport height */
-    width: 100%;  /* Full viewport width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Full viewport height */
+  width: 100%; /* Full viewport width */
 }
 
 .container-wrapper {
-    border-radius: 1.25rem;
-    overflow: clip;
-    max-width: 1500px;
-    background: linear-gradient(135deg, rgb(0, 106, 0), rgb(135, 202, 135));
-    box-shadow: 0 0 10px #04AA6D, 0 0 5px #04AA6D,0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
-    padding: 5px;
+  border-radius: 1.25rem;
+  overflow: clip;
+  max-width: 1500px;
+  background: linear-gradient(135deg, rgb(0, 106, 0), rgb(135, 202, 135));
+  box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
+  padding: 5px;
 
-    /* Set size relative to viewport */
-    width: 70vw;  /* 70% of the viewport width */
-    height: 80vh; /* 60% of the viewport height */
+  /* Set size relative to viewport */
+  width: 70vw; /* 70% of the viewport width */
+  height: 80vh; /* 60% of the viewport height */
 
-    display: flex;
-    justify-content: center; /* Center contents */
-    align-items: center;
+  display: flex;
+  justify-content: center; /* Center contents */
+  align-items: center;
 }
 /* Container with gradient border and glow */
-.container{
-    padding: 20px;
-    border-radius: 1rem; 
-    background-color: black;
-    max-width: 1500px;
-    margin: auto;
-    /* overflow: clip; */
+.container {
+  padding: 20px;
+  border-radius: 1rem;
+  background-color: black;
+  max-width: 1500px;
+  margin: auto;
+  /* overflow: clip; */
 
-    width: 100%;  
-    height: -webkit-fill-available; /* Fill the parent container */
+  width: 100%;
+  height: -webkit-fill-available; /* Fill the parent container */
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Center elements and space them nicely */
 .container > * {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-#form-question{
-    font-size: 2.25em;
-    font-family: "Gruppo", sans-serif; 
-    margin-bottom: 1.5em;
+.form-question {
+  font-size: 2.25em;
+  font-family: "Gruppo", sans-serif;
+  margin-bottom: 2.5rem;
 }
 
-#new-trip-input{
-    border: 2px solid rgb(52, 189, 52);
-    border-radius: 15px;
-    background-color: rgba(75, 254, 75, 0.323);
-    height: 50px;
-    width: 50%;
-    padding: 15px;
-    box-sizing: border-box;
-    color: white;
-    text-align: center;
-    font-size: 1em;
+.text-input {
+  border: 2px solid rgb(52, 189, 52);
+  border-radius: 15px;
+  background-color: rgba(75, 254, 75, 0.323);
+  height: 50px;
+  width: 30vw;
+  padding: 15px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  font-size: 1em;
 }
 
-/* Ensures text cursor stays centered vertically */
-#new-trip-input::placeholder {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.7); /* Lighten placeholder color for better contrast */
+.text-input::placeholder {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
 }
-
-
 
 .button-container {
-    display: flex;
-    justify-content: space-between; /* Position buttons on opposite sides */
-    width: 50%; /* Match the width of the input field */
-    
+  display: flex;
+  justify-content: space-between; /* Position buttons on opposite sides */
+  width: 50%; /* Match the width of the input field */
 }
 
 .glow-button {
-    background-color: black;
-    border-radius: 5px;
-    border: 2px solid rgb(52, 189, 52);
-    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 20px #00BFFF; /* Glow effect */
-    color: #ebe7ef;
-    padding: 7px 14px;
-    margin-right: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    flex: none; /* Prevent them from taking equal space */
+  background-color: black;
+  border-radius: 5px;
+  border: 2px solid rgb(52, 189, 52);
+  box-shadow: 0 0 5px #04aa6d, 0 0 10px #04aa6d, 0 0 20px #00bfff; /* Glow effect */
+  color: #ebe7ef;
+  padding: 7px 14px;
+  margin-right: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: none; /* Prevent them from taking equal space */
 }
 
 .glow-button:hover {
-    background-color: rgb(52, 189, 52); /* Green background on hover */
-    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 15px #00BFFF;
+  background-color: rgb(52, 189, 52); /* Green background on hover */
+  box-shadow: 0 0 5px #04aa6d, 0 0 10px #04aa6d, 0 0 15px #00bfff;
 }
 
-
 #left-button {
-    margin-left: auto; 
+  margin-left: auto;
 }
 
 #right-button {
-    margin-right: auto; 
+  margin-right: auto;
 }
 
+/* // backgrounds  */
+/* TripBackground.css */
+.background-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  overflow-y: auto; /* Allow vertical scrolling */
+  max-height: 200px; /* Set a maximum height for the scrollable area */
+  padding: 10px;
+  border: 1px solid #ccc; /* Optional: border around the container */
+  border-radius: 8px; /* Optional: rounded corners */
+}
+
+.background-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  margin: 5px;
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.background-image {
+  width: 50px; /* Set the width of the image */
+  height: 50px; /* Set the height of the image */
+  border-radius: 50%; /* Make the image a circle */
+  object-fit: cover; /* Crop the image to fit the circle */
+  border: 2px solid transparent; /* Optional: border for hover effect */
+  transition: border-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.background-option:hover .background-image {
+  background-color: rgb(255, 255, 255); /* Green background on hover */
+  box-shadow: 0 0 5px #f3fffb, 0 0 10px #ffffff, 0 0 15px #ffffff;
+}

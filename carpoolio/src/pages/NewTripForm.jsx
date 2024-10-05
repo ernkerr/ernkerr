@@ -1,54 +1,97 @@
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 
 import GetUserName from "../components/GetUserName";
 import IsUserDriving from "../components/IsUserDriving";
-import GetUserContact from '../components/GetUserContact';
-import CustomizeCar from '../components/CustomizeCar/CustomizeCar';
-import CustomizeTrip from '../components/CustomizeTrip/CustomizeTrip';
-import './NewTripForm.css'
+import GetUserContact from "../components/GetUserContact";
+import CustomizeCar from "../components/CustomizeCar/CustomizeCar";
+import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
+import "./NewTripForm.css";
 
-export default function NewTripForm(){
-    const [page, setPage] = useState(0);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        tripName: '',
-        tripDate: '',
-    })
-    const [isDriving, setIsDriving] = useState(null)
+export default function NewTripForm() {
+  const [page, setPage] = useState(0);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    tripName: "",
+    tripDate: "",
+    tripBackground: {},
+  });
 
-    const conditionalComponent = () => {
-        switch(page){
-            case 0: 
-              return <GetUserName formData={formData} setFormData={setFormData} />;
-            case 1: 
-              return <GetUserContact formData={formData} setFormData={setFormData} />;
-            case 2: 
-              return <IsUserDriving setDrivingStatus={setIsDriving} onDrivingStatusChange={() => setPage(3)}/>; 
-            case 3: 
-              return isDriving ? <CustomizeCar formData={formData} setFormData={setFormData}/> 
-                              : <CustomizeTrip formData={formData} setFormData={setFormData}/>;
-            default: 
-              return <GetUserName formData={formData} setFormData={setFormData}/> 
-        }
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
+  const [isDriving, setIsDriving] = useState(null);
+
+  const conditionalComponent = () => {
+    switch (page) {
+      case 0:
+        return <GetUserName formData={formData} setFormData={setFormData} />;
+      case 1:
+        return <GetUserContact formData={formData} setFormData={setFormData} />;
+      case 2:
+        return (
+          <IsUserDriving
+            setDrivingStatus={setIsDriving}
+            onDrivingStatusChange={() => setPage(3)}
+          />
+        );
+      case 3:
+        return isDriving ? (
+          <CustomizeCar formData={formData} setFormData={setFormData} />
+        ) : (
+          <CustomizeTrip formData={formData} setFormData={setFormData} />
+        );
+      default:
+        return <GetUserName formData={formData} setFormData={setFormData} />;
     }
+  };
 
-    function handleContinue(){
-        setPage(page + 1)
-    }
+  function handleContinue() {
+    setPage(page + 1);
+  }
 
-    return(
-      <div className="full-screen-wrapper">
-        <div className="container-wrapper">
-          <div className="container"> 
+  return (
+    <div
+      className="full-screen-wrapper"
+      style={{
+        backgroundImage: `url(${formData.tripBackground.path})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="container-wrapper">
+        <div
+          className="container"
+          style={{
+            backgroundImage: `url(${formData.tripBackground.path})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
           {conditionalComponent()}
           <div className="button-group">
-          {page > 0 && page < 2 && (<button id= "left-button" className="glow-button" onClick={() => setPage(page - 1)}>back</button>)}
-          {page < 2 && <button id="right-button" className="glow-button" onClick={handleContinue}>continue</button>}
-          </div>
+            {page > 0 && page < 2 && (
+              <button
+                id="left-button"
+                className="glow-button"
+                onClick={() => setPage(page - 1)}
+              >
+                back
+              </button>
+            )}
+            {page < 2 && (
+              <button
+                id="right-button"
+                className="glow-button"
+                onClick={handleContinue}
+              >
+                continue
+              </button>
+            )}
           </div>
         </div>
       </div>
-    )
+    </div>
+  );
 }
-

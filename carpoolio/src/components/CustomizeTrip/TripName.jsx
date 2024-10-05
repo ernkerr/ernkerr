@@ -1,16 +1,18 @@
-import './CustomizeTrip.css'
+import "./CustomizeTrip.css";
 
-export default function TripName({ formData, setFormData }){
-    return (
+export default function TripName({ formData, setFormData }) {
+  return (
     <>
-     {/* <h4 id='form-title'>Customize Trip! </h4> */}
-     <input id='customize-trip-input'
+      <input
+        className="trip-title"
+        style={{ background: formData?.tripBackground?.scrim || "transparent" }}
         type="text"
         required
         placeholder="Untitled Trip"
         onChange={(event) => {
-        setFormData({...formData, tripName: event.target.value,})
-        }}></input>
-    </>  
-    )
+          setFormData({ ...formData, tripName: event.target.value });
+        }}
+      ></input>
+    </>
+  );
 }

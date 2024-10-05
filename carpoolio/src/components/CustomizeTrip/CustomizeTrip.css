@@ -1,86 +1,92 @@
-#customize-trip{
-    color: white;
-    display: flex;
-    flex-direction: column;
-    height: 70vh;
-    width: 60vw;
-
+#customize-trip {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  width: 60vw;
+  /* background-image: url("cloud.gif"); */
 }
 
 /* below are duplicates from nre trip form : change them */
 
-#form-title{
-    font-size: 2em;
-    font-family: "Gruppo", sans-serif; 
-    /* margin-bottom: 1.5em; */
-    align-items: flex-start;
+.trip-title {
+  font-size: 2em;
+  font-family: "Gruppo", sans-serif;
+  align-items: flex-start;
+  border: 2px solid rgb(52, 189, 52);
+  color: white;
 }
 
-#customize-trip-input{
-    border: 2px solid rgb(52, 189, 52);
-    border-radius: 15px;
-    background-color: rgba(75, 254, 75, 0.323);
-    height: 50px;
-    width: 50%;
-    padding: 15px;
-    box-sizing: border-box;
-    color: white;
-    text-align: center;
-    font-size: 1em;
-    margin-top: 10%;
-    align-items: flex-start;
+.trip-title::placeholder {
+  text-align: left;
+  color: rgb(255, 255, 255);
+}
+
+#customize-trip-input {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 15px;
+  background-color: rgba(75, 254, 75, 0.323);
+  height: 50px;
+  width: 50%;
+  padding: 15px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  font-size: 1em;
+  margin-top: 10%;
+  align-items: flex-start;
+}
+
+.green-button {
+  border: 2px solid rgb(52, 189, 52);
+  border-radius: 15px;
+  background-color: rgba(75, 254, 75, 0.323);
+  height: 50px;
+  width: 50%;
+  padding: 15px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  font-size: 1em;
+  margin-top: 5%;
+  align-items: flex-start;
+  margin-bottom: 5%;
 }
 
 /* Ensures text cursor stays centered vertically */
 #customize-trip-input::placeholder {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.7); /* Lighten placeholder color for better contrast */
+  text-align: center;
+  color: rgb(255, 255, 255);
 }
-
-/* //date field */
-#customized-trip-input::-webkit-calendar-picker-indicator {
-    filter: hue-rotate(120deg); /* Changes the color of the calendar icon */
-    cursor: pointer; /* Ensures the cursor is a pointer when hovering */
-}
-
 
 .button-container {
-    display: flex;
-    justify-content: space-between; /* Position buttons on opposite sides */
-    width: 50%; /* Match the width of the input field */
-    
+  display: flex;
+  justify-content: space-between; /* Position buttons on opposite sides */
+  width: 50%; /* Match the width of the input field */
 }
 
 .glow-button {
-    background-color: black;
-    border-radius: 5px;
-    border: 2px solid rgb(52, 189, 52);
-    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 20px #00BFFF; /* Glow effect */
-    color: #ebe7ef;
-    padding: 7px 14px;
-    margin-right: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    flex: none; /* Prevent them from taking equal space */
+  background-color: black;
+  border-radius: 5px;
+  border: 2px solid rgb(52, 189, 52);
+  box-shadow: 0 0 5px #04aa6d, 0 0 10px #04aa6d, 0 0 20px #00bfff; /* Glow effect */
+  color: #ebe7ef;
+  padding: 7px 14px;
+  margin-right: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: none; /* Prevent them from taking equal space */
 }
 
 .glow-button:hover {
-    background-color: rgb(52, 189, 52); /* Green background on hover */
-    box-shadow: 0 0 5px #04AA6D, 0 0 10px #04AA6D, 0 0 15px #00BFFF;
+  background-color: rgb(52, 189, 52); /* Green background on hover */
+  box-shadow: 0 0 5px #04aa6d, 0 0 10px #04aa6d, 0 0 15px #00bfff;
 }
 
-
 #left-button {
-    margin-left: auto; 
+  margin-left: auto;
 }
 
 #right-button {
-    margin-right: auto; 
+  margin-right: auto;
 }
-
-#bottom-button{
-    margin-top: 70%;
-
-}
-
-
