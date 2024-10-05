@@ -33,7 +33,6 @@
   color: white;
   text-align: center;
   font-size: 1em;
-  margin-top: 10%;
   align-items: flex-start;
 }
 
@@ -48,9 +47,9 @@
   color: white;
   text-align: center;
   font-size: 1em;
-  margin-top: 5%;
   align-items: flex-start;
   justify-content: space-between;
+  margin-top: 2%;
 }
 
 /* Ensures text cursor stays centered vertically */
@@ -72,6 +71,7 @@
   box-shadow: 0 0 5px #04aa6d, 0 0 10px #04aa6d, 0 0 20px #00bfff; /* Glow effect */
   color: #ebe7ef;
   padding: 7px 14px;
+  margin-top: 10px;
   margin-right: 30px;
   font-size: 1rem;
   cursor: pointer;
@@ -89,4 +89,39 @@
 
 #right-button {
   margin-right: auto;
+}
+
+.time-picker {
+  color: black;
+}
+
+/* Customize the time input */
+.departure-time-container input[type="time"] {
+  font-size: 1rem;
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #4caf50; /* Green border */
+  border-radius: 10px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+}
+
+/* Change the focus state of the time picker */
+.departure-time-container input[type="time"]:focus {
+  outline: none;
+  border-color: #00ff7f; /* Lighter green when focused */
+  box-shadow: 0 0 10px #00ff7f;
+}
+
+/* Add some hover effects */
+.departure-time-container input[type="time"]:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+/* Style the form around the input */
+.departure-time-container form {
+  display: inline-block;
+  text-align: center;
 }

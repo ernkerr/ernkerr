@@ -9,7 +9,13 @@ export default function TripDate({ formData, setFormData, onClose }) {
   const handleDateChange = (date) => {
     if (date) {
       setSelectedDate(date); // Set selected date
-      setFormData({ ...formData, tripDate: date.toISOString().split("T")[0] }); // Update formData with date
+
+      const formattedDate = date.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+      });
+      setFormData({ ...formData, tripDate: formattedDate }); // Update formData with date
       onClose(); // Call onClose to hide calendar
     }
   };
@@ -24,26 +30,3 @@ export default function TripDate({ formData, setFormData, onClose }) {
     />
   );
 }
-
-// export default function TripDate({ formData, setFormData }){
-
-//     // handle date change
-//     const handleDateChange  = (event) => {
-//         setSelectedDate(event.target.value);
-//         setFormData({...formData, tripDate: event.target.value,});
-//     }
-
-//     return (
-//     <>
-//      <h4 id='form-question'>Trip Date </h4>
-//      <input
-//      id='customize-trip-input'
-//      type='date'
-//      name='date'
-//      value={selectedDate}
-//      min={minDate}
-//      onChange={handleDateChange} />
-//     </>
-//     )
-
-// }

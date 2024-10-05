@@ -4,12 +4,18 @@ import TripDate from "./TripDate";
 import "./CustomizeTrip.css";
 
 import TripBackground from "./TripBackground"; // Import your TripBackground component
+import { DepartureTime } from "./DepartureTime";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const [isDepartureTimeVisible, setIsDepartureTimeVisible] = useState(false); // State for showing the DepartureTime
 
   const toggleCalendar = () => {
     setIsCalendarVisible((prev) => !prev);
+  };
+
+  const toggleDepartureTime = () => {
+    setIsDepartureTimeVisible((prev) => !prev); // Toggle the visibility of the time picker
   };
 
   function handleClick() {
@@ -20,9 +26,9 @@ export default function CustomizeTrip({ formData, setFormData }) {
   return (
     <div id="customize-trip">
       <TripName formData={formData} />
-      <TripBackground formData={formData} setFormData={setFormData} />{" "}
       {/* Include TripBackground */}
-      {/* set a date functionality */}
+      <TripBackground formData={formData} setFormData={setFormData} />{" "}
+      {/* Date */}
       <button
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
@@ -47,16 +53,46 @@ export default function CustomizeTrip({ formData, setFormData }) {
           className="green-button"
           onClick={() => {
             toggleCalendar();
-            formData.tripDate = "tbd";
+            formData.tripDate = "TBD";
           }}
         >
           Not sure yet
         </button>
       )}
       <h4>{formData.name}</h4>
+      {/* Departure Time  */}
+      {isCalendarVisible && (
+        <button
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
+          className="green-button"
+          onClick={toggleDepartureTime} // Toggle time picker on click
+        >
+          Add a departure time
+        </button>
+      )}
+      {/* Render DepartureTime if it's visible */}
+      {isCalendarVisible && isDepartureTimeVisible && (
+        <DepartureTime formData={formData} setFormData={setFormData} />
+      )}
       {/* // destination 
 
     // departure time (add stops?)
+          {isCalendarVisible && (
+        <button
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
+          className="green-button"
+          onClick={() => {
+            toggleCalendar();
+            formData.tripDate = "TBD";
+          }}
+        >
+          Not sure yet
+        </button>
+      )}
 
     // countdown to trip y/n */}
       <button

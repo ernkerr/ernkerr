@@ -15,6 +15,7 @@ export default function NewTripForm() {
     tripName: "",
     tripDate: "",
     tripBackground: {},
+    departureTime: "",
   });
 
   useEffect(() => {
