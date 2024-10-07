@@ -5,6 +5,7 @@ import "./CustomizeTrip.css";
 
 import TripBackground from "./TripBackground";
 import { DepartureTime } from "./DepartureTime";
+import Destination from "./Destination";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
@@ -75,6 +76,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
       {/* Departure Time  */}
       <DepartureTime formData={formData} setFormData={setFormData} />
       {/* <Destination /> */}
+      <Destination formData={formData} setFormData={setFormData} />
       {/* // destination 
     // countdown to trip y/n */}
       {/* (add stops?) */}
