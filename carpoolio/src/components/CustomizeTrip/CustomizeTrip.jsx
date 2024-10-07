@@ -3,12 +3,11 @@ import TripName from "./TripName";
 import TripDate from "./TripDate";
 import "./CustomizeTrip.css";
 
-import TripBackground from "./TripBackground"; // Import your TripBackground component
+import TripBackground from "./TripBackground";
 import { DepartureTime } from "./DepartureTime";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
-  const [isDepartureTimeVisible, setIsDepartureTimeVisible] = useState(false); // State for showing the DepartureTime
 
   const toggleCalendar = () => {
     setIsCalendarVisible((prev) => !prev);
@@ -35,9 +34,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
         >
           {formData.tripDate ? formData.tripDate : "Set a date"}
         </button>
-        {/* ??
-      ??
-      ?? */}
+        {/* Calendar buttons */}
         {isCalendarVisible && (
           <TripDate
             formData={formData}
@@ -46,21 +43,36 @@ export default function CustomizeTrip({ formData, setFormData }) {
           />
         )}
         {isCalendarVisible && (
-          <button
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-            }}
-            className="green-button"
-            id="not-sure-yet"
-            onClick={() => {
-              toggleCalendar();
-              formData.tripDate = "TBD";
-            }}
-          >
-            Not sure yet
-          </button>
+          <div className="calendar-buttons">
+            <button
+              style={{
+                background: formData?.tripBackground?.scrim || "transparent",
+              }}
+              className="green-button"
+              id="not-sure-yet"
+              onClick={() => {
+                toggleCalendar();
+                formData.tripDate = "TBD";
+              }}
+            >
+              Not sure yet
+            </button>
+            <button
+              style={{
+                background: formData?.tripBackground?.scrim || "transparent",
+              }}
+              className="green-button"
+              id="not-sure-yet"
+              onClick={() => {
+                toggleCalendar();
+              }}
+            >
+              okay
+            </button>
+          </div>
         )}
       </div>
+      {/* Departure Time  */}
       <DepartureTime formData={formData} setFormData={setFormData} />
       {/* <Destination /> */}
       {/* // destination 

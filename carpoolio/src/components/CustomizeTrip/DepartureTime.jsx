@@ -1,10 +1,9 @@
-import "./DepartureTime.css";
-
 import React, { useState } from "react";
 import "./CustomizeTrip.css";
+import "./DepartureTime.css";
 
 export function DepartureTime({ formData, setFormData }) {
-  const [hour, setHour] = useState(12); // Default 12-hour format
+  const [hour, setHour] = useState(12);
   const [minute, setMinute] = useState(0);
   const [period, setPeriod] = useState("AM"); // Default period is AM
   const [isTimeSet, setIsTimeSet] = useState(false);
@@ -22,11 +21,15 @@ export function DepartureTime({ formData, setFormData }) {
   const handlePeriodChange = (e) => setPeriod(e.target.value);
 
   return (
-    <div className="departure-time-container">
+    <div
+      style={{
+        background: formData?.tripBackground?.scrim || "transparent",
+      }}
+    >
       {isTimeSet ? (
         // Display the confirmed time and make it clickable for editing
         <button
-          className="confirm-button"
+          className="green-button"
           onClick={() => setIsTimeSet(false)} // Clicking allows editing
           style={{
             background: formData?.tripBackground?.scrim || "transparent",
@@ -37,7 +40,7 @@ export function DepartureTime({ formData, setFormData }) {
       ) : (
         <div className="time-picker-container">
           <div className="time-column">
-            <span>Hour</span>
+            {/* <span>Hour</span> */}
             <div className="scrollable">
               <select
                 value={hour}
@@ -46,6 +49,9 @@ export function DepartureTime({ formData, setFormData }) {
                   background: formData?.tripBackground?.scrim || "transparent",
                 }}
               >
+                <option value="" disabled selected>
+                  Hours
+                </option>
                 {[...Array(12).keys()].map((h) => (
                   <option key={h + 1} value={h + 1}>
                     {h + 1}
@@ -55,7 +61,6 @@ export function DepartureTime({ formData, setFormData }) {
             </div>
           </div>
           <div className="time-column">
-            <span>Minute</span>
             <div className="scrollable">
               <select
                 value={minute}
@@ -64,6 +69,9 @@ export function DepartureTime({ formData, setFormData }) {
                   background: formData?.tripBackground?.scrim || "transparent",
                 }}
               >
+                <option value="" disabled selected>
+                  Minutes
+                </option>
                 {[...Array(12).keys()].map((m) => (
                   <option key={m * 5} value={m * 5}>
                     {m * 5}
@@ -73,7 +81,6 @@ export function DepartureTime({ formData, setFormData }) {
             </div>
           </div>
           <div className="time-column">
-            <span>AM/PM</span>
             <div className="scrollable">
               <select
                 value={period}
@@ -87,15 +94,18 @@ export function DepartureTime({ formData, setFormData }) {
               </select>
             </div>
           </div>
-          <button
-            className="confirm-button"
-            onClick={handleTimeChange}
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-            }}
-          >
-            ok
-          </button>
+
+          <div className="time-picker-container">
+            <button
+              className="confirm-button"
+              onClick={handleTimeChange}
+              style={{
+                background: formData?.tripBackground?.scrim || "transparent",
+              }}
+            >
+              okay
+            </button>
+          </div>
         </div>
       )}
     </div>
