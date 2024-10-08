@@ -8,7 +8,8 @@ import "./HomePage.css"; // Ensure this is at the top of your file
 function HomePage() {
   return (
     <div className="home-page">
-      <StickyNavBar showCreateTrip />
+      {/* <StickyNavBar showCreateTrip /> */}
+      <StickyNavBar />
       <Header />
       <NewTripButton>Try It Out</NewTripButton>
       <MovingCar />
