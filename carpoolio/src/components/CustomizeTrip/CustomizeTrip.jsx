@@ -99,12 +99,13 @@ export default function CustomizeTrip({ formData, setFormData }) {
       {/* // destination 
     // countdown to trip y/n */}
       {/* set a background */}
-      <TripBackground formData={formData} setFormData={setFormData} />{" "}
+      <TripBackground formData={formData} setFormData={setFormData} />
       {/* set the glow color  */}
       {/* <button className="customize-trip-btns"> */}
-      <div className="glow-color-selection">
-        <label htmlFor="glowColor">Select Glow Color:</label>
+      <div className="customize-trip-btns">
+        <label htmlFor="glowColor">Change Glow Color </label>
         <input
+          className="glowColor"
           type="color"
           id="glowColor"
           name="glowColor"
