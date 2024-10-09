@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import GetUserName from "../components/GetUserName";
 import IsUserDriving from "../components/IsUserDriving";
 import GetUserContact from "../components/GetUserContact";
 import CustomizeCar from "../components/CustomizeCar/CustomizeCar";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
+import bluegoo from "../assets/bluegoo.gif";
 import "./NewTripForm.css";
 
 export default function NewTripForm() {
@@ -17,11 +18,13 @@ export default function NewTripForm() {
     tripBackground: {},
     departureTime: "",
     destination: "",
+    carColor: "",
+    underglowColor: "",
   });
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
 
   const [isDriving, setIsDriving] = useState(null);
 
@@ -57,7 +60,8 @@ export default function NewTripForm() {
     <div
       className="full-screen-wrapper"
       style={{
-        backgroundImage: `url(${formData.tripBackground.path})`,
+        backgroundImage: `url(${formData.tripBackground.path || bluegoo})`,
+
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

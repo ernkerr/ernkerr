@@ -1,4 +1,3 @@
-/* Flexbox container to center .container-wrapper */
 .full-screen-wrapper {
   display: flex;
   justify-content: center;
@@ -48,7 +47,7 @@
 
 .form-question {
   font-size: 2.25em;
-  font-family: "Gruppo", sans-serif;
+  font-family: var(--main-font);
   margin-bottom: 2.5rem;
 }
 

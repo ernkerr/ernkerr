@@ -9,7 +9,6 @@ function HomePage() {
   return (
     <div className="home-page">
       {/* <StickyNavBar showCreateTrip /> */}
-      <StickyNavBar />
       <Header />
       <NewTripButton>Try It Out</NewTripButton>
       <MovingCar />

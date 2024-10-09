@@ -5,11 +5,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100");
 
 @import url("https://fonts.googleapis.com/css2?family=Gruppo:wght@400");
-/* * {
-  box-sizing: border-box;
-}
 
-html {
+/* html {
   font-family: "Quicksand", sans-serif;
   line-height: 1.5;
 
@@ -34,6 +31,7 @@ html {
   /* font-family: "Quicksand", sans-serif; */
   background: black;
   color: white;
+  font-size: 16px;
 }
 
 /* Hide scroll bar in most modern browsers */
@@ -47,11 +45,34 @@ body::-webkit-scrollbar {
 }
 
 @font-face {
-  font-family: "GrandSlang";
-  src: local("GrandSlang"),
-    url("./assets/fonts/GrandSlang-Roman.ttf") format("truetype");
+  font-family: "LicensePlate";
+  src: local("LicensePlate"),
+    url("./assets/fonts/LicensePlate.ttf") format("truetype");
 }
 
 #root {
   height: 100dvh;
+  color: #ffffff;
+  --main-font: "Gruppo", sans-serif;
+
+  --border-radius: 10px;
+
+  /* titles */
+  --font-size-title: 2em;
+  --height-title: 4vh;
+  --padding-title: 5px;
+
+  /* buttons */
+  --font-size-button: 1.2em;
+  --height-button: 4vh;
+
+  --border-radius-button: 5px;
+  --margin-top-button: 2%;
+
+  --padding-button: 15px;
+
+  /* colors */
+  --transparent: rgba(230, 230, 230, 0.223);
+  --transparent-border: 2px solid rgba(230, 230, 230, 0.223);
+  --main-green: rgb(52, 189, 52);
 }
