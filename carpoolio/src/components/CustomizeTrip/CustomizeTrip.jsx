@@ -117,6 +117,8 @@ export default function CustomizeTrip({ formData, setFormData }) {
         <button
           style={{
             background: formData?.tripBackground?.scrim || "transparent",
+            border: ` 2px solid ${formData.glowColor}`,
+            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
           }}
           onClick={handleNewCar}
           className="glow-button"
@@ -127,6 +129,8 @@ export default function CustomizeTrip({ formData, setFormData }) {
         <button
           style={{
             background: formData?.tripBackground?.scrim || "transparent",
+            border: ` 2px solid ${formData.glowColor}`,
+            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
           }}
           className="glow-button"
           onClick={handleClick}

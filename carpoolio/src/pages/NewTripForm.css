@@ -74,8 +74,8 @@ will need to change the background and the box shadow  */
 .glow-button {
   background-color: black;
   border-radius: 5px;
-  border: 2px solid rgb(52, 189, 52);
-  box-shadow: 0 0 5px #04aa6d, 0 0 10px #04aa6d, 0 0 20px #00bfff; /* Glow effect */
+  /* border: 2px solid rgb(52, 189, 52); */
+  /* box-shadow: 0 0 5px #04aa6d, 0 0 10px #04aa6d, 0 0 20px #00bfff; Glow effect */
   color: #ebe7ef;
   padding: 7px 14px;
   margin-right: 30px;
