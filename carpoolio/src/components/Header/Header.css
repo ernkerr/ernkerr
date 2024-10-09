@@ -1,53 +1,48 @@
 /* Splitting the CSS Code into  component-specific files*/
 header {
-    text-align: center;
-    margin: 1rem 0;
-    display: flex;
-    flex-direction: column; /* Arrange children in a column */
-    align-items: center; /* Center children horizontally */ 
-    font-family: "DM Sans", sans-serif;
-  }
-  
+  text-align: center;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center children horizontally */
+  font-family: "DM Sans", sans-serif;
+}
 
-  header h1 {
-    margin: 0 0 1rem 0;
-    font-family: "DM Sans", sans-serif;
-    font-size: 3rem;
-    color: white;
-    text-align: center; 
-    font-size: 4.2rem;
-    /* background: linear-gradient(40deg, #685b6a, #4d474e, #b06cfec3, #03d5ff);
+header h1 {
+  margin: 0 0 1rem 0;
+  /* font-family: "DM Sans", sans-serif; */
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+  font-size: 4.2rem;
+  /* background: linear-gradient(40deg, #685b6a, #4d474e, #b06cfec3, #03d5ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5)); */
-  }
-
-  header h1:hover{
-    /* text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff; Electric blue glow */
-    text-shadow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00; /* Electric blue glow */
-
-
-  }
-  
-  #destination-message{
-    margin: 0;
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: #fefeffd3;
-  }
-
-  #carpooling-message {
-    margin: 6rem 0 0 0;
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: #fefeffd3;
-  }
-  
-
-.font-face {
-  font-family: "GrandSlang", sans-serif;
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
 }
 
+header h1:hover {
+  /* text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff; Electric blue glow */
+  text-shadow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00; /* Electric blue glow */
+}
+
+#destination-message {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #fefeffd3;
+}
+
+#carpooling-message {
+  margin: 6rem 0 0 0;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #fefeffd3;
+}
+
+.font-face {
+  font-family: "LicensePlate", sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-display: auto;
+}
