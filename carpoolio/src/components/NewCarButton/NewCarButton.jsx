@@ -1,8 +1,13 @@
+export default function NewCarButton({ formData, setFormData }) {
+  function handleClick() {
+    // add to database
 
-export default function NewCarButton({newCarBtnText, isDriver}){
-
-    return (
-
-        <button>{newCarBtnText}</button>
-    )
+    console.log("send data to database");
+    console.log(formData);
+  }
+  return (
+    <button onClick={handleClick} className="glow-button" id="add-a-car">
+      add a car
+    </button>
+  );
 }
