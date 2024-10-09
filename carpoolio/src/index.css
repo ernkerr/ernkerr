@@ -54,7 +54,7 @@ body::-webkit-scrollbar {
   height: 100dvh;
   color: #ffffff;
   --main-font: "Gruppo", sans-serif;
-
+  --main-cursor: pointer;
   --border-radius: 10px;
 
   /* titles */
@@ -74,5 +74,15 @@ body::-webkit-scrollbar {
   /* colors */
   --transparent: rgba(230, 230, 230, 0.223);
   --transparent-border: 2px solid rgba(230, 230, 230, 0.223);
+  --yellow-glow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00;
   --main-green: rgb(52, 189, 52);
+  --green-glow: 0 0 5px #04aa6d, 0 0 15px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5);
+  --green-glow-hover: 0 0 5px #04aa6d, 0 0 15px #04aa6d,
+    0 0 30px rgba(0, 255, 0, 0.5);
+  --green-glow-active: 0 0 10px #04aa6d, 0 0 5px #04aa6d,
+    0 0 30px rgba(0, 255, 0, 0.5);
 }
+
+/* delete */
+/* text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff; Electric blue glow */
+/* box-shadow: 0 0 5px #00BFFF, 0 0 10px #00BFFF, 0 0 15px #00BFFF; Electric blue glow */

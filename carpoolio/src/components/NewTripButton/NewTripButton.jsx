@@ -1,10 +1,9 @@
-import './NewTripButton.css'
+import "../../pages/HomePage.css";
 
-export default function NewTripButton({children}) {
-    return (
-        <a href="/trip/create" id="new-trip">
-            <button>{children}</button>  
-        </a>
-            
-)
+export default function NewTripButton({ children }) {
+  return (
+    <a href="/trip/create" className="new-trip">
+      <button>{children}</button>
+    </a>
+  );
 }
