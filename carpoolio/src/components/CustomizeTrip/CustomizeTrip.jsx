@@ -1,11 +1,11 @@
 import { useState } from "react";
 import TripName from "./TripName";
 import TripDate from "./TripDate";
-import "./CustomizeTrip.css";
-
-import TripBackground from "./TripBackground";
 import { DepartureTime } from "./DepartureTime";
 import Destination from "./Destination";
+import TripBackground from "./TripBackground";
+import NewCarButton from "../NewCarButton/NewCarButton.jsx";
+import "./CustomizeTrip.css";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
@@ -23,19 +23,22 @@ export default function CustomizeTrip({ formData, setFormData }) {
   return (
     <div className="customize-trip">
       <TripName formData={formData} />
+      {/* <Destination /> */}
+      <Destination formData={formData} setFormData={setFormData} />
+      {/* <p className="customize-trip-btns">organized by: {formData.name}</p> */}
       {/* Date */}
       {/* Date and Time Container */}
-      <div className="date-container">
-        <button
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-          }}
-          className="green-button"
-          onClick={toggleCalendar}
-        >
-          {formData.tripDate ? formData.tripDate : "Set a date"}
+      <>
+        <button className="customize-trip-btns" onClick={toggleCalendar}>
+          <span
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+            }}
+          >
+            {formData.tripDate ? formData.tripDate : "Set a date"}
+          </span>
         </button>
-        {/* Calendar buttons */}
+        {/* show calendar  */}
         {isCalendarVisible && (
           <TripDate
             formData={formData}
@@ -43,14 +46,14 @@ export default function CustomizeTrip({ formData, setFormData }) {
             onClose={toggleCalendar}
           />
         )}
+        {/* calendar buttons */}
         {isCalendarVisible && (
-          <div className="calendar-buttons">
+          <div className="calendar-button-container">
             <button
               style={{
                 background: formData?.tripBackground?.scrim || "transparent",
               }}
-              className="green-button"
-              id="not-sure-yet"
+              className="calendar-button"
               onClick={() => {
                 toggleCalendar();
                 formData.tripDate = "TBD";
@@ -62,8 +65,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
               style={{
                 background: formData?.tripBackground?.scrim || "transparent",
               }}
-              className="green-button"
-              id="not-sure-yet"
+              className="calendar-button"
               onClick={() => {
                 toggleCalendar();
               }}
@@ -72,14 +74,11 @@ export default function CustomizeTrip({ formData, setFormData }) {
             </button>
           </div>
         )}
-      </div>
+      </>
       {/* Departure Time  */}
       <DepartureTime formData={formData} setFormData={setFormData} />
-      {/* <Destination /> */}
-      <Destination formData={formData} setFormData={setFormData} />
       {/* // destination 
     // countdown to trip y/n */}
-      {/* (add stops?) */}
       {/* Include TripBackground */}
       <TripBackground formData={formData} setFormData={setFormData} />{" "}
       <div className="continue-button-container">
@@ -93,6 +92,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
           continue
         </button>
       </div>
+      <NewCarButton />
     </div>
   );
 }
