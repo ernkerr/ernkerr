@@ -1,9 +1,9 @@
 /* Variables declaration */
 /* prettier-ignore */
 .rdp-root {
-    --rdp-accent-color: rgb(52, 189, 52); /* The accent color used for selected days and UI elements. */
+    --rdp-accent-color: white; /* The accent color used for selected days and UI elements. */
     --rdp-accent-background-color: #f0f0ff; /* The accent background color used for selected days and UI elements. */
-    --rdp-font-family: system-ui; /* The font family used by the calendar. Note that `inherit`does not work here. */
+    --rdp-font-family: var(--main-font); /* The font family used by the calendar. Note that `inherit`does not work here. */
   
     --rdp-day-font: inherit; /* The font used for the day cells. */
     --rdp-day-height: 2.75rem; /* The height of the day cells. */
@@ -58,268 +58,275 @@
   
     --rdp-gradient-direction: 90deg;
   }
-  
-  .rdp-root[dir="rtl"] {
-    --rdp-gradient-direction: -90deg;
-  }
-  
-  /* Root of the component. */
-  .rdp-root {
-    position: relative; /* Required to position the navigation toolbar. */
-    box-sizing: border-box;
-    font-family: 'DM Sans';
-    font-weight: 200;
-  }
-  
-  .rdp-root * {
-    box-sizing: border-box;
-  }
-  
-  .rdp-day {
-    width: var(--rdp-day-width);
-    height: var(--rdp-day-height);
-    font: var(--rdp-day-font);
-    text-align: center;
-  }
-  
-  .rdp-day_button {
-    background: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    font: inherit;
-    color: inherit;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  
-    width: var(--rdp-day_button-width);
-    height: var(--rdp-day_button-height);
-    border: 2px solid transparent;
-    border-radius: 50%;
-    transition: all 0.2s ease-in-out;
+
+.rdp-root[dir="rtl"] {
+  --rdp-gradient-direction: -90deg;
+}
+
+/* Root of the component. */
+.rdp-root {
+  position: relative; /* Required to position the navigation toolbar. */
+  box-sizing: border-box;
+  font-family: "DM Sans";
+  font-weight: 200;
+}
+
+.rdp-root * {
+  box-sizing: border-box;
+}
+
+.rdp-day {
+  width: var(--rdp-day-width);
+  height: var(--rdp-day-height);
+  font: var(--rdp-day-font);
+  text-align: center;
+}
+
+.rdp-day_button {
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  width: var(--rdp-day_button-width);
+  height: var(--rdp-day_button-height);
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
 }
 
 /* Glowing effect for the selected date */
 .rdp-selected .rdp-day_button {
-    border-color: rgb(52, 189, 52); /* Use your accent color */
-    box-shadow: 0 0 15px rgba(52, 189, 52, 0.8); /* Glowing effect */
-    color: white;
-    background-color: rgba(52, 189, 52, 0.1); /* Optional: Light green background */
+  border-color: rgb(52, 189, 52); /* Use your accent color */
+  box-shadow: 0 0 15px rgba(52, 189, 52, 0.8); /* Glowing effect */
+  color: white;
+  background-color: rgba(
+    52,
+    189,
+    52,
+    0.1
+  ); /* Optional: Light green background */
 }
 
 /* Optional hover effect */
 .rdp-day_button:hover {
-    border-color: rgb(52, 189, 52); /* Use your accent color */
-    box-shadow: 0 0 15px rgba(52, 189, 52, 0.8); /* Glowing effect */
-    color: white;}
+  border-color: rgb(52, 189, 52); /* Use your accent color */
+  box-shadow: 0 0 15px rgba(52, 189, 52, 0.8); /* Glowing effect */
+  color: white;
+}
 
 /* Today’s date styling */
 .rdp-today .rdp-day_button {
-    color: white;
+  color: white;
 }
 
+.rdp-day_button:disabled {
+  cursor: revert;
+}
 
-  .rdp-day_button:disabled {
-    cursor: revert;
-  }
-  
-  .rdp-caption_label {
-    z-index: 1;
-  
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-  
-    white-space: nowrap;
-    border: 0;
-  }
-  
-  .rdp-button_next,
-  .rdp-button_previous {
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    font: inherit;
-    color: inherit;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    appearance: none;
-  
-    width: var(--rdp-nav_button-width);
-    height: var(--rdp-nav_button-height);
-  }
-  
-  .rdp-button_next:disabled,
-  .rdp-button_previous:disabled {
-    cursor: revert;
-  
-    opacity: var(--rdp-nav_button-disabled-opacity);
-  }
-  
-  .rdp-chevron {
-    display: inline-block;
-    fill: var(--rdp-accent-color);
-  }
-  
-  .rdp-root[dir="rtl"] .rdp-nav .rdp-chevron {
-    transform: rotate(180deg);
-  }
-  
-  .rdp-root[dir="rtl"] .rdp-nav .rdp-chevron {
-    transform: rotate(180deg);
-    transform-origin: 50%;
-  }
-  
-  .rdp-dropdowns {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--rdp-dropdown-gap);
-  }
-  .rdp-dropdown {
-    z-index: 2;
-  
-    /* Reset */
-    opacity: 0;
-    appearance: none;
-    position: absolute;
-    inset-block-start: 0;
-    inset-block-end: 0;
-    inset-inline-start: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    cursor: inherit;
-    border: none;
-    line-height: inherit;
-  }
-  
-  .rdp-dropdown_root {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .rdp-dropdown_root[data-disabled="true"] .rdp-chevron {
-    opacity: var(--rdp-disabled-opacity);
-  }
-  
-  .rdp-month_caption {
-    display: flex;
-    align-content: center;
-    height: var(--rdp-nav-height);
-    font: var(--rdp-month_caption-font);
-  }
-  
-  .rdp-months {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--rdp-months-gap);
-    max-width: fit-content;
-  }
-  
-  .rdp-month_grid {
-    border-collapse: collapse;
-  }
-  
-  .rdp-nav {
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-end: 0;
-  
-    display: flex;
-    align-items: center;
-  
-    height: var(--rdp-nav-height);
-  }
-  
-  .rdp-weekday {
-    opacity: var(--rdp-weekday-opacity);
-    padding: var(--rdp-weekday-padding);
-    font: var(--rdp-weekday-font);
-    text-align: var(--rdp-weekday-text-align);
-    text-transform: var(--rdp-weekday-text-transform);
-  }
-  
-  .rdp-week_number {
-    opacity: var(--rdp-week_number-opacity);
-    font: var(--rdp-week_number-font);
-    height: var(--rdp-week_number-height);
-    width: var(--rdp-week_number-width);
-    border: var(--rdp-week_number-border);
-    border-radius: var(--rdp-week_number-border-radius);
-    text-align: var(--rdp-weeknumber-text-align);
-  }
-  
-  /* DAY MODIFIERS */
-  .rdp-today:not(.rdp-outside) {
-    color: var(--rdp-today-color);
-  }
-  
-  .rdp-selected {
-    font: var(--rdp-selected-font);
-  }
-  
-  .rdp-selected .rdp-day_button {
-    border: var(--rdp-selected-border);
-  }
-  
-  .rdp-outside {
-    opacity: var(--rdp-outside-opacity);
-  }
-  
-  .rdp-disabled {
-    opacity: var(--rdp-disabled-opacity);
-  }
-  
-  .rdp-hidden {
-    visibility: hidden;
-    color: var(--rdp-range_start-color);
-  }
-  
-  .rdp-range_start {
-    background: var(--rdp-range_start-background);
-  }
-  
-  .rdp-range_start .rdp-day_button {
-    background-color: var(--rdp-range_start-date-background-color);
-    color: var(--rdp-range_start-color);
-  }
-  
-  .rdp-range_middle {
-    background-color: var(--rdp-range_middle-background-color);
-    font: var(--rdp-range_middle-font);
-  }
-  
-  .rdp-range_middle .rdp-day_button {
-    border-color: transparent;
-    border: unset;
-    border-radius: unset;
-    color: var(--rdp-range_middle-color);
-  }
-  
-  .rdp-range_end {
-    background: var(--rdp-range_end-background);
-    color: var(--rdp-range_end-color);
-  }
-  
-  .rdp-range_end .rdp-day_button {
-    color: var(--rdp-range_start-color);
-    background-color: var(--rdp-range_end-date-background-color);
-  }
-  
-  .rdp-range_start.rdp-range_end {
-    background: revert;
-  }
-  
-  .rdp-focusable {
-    cursor: pointer;
-  }
+.rdp-caption_label {
+  z-index: 1;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  white-space: nowrap;
+  border: 0;
+}
+
+.rdp-button_next,
+.rdp-button_previous {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  appearance: none;
+
+  width: var(--rdp-nav_button-width);
+  height: var(--rdp-nav_button-height);
+}
+
+.rdp-button_next:disabled,
+.rdp-button_previous:disabled {
+  cursor: revert;
+
+  opacity: var(--rdp-nav_button-disabled-opacity);
+}
+
+.rdp-chevron {
+  display: inline-block;
+  fill: var(--rdp-accent-color);
+}
+
+.rdp-root[dir="rtl"] .rdp-nav .rdp-chevron {
+  transform: rotate(180deg);
+}
+
+.rdp-root[dir="rtl"] .rdp-nav .rdp-chevron {
+  transform: rotate(180deg);
+  transform-origin: 50%;
+}
+
+.rdp-dropdowns {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rdp-dropdown-gap);
+}
+.rdp-dropdown {
+  z-index: 2;
+
+  /* Reset */
+  opacity: 0;
+  appearance: none;
+  position: absolute;
+  inset-block-start: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: inherit;
+  border: none;
+  line-height: inherit;
+}
+
+.rdp-dropdown_root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.rdp-dropdown_root[data-disabled="true"] .rdp-chevron {
+  opacity: var(--rdp-disabled-opacity);
+}
+
+.rdp-month_caption {
+  display: flex;
+  align-content: center;
+  height: var(--rdp-nav-height);
+  font: var(--rdp-month_caption-font);
+  font-size: 1.8rem;
+}
+
+.rdp-months {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rdp-months-gap);
+  max-width: fit-content;
+}
+
+.rdp-month_grid {
+  border-collapse: collapse;
+}
+
+.rdp-nav {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+
+  display: flex;
+  align-items: center;
+
+  height: var(--rdp-nav-height);
+}
+
+.rdp-weekday {
+  opacity: var(--rdp-weekday-opacity);
+  padding: var(--rdp-weekday-padding);
+  font: var(--rdp-weekday-font);
+  text-align: var(--rdp-weekday-text-align);
+  text-transform: var(--rdp-weekday-text-transform);
+  font-size: 1.2rem;
+}
+
+.rdp-week_number {
+  opacity: var(--rdp-week_number-opacity);
+  font: var(--rdp-week_number-font);
+  height: var(--rdp-week_number-height);
+  width: var(--rdp-week_number-width);
+  border: var(--rdp-week_number-border);
+  border-radius: var(--rdp-week_number-border-radius);
+  text-align: var(--rdp-weeknumber-text-align);
+}
+
+/* DAY MODIFIERS */
+.rdp-today:not(.rdp-outside) {
+  color: var(--rdp-today-color);
+}
+
+.rdp-selected {
+  font: var(--rdp-selected-font);
+}
+
+.rdp-selected .rdp-day_button {
+  border: var(--rdp-selected-border);
+}
+
+.rdp-outside {
+  opacity: var(--rdp-outside-opacity);
+}
+
+.rdp-disabled {
+  opacity: var(--rdp-disabled-opacity);
+}
+
+.rdp-hidden {
+  visibility: hidden;
+  color: var(--rdp-range_start-color);
+}
+
+.rdp-range_start {
+  background: var(--rdp-range_start-background);
+}
+
+.rdp-range_start .rdp-day_button {
+  background-color: var(--rdp-range_start-date-background-color);
+  color: var(--rdp-range_start-color);
+}
+
+.rdp-range_middle {
+  background-color: var(--rdp-range_middle-background-color);
+  font: var(--rdp-range_middle-font);
+}
+
+.rdp-range_middle .rdp-day_button {
+  border-color: transparent;
+  border: unset;
+  border-radius: unset;
+  color: var(--rdp-range_middle-color);
+}
+
+.rdp-range_end {
+  background: var(--rdp-range_end-background);
+  color: var(--rdp-range_end-color);
+}
+
+.rdp-range_end .rdp-day_button {
+  color: var(--rdp-range_start-color);
+  background-color: var(--rdp-range_end-date-background-color);
+}
+
+.rdp-range_start.rdp-range_end {
+  background: revert;
+}
+
+.rdp-focusable {
+  cursor: pointer;
+}

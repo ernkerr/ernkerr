@@ -1,4 +1,3 @@
-import { add } from "date-fns";
 import { useState } from "react";
 import Autocomplete from "react-google-autocomplete";
 
@@ -18,11 +17,15 @@ export default function Destination({ formData, setFormData }) {
   };
 
   return (
-    <div>
+    <>
       <button
-        className="green-button"
+        className="customize-trip-btns"
+        id="destination-button"
         onClick={handleButtonClick}
-        style={{ background: formData?.tripBackground?.scrim || "transparent" }}
+        style={{
+          background: formData?.tripBackground?.scrim || "transparent",
+          color: "#ffffff",
+        }}
       >
         {address || "Set a destination"}
       </button>
@@ -37,11 +40,18 @@ export default function Destination({ formData, setFormData }) {
               types: ["address"],
               fields: ["formatted_address", "geometry"],
             }}
-            style={{ width: "45%" }} // Style as needed
+            style={{
+              fontFamily: "var(--main-font)",
+              width: "99%",
+              background: formData?.tripBackground?.scrim || "transparent",
+              border: "var(--transparent-border)",
+              borderRadius: "var(--border-radius-button)",
+              height: "2vh",
+            }} // Style as needed
           />
         </div>
       )}
-    </div>
+    </>
   );
 }
 

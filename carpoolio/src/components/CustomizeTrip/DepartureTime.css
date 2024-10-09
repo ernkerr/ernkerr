@@ -1,8 +1,9 @@
+/* set a time */
 .time-picker-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .time-column {
@@ -13,24 +14,27 @@
 
 .scrollable select {
   color: white;
-  border: 2px solid rgb(52, 189, 52);
-  background-color: rgba(75, 254, 75, 0.323);
-  border-radius: 15px;
+  font-family: var(--main-font);
+  font-size: var(--font-size-button);
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
+  margin-top: var(--margin-top-button);
+  padding: var(--paddding-button);
   width: 80px;
   padding: 10px;
-  font-size: 1rem;
+  cursor: pointer;
 }
 
 .confirm-button {
   color: white;
-  border: 2px solid rgb(52, 189, 52);
-  background-color: rgba(75, 254, 75, 0.323);
-  border-radius: 15px;
-  padding: 10px 20px;
-  font-size: 1rem;
+  font-family: var(--main-font);
+  font-size: var(--font-size-button);
+  height: var(--height-button);
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
+  margin-top: var(--margin-top-button);
+  padding: var(--paddding-button);
+  align-items: flex-start;
+  text-align: left;
   cursor: pointer;
-}
-
-.confirm-button:hover {
-  background-color: #4caf50;
 }

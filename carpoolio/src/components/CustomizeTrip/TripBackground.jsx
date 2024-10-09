@@ -24,7 +24,7 @@ import pink from "../../assets/gifs/pinkliquid.gif";
 const backgrounds = [
   // {name: "none", }
   { name: "blue goo", path: bluegoo },
-  { name: "marble", path: marble, scrim: "rgba(20, 20, 20, 0.7)" },
+  { name: "marble", path: marble, scrim: "rgba(0, 0, 0, 0.90)" },
   { name: "purple", path: purple },
   { name: "8bit city", path: city8bit, scrim: null },
   { name: "drive fast", path: drivefast },
@@ -68,7 +68,7 @@ export default function TripBackground({ formData, setFormData }) {
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
         }}
-        className="green-button"
+        className="customize-trip-btns"
         onClick={toggleBackgrounds}
       >
         Backgrounds

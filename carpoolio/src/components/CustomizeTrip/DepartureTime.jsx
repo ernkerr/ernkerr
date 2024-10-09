@@ -6,7 +6,7 @@ export function DepartureTime({ formData, setFormData }) {
   const [hour, setHour] = useState(12);
   const [minute, setMinute] = useState(0);
   const [period, setPeriod] = useState("AM"); // Default period is AM
-  const [isTimeSet, setIsTimeSet] = useState(false);
+  const [isTimeSet, setIsTimeSet] = useState(true);
 
   const handleTimeChange = () => {
     setIsTimeSet(true);
@@ -29,18 +29,17 @@ export function DepartureTime({ formData, setFormData }) {
       {isTimeSet ? (
         // Display the confirmed time and make it clickable for editing
         <button
-          className="green-button"
+          className="customize-trip-btns"
           onClick={() => setIsTimeSet(false)} // Clicking allows editing
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-          }}
+          // style={{
+          //   background: formData?.tripBackground?.scrim || "transparent",
+          // }}
         >
-          {`${hour}:${minute.toString().padStart(2, "0")} ${period}`}
+          {`${hour}:${minute.toString().padStart(2, "00")} ${period}`}
         </button>
       ) : (
         <div className="time-picker-container">
           <div className="time-column">
-            {/* <span>Hour</span> */}
             <div className="scrollable">
               <select
                 value={hour}
