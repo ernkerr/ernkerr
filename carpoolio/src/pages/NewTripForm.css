@@ -5,21 +5,20 @@
   height: 100%; /* Full viewport height */
   width: 100%; /* Full viewport width */
 }
+/* 
+will need to change the background and the box shadow  */
 
 .container-wrapper {
   border-radius: 1.25rem;
   overflow: clip;
   max-width: 1500px;
-  background: linear-gradient(135deg, rgb(0, 106, 0), rgb(135, 202, 135));
-  box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
+  /* background: linear-gradient(135deg, rgb(0, 106, 0), rgb(135, 202, 135)); */
+  /* box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); */
   padding: 5px;
-
-  /* Set size relative to viewport */
-  width: 70vw; /* 70% of the viewport width */
-  height: 80vh; /* 60% of the viewport height */
-
+  width: 80vw;
+  height: 85vh;
   display: flex;
-  justify-content: center; /* Center contents */
+  justify-content: center;
   align-items: center;
 }
 /* Container with gradient border and glow */
@@ -29,11 +28,8 @@
   background-color: black;
   max-width: 1500px;
   margin: auto;
-  /* overflow: clip; */
-
   width: 100%;
   height: -webkit-fill-available; /* Fill the parent container */
-
   display: flex;
   flex-direction: column;
   justify-content: center;

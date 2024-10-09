@@ -1,4 +1,5 @@
 import { useState } from "react";
+import hexRgb from "hex-rgb";
 import TripName from "./TripName";
 import TripDate from "./TripDate";
 import { DepartureTime } from "./DepartureTime";
@@ -20,6 +21,25 @@ export default function CustomizeTrip({ formData, setFormData }) {
     console.log(formData);
   }
 
+  function handleNewCar() {
+    <NewCarButton />;
+  }
+
+  const handleGlowColorChange = (event) => {
+    const newGlowColor = event.target.value;
+    const { red: r, green: g, blue: b } = hexRgb(newGlowColor);
+    const lighterGlowColor = `rgb(${Math.min(r + 10, 255)}, ${Math.min(
+      g + 10,
+      255
+    )}, ${Math.min(b + 10, 255)})`;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      glowColor: newGlowColor,
+      glowColorGradient: lighterGlowColor,
+    }));
+  };
+
   return (
     <div className="customize-trip">
       <TripName formData={formData} />
@@ -27,7 +47,6 @@ export default function CustomizeTrip({ formData, setFormData }) {
       <Destination formData={formData} setFormData={setFormData} />
       {/* <p className="customize-trip-btns">organized by: {formData.name}</p> */}
       {/* Date */}
-      {/* Date and Time Container */}
       <>
         <button className="customize-trip-btns" onClick={toggleCalendar}>
           <span
@@ -75,13 +94,36 @@ export default function CustomizeTrip({ formData, setFormData }) {
           </div>
         )}
       </>
-      {/* Departure Time  */}
+      {/* set a Departure Time  */}
       <DepartureTime formData={formData} setFormData={setFormData} />
       {/* // destination 
     // countdown to trip y/n */}
-      {/* Include TripBackground */}
+      {/* set a background */}
       <TripBackground formData={formData} setFormData={setFormData} />{" "}
+      {/* set the glow color  */}
+      {/* <button className="customize-trip-btns"> */}
+      <div className="glow-color-selection">
+        <label htmlFor="glowColor">Select Glow Color:</label>
+        <input
+          type="color"
+          id="glowColor"
+          name="glowColor"
+          value={formData.glowColor || "#04aa6d"}
+          onChange={handleGlowColorChange} // update the glow color on change
+        />
+      </div>
+      {/* buttons at the bottom of page  */}
       <div className="continue-button-container">
+        <button
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
+          onClick={handleNewCar}
+          className="glow-button"
+          id="add-a-car"
+        >
+          add a car
+        </button>
         <button
           style={{
             background: formData?.tripBackground?.scrim || "transparent",
@@ -92,7 +134,6 @@ export default function CustomizeTrip({ formData, setFormData }) {
           continue
         </button>
       </div>
-      <NewCarButton />
     </div>
   );
 }

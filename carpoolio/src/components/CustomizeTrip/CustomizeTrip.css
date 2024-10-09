@@ -67,56 +67,8 @@
   width: 100%;
 }
 
-/* delete?  */
-#add-a-car {
-  width: 50%;
-}
 .continue-button-container {
   margin-top: auto;
-}
-
-/* #customize-trip-input {
-  border: 2px solid rgba(0, 0, 0, 0.911);
-  border-radius: 15px;
-  background-color: rgba(75, 254, 75, 0.323);
-  height: 50px;
-  width: 50%;
-  padding: 15px;
-  box-sizing: border-box;
-  color: white;
-  text-align: center;
-  font-size: 1em;
-  align-items: flex-start;
-  font-family: "Gruppo", sans-serif;
-} */
-
-/* .green-button {
-  border: 2px solid rgb(52, 189, 52);
-  border-radius: 15px;
-  background-color: rgba(75, 254, 75, 0.323);
-  height: 50px;
-  width: 50%;
-  padding: 15px;
-  box-sizing: border-box;
-  color: white;
-  text-align: center;
-  font-size: var(--font-size-button);
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-top: 2%;
-} */
-
-/* Ensures text cursor stays centered vertically */
-#customize-trip-input::placeholder {
-  text-align: center;
-  color: rgb(255, 255, 255);
-}
-
-.button-container {
-  display: flex;
-  justify-content: space-between; /* Position buttons on opposite sides */
-  width: 50%; /* Match the width of the input field */
-  /* margin-bottom: 20px; */
 }
 
 .glow-button {
@@ -133,15 +85,19 @@
   flex: none; /* Prevent them from taking equal space */
 }
 
+#new-car-btn {
+  width: 50%;
+}
+
 .glow-button:hover {
   background-color: rgb(52, 189, 52); /* Green background on hover */
   box-shadow: 0 0 5px #04aa6d, 0 0 10px #04aa6d, 0 0 15px #00bfff;
 }
 
-#left-button {
+/* #left-button {
   margin-left: auto;
-}
-
+} */
+/* 
 #right-button {
   margin-right: auto;
-}
+} */

@@ -20,6 +20,8 @@ export default function NewTripForm() {
     destination: "",
     carColor: "",
     underglowColor: "",
+    glowColor: "",
+    lighterGlowColor: "",
   });
 
   // useEffect(() => {
@@ -66,7 +68,13 @@ export default function NewTripForm() {
         backgroundPosition: "center",
       }}
     >
-      <div className="container-wrapper">
+      <div
+        className="container-wrapper"
+        style={{
+          boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 30px ${formData.lighterGlowColor}`,
+          background: `${formData.glowColor}`,
+        }}
+      >
         <div
           className="container"
           style={{
