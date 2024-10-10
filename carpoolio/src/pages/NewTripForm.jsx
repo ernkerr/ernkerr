@@ -27,6 +27,11 @@ export default function NewTripForm() {
     frontSeats: 0,
     middleSeats: 0,
     backSeats: 0,
+    seatNames: {
+      front: [],
+      middle: [],
+      back: [],
+    },
   });
 
   // useEffect(() => {

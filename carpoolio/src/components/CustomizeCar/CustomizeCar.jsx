@@ -26,16 +26,18 @@ export default function CustomizeCar({ formData, setFormData }) {
     // update the numSeats per row
     const newFrontSeats = Math.min(2, totalSeats); // At least two front seats if there are seats
     const newMiddleSeats = Math.min(Math.max(totalSeats - 1, 0), 3); // Up to 3 middle seats
-    const newBackSeats = Math.max(
-      totalSeats - newFrontSeats - newMiddleSeats,
-      0
-    ); // Remaining seats for back
+    const newBackSeats = Math.min(Math.max(totalSeats - 1, 0), 3);
+    // const newBackSeats = Math.max(
+    //   totalSeats - newFrontSeats - newMiddleSeats,
+    //   0
+    // );
 
     setFormData({
       ...formData,
       frontSeats: newFrontSeats,
       middleSeats: newMiddleSeats,
       backSeats: newBackSeats,
+      seatNames: formData.seatNames || { front: [], middle: [], back: [] },
     });
   };
 
@@ -44,23 +46,18 @@ export default function CustomizeCar({ formData, setFormData }) {
     handleSeatDistribution();
   }, [formData.numSeats]); // Call when numSeats changes
 
-  const handleSeatClick = (seatType, seatIndex) => {
-    const seatName = prompt(
-      `Assign a name to ${seatType} seat ${seatIndex + 1}`
-    );
-    // Logic to store the seat assignment
-    console.log(`${seatType} seat ${seatIndex + 1}: ${seatName}`);
+  const handleSeatClick = (seatRow, seatIndex, event) => {
+    const newSeatNames = { ...formData.seatNames };
+    newSeatNames[seatRow][seatIndex] = event.target.value;
+    setFormData({ ...formData, seatNames: newSeatNames });
   };
 
-  // function handleClick() {
-  //   <CustomizeTrip />;
-  // }
-  useEffect(() => {
-    console.log("Front seats:", formData.frontSeats);
-    console.log("Middle seats:", formData.middleSeats);
-    console.log("Back seats:", formData.backSeats);
-    handleSeatDistribution();
-  }, [formData.numSeats]); // Call when numSeats changes
+  // useEffect(() => {
+  //   console.log("Front seats:", formData.frontSeats);
+  //   console.log("Middle seats:", formData.middleSeats);
+  //   console.log("Back seats:", formData.backSeats);
+  //   handleSeatDistribution();
+  // }, [formData.numSeats]); // Call when numSeats changes
 
   return (
     <>
@@ -68,50 +65,48 @@ export default function CustomizeCar({ formData, setFormData }) {
         <DefaultCar
           carColor={carColor}
           style={{ width: "100%", height: "auto" }}
-        />
+        />{" "}
         <div className="seat-container">
           <div className="front-seats">
             {Array.from({ length: formData.frontSeats }).map((_, index) => (
-              <button
+              <input
                 key={`front-seat-${index}`}
-                onClick={() => handleSeatClick("front", index)}
-                className="seat-button"
-              >
-                Front Seat {index + 1}
-              </button>
+                value={formData.seatNames.front[index] || ""}
+                onChange={(event) => handleSeatClick("front", index, event)}
+                className="seat-input"
+              />
             ))}
           </div>
 
           <div className="middle-seats">
             {Array.from({ length: formData.middleSeats }).map((_, index) => (
-              <button
+              <input
                 key={`middle-seat-${index}`}
-                onClick={() => handleSeatClick("middle", index)}
-                className="seat-button"
-              >
-                Middle Seat {index + 1}
-              </button>
+                value={formData.seatNames.middle[index] || ""}
+                onChange={(event) => handleSeatClick("middle", index, event)}
+                className="seat-input"
+              />
             ))}
           </div>
 
           <div className="back-seats">
             {Array.from({ length: formData.backSeats }).map((_, index) => (
-              <button
+              <input
                 key={`back-seat-${index}`}
-                onClick={() => handleSeatClick("back", index)}
-                className="seat-button"
-              >
-                Back Seat {index + 1}
-              </button>
+                value={formData.seatNames.back[index] || ""}
+                onChange={(event) => handleSeatClick("back", index, event)}
+                className="seat-input"
+              />
             ))}
           </div>
         </div>
       </div>
       <div>
-        <label htmlFor="body">Change Car Color: </label>
+        <label htmlFor="car-color">Change Car Color: </label>
         <input
           type="color"
-          name="body"
+          id="car-color"
+          name="carColor"
           value={carColor}
           onChange={changeCarColor}
         />{" "}

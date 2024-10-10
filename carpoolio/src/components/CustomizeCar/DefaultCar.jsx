@@ -11,7 +11,7 @@ export default function DefaultCar({ carColor }) {
   // use <filter>
 
   return (
-    <div className="car-container">
+    <>
       <svg
         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@ export default function DefaultCar({ carColor }) {
         id="svg171"
         viewBox="0 0 358.85 789.36"
         version={1.0}
-        width="100%"
+        width="40vw"
         height="100%"
       >
         <defs id="defs173">
@@ -349,7 +349,7 @@ export default function DefaultCar({ carColor }) {
           </rdf:rdf>
         </metadata>
       </svg>
-    </div>
+    </>
   );
 }
 
