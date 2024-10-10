@@ -30,18 +30,20 @@
   margin-top: 15%;
   max-width: 90%;
   pointer-events: auto; /* make seat buttons are clickable */
-  gap: 2%;
+  gap: 1.5%;
 }
 
 .seat-input {
   background-color: #f0f0f085; /* Input background color */
   border: var(--transparent-border);
-  padding: 10px; /* Padding for inputs */
+  padding: 0.5px; /* Padding for inputs */
   cursor: pointer; /* Change cursor on hover */
   border-radius: 5px; /* Rounded corners */
-  height: 50%;
+  height: 3vh;
   width: 30%; /* Set input width */
   text-align: center;
+  font-family: var(--main-font);
+  font-size: 2vw;
 }
 
 .seat-inputs:hover {
