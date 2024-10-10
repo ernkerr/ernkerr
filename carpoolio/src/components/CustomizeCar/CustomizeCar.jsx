@@ -101,9 +101,10 @@ export default function CustomizeCar({ formData, setFormData }) {
           </div>
         </div>
       </div>
-      <div>
-        <label htmlFor="car-color">Change Car Color: </label>
+      <div className="car-color">
+        <label htmlFor="car-color">Change Car Color </label>
         <input
+          className="car-color-picker"
           type="color"
           id="car-color"
           name="carColor"
