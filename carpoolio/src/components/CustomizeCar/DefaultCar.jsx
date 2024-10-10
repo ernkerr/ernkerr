@@ -1,6 +1,6 @@
 import hexRgb from "hex-rgb";
 
-export default function DefaultCar({ carColor, underglowColor }) {
+export default function DefaultCar({ carColor }) {
   const { red: r, green: g, blue: b } = hexRgb(carColor);
   const newCarColor = `rgb(${r},${g},${b})`;
   const newCarColorGradient = `rgb(${r + 5},${g + 5},${b + 5})`;
@@ -11,7 +11,7 @@ export default function DefaultCar({ carColor, underglowColor }) {
   // use <filter>
 
   return (
-    <div>
+    <div className="car-container">
       <svg
         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,8 @@ export default function DefaultCar({ carColor, underglowColor }) {
         id="svg171"
         viewBox="0 0 358.85 789.36"
         version={1.0}
-        width="300"
+        width="100%"
+        height="100%"
       >
         <defs id="defs173">
           <linearGradient id="linearGradient239">

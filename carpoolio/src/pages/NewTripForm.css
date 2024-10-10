@@ -2,18 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Full viewport height */
-  width: 100%; /* Full viewport width */
+  height: 100%;
+  width: 100%;
 }
-/* 
-will need to change the background and the box shadow  */
 
 .container-wrapper {
   border-radius: 1.25rem;
   overflow: clip;
   max-width: 1500px;
-  /* background: linear-gradient(135deg, rgb(0, 106, 0), rgb(135, 202, 135)); */
-  /* box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); */
   padding: 5px;
   width: 80vw;
   height: 85vh;

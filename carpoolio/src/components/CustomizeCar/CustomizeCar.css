@@ -1,10 +1,82 @@
+.car-container {
+  /* width: 100%; Adjust this value as needed */
+  height: auto; /* Let height be automatic to maintain aspect ratio */
+  display: flex; /* Use flexbox to center align if needed */
+  justify-content: center; /* Center the SVG horizontally */
+  align-items: center; /* Center the SVG vertically */
+  overflow: hidden; /* Hide overflow if SVG is bigger */
+  margin: 0 auto; /* Center the container horizontally */
+  position: relative;
+}
+
+.car-container svg {
+  z-index: 1;
+}
+
+/* .front-seats {
+  width: 100%;
+  background: white;
+} */
+
+/* .car-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+} */
+
+.seat-container {
+  position: absolute; /* Make the seat container float on top of the car */
+  top: 0;
+  left: 0;
+  width: 99%;
+  height: 99%;
+  display: flex;
+  flex-direction: column; /* Align rows of seats vertically */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.front-seats,
+.middle-seats,
+.back-seats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  height: 5vh;
+  width: 90%;
+  pointer-events: auto; /* Ensure seat buttons are clickable */
+  gap: 2%;
+}
+
+.front-seats {
+  margin-top: 80%;
+}
+
+.back-seats {
+  margin-bottom: 40%;
+}
+.seat-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.seat-button:hover {
+  background-color: #ddd;
+}
+
+/* numSeats */
+
 .slider {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
   width: 30%;
   height: 10px;
   border-radius: 5px;
-  background: rgb(52, 189, 52);
+  background: #34bc34;
   outline: none;
   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
   transition: opacity 0.2s;

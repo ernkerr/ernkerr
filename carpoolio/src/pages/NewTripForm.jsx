@@ -5,6 +5,7 @@ import IsUserDriving from "../components/IsUserDriving";
 import GetUserContact from "../components/GetUserContact";
 import CustomizeCar from "../components/CustomizeCar/CustomizeCar";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
+import NumSeats from "../components/CustomizeCar/NumSeats";
 import bluegoo from "../assets/bluegoo.gif";
 import "./NewTripForm.css";
 
@@ -20,8 +21,12 @@ export default function NewTripForm() {
     destination: "",
     carColor: "",
     underglowColor: "",
-    glowColor: "",
+    glowColor: "rgb(52, 189, 52)",
     lighterGlowColor: "",
+    numSeats: 5,
+    frontSeats: 0,
+    middleSeats: 0,
+    backSeats: 0,
   });
 
   // useEffect(() => {
@@ -45,9 +50,15 @@ export default function NewTripForm() {
         );
       case 3:
         return isDriving ? (
-          <CustomizeCar formData={formData} setFormData={setFormData} />
+          <NumSeats formData={formData} setFormData={setFormData} />
         ) : (
           <CustomizeTrip formData={formData} setFormData={setFormData} />
+        );
+      case 4:
+        return (
+          isDriving && (
+            <CustomizeCar formData={formData} setFormData={setFormData} />
+          )
         );
       default:
         return <GetUserName formData={formData} setFormData={setFormData} />;
@@ -85,16 +96,13 @@ export default function NewTripForm() {
         >
           {conditionalComponent()}
           <div className="button-group">
-            {page > 0 && page < 2 && (
-              <button
-                id="left-button"
-                className="glow-button"
-                onClick={() => setPage(page - 1)}
-              >
+            {page !== 2 && (
+              <button className="glow-button" onClick={() => setPage(page - 1)}>
                 back
               </button>
             )}
-            {page < 2 && (
+            {/* Show the continue button on all pages except page 2 */}
+            {page !== 2 && (
               <button
                 id="right-button"
                 className="glow-button"
