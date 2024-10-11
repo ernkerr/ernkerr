@@ -15,3 +15,11 @@ Create an empty Next.js TypeScript project using the [create-next-app](https://w
 ## 🍩 Exercise Feedback form
 
 Writing down what you learn is key to your retention. Also, I want to make sure each exercise is effective at helping you learn the material. Please quickly fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSeKPJV5UInaNFlZawN7vZdNyPngyinrkp7eoQO0vzwGzh2EtQ/viewform?usp=pp_url&entry.651170566=Exercise+01+-+Create+a+new+Next.js+TypeScript+project) so you can elaborate on what you learned and give me feedback so I can improve it for future learners.
+
+## Personal notes
+
+npx create-next-app hello-nextjs --typescript
+cd hello-nextjs
+npm run dev
+
+In Next.js 13 and later, the Link component behavior has been slightly modified. You need to ensure that the Link component wraps its child elements in an a tag, or it must be used correctly with the href prop in a way that is consistent with React's expectations.
