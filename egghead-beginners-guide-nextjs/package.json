@@ -1,0 +1,38 @@
+{
+  "name": "egghead-beginners-guide-nextjs",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "exercises/*",
+    "final/*"
+  ],
+  "author": "Lazar Nikolov <hello@nikolovlazar.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikolovlazar/egghead-beginners-guide-nextjs.git"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "framer-motion": "^6",
+    "next": "12.1.5",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.10",
+    "@types/react": "17.0.44",
+    "@types/react-dom": "17.0.15",
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.0.4",
+    "prettier": "2.5.0",
+    "typescript": "4.6.3"
+  },
+  "resolutions": {
+    "**/@types/react": "17.0.44",
+    "**/@types/react-dom": "17.0.15",
+    "**/react": "17.0.2",
+    "**/react-dom": "17.0.2"
+  }
+}
