@@ -21,19 +21,19 @@ export function DepartureTime({ formData, setFormData }) {
   const handlePeriodChange = (e) => setPeriod(e.target.value);
 
   return (
-    <div
-      style={{
-        background: formData?.tripBackground?.scrim || "transparent",
-      }}
+    <
+      // style={{
+      //   background: formData?.tripBackground?.scrim || "transparent",
+      // }}
     >
       {isTimeSet ? (
         // Display the confirmed time and make it clickable for editing
         <button
           className="customize-trip-btns"
           onClick={() => setIsTimeSet(false)} // Clicking allows editing
-          // style={{
-          //   background: formData?.tripBackground?.scrim || "transparent",
-          // }}
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
         >
           {`${hour}:${minute.toString().padStart(2, "00")} ${period}`}
         </button>
@@ -73,7 +73,7 @@ export function DepartureTime({ formData, setFormData }) {
                 </option>
                 {[...Array(12).keys()].map((m) => (
                   <option key={m * 5} value={m * 5}>
-                    {m * 5}
+                    {(m * 5).toString().padStart(2, "0")}
                   </option>
                 ))}
               </select>
@@ -94,7 +94,7 @@ export function DepartureTime({ formData, setFormData }) {
             </div>
           </div>
 
-          <div className="time-picker-container">
+          <>
             <button
               className="confirm-button"
               onClick={handleTimeChange}
@@ -104,9 +104,9 @@ export function DepartureTime({ formData, setFormData }) {
             >
               okay
             </button>
-          </div>
+          </>
         </div>
       )}
-    </div>
+    </>
   );
 }
