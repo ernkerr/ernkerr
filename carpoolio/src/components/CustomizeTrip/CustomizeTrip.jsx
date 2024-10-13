@@ -103,7 +103,12 @@ export default function CustomizeTrip({ formData, setFormData }) {
       <TripBackground formData={formData} setFormData={setFormData} />
       {/* set the glow color  */}
       {/* <button className="customize-trip-btns"> */}
-      <div className="customize-trip-btns">
+      <button
+        className="customize-trip-btns"
+        style={{
+          background: formData?.tripBackground?.scrim || "transparent",
+        }}
+      >
         <label htmlFor="glowColor">Change Glow Color </label>
         <input
           className="glowColor"
@@ -113,7 +118,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
           value={formData.glowColor || "#04aa6d"}
           onChange={handleGlowColorChange} // update the glow color on change
         />
-      </div>
+      </button>
       {/* buttons at the bottom of page  */}
       <div className="continue-button-container">
         <button

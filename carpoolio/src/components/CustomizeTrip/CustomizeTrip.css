@@ -19,6 +19,7 @@
   padding: var(--padding-title);
   align-items: flex-start;
   cursor: pointer;
+  padding-left: 2vw;
 }
 
 .trip-title::placeholder {
@@ -37,9 +38,11 @@
   border-radius: var(--border-radius-button);
   margin-top: var(--margin-top-button);
   padding: var(--paddding-button);
-  align-items: flex-start;
+  display: flex;
+  align-items: center;
   text-align: left;
   cursor: pointer;
+  padding-left: 2vw;
 }
 
 /* set a date  */
@@ -86,9 +89,10 @@
   width: 30%;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  margin-top: var(--margin-top-button);
   padding: var(--paddding-button);
-  align-items: flex-start;
+  display: flex;
+  align-items: center;
+  /* align-items: flex-start; */
   text-align: left;
   cursor: pointer;
 }

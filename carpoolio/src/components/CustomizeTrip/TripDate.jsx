@@ -26,6 +26,7 @@ export default function TripDate({ formData, setFormData, onClose }) {
       disabled={{ before: new Date() }}
       selected={selectedDate}
       onSelect={handleDateChange}
+      className="day-picker"
       style={{ background: formData?.tripBackground?.scrim || "transparent" }}
     />
   );
