@@ -17,6 +17,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
 
   function handleClick() {
     // add to database
+    // creare a dynamic route
     console.log("send data to database");
     console.log(formData);
   }
@@ -48,14 +49,14 @@ export default function CustomizeTrip({ formData, setFormData }) {
       {/* <p className="customize-trip-btns">organized by: {formData.name}</p> */}
       {/* Date */}
       <>
-        <button className="customize-trip-btns" onClick={toggleCalendar}>
-          <span
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-            }}
-          >
-            {formData.tripDate ? formData.tripDate : "Set a date"}
-          </span>
+        <button
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
+          className="customize-trip-btns"
+          onClick={toggleCalendar}
+        >
+          {formData.tripDate ? formData.tripDate : "Set a date"}
         </button>
         {/* show calendar  */}
         {isCalendarVisible && (
