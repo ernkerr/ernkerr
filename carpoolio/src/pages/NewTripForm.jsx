@@ -1,16 +1,18 @@
 import { useState } from "react";
 
 import GetUserName from "../components/GetUserName";
-import IsUserDriving from "../components/IsUserDriving";
 import GetUserContact from "../components/GetUserContact";
 import CustomizeCar from "../components/CustomizeCar/CustomizeCar";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import NumSeats from "../components/CustomizeCar/NumSeats";
 import bluegoo from "../assets/bluegoo.gif";
 import "./NewTripForm.css";
+import TripPage from "./TripPage";
+import NewCarModal from "../components/Modals/NewCarModal.jsx";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,8 +40,6 @@ export default function NewTripForm() {
   //   console.log(formData);
   // }, [formData]);
 
-  const [isDriving, setIsDriving] = useState(null);
-
   const conditionalComponent = () => {
     switch (page) {
       case 0:
@@ -47,24 +47,13 @@ export default function NewTripForm() {
       case 1:
         return <GetUserContact formData={formData} setFormData={setFormData} />;
       case 2:
-        return (
-          <IsUserDriving
-            setDrivingStatus={setIsDriving}
-            onDrivingStatusChange={() => setPage(3)}
-          />
-        );
-      case 3:
-        return isDriving ? (
-          <NumSeats formData={formData} setFormData={setFormData} />
-        ) : (
-          <CustomizeTrip formData={formData} setFormData={setFormData} />
-        );
-      case 4:
-        return (
-          isDriving && (
-            <CustomizeCar formData={formData} setFormData={setFormData} />
-          )
-        );
+        return <CustomizeTrip formData={formData} setFormData={setFormData} />;
+      // case 3:
+      //   return <NumSeats formData={formData} setFormData={setFormData} />;
+      // case 4:
+      //   return <CustomizeCar formData={formData} setFormData={setFormData} />;
+      case 5:
+        return <TripPage formData={formData} setFormData={setFormData} />;
       default:
         return <GetUserName formData={formData} setFormData={setFormData} />;
     }
@@ -73,6 +62,14 @@ export default function NewTripForm() {
   function handleContinue() {
     setPage(page + 1);
   }
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <div
@@ -87,7 +84,7 @@ export default function NewTripForm() {
       <div
         className="container-wrapper"
         style={{
-          boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 30px ${formData.lighterGlowColor}`,
+          boxShadow: `0 0 5px ${formData.glowColor}, 0 0 15px ${formData.glowColor}, 0 0 20px ${formData.lighterGlowColor}`,
           background: `${formData.glowColor}`,
         }}
       >
@@ -101,7 +98,7 @@ export default function NewTripForm() {
         >
           {conditionalComponent()}
           <div className="button-group">
-            {page !== 2 && (
+            {page !== 0 && (
               <button
                 style={{
                   background: formData?.tripBackground?.scrim || "transparent",
@@ -114,8 +111,8 @@ export default function NewTripForm() {
                 back
               </button>
             )}
-            {/* Show the continue button on all pages except page 2 */}
-            {page !== 2 && (
+            {/* Show the continue button on all pages except page 4 */}
+            {page !== 4 && (
               <button
                 style={{
                   background: formData?.tripBackground?.scrim || "transparent",
@@ -127,6 +124,13 @@ export default function NewTripForm() {
               >
                 continue
               </button>
+            )}
+
+            {page == 2 && (
+              <>
+                <NewCarModal formData={formData} setFormData={setFormData} />
+              </>
+              // style it like a plus in the bottom corner  + add a car : brings up a modal not a new page!
             )}
           </div>
         </div>
