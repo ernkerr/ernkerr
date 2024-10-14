@@ -93,6 +93,28 @@
   /* border-radius: 8px; Optional: rounded corners */
 }
 
+/* scrollbar  */
+
+.background-container::-webkit-scrollbar {
+  width: 10px; /* Set width of the scrollbar */
+}
+
+.background-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0); /* Green thumb (scroll handle) */
+  border-radius: 5px; /* Rounded corners for the thumb */
+  border: 1.5px solid #ffffff; /* Border around the thumb */
+}
+
+.background-container::-webkit-scrollbar-thumb:hover {
+  background-color: #ffffff;
+}
+
+.background-container::-webkit-scrollbar-track {
+  background: none; /* Transparent track */
+  border-radius: 5px; /* Rounded corners for the track */
+}
+
+/* options */
 .background-option {
   width: calc((100% / 3) - 20px); /* 3 items per row, accounting for the gap */
   display: flex;
