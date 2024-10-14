@@ -57,7 +57,7 @@ const backgrounds = [
   { name: "blue", path: blue, scrim: "rgba(26, 24, 93, 0.822)" },
   { name: "drive fast", path: drivefast },
   { name: "warped", path: warped },
-  { name: "orange sunset", path: orangesunset },
+  { name: "sunset", path: orangesunset },
   { name: "heatwave", path: heatwave, scrim: "rgba(145, 40, 10, 0.1)" },
   // { name: "yellow", path: yellow, scrim: "rgba(255, 225, 148, 0.90 )" },
   { name: "palms", path: palms },
@@ -67,7 +67,7 @@ const backgrounds = [
   // { name: "moreclouds", path: moreclouds, scrim: null },
   { name: "icy", path: icy, scrim: null },
   {
-    name: "cracking the code",
+    name: "matrix",
     path: crackingthecode,
     scrim: "rgba(0,0,0,0.9)",
   },
@@ -94,7 +94,7 @@ export default function TripBackground({ formData, setFormData }) {
   }
 
   return (
-    <div>
+    <>
       <button
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
@@ -122,6 +122,6 @@ export default function TripBackground({ formData, setFormData }) {
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 }

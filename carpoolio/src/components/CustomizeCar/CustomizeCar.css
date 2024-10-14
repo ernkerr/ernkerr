@@ -88,7 +88,7 @@
   width: 30%;
   height: 10px;
   border-radius: 5px;
-  background: #34bc34;
+  /* background: #34bc34; */
   outline: none;
   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
   transition: opacity 0.2s;
@@ -104,13 +104,13 @@
   border-radius: 50%;
   background: #000000; /* Green background */
   cursor: pointer; /* Cursor on hover */
-  box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
+  /* box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); Green glow effect */
 }
 
 .slider::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #04aa6d; /* Green background */
+  /* background: #04aa6d; Green background */
   cursor: pointer; /* Cursor on hover */
-  box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
+  /* box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); Green glow effect */
 }

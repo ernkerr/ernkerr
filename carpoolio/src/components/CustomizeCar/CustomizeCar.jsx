@@ -21,16 +21,32 @@ export default function CustomizeCar({ formData, setFormData }) {
   // };
 
   const handleSeatDistribution = () => {
-    const totalSeats = formData.numSeats;
+    const totalSeats = formData.numSeats + 1; // account for the driver
 
     // update the numSeats per row
     const newFrontSeats = Math.min(2, totalSeats); // At least two front seats if there are seats
-    const newMiddleSeats = Math.min(Math.max(totalSeats - 1, 0), 3); // Up to 3 middle seats
-    const newBackSeats = Math.min(Math.max(totalSeats - 1, 0), 3);
+
+    const newMiddleSeats = Math.min(3, totalSeats - newFrontSeats); // Up to 3 middle seats
+
+    const newBackSeats = Math.max(
+      0,
+      totalSeats - (newFrontSeats + newMiddleSeats)
+    ); // Assign remaining seats to back
+
+    console.log("Front Seats:", newFrontSeats);
+    console.log("Middle Seats:", newMiddleSeats);
+    console.log("Back Seats:", newBackSeats);
+
     // const newBackSeats = Math.max(
     //   totalSeats - newFrontSeats - newMiddleSeats,
     //   0
     // );
+
+    // const updatedSeatNames = {
+    //   front: [...(formData.seatNames?.front || [])].slice(0, newFrontSeats),
+    //   middle: [...(formData.seatNames?.middle || [])].slice(0, newMiddleSeats),
+    //   back: [...(formData.seatNames?.back || [])].slice(0, newBackSeats),
+    // };
 
     setFormData({
       ...formData,

@@ -119,32 +119,6 @@ export default function CustomizeTrip({ formData, setFormData }) {
           onChange={handleGlowColorChange} // update the glow color on change
         />
       </button>
-      {/* buttons at the bottom of page  */}
-      <div className="continue-button-container">
-        <button
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-            border: ` 2px solid ${formData.glowColor}`,
-            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-          }}
-          onClick={handleNewCar}
-          className="glow-button"
-          id="add-a-car"
-        >
-          add a car
-        </button>
-        <button
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-            border: ` 2px solid ${formData.glowColor}`,
-            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-          }}
-          className="glow-button"
-          onClick={handleClick}
-        >
-          continue
-        </button>
-      </div>
     </div>
   );
 }

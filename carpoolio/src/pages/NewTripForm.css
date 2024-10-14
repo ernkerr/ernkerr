@@ -92,37 +92,3 @@
 #right-button {
   margin-right: auto;
 }
-
-/* // backgrounds  */
-/* TripBackground.css */
-.background-container {
-  display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  overflow-y: auto; /* Allow vertical scrolling */
-  max-height: 200px; /* Set a maximum height for the scrollable area */
-  padding: 10px;
-  border: 1px solid #ccc; /* Optional: border around the container */
-  border-radius: 8px; /* Optional: rounded corners */
-}
-
-.background-option {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  margin: 5px;
-  cursor: pointer; /* Change cursor on hover */
-}
-
-.background-image {
-  width: 50px; /* Set the width of the image */
-  height: 50px; /* Set the height of the image */
-  border-radius: 50%; /* Make the image a circle */
-  object-fit: cover; /* Crop the image to fit the circle */
-  border: 2px solid transparent; /* Optional: border for hover effect */
-  transition: border-color 0.3s; /* Smooth transition for hover effect */
-}
-
-.background-option:hover .background-image {
-  background-color: rgb(255, 255, 255); /* Green background on hover */
-  box-shadow: 0 0 5px #f3fffb, 0 0 10px #ffffff, 0 0 15px #ffffff;
-}
