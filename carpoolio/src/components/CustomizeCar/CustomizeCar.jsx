@@ -1,19 +1,13 @@
 import { useState, useEffect } from "react";
 
-import CustomizeTrip from "../CustomizeTrip/CustomizeTrip.jsx";
 import DefaultCar from "./DefaultCar.jsx";
-import "./CustomizeCar.css";
+// import "./CustomizeCar.css";
 
 export default function CustomizeCar({ formData, setFormData }) {
+  const [customizeCar, setCustomizeCar] = useState(false);
   const [carColor, setCarColor] = useState("#216191");
 
   // const [underglowColor, setUnderglow] = useState();
-
-  const changeCarColor = (event) => {
-    const newColor = event.target.value;
-    setCarColor(newColor);
-    setFormData({ ...formData, carColor: newColor });
-  };
 
   // const changeUnderglow = (event) => {
   //   setUnderglow(event.target.value);
@@ -37,17 +31,6 @@ export default function CustomizeCar({ formData, setFormData }) {
     console.log("Middle Seats:", newMiddleSeats);
     console.log("Back Seats:", newBackSeats);
 
-    // const newBackSeats = Math.max(
-    //   totalSeats - newFrontSeats - newMiddleSeats,
-    //   0
-    // );
-
-    // const updatedSeatNames = {
-    //   front: [...(formData.seatNames?.front || [])].slice(0, newFrontSeats),
-    //   middle: [...(formData.seatNames?.middle || [])].slice(0, newMiddleSeats),
-    //   back: [...(formData.seatNames?.back || [])].slice(0, newBackSeats),
-    // };
-
     setFormData({
       ...formData,
       frontSeats: newFrontSeats,
@@ -68,12 +51,15 @@ export default function CustomizeCar({ formData, setFormData }) {
     setFormData({ ...formData, seatNames: newSeatNames });
   };
 
-  // useEffect(() => {
-  //   console.log("Front seats:", formData.frontSeats);
-  //   console.log("Middle seats:", formData.middleSeats);
-  //   console.log("Back seats:", formData.backSeats);
-  //   handleSeatDistribution();
-  // }, [formData.numSeats]); // Call when numSeats changes
+  const changeCarColor = (event) => {
+    const newColor = event.target.value;
+    setCarColor(newColor);
+    setFormData({ ...formData, carColor: newColor });
+  };
+
+  const toggleCustomizeCar = () => {
+    setCustomizeCar((prev) => !prev);
+  };
 
   return (
     <>
@@ -117,17 +103,30 @@ export default function CustomizeCar({ formData, setFormData }) {
           </div>
         </div>
       </div>
-      <div className="car-color">
-        <label htmlFor="car-color">Change Car Color </label>
-        <input
-          className="car-color-picker"
-          type="color"
-          id="car-color"
-          name="carColor"
-          value={carColor}
-          onChange={changeCarColor}
-        />{" "}
-        {/* <br></br>
+      <>
+        <button
+          onClick={toggleCustomizeCar}
+          className="glow-button"
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+            border: ` 2px solid ${formData.glowColor}`,
+            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+          }}
+        >
+          Customize Car
+        </button>
+        {customizeCar && (
+          <div className="car-color">
+            <label htmlFor="car-color">Change Car Color </label>
+            <input
+              className="car-color-picker"
+              type="color"
+              id="car-color"
+              name="carColor"
+              value={carColor}
+              onChange={changeCarColor}
+            />
+            {/* <br></br>
         <label htmlFor="underglow">Change Car Underglow: </label>
         <input
           type="color"
@@ -135,7 +134,9 @@ export default function CustomizeCar({ formData, setFormData }) {
           value={underglowColor}
           onChange={changeUnderglow}
         /> */}
-      </div>
+          </div>
+        )}
+      </>
 
       {/* // spotify playlist 
 

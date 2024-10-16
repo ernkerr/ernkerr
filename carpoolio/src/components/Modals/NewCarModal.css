@@ -1,0 +1,159 @@
+body.active-modal {
+  overflow-y: hidden;
+}
+
+/* .btn-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+} */
+
+.modal,
+.overlay {
+  width: 100dvw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+.modal-content {
+  position: absolute;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f1f1f100;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+  /* z-index: 999; */
+}
+
+.car-container {
+  height: 50dvh;
+  width: auto;
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+}
+
+.car-container svg {
+  z-index: 1;
+  overflow: hidden;
+}
+
+.seat-container {
+  position: absolute;
+  top: 40%;
+  height: 60%;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.front-seats,
+.middle-seats,
+.back-seats {
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+  max-width: 90%;
+  pointer-events: auto; /* make seat buttons are clickable */
+  gap: 1.5%;
+}
+
+.seat-input {
+  background-color: #f0f0f085; /* Input background color */
+  border: var(--transparent-border);
+  padding: 0.5px; /* Padding for inputs */
+  cursor: pointer; /* Change cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+  height: 3vh;
+  width: 30%; /* Set input width */
+  text-align: center;
+  font-family: var(--main-font);
+  font-size: 2vw;
+}
+
+.seat-inputs:hover {
+  background-color: #ddd;
+}
+
+.car-color {
+  color: white;
+  background: none;
+  font-family: var(--main-font);
+  font-size: var(--font-size-button);
+  height: var(--height-button);
+  width: 50%;
+  margin-top: var(--margin-top-button);
+  padding: var(--paddding-button);
+  align-items: flex-start;
+  text-align: left;
+  cursor: pointer;
+}
+
+.car-color-picker {
+  color: white;
+  background: none;
+  font-family: var(--main-font);
+  font-size: var(--font-size-button);
+  height: 2.5vh;
+  width: 30%;
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
+  margin-top: var(--margin-top-button);
+  padding: var(--paddding-button);
+  align-items: flex-start;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* numSeats */
+
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 30%;
+  height: 10px;
+  border-radius: 5px;
+  /* background: #34bc34; */
+  outline: none;
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  border-radius: 50%;
+  background: #000000; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  /* box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); Green glow effect */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  /* background: #04aa6d; Green background */
+  cursor: pointer; /* Cursor on hover */
+  /* box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); Green glow effect */
+}

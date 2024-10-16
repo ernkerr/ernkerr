@@ -7,6 +7,7 @@ import Destination from "./Destination";
 import TripBackground from "./TripBackground";
 import NewCarButton from "../NewCarButton/NewCarButton.jsx";
 import "./CustomizeTrip.css";
+import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
@@ -17,7 +18,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
 
   function handleClick() {
     // add to database
-    // creare a dynamic route
+    // create a dynamic route
     console.log("send data to database");
     console.log(formData);
   }
@@ -29,10 +30,12 @@ export default function CustomizeTrip({ formData, setFormData }) {
   const handleGlowColorChange = (event) => {
     const newGlowColor = event.target.value;
     const { red: r, green: g, blue: b } = hexRgb(newGlowColor);
+    // TODO : refactor so that the r, g, b are stored seperately as TINYINTs
     const lighterGlowColor = `rgb(${Math.min(r + 10, 255)}, ${Math.min(
       g + 10,
       255
     )}, ${Math.min(b + 10, 255)})`;
+    // TODO: recalculate lighterGlowColor without having to store it in the database
 
     setFormData((prevData) => ({
       ...prevData,
@@ -44,10 +47,8 @@ export default function CustomizeTrip({ formData, setFormData }) {
   return (
     <div className="customize-trip">
       <TripName formData={formData} />
-      {/* <Destination /> */}
       <Destination formData={formData} setFormData={setFormData} />
-      {/* <p className="customize-trip-btns">organized by: {formData.name}</p> */}
-      {/* Date */}
+      {/* Set a Date */}
       <>
         <button
           style={{
@@ -58,7 +59,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
         >
           {formData.tripDate ? formData.tripDate : "Set a date"}
         </button>
-        {/* show calendar  */}
+        {/* Show Calendar  */}
         {isCalendarVisible && (
           <TripDate
             formData={formData}
@@ -66,7 +67,6 @@ export default function CustomizeTrip({ formData, setFormData }) {
             onClose={toggleCalendar}
           />
         )}
-        {/* calendar buttons */}
         {isCalendarVisible && (
           <div className="calendar-button-container">
             <button
@@ -95,14 +95,11 @@ export default function CustomizeTrip({ formData, setFormData }) {
           </div>
         )}
       </>
-      {/* set a Departure Time  */}
+      {/* Set a Departure Time  */}
+      {/* {isCalendarVisible ?? ()} */}
       <DepartureTime formData={formData} setFormData={setFormData} />
-      {/* // destination 
-    // countdown to trip y/n */}
-      {/* set a background */}
       <TripBackground formData={formData} setFormData={setFormData} />
       {/* set the glow color  */}
-      {/* <button className="customize-trip-btns"> */}
       <button
         className="customize-trip-btns"
         style={{
@@ -119,6 +116,34 @@ export default function CustomizeTrip({ formData, setFormData }) {
           onChange={handleGlowColorChange} // update the glow color on change
         />
       </button>
+
+      {/* Render Cars  */}
+      {formData.cars?.length > 0 && ( // check if there are cars in the cars array
+        <>
+          {formData.cars.map(
+            (
+              car,
+              index // loop through each car in the cars array and render it's details // provide a unique key for each car
+            ) => (
+              <div key={index}>
+                <CustomizeCar
+                  formData={car} // pass the specific car data to the component
+                  setFormData={(updatedCarData) => {
+                    const updatedCars = formData.cars.map(
+                      (
+                        c,
+                        carIndex // update only the car that was edited
+                      ) =>
+                        carIndex === index ? { ...c, ...updatedCarData } : c // if the current index matches a car index, merge the updatedCarData into that car's data
+                    );
+                    setFormData({ ...formData, cars: updatedCars }); // update the entire formData to save the changes in updatedCars
+                  }}
+                />
+              </div>
+            )
+          )}
+        </>
+      )}
     </div>
   );
 }
