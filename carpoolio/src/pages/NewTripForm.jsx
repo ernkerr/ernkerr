@@ -26,14 +26,9 @@ export default function NewTripForm() {
     glowColor: "rgb(52, 189, 52)",
     lighterGlowColor: "",
     numSeats: 5,
-    frontSeats: 0,
-    middleSeats: 0,
-    backSeats: 0,
-    seatNames: {
-      front: [],
-      middle: [],
-      back: [],
-    },
+    cars: [],
+    seatDistribution: {},
+    seatNames: {},
   });
 
   // useEffect(() => {
@@ -44,9 +39,9 @@ export default function NewTripForm() {
     switch (page) {
       case 0:
         return <GetUserName formData={formData} setFormData={setFormData} />;
+      // case 1:
+      //   return <GetUserContact formData={formData} setFormData={setFormData} />;
       case 1:
-        return <GetUserContact formData={formData} setFormData={setFormData} />;
-      case 2:
         return <CustomizeTrip formData={formData} setFormData={setFormData} />;
       // case 3:
       //   return <NumSeats formData={formData} setFormData={setFormData} />;
@@ -54,8 +49,8 @@ export default function NewTripForm() {
       //   return <CustomizeCar formData={formData} setFormData={setFormData} />;
       case 5:
         return <TripPage formData={formData} setFormData={setFormData} />;
-      default:
-        return <GetUserName formData={formData} setFormData={setFormData} />;
+      // default:
+      //   return <GetUserName formData={formData} setFormData={setFormData} />;
     }
   };
 
@@ -126,7 +121,8 @@ export default function NewTripForm() {
               </button>
             )}
 
-            {page == 2 && (
+            {/* add a car functionality */}
+            {page == 1 && (
               <>
                 <NewCarModal formData={formData} setFormData={setFormData} />
               </>
