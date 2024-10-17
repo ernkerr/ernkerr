@@ -1,9 +1,6 @@
-// import React, { useState } from "react";
 import "./CustomizeCar.css";
 
 export default function NumSeats({ formData, setFormData }) {
-  // const [numSeats, setNumSeats] = useState(0);
-
   const handleSliderChange = (event) => {
     const newNumSeats = Number(event.target.value);
     setFormData({ ...formData, numSeats: newNumSeats });
@@ -11,9 +8,9 @@ export default function NumSeats({ formData, setFormData }) {
 
   return (
     <>
-      <h4 className="form-question">
+      <label htmlFor="numSeatRange" className="custom-car-option">
         number of avaliable seats: {formData.numSeats}
-      </h4>
+      </label>
 
       <input
         style={{
@@ -26,8 +23,9 @@ export default function NumSeats({ formData, setFormData }) {
         max="10"
         value={formData.numSeats}
         onChange={handleSliderChange}
-        className="slider"
-        id="myRange"
+        className="numSeatsSlider"
+        id="numSeatRange"
+        name="numSeatRange"
       />
     </>
   );

@@ -71,7 +71,7 @@ const backgrounds = [
     path: crackingthecode,
     scrim: "rgba(0,0,0,0.9)",
   },
-  { name: "wavy", path: wavy },
+  { name: "black hole", path: wavy },
   { name: "none", path: none },
 
   // { name: "pink", path: pink },

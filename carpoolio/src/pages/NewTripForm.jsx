@@ -1,14 +1,10 @@
 import { useState } from "react";
 
 import GetUserName from "../components/GetUserName";
-import GetUserContact from "../components/GetUserContact";
-import CustomizeCar from "../components/CustomizeCar/CustomizeCar";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
-import NumSeats from "../components/CustomizeCar/NumSeats";
 import bluegoo from "../assets/bluegoo.gif";
 import "./NewTripForm.css";
 import TripPage from "./TripPage";
-import NewCarModal from "../components/Modals/NewCarModal.jsx";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
@@ -121,13 +117,16 @@ export default function NewTripForm() {
               </button>
             )}
 
-            {/* add a car functionality */}
+            {/* add a car functionality
             {page == 1 && (
               <>
-                <NewCarModal formData={formData} setFormData={setFormData} />
+                <CustomizeCarModal
+                  formData={formData}
+                  setFormData={setFormData}
+                />
               </>
               // style it like a plus in the bottom corner  + add a car : brings up a modal not a new page!
-            )}
+            )} */}
           </div>
         </div>
       </div>

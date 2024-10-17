@@ -5,9 +5,10 @@ import TripDate from "./TripDate";
 import { DepartureTime } from "./DepartureTime";
 import Destination from "./Destination";
 import TripBackground from "./TripBackground";
-import NewCarButton from "../NewCarButton/NewCarButton.jsx";
+import NewCarModal from "../Modals/NewCarModal.jsx";
 import "./CustomizeTrip.css";
-import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
+import RenderCar from "../CustomizeTrip/RenderCar.jsx";
+import CustomizeCarModal from "../Modals/CustomizeCarModal.jsx";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
@@ -21,10 +22,6 @@ export default function CustomizeTrip({ formData, setFormData }) {
     // create a dynamic route
     console.log("send data to database");
     console.log(formData);
-  }
-
-  function handleNewCar() {
-    <NewCarButton />;
   }
 
   const handleGlowColorChange = (event) => {
@@ -117,33 +114,9 @@ export default function CustomizeTrip({ formData, setFormData }) {
         />
       </button>
 
-      {/* Render Cars  */}
-      {formData.cars?.length > 0 && ( // check if there are cars in the cars array
-        <>
-          {formData.cars.map(
-            (
-              car,
-              index // loop through each car in the cars array and render it's details // provide a unique key for each car
-            ) => (
-              <div key={index}>
-                <CustomizeCar
-                  formData={car} // pass the specific car data to the component
-                  setFormData={(updatedCarData) => {
-                    const updatedCars = formData.cars.map(
-                      (
-                        c,
-                        carIndex // update only the car that was edited
-                      ) =>
-                        carIndex === index ? { ...c, ...updatedCarData } : c // if the current index matches a car index, merge the updatedCarData into that car's data
-                    );
-                    setFormData({ ...formData, cars: updatedCars }); // update the entire formData to save the changes in updatedCars
-                  }}
-                />
-              </div>
-            )
-          )}
-        </>
-      )}
+      <NewCarModal formData={formData} setFormData={setFormData} />
+
+      {/* Render Cars  not working */}
     </div>
   );
 }
