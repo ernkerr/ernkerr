@@ -9,6 +9,7 @@ import NewCarModal from "../Modals/NewCarModal.jsx";
 import "./CustomizeTrip.css";
 import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCarModal from "../Modals/CustomizeCarModal.jsx";
+import NewCar from "./NewCar.jsx";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
@@ -116,7 +117,13 @@ export default function CustomizeTrip({ formData, setFormData }) {
 
       <NewCarModal formData={formData} setFormData={setFormData} />
 
-      {/* Render Cars  not working */}
+      {/* render cars */}
+
+      {/* Check if formData.cars exists and has more than 0 items */}
+      {formData.cars.length > 0 &&
+        formData.cars.map((car, index) => (
+          <RenderCar formData={formData} key={index} car={car} />
+        ))}
     </div>
   );
 }

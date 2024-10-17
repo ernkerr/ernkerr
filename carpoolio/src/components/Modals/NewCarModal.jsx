@@ -1,5 +1,9 @@
 import { useState } from "react";
-import NewCar from "../CustomizeCar/NewCar.jsx";
+import NewCar from "../CustomizeTrip/NewCar.jsx";
+import "../CustomizeCar/CustomizeCar.css";
+import NumSeats from "../CustomizeCar/NumSeats.jsx";
+import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
+import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 
 const NewCarModal = ({ formData, setFormData }) => {
   const [modal, setModal] = useState(false);
@@ -26,11 +30,12 @@ const NewCarModal = ({ formData, setFormData }) => {
         <div className="modal">
           <div className="overlay">
             <div className="modal-content">
-              <NewCar
+              <CustomizeCar
                 formData={formData}
                 setFormData={setFormData}
                 toggleModal={toggleModal}
               />
+
               <button className="close-modal-btn" onClick={toggleModal}>
                 x
               </button>

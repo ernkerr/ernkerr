@@ -5,6 +5,9 @@ import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "./NewTripForm.css";
 import TripPage from "./TripPage";
+import CustomizeCarModal from "../components/Modals/CustomizeCarModal";
+import NewCarModal from "../components/Modals/NewCarModal";
+import NewCar from "../components/CustomizeTrip/NewCar";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
@@ -23,8 +26,8 @@ export default function NewTripForm() {
     lighterGlowColor: "",
     numSeats: 5,
     cars: [],
-    seatDistribution: {},
-    seatNames: {},
+    seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
+    seatNames: { row1: [""], row2: [""], row3: [""], row4: [""] },
   });
 
   // useEffect(() => {
@@ -117,13 +120,10 @@ export default function NewTripForm() {
               </button>
             )}
 
-            {/* add a car functionality
-            {page == 1 && (
+            {/* add a car functionality */}
+            {/* {page == 1 && (
               <>
-                <CustomizeCarModal
-                  formData={formData}
-                  setFormData={setFormData}
-                />
+                <NewCar formData={formData} setFormData={setFormData} />
               </>
               // style it like a plus in the bottom corner  + add a car : brings up a modal not a new page!
             )} */}
