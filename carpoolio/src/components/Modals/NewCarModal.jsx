@@ -1,8 +1,5 @@
 import { useState } from "react";
-import NewCar from "../CustomizeTrip/NewCar.jsx";
 import "../CustomizeCar/CustomizeCar.css";
-import NumSeats from "../CustomizeCar/NumSeats.jsx";
-import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 
 const NewCarModal = ({ formData, setFormData }) => {

@@ -8,8 +8,6 @@ import TripBackground from "./TripBackground";
 import NewCarModal from "../Modals/NewCarModal.jsx";
 import "./CustomizeTrip.css";
 import RenderCar from "../CustomizeTrip/RenderCar.jsx";
-import CustomizeCarModal from "../Modals/CustomizeCarModal.jsx";
-import NewCar from "./NewCar.jsx";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);

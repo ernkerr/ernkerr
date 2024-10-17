@@ -5,9 +5,6 @@ import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "./NewTripForm.css";
 import TripPage from "./TripPage";
-import CustomizeCarModal from "../components/Modals/CustomizeCarModal";
-import NewCarModal from "../components/Modals/NewCarModal";
-import NewCar from "../components/CustomizeTrip/NewCar";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
