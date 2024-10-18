@@ -1,17 +1,12 @@
-import NewTripForm from './NewTripForm.jsx'
-import StickyNavBar from '../components/StickyNavBar/StickyNavBar.jsx'
-import './NewTripForm.css'
-import GetUserName from '../components/GetUserName.jsx';
+import NewTripForm from "./NewTripForm.jsx";
+import StickyNavBar from "../components/StickyNavBar/StickyNavBar.jsx";
+import "../components/NewTripForm/NewTripForm.css";
 
 export default function NewTripPage() {
-    return(
-        <>
-            <StickyNavBar />
-            <NewTripForm /> 
-
-
-
-
-        </>
-        );
-};
+  return (
+    <>
+      <StickyNavBar />
+      <NewTripForm />
+    </>
+  );
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
-import TripDate from "./TripDate";
+import "../NewTripForm/NewTripForm.css";
+import "../NewTripForm/TripDate.css";
 
 export default function GetTripDate({ formData, setFormData }) {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -20,7 +21,9 @@ export default function GetTripDate({ formData, setFormData }) {
 
   return (
     <>
-      <button className="form-question">Set a date</button>
+      <h4 className="form-question">
+        {formData.tripDate ? formData.tripDate : "Set a date"}
+      </h4>
 
       <div className="calendar-container">
         <DayPicker
@@ -33,18 +36,20 @@ export default function GetTripDate({ formData, setFormData }) {
             background: formData?.tripBackground?.scrim || "transparent",
           }}
         />
-        <button
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-          }}
-          className="calendar-button"
-          onClick={() => {
-            formData.tripDate = "TBD";
-          }}
-        >
-          Not sure yet
-        </button>
       </div>
+
+      <button
+        style={{
+          background: formData?.tripBackground?.scrim || "transparent",
+        }}
+        className="not-sure-btn"
+        onClick={() => {
+          setFormData({ ...formData, tripDate: "TBD" }); // Correctly update formData
+          setSelectedDate(null); // Clear selected date in the calendar if needed
+        }}
+      >
+        Not sure yet
+      </button>
     </>
   );
 }
