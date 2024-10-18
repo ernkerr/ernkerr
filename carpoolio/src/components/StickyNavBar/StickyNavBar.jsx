@@ -1,5 +1,5 @@
 import "./StickyNavBar.css";
-import carpoolioLogo from "../../assets/fonts/carpoolioLogo.png";
+import carpoolioLogo from "../../assets/carpooliologo.png";
 
 export default function StickyNavBar({ showCreateTrip = false }) {
   return (
