@@ -5,6 +5,8 @@ import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "./NewTripForm.css";
 import TripPage from "./TripPage";
+import GetTripName from "../components/NewTripForm/GetTripName";
+import GetTripDate from "../components/NewTripForm/GetTripDate";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
@@ -36,13 +38,18 @@ export default function NewTripForm() {
   const conditionalComponent = () => {
     switch (page) {
       // trip name
-
       case 0:
-        return <GetUserName formData={formData} setFormData={setFormData} />;
+        return <GetTripName formData={formData} setFormData={setFormData} />;
+
+      // case 1:
+      //   return <GetUserName formData={formData} setFormData={setFormData} />;
+
+      case 1:
+        return <GetTripDate formData={formData} setFormData={setFormData} />;
 
       // trip date / time
 
-      case 1:
+      case 3:
         return <CustomizeTrip formData={formData} setFormData={setFormData} />;
 
       // case 1:
@@ -135,3 +142,5 @@ export default function NewTripForm() {
     </div>
   );
 }
+
+// add a skip btn

@@ -8,7 +8,7 @@ export default function TripName({ formData, setFormData }) {
         style={{ background: formData?.tripBackground?.scrim || "transparent" }}
         type="text"
         required
-        placeholder="Untitled Trip"
+        placeholder={formData.tripName}
         onChange={(event) => {
           setFormData({ ...formData, tripName: event.target.value });
         }}

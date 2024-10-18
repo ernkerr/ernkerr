@@ -53,12 +53,15 @@
   box-sizing: border-box;
   color: white;
   text-align: center;
-  font-size: 1em;
+  font-family: var(--main-font);
+  font-size: 1.3em;
 }
 
 .text-input::placeholder {
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
+  font-family: var(--main-font);
+  font-size: 1.3rem;
 }
 
 .button-container {
@@ -91,4 +94,26 @@
 
 #right-button {
   margin-right: auto;
+}
+
+.calendar-container {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.not-sure-btn {
+  color: white;
+  background: none;
+  font-family: var(--main-font);
+  font-size: var(--font-size-button);
+  height: var(--height-button);
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
+  margin-top: var(--margin-top-button);
+  box-sizing: border-box;
+}
+
+.calendar {
+  margin-top: var(--margin-top-button);
 }
