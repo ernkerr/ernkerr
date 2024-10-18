@@ -17,12 +17,14 @@ export default function NewTripForm() {
     tripBackground: {},
     departureTime: "",
     destination: "",
-    carColor: "",
     underglowColor: "",
     glowColor: "rgb(52, 189, 52)",
     lighterGlowColor: "",
-    numSeats: 5,
     cars: [],
+    // carName: "",
+    // newCarColorGradient: "",
+    carColor: "",
+    numSeats: 5,
     seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
     seatNames: { row1: [""], row2: [""], row3: [""], row4: [""] },
   });
@@ -33,20 +35,21 @@ export default function NewTripForm() {
 
   const conditionalComponent = () => {
     switch (page) {
+      // trip name
+
       case 0:
         return <GetUserName formData={formData} setFormData={setFormData} />;
-      // case 1:
-      //   return <GetUserContact formData={formData} setFormData={setFormData} />;
+
+      // trip date / time
+
       case 1:
         return <CustomizeTrip formData={formData} setFormData={setFormData} />;
-      // case 3:
-      //   return <NumSeats formData={formData} setFormData={setFormData} />;
-      // case 4:
-      //   return <CustomizeCar formData={formData} setFormData={setFormData} />;
+
+      // case 1:
+      //   return <GetUserContact formData={formData} setFormData={setFormData} />;
+
       case 5:
         return <TripPage formData={formData} setFormData={setFormData} />;
-      // default:
-      //   return <GetUserName formData={formData} setFormData={setFormData} />;
     }
   };
 
@@ -66,7 +69,7 @@ export default function NewTripForm() {
     <div
       className="full-screen-wrapper"
       style={{
-        backgroundImage: `url(${formData.tripBackground.path || bluegoo})`,
+        backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
 
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -75,14 +78,16 @@ export default function NewTripForm() {
       <div
         className="container-wrapper"
         style={{
-          boxShadow: `0 0 5px ${formData.glowColor}, 0 0 15px ${formData.glowColor}, 0 0 20px ${formData.lighterGlowColor}`,
-          background: `${formData.glowColor}`,
+          boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}, 0 0 20px ${formData?.lighterGlowColor}`,
+          background: `${formData?.glowColor}`,
         }}
       >
         <div
           className="container"
           style={{
-            backgroundImage: `url(${formData.tripBackground.path})`,
+            backgroundImage: `url(${
+              formData?.tripBackground?.path || bluegoo
+            })`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -93,8 +98,8 @@ export default function NewTripForm() {
               <button
                 style={{
                   background: formData?.tripBackground?.scrim || "transparent",
-                  border: ` 2px solid ${formData.glowColor}`,
-                  boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+                  border: ` 2px solid ${formData?.glowColor}`,
+                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
                 }}
                 className="glow-button"
                 onClick={() => setPage(page - 1)}
@@ -107,8 +112,8 @@ export default function NewTripForm() {
               <button
                 style={{
                   background: formData?.tripBackground?.scrim || "transparent",
-                  border: ` 2px solid ${formData.glowColor}`,
-                  boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+                  border: ` 2px solid ${formData?.glowColor}`,
+                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
                 }}
                 className="glow-button"
                 onClick={handleContinue}

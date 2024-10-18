@@ -1,53 +1,17 @@
-/* CustomizeCarModal */
-
-body.active-modal {
-  overflow-y: hidden;
-}
-
-.modal,
-.overlay {
-  width: 100dvw;
-  height: 100dvh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-}
-
-.overlay {
-  background: rgba(49, 49, 49, 0.8);
-}
-.modal-content {
-  position: absolute;
-  height: auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.close-modal-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 7px;
-  z-index: 999;
-}
-
-.car-container {
-  height: 50dvh;
+.render-car-container {
+  height: 20dvh;
   display: flex;
   margin: 0 auto;
-  position: fixed;
+  position: relative;
   margin-left: 50%;
+  margin-bottom: 10%;
 }
 
-.car-container svg {
-  z-index: 1;
+.render-car-container svg {
   overflow: hidden;
 }
 
-.seat-container {
+.render-seat-container {
   position: absolute;
   top: 40%;
   height: 60%;
@@ -59,16 +23,16 @@ body.active-modal {
   box-sizing: border-box;
 }
 
-.seat-row {
+.render-seat-row {
   display: flex;
   justify-content: center;
   margin-top: 5%;
-  max-width: 90%;
+  max-width: 80%;
   pointer-events: auto; /* make seat buttons are clickable */
   gap: 1.5%;
 }
 
-.seat-input {
+.render-seat-input {
   background-color: #f0f0f085; /* Input background color */
   border: var(--transparent-border);
   padding: 0.5px; /* Padding for inputs */
@@ -78,10 +42,11 @@ body.active-modal {
   width: 30%; /* Set input width */
   text-align: center;
   font-family: var(--main-font);
+  pointer-events: auto; /* make seat buttons are clickable */
   font-size: 2vw;
 }
 
-.seat-inputs:hover {
+.render-seat-inputs:hover {
   background-color: #ddd;
 }
 
