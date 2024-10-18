@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-import GetUserName from "../components/GetUserName";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
-import "./NewTripForm.css";
+import "../components/NewTripForm/NewTripForm.css";
 import TripPage from "./TripPage";
 import GetTripName from "../components/NewTripForm/GetTripName";
 import GetTripDate from "../components/NewTripForm/GetTripDate";
+import { DepartureTime } from "../components/CustomizeTrip/DepartureTime";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -41,16 +41,20 @@ export default function NewTripForm() {
       case 0:
         return <GetTripName formData={formData} setFormData={setFormData} />;
 
-      // case 1:
-      //   return <GetUserName formData={formData} setFormData={setFormData} />;
-
       case 1:
         return <GetTripDate formData={formData} setFormData={setFormData} />;
 
-      // trip date / time
+      case 2:
+        if (formData.tripDate && formData.tripDate !== "TBD") {
+          return (
+            <DepartureTime formData={formData} setFormData={setFormData} />
+          );
+        }
 
       case 3:
         return <CustomizeTrip formData={formData} setFormData={setFormData} />;
+      // case 1:
+      //   return <GetUserName formData={formData} setFormData={setFormData} />;
 
       // case 1:
       //   return <GetUserContact formData={formData} setFormData={setFormData} />;
@@ -63,14 +67,6 @@ export default function NewTripForm() {
   function handleContinue() {
     setPage(page + 1);
   }
-
-  const handleOpenModal = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
 
   return (
     <div

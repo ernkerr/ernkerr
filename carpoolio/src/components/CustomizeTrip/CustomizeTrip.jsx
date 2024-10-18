@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import hexRgb from "hex-rgb";
 import TripName from "./TripName";
-import TripDate from "./TripDate";
+import TripDate from "../NewTripForm/TripDate.jsx";
 import { DepartureTime } from "./DepartureTime";
 import Destination from "./Destination";
 import TripBackground from "./TripBackground";
@@ -185,6 +185,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
         if (index === activeCarIndex && isCustomizingCar) {
           return (
             <CustomizeCar
+              key={index}
               formData={formData}
               setFormData={setFormData}
               activeCarIndex={activeCarIndex}
