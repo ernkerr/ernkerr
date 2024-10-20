@@ -13,6 +13,7 @@ header h1 {
   margin: 0 0 1rem 0;
   font-size: 3rem;
   text-align: center;
+  font-family: "LicensePlate", sans-serif;
 }
 
 header h1:hover {
@@ -35,6 +36,8 @@ header h1:hover {
 
 .font-face {
   font-family: "LicensePlate", sans-serif;
+  src: url("/Users/ern/Documents/ernkerr/Carpoolio/src/assets/fonts/LicensePlate.ttf")
+    format("truetype");
   font-style: italic;
   font-weight: 200;
   font-display: auto;
