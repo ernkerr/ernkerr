@@ -2,3 +2,5 @@
 */.venv/*
 venv
 */venv/*
+# React Component Preview
+previewConfig.json

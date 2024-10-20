@@ -166,7 +166,7 @@ export default function CustomizeCar({
         {/* <NumSeats formData={formData} setFormData={setFormData} /> */}
 
         <p className="custom-car-option">
-          Number of avaliable seats: {numSeats}
+          Number of available seats: {numSeats}
         </p>
 
         <div className="custom-car-option">

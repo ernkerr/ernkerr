@@ -1,4 +1,5 @@
 import hexRgb from "hex-rgb";
+import { useEffect } from "react";
 
 export default function DefaultCar({ carColor }) {
   const { red: r, green: g, blue: b } = hexRgb(carColor);
@@ -10,14 +11,19 @@ export default function DefaultCar({ carColor }) {
   //   const containerStyle = { boxShadow: `0 0 50px ${newUnderglowColor}` };
   // use <filter>
 
+  useEffect(() => {
+    console.log("defaultCar");
+    console.log({ newCarColor });
+  }, [newCarColor]);
+
   return (
     <>
       <svg
-        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlnsRdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         xmlns="http://www.w3.org/2000/svg"
-        xmlns:cc="http://creativecommons.org/ns#"
+        xmlnsCc="http://creativecommons.org/ns#"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlnsDc="http://purl.org/dc/elements/1.1/"
         id="svg171"
         viewBox="0 0 358.85 789.36"
         version={1.0}
@@ -329,25 +335,6 @@ export default function DefaultCar({ carColor }) {
           stroke="#000"
           strokeWidth="1pt"
         />
-        <metadata>
-          <rdf:rdf>
-            <cc:work>
-              <dc:format>image/svg+xml</dc:format>
-              <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-              <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
-              <dc:publisher>
-                <cc:agent rdf:about="http://openclipart.org/">
-                  <dc:title>Openclipart</dc:title>
-                </cc:agent>
-              </dc:publisher>
-            </cc:work>
-            <cc:license rdf:about="http://creativecommons.org/licenses/publicdomain/">
-              <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction" />
-              <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution" />
-              <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
-            </cc:license>
-          </rdf:rdf>
-        </metadata>
       </svg>
     </>
   );

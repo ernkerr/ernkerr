@@ -9,7 +9,7 @@ export default function NumSeats({ formData, setFormData }) {
   return (
     <>
       <label htmlFor="numSeatRange" className="custom-car-option">
-        number of avaliable seats: {formData.numSeats}
+        number of available seats: {formData.numSeats}
       </label>
 
       <input

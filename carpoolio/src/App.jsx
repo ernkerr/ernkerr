@@ -26,5 +26,9 @@ const router = createBrowserRouter([
   },
 ]);
 
-const entryPoint = document.getElementById("root");
-ReactDOM.createRoot(entryPoint).render(<RouterProvider router={router} />);
+// const entryPoint = document.getElementById("root");
+// ReactDOM.createRoot(entryPoint).render(<RouterProvider router={router} />);
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}

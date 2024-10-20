@@ -4,3 +4,7 @@ dist
 dist-ssr
 *.local
 .vercel
+# ...
+.next
+next-env.d.ts
+dist
