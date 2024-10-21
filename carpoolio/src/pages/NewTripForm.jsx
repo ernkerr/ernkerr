@@ -44,14 +44,14 @@ export default function NewTripForm() {
       case 1:
         return <GetTripDate formData={formData} setFormData={setFormData} />;
 
-      case 2:
-        if (formData.tripDate && formData.tripDate !== "TBD") {
-          return (
-            <DepartureTime formData={formData} setFormData={setFormData} />
-          );
-        }
+      // case 2:
+      //   if (formData.tripDate && formData.tripDate !== "TBD") {
+      //     return (
+      //       <DepartureTime formData={formData} setFormData={setFormData} />
+      //     );
+      //   }
 
-      case 3:
+      case 2:
         return <CustomizeTrip formData={formData} setFormData={setFormData} />;
       // case 1:
       //   return <GetUserName formData={formData} setFormData={setFormData} />;

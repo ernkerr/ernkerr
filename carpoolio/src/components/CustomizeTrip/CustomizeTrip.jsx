@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react";
 import hexRgb from "hex-rgb";
 import TripName from "./TripName";
-import TripDate from "../NewTripForm/TripDate.jsx";
 import { DepartureTime } from "./DepartureTime";
 import Destination from "./Destination";
 import TripBackground from "./TripBackground";
 import "./CustomizeTrip.css";
 import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
+import DateSelector from "./DateSelector/DateSelector.jsx";
 
 export default function CustomizeTrip({ formData, setFormData }) {
-  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
-  const [tripDate, setTripDate] = useState("");
-  const [tripMonth, setTripMonth] = useState("");
-  const [tripDay, setTripDay] = useState("");
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [newCarCreated, setNewCarCreated] = useState(false);
@@ -54,18 +50,6 @@ export default function CustomizeTrip({ formData, setFormData }) {
     console.log("entering customizing mode for new car... ");
   };
 
-  // calendar
-  const toggleCalendar = () => {
-    setIsCalendarVisible((prev) => !prev);
-    console.log(formData.tripDate);
-  };
-
-  const handleDateChange = ({ formattedDate, month, day }) => {
-    setTripDate(formattedDate);
-    setTripMonth(month);
-    setTripDay(day);
-  };
-
   // styling
   const handleGlowColorChange = (event) => {
     const newGlowColor = event.target.value;
@@ -94,59 +78,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
   return (
     <div className="customize-trip">
       <TripName formData={formData} setFormData={setFormData} />
-
-      {/* Set a Date */}
-      <div className="date-time-container">
-        <div className="calendar-icon">
-          <div className="month">{tripMonth}</div>
-          <div className="day">{tripDay}</div>
-        </div>
-        <button
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-          }}
-          id="calendar-element"
-          onClick={toggleCalendar}
-        >
-          {formData.tripDate ? formData.tripDate : "Set a date"}
-        </button>
-        {/* Show Calendar  */}
-        {isCalendarVisible && (
-          <TripDate
-            formData={formData}
-            setFormData={setFormData}
-            onDateChange={handleDateChange}
-            onClose={toggleCalendar}
-          />
-        )}
-        {isCalendarVisible && (
-          <div className="calendar-button-container">
-            <button
-              style={{
-                background: formData?.tripBackground?.scrim || "transparent",
-              }}
-              className="calendar-button"
-              onClick={() => {
-                toggleCalendar();
-                formData.tripDate = "TBD";
-              }}
-            >
-              Not sure yet
-            </button>
-            <button
-              style={{
-                background: formData?.tripBackground?.scrim || "transparent",
-              }}
-              className="calendar-button"
-              onClick={() => {
-                toggleCalendar();
-              }}
-            >
-              okay
-            </button>
-          </div>
-        )}
-      </div>
+      <DateSelector formData={formData} setFormData={setFormData} />
       {/* Set a Departure Time  */}
       {/* {isCalendarVisible ?? ()} */}
       <DepartureTime formData={formData} setFormData={setFormData} />

@@ -26,6 +26,7 @@
 
 .trip-title::placeholder {
   color: white;
+  text-align: left;
 }
 
 /* optional buttons for customization  */

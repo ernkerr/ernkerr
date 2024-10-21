@@ -10,11 +10,16 @@ export default function GetTripDate({ formData, setFormData }) {
     if (date) {
       setSelectedDate(date); // Set selected date
 
+      // Extract month and day separately
+      const month = date.toLocaleDateString("en-US", { month: "short" }); // Get month abbreviation
+      const day = date.getDate(); // Get day of the month
+
       const formattedDate = date.toLocaleDateString("en-US", {
         weekday: "long",
         month: "long",
         day: "numeric",
       });
+      onDateChange({ formattedDate, month, day }); // pass these values up to the parent
       setFormData({ ...formData, tripDate: formattedDate }); // Update formData with date
     }
   };
