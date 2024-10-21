@@ -83,7 +83,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
 
   return (
     <div className="customize-trip">
-      <TripName formData={formData} />
+      <TripName formData={formData} setFormData={setFormData} />
       <Destination formData={formData} setFormData={setFormData} />
       {/* Set a Date */}
       <>
