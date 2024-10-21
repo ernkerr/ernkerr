@@ -11,37 +11,20 @@ import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const [tripDate, setTripDate] = useState("");
+  const [tripMonth, setTripMonth] = useState("");
+  const [tripDay, setTripDay] = useState("");
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [newCarCreated, setNewCarCreated] = useState(false);
 
+  // handle add new car
   useEffect(() => {
     if (newCarCreated) {
       setActiveCarIndex(formData.cars.length - 1);
       setNewCarCreated(false);
     }
   }, [newCarCreated]);
-
-  const toggleCalendar = () => {
-    setIsCalendarVisible((prev) => !prev);
-  };
-
-  const handleGlowColorChange = (event) => {
-    const newGlowColor = event.target.value;
-    const { red: r, green: g, blue: b } = hexRgb(newGlowColor);
-    // TODO : refactor so that the r, g, b are stored seperately as TINYINTs
-    const lighterGlowColor = `rgb(${Math.min(r + 10, 255)}, ${Math.min(
-      g + 10,
-      255
-    )}, ${Math.min(b + 10, 255)})`;
-    // TODO: recalculate lighterGlowColor without having to store it in the database
-
-    setFormData((prevData) => ({
-      ...prevData,
-      glowColor: newGlowColor,
-      lighterGlowColor: lighterGlowColor,
-    }));
-  };
 
   const handleAddNewCar = () => {
     // Add a new car to formData.cars
@@ -69,9 +52,36 @@ export default function CustomizeTrip({ formData, setFormData }) {
 
     setIsCustomizingCar(true);
     console.log("entering customizing mode for new car... ");
+  };
 
-    // Edit the car there. CustomizedCar needs to support editing any car by looking up its index.
-    // Bingo - you have a new and customised car.
+  // calendar
+  const toggleCalendar = () => {
+    setIsCalendarVisible((prev) => !prev);
+    console.log(formData.tripDate);
+  };
+
+  const handleDateChange = ({ formattedDate, month, day }) => {
+    setTripDate(formattedDate);
+    setTripMonth(month);
+    setTripDay(day);
+  };
+
+  // styling
+  const handleGlowColorChange = (event) => {
+    const newGlowColor = event.target.value;
+    const { red: r, green: g, blue: b } = hexRgb(newGlowColor);
+    // TODO : refactor so that the r, g, b are stored seperately as TINYINTs
+    const lighterGlowColor = `rgb(${Math.min(r + 10, 255)}, ${Math.min(
+      g + 10,
+      255
+    )}, ${Math.min(b + 10, 255)})`;
+    // TODO: recalculate lighterGlowColor without having to store it in the database
+
+    setFormData((prevData) => ({
+      ...prevData,
+      glowColor: newGlowColor,
+      lighterGlowColor: lighterGlowColor,
+    }));
   };
 
   function handleClick() {
@@ -84,14 +94,18 @@ export default function CustomizeTrip({ formData, setFormData }) {
   return (
     <div className="customize-trip">
       <TripName formData={formData} setFormData={setFormData} />
-      <Destination formData={formData} setFormData={setFormData} />
+
       {/* Set a Date */}
-      <>
+      <div className="date-time-container">
+        <div className="calendar-icon">
+          <div className="month">{tripMonth}</div>
+          <div className="day">{tripDay}</div>
+        </div>
         <button
           style={{
             background: formData?.tripBackground?.scrim || "transparent",
           }}
-          className="customize-trip-btns"
+          id="calendar-element"
           onClick={toggleCalendar}
         >
           {formData.tripDate ? formData.tripDate : "Set a date"}
@@ -101,6 +115,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
           <TripDate
             formData={formData}
             setFormData={setFormData}
+            onDateChange={handleDateChange}
             onClose={toggleCalendar}
           />
         )}
@@ -131,10 +146,11 @@ export default function CustomizeTrip({ formData, setFormData }) {
             </button>
           </div>
         )}
-      </>
+      </div>
       {/* Set a Departure Time  */}
       {/* {isCalendarVisible ?? ()} */}
       <DepartureTime formData={formData} setFormData={setFormData} />
+      <Destination formData={formData} setFormData={setFormData} />
       <TripBackground formData={formData} setFormData={setFormData} />
       {/* set the glow color  */}
       <button

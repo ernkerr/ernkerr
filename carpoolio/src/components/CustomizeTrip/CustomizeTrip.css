@@ -21,7 +21,7 @@
   align-items: flex-start;
   cursor: pointer;
   padding-left: 2vw;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
 }
 
 .trip-title::placeholder {
@@ -48,6 +48,29 @@
 }
 
 /* set a date  */
+.date-time-container {
+  color: white;
+}
+/* // all, side by side! */
+/* // set up date-button, date-icon, & time-element here */
+
+#calendar-element {
+  color: white;
+  background: none;
+  font-family: var(--main-font);
+  font-size: var(--font-size-button);
+  height: var(--height-button);
+  /* width: 50%; */
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
+  margin-top: var(--margin-top-button);
+  padding: var(--paddding-button);
+  display: flex;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  padding-left: 2vw;
+}
 
 .calendar-button-container {
   width: 50%;

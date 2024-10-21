@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "../NewTripForm/NewTripForm.css";
-import "../NewTripForm/TripDate.css";
+import "../NewTripForm/Calendar.css";
 
 export default function GetTripDate({ formData, setFormData }) {
   const [selectedDate, setSelectedDate] = useState(null);
