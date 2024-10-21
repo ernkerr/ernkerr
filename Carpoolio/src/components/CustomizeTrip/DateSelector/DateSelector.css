@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* background-color: hsla(0, 0%, 94%, 0.141); */
-  cursor: pointer;
+
   margin-top: 5px;
 }
 
@@ -17,7 +16,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 15px;
+  margin-left: 15px;
+  margin-right: 5px;
   text-align: center;
   /* border: 0.5px solid rgba(255, 255, 255, 0.222); */
   border: none;
@@ -26,6 +26,7 @@
   border-radius: 0.7rem;
   transition: all ease 0.3s;
   box-sizing: border-box;
+  cursor: pointer;
   /* padding: 5px; */
 }
 
@@ -39,7 +40,6 @@
   background-color: rgba(255, 255, 255, 0.272);
   color: white;
   width: 100%;
-
   padding: 5px;
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -66,13 +66,16 @@
 .date-text {
   font-family: var(--main-font);
   color: white;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 1.2rem;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .time-text {
   font-size: 14px;
-  color: gray;
   font-family: var(--main-font);
+  color: gray;
+  margin-left: 5px;
+  cursor: pointer;
 }

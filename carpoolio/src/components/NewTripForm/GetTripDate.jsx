@@ -19,10 +19,14 @@ export default function GetTripDate({ formData, setFormData }) {
         month: "long",
         day: "numeric",
       });
-      onDateChange({ formattedDate, month, day }); // pass these values up to the parent
       setFormData({ ...formData, tripDate: formattedDate }); // Update formData with date
     }
   };
+
+  function handleNotSureYet() {
+    setFormData({ ...formData, tripDate: "TBD" }); // Correctly update formData
+    setSelectedDate(null); // Clear selected date in the calendar if needed
+  }
 
   return (
     <>
@@ -48,10 +52,7 @@ export default function GetTripDate({ formData, setFormData }) {
           background: formData?.tripBackground?.scrim || "transparent",
         }}
         className="not-sure-btn"
-        onClick={() => {
-          setFormData({ ...formData, tripDate: "TBD" }); // Correctly update formData
-          setSelectedDate(null); // Clear selected date in the calendar if needed
-        }}
+        onClick={handleNotSureYet}
       >
         Not sure yet
       </button>

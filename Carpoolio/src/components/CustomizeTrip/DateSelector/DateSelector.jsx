@@ -1,12 +1,14 @@
-import { useState } from "react";
-import TripDate from "../../NewTripForm/TripDate.jsx";
+import { useState, useEffect } from "react";
+import { DayPicker } from "react-day-picker";
+import "../../NewTripForm/Calendar.css";
 import "./DateSelector.css";
 
 export default function DateSelector({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
-  const [tripDate, setTripDate] = useState("");
-  const [tripMonth, setTripMonth] = useState("");
-  const [tripDay, setTripDay] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+  // const [tripDate, setTripDate] = useState("");
+  // const [tripMonth, setTripMonth] = useState("");
+  // const [tripDay, setTripDay] = useState("");
 
   // Toggle calendar visibility
   const toggleCalendar = () => {
@@ -14,12 +16,30 @@ export default function DateSelector({ formData, setFormData }) {
   };
 
   // Handle date change
-  const handleDateChange = ({ formattedDate, month, day }) => {
-    setTripDate(formattedDate);
-    setTripMonth(month);
-    setTripDay(day);
-    setFormData({ ...formData, tripDate: formattedDate });
+  const handleDateChange = (date) => {
+    if (date) {
+      setSelectedDate(date); // Set selected date
+
+      const formattedDate = date.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+      });
+
+      setFormData({ ...formData, tripDate: formattedDate });
+      setIsCalendarVisible(false);
+    }
   };
+
+  // extract month and day for calendar icon
+  const tripDateObj =
+    formData.tripDate && formData.tripDate !== "TBD"
+      ? new Date(formData.tripDate)
+      : null;
+  const tripMonth = tripDateObj
+    ? tripDateObj.toLocaleDateString("en-US", { month: "short" })
+    : ""; // Get month abbreviation
+  const tripDay = tripDateObj ? tripDateObj.getDate() : "TBD"; // Get day of the month or show "TBD"
 
   return (
     <div className="date-selector">
@@ -44,17 +64,21 @@ export default function DateSelector({ formData, setFormData }) {
           >
             {formData.tripDate ? formData.tripDate : ""}
           </button>
-          <div className="time-text">Departure Time: 9:00 AM</div>
+          <button className="time-text">Departure Time: 9:00 AM</button>
         </div>
       </div>
 
       {isCalendarVisible && (
         <>
-          <TripDate
-            formData={formData}
-            setFormData={setFormData}
-            onDateChange={handleDateChange}
-            onClose={toggleCalendar}
+          <DayPicker
+            mode="single"
+            disabled={{ before: new Date() }}
+            selected={selectedDate}
+            onSelect={handleDateChange}
+            className="day-picker"
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+            }}
           />
           <div className="calendar-button-container">
             <button
