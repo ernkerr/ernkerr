@@ -1,12 +1,13 @@
 export default function GetTripName({ formData, setFormData }) {
   return (
     <>
-      <h4 className="form-question">What would you like to call your trip? </h4>
+      {/* What would you like to call your trip? */}
+      <h4 className="form-question">Name your trip </h4>
       <input
         className="text-input"
         type="text"
         required
-        placeholder="don't worry you can change it later"
+        placeholder="enter trip name here"
         onChange={(event) => {
           setFormData({
             ...formData,
@@ -19,3 +20,5 @@ export default function GetTripName({ formData, setFormData }) {
 }
 
 // flip trip every few seconds between trip, adventure, journey..
+// "enter your name here"
+// don't worry you can change it later"

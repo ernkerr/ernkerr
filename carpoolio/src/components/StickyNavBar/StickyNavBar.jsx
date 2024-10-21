@@ -1,11 +1,13 @@
 import "./StickyNavBar.css";
-import carpoolioLogo from "../../assets/carpooliologo.png";
+import CarpoolioLogo from "../CarpoolioLogo/CarpoolioLogo.jsx";
 
 export default function StickyNavBar({ showCreateTrip = false }) {
   return (
     <nav id="navbar">
+      {/* // logo in top left corner */}
       <a id="logo" href="/#home">
-        <img src={carpoolioLogo} height="50px" />
+        <CarpoolioLogo />
+        {/* <img src={carpoolioLogo} height="50px" /> */}
       </a>
       {showCreateTrip && (
         <a id="create-trip" href="/trip/create">
