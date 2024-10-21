@@ -1,6 +1,6 @@
 import Link from "next/link";
 import "./CarpoolioSpinner.css";
-import spinnerImg from "../../assets/CarpoolioSpinner.png";
+import spinnerImg from "../../../public/assets/CaarpoolioSpinner.png";
 
 export default function CarpoolioSpinner() {
   return (
