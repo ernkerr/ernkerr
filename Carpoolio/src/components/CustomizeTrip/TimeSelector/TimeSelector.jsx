@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./CustomizeTrip.css";
-import "./DepartureTime.css";
+import "../CustomizeTrip.css";
+import "./TimeSelector.css";
 
-export function DepartureTime({ formData, setFormData }) {
+export function TimeSelector({ formData, setFormData }) {
   const [hour, setHour] = useState(12);
   const [minute, setMinute] = useState(0);
   const [period, setPeriod] = useState("AM"); // Default period is AM
@@ -27,7 +27,6 @@ export function DepartureTime({ formData, setFormData }) {
       // }}
     >
       {isTimeSet ? (
-        // Display the confirmed time and make it clickable for editing
         <button
           className="customize-trip-btns"
           onClick={() => setIsTimeSet(false)} // Clicking allows editing
@@ -35,7 +34,7 @@ export function DepartureTime({ formData, setFormData }) {
             background: formData?.tripBackground?.scrim || "transparent",
           }}
         >
-          {`${hour}:${minute.toString().padStart(2, "00")} ${period}`}
+          Edit departure time
         </button>
       ) : (
         <div className="time-picker-container">
@@ -95,15 +94,28 @@ export function DepartureTime({ formData, setFormData }) {
           </div>
 
           <>
-            <button
-              className="confirm-button"
-              onClick={handleTimeChange}
-              style={{
-                background: formData?.tripBackground?.scrim || "transparent",
-              }}
-            >
-              okay
-            </button>
+            <div className="time-button-container">
+              <button
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                }}
+                className="time-calendar-button"
+                onClick={() => {
+                  formData.departureTime = "TBD";
+                }}
+              >
+                Not sure yet
+              </button>
+              <button
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                }}
+                className="time-calendar-button"
+                onClick={handleTimeChange}
+              >
+                Okay
+              </button>
+            </div>
           </>
         </div>
       )}

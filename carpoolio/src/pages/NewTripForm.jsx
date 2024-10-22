@@ -6,7 +6,6 @@ import "../components/NewTripForm/NewTripForm.css";
 import TripPage from "./TripPage";
 import GetTripName from "../components/NewTripForm/GetTripName";
 import GetTripDate from "../components/NewTripForm/GetTripDate";
-import { DepartureTime } from "../components/CustomizeTrip/DepartureTime";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);

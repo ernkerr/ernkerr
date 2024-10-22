@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import hexRgb from "hex-rgb";
 import TripName from "./TripName";
-import { DepartureTime } from "./DepartureTime";
+// import { DepartureTime } from "./TimeSelector/DepartureTime.jsx";
 import Destination from "./Destination";
 import TripBackground from "./TripBackground";
 import "./CustomizeTrip.css";
@@ -81,7 +81,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
       <DateSelector formData={formData} setFormData={setFormData} />
       {/* Set a Departure Time  */}
       {/* {isCalendarVisible ?? ()} */}
-      <DepartureTime formData={formData} setFormData={setFormData} />
+      {/* <DepartureTime formData={formData} setFormData={setFormData} /> */}
       <Destination formData={formData} setFormData={setFormData} />
       <TripBackground formData={formData} setFormData={setFormData} />
       {/* set the glow color  */}

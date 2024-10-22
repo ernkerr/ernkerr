@@ -12,6 +12,8 @@
 }
 
 .date-icon {
+  width: 5dvw;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,7 +60,7 @@
   border-bottom-right-radius: 10px;
 }
 
-.date-details {
+.date-text-container {
   display: flex;
   flex-direction: column;
 }
@@ -73,9 +75,19 @@
 }
 
 .time-text {
-  font-size: 14px;
   font-family: var(--main-font);
-  color: gray;
+  font-size: 1.1rem;
+  border: none;
+  color: white;
   margin-left: 5px;
   cursor: pointer;
+  display: flex; /* Ensure the container behaves as a flexbox */
+  align-items: center; /* Vertically center text and icon */
+  flex-direction: row; /* Ensure the text and icon are in a row */
+}
+
+.time-text img {
+  margin-right: 5px; /* Space between text and icon */
+  width: 16px; /* Adjust icon size */
+  height: 16px;
 }

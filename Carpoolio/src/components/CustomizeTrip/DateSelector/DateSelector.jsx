@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { DayPicker } from "react-day-picker";
+import { TimeSelector } from "../TimeSelector/TimeSelector";
 import "../../NewTripForm/Calendar.css";
 import "./DateSelector.css";
+import clockIcon from "../../../assets/img/Clock.png";
 
 export default function DateSelector({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const [isTimeSelectorVisible, setIsTimeSelectorVisible] = useState(false); // Time selector state
   const [selectedDate, setSelectedDate] = useState(null);
-  // const [tripDate, setTripDate] = useState("");
-  // const [tripMonth, setTripMonth] = useState("");
-  // const [tripDay, setTripDay] = useState("");
 
   // Toggle calendar visibility
   const toggleCalendar = () => {
     setIsCalendarVisible((prev) => !prev);
+    setIsTimeSelectorVisible((prev) => !prev);
   };
 
   // Handle date change
@@ -64,7 +65,18 @@ export default function DateSelector({ formData, setFormData }) {
           >
             {formData.tripDate ? formData.tripDate : ""}
           </button>
-          <button className="time-text">Departure Time: 9:00 AM</button>
+
+          <button
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+            }}
+            className="time-text"
+            onClick={toggleCalendar}
+          >
+            {" "}
+            <img src={clockIcon} alt="Departure Time Icon" />
+            {formData.departureTime || "TBD"}
+          </button>
         </div>
       </div>
 
@@ -103,6 +115,7 @@ export default function DateSelector({ formData, setFormData }) {
               Okay
             </button>
           </div>
+          <TimeSelector formData={formData} setFormData={setFormData} />
         </>
       )}
     </div>
