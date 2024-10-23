@@ -52,7 +52,7 @@ export default function NewTripForm() {
       //     );
       //   }
 
-      case 2:
+      case 3:
         return <CustomizeTrip formData={formData} setFormData={setFormData} />;
       // case 1:
       //   return <GetUserName formData={formData} setFormData={setFormData} />;
