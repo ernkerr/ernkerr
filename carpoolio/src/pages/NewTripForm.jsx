@@ -6,6 +6,7 @@ import "../components/NewTripForm/NewTripForm.css";
 import TripPage from "./TripPage";
 import GetTripName from "../components/NewTripForm/GetTripName";
 import GetTripDate from "../components/NewTripForm/GetTripDate";
+import GetDestination from "../components/NewTripForm/GetDestination";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
@@ -39,8 +40,9 @@ export default function NewTripForm() {
       // trip name
       case 0:
         return <GetTripName formData={formData} setFormData={setFormData} />;
-
       case 1:
+        return <GetDestination formData={formData} setFormData={setFormData} />;
+      case 2:
         return <GetTripDate formData={formData} setFormData={setFormData} />;
 
       // case 2:
