@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import hexRgb from "hex-rgb";
 import TripName from "./TripName";
-// import { DepartureTime } from "./TimeSelector/DepartureTime.jsx";
+import DateSelector from "./DateSelector/DateSelector.jsx";
 import Destination from "./Destination";
 import TripBackground from "./TripBackground";
-import "./CustomizeTrip.css";
+
 import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
-import DateSelector from "./DateSelector/DateSelector.jsx";
+
+import "./CustomizeTrip.css";
 
 export default function CustomizeTrip({ formData, setFormData }) {
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
@@ -79,9 +80,6 @@ export default function CustomizeTrip({ formData, setFormData }) {
     <div className="customize-trip">
       <TripName formData={formData} setFormData={setFormData} />
       <DateSelector formData={formData} setFormData={setFormData} />
-      {/* Set a Departure Time  */}
-      {/* {isCalendarVisible ?? ()} */}
-      {/* <DepartureTime formData={formData} setFormData={setFormData} /> */}
       <Destination formData={formData} setFormData={setFormData} />
       <TripBackground formData={formData} setFormData={setFormData} />
       {/* set the glow color  */}
@@ -158,3 +156,5 @@ export default function CustomizeTrip({ formData, setFormData }) {
     </div>
   );
 }
+
+// add a description?

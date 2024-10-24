@@ -7,7 +7,7 @@ export default function GetTripName({ formData, setFormData }) {
         className="text-input"
         type="text"
         required
-        placeholder="enter trip name here"
+        placeholder="Enter trip name here"
         onChange={(event) => {
           setFormData({
             ...formData,

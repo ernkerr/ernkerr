@@ -37,7 +37,6 @@ export default function NewTripForm() {
 
   const conditionalComponent = () => {
     switch (page) {
-      // trip name
       case 0:
         return <GetTripName formData={formData} setFormData={setFormData} />;
       case 1:
@@ -45,22 +44,10 @@ export default function NewTripForm() {
       case 2:
         return <GetTripDate formData={formData} setFormData={setFormData} />;
 
-      // case 2:
-      //   if (formData.tripDate && formData.tripDate !== "TBD") {
-      //     return (
-      //       <DepartureTime formData={formData} setFormData={setFormData} />
-      //     );
-      //   }
-
       case 3:
         return <CustomizeTrip formData={formData} setFormData={setFormData} />;
-      // case 1:
-      //   return <GetUserName formData={formData} setFormData={setFormData} />;
 
-      // case 1:
-      //   return <GetUserContact formData={formData} setFormData={setFormData} />;
-
-      case 5:
+      case 4:
         return <TripPage formData={formData} setFormData={setFormData} />;
     }
   };

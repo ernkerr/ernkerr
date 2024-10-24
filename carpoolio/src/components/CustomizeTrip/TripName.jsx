@@ -16,3 +16,5 @@ export default function TripName({ formData, setFormData }) {
     </>
   );
 }
+
+// on hover (required)

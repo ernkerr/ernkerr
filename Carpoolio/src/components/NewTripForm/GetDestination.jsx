@@ -1,48 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Autocomplete from "react-google-autocomplete";
 
 export default function GetDestination({ formData, setFormData }) {
   const [destination, setDestination] = useState("");
+  const autocompleteRef = useRef(null); // Create a ref for the Autocomplete component
 
   const handleSelectedLocation = (place) => {
     const selectedPlaceName = place.name || ""; // check place name
     const selectedAddress = place.formatted_address || ""; // check if the place has a formatted address
 
-    // Set the destination in formData to the selected place's name and address
-    const fullAddress = selectedAddress
+    // set the destination in formData to the selected place's name and address
+    const tripDestination = selectedAddress
       ? `${selectedPlaceName}, ${selectedAddress}`
-      : destination;
+      : selectedPlaceName;
 
-    setDestination(fullAddress);
-    setFormData({ ...formData, destination: fullAddress });
+    setDestination(tripDestination);
+    setFormData({ ...formData, destination: tripDestination });
   };
+
+  // Handle user typing in the field
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setDestination(value);
+    setFormData({ ...formData, destination: value }); // Update form data with typed value
+  };
+
+  useEffect(() => {
+    // If the autocompleteRef is available, manually set its value from state
+    if (
+      autocompleteRef.current &&
+      autocompleteRef.current.value !== destination
+    ) {
+      autocompleteRef.current.value = destination;
+    }
+  }, [destination]); // Update the input value when the destination changes
 
   return (
     <>
       <h4 className="form-question">Choose your destination </h4>
 
-      <div style={{ position: "relative", marginTop: "10px" }}>
+      <>
         <Autocomplete
           apiKey={"AIzaSyAjYJexrKl - byyNcP9kEwmsi3OzPHcEtng"} // API key
           onPlaceSelected={handleSelectedLocation}
           options={{
-            types: ["geocode", "establishment"], // Use 'establishment' to search for businesses, museums, etc.
+            types: ["geocode", "establishment"], // use 'establishment' to search for businesses, museums, etc.
             fields: ["name", "formatted_address", "geometry"],
           }}
           value={destination}
-          onChange={(event) => setDestination(event.target.value)}
-          style={{
-            fontFamily: "var(--main-font)",
-            width: "100%",
-            background: formData?.tripBackground?.scrim || "transparent",
-            border: "var(--transparent-border)",
-            borderRadius: "var(--border-radius-button)",
-            height: "2vh",
-          }} // Style as needed
+          onChange={handleChange}
+          className="text-input"
         />
-      </div>
+      </>
     </>
   );
 }
-
-// apiKey={"AIzaSyAjYJexrKl - byyNcP9kEwmsi3OzPHcEtng"}
