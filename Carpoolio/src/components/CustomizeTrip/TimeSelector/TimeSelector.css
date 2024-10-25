@@ -1,8 +1,7 @@
 /* set a time */
 .time-picker-container {
-  width: 50%;
+  width: 99%;
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-between;
   align-items: center;
   gap: 5px;
@@ -13,39 +12,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  width: 6dvw;
 }
 
 .scrollable select {
   color: white;
   font-family: var(--main-font);
   font-size: var(--font-size-button);
+  border: none;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
   margin-top: var(--margin-top-button);
   padding: var(--paddding-button);
-  /* width: 80px; */
   padding: 10px;
   cursor: pointer;
-}
-
-.confirm-button {
-  color: white;
-  font-family: var(--main-font);
-  font-size: var(--font-size-button);
-  height: var(--height-button);
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  padding: var(--paddding-button);
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-}
-
-time-button-container {
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 
 .time-calendar-button {
@@ -53,9 +34,8 @@ time-button-container {
   background: none;
   font-family: var(--main-font);
   font-size: var(--font-size-button);
-  height: var(--height-button);
+  height: 100%;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  margin-top: var(--margin-top-button);
   box-sizing: border-box;
 }

@@ -20,7 +20,7 @@ export default function NewTripForm() {
     departureTime: "",
     destination: "",
     underglowColor: "",
-    glowColor: "rgb(52, 189, 52)",
+    glowColor: "#34bd34",
     lighterGlowColor: "",
     cars: [],
     // carName: "",

@@ -102,7 +102,7 @@ export default function TripBackground({ formData, setFormData }) {
         className="customize-trip-btns"
         onClick={toggleBackgrounds}
       >
-        Change background
+        Change Background
       </button>
       {isShowingBackgrounds && (
         <div className="background-container">

@@ -5,6 +5,8 @@ import "../../NewTripForm/Calendar.css";
 import "./DateSelector.css";
 import clockIcon from "../../../assets/img/Clock.png";
 
+// go back to opening in a modal?
+
 export default function DateSelector({ formData, setFormData }) {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isTimeSelectorVisible, setIsTimeSelectorVisible] = useState(false); // Time selector state
@@ -13,6 +15,10 @@ export default function DateSelector({ formData, setFormData }) {
   // Toggle calendar visibility
   const toggleCalendar = () => {
     setIsCalendarVisible((prev) => !prev);
+    setIsTimeSelectorVisible((prev) => !prev);
+  };
+
+  const toggleTimeSelector = () => {
     setIsTimeSelectorVisible((prev) => !prev);
   };
 
@@ -71,7 +77,7 @@ export default function DateSelector({ formData, setFormData }) {
               background: formData?.tripBackground?.scrim || "transparent",
             }}
             className="time-text"
-            onClick={toggleCalendar}
+            onClick={toggleTimeSelector}
           >
             {" "}
             <img src={clockIcon} alt="Departure Time Icon" />
@@ -115,8 +121,15 @@ export default function DateSelector({ formData, setFormData }) {
               Okay
             </button>
           </div>
-          <TimeSelector formData={formData} setFormData={setFormData} />
         </>
+      )}
+
+      {isTimeSelectorVisible && (
+        <TimeSelector
+          formData={formData}
+          setFormData={setFormData}
+          toggleTimeSelector={toggleTimeSelector}
+        />
       )}
     </div>
   );

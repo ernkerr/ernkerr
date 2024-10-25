@@ -58,7 +58,7 @@ body::-webkit-scrollbar {
   --border-radius: 10px;
 
   /* titles */
-  --font-size-title: 2em;
+  --font-size-title: 3em;
   --height-title: 4vh;
   --padding-title: 5px;
 
@@ -75,7 +75,7 @@ body::-webkit-scrollbar {
   --transparent: rgba(230, 230, 230, 0.223);
   --transparent-border: 2px solid rgba(230, 230, 230, 0.223);
   --yellow-glow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00;
-  --main-green: rgb(52, 189, 52);
+  --main-green: rgb(52, 188, 52);
   --green-glow: 0 0 5px #04aa6d, 0 0 15px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5);
   --green-glow-hover: 0 0 5px #04aa6d, 0 0 15px #04aa6d,
     0 0 30px rgba(0, 255, 0, 0.5);

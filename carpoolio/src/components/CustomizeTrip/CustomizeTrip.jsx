@@ -78,56 +78,36 @@ export default function CustomizeTrip({ formData, setFormData }) {
 
   return (
     <div className="customize-trip-container">
-      <div className="trip-details-container">
+      <div className="name-destination-container">
         <TripName formData={formData} setFormData={setFormData} />
         <Destination formData={formData} setFormData={setFormData} />
-        <div className="customize-trip">
-          <DateSelector formData={formData} setFormData={setFormData} />
+        <div className="details-container">
+          <div className="trip-details-container">
+            <DateSelector formData={formData} setFormData={setFormData} />
+          </div>
 
-          <TripBackground formData={formData} setFormData={setFormData} />
-          {/* set the glow color  */}
-          <button
-            className="customize-trip-btns"
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-            }}
-          >
-            <label htmlFor="glowColor">Change Glow Color </label>
-            <input
-              className="glowColor"
-              type="color"
-              id="glowColor"
-              name="glowColor"
-              value={formData.glowColor || "#04aa6d"}
-              onChange={handleGlowColorChange} // update the glow color on change
-            />
-          </button>
-
-          <button
-            onClick={handleAddNewCar}
-            className="glow-button"
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-              border: ` 2px solid ${formData.glowColor}`,
-              boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-            }}
-          >
-            add a car
-          </button>
+          <div className="optional-details-container">
+            <TripBackground formData={formData} setFormData={setFormData} />
+            {/* set the glow color  */}
+            <button
+              className="customize-trip-btns"
+              style={{
+                background: formData?.tripBackground?.scrim || "transparent",
+              }}
+            >
+              <label htmlFor="glowColor">Change Glow Color </label>
+              <input
+                className="glowColor"
+                type="color"
+                id="glowColor"
+                name="glowColor"
+                value={formData.glowColor || " #34bd34"}
+                onChange={handleGlowColorChange} // update the glow color on change
+              />
+            </button>
+          </div>
         </div>
       </div>
-
-      {/* <button
-          onClick={handleAddNewCar}
-          className="glow-button"
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-            border: ` 2px solid ${formData.glowColor}`,
-            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-          }}
-        >
-          add a car
-        </button> */}
 
       {/* // style it like a plus in the bottom corner + add a car  */}
 
@@ -177,6 +157,18 @@ export default function CustomizeTrip({ formData, setFormData }) {
           }
         })}
       </div>
+      <button
+        onClick={handleAddNewCar}
+        className="glow-button"
+        style={{
+          background: formData?.tripBackground?.scrim || "transparent",
+          border: ` 2px solid ${formData.glowColor}`,
+          boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+          width: "50%",
+        }}
+      >
+        add a car
+      </button>
     </div>
   );
 }
