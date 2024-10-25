@@ -3,8 +3,9 @@
   display: flex;
   margin: 0 auto;
   position: relative;
-  margin-left: 50%;
-  margin-bottom: 10%;
+
+  /* margin-left: 50%; */
+  /* margin-bottom: 10%; */
 }
 
 .render-car-container svg {

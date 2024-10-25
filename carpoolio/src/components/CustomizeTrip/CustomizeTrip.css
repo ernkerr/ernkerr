@@ -1,12 +1,48 @@
-.customize-trip {
+.customize-trip-container {
   display: flex;
   flex-direction: column;
   height: 70vh;
   min-height: 40vh;
   width: 70vw;
-  /* justify-content: space-between; */
 }
 
+.trip-details-container {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  min-height: 40vh;
+  width: 70vw;
+}
+
+.customize-trip {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  min-height: 40vh;
+  width: 35vw;
+  /* justify-content: space-between; */
+}
+/* 
+.trip-styling {
+  display: flex;
+  flex-direction: row;
+} */
+
+.customize-car-container {
+  display: flex;
+  flex-direction: row;
+  height: 60dvh;
+  width: 100%;
+  /* margin-top: 10dvh; */
+  /* height: 60vh;
+  width: 35dvw; */
+  background-color: rgba(255, 255, 255, 0.182);
+}
+
+.customize-car {
+  display: flex;
+  flex-direction: column;
+}
 /* trip title  */
 
 .trip-title {
@@ -14,7 +50,9 @@
   font-family: var(--main-font);
   font-size: var(--font-size-title);
   height: var(--height-title);
-  border: none;
+  /* border: none; */
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
   padding: var(--padding-title);
   align-items: flex-start;
   cursor: pointer;
@@ -31,6 +69,7 @@
 .customize-trip-btns {
   color: white;
   background: none;
+  /* background-color: #ebe7ef2c !important; */
   font-family: var(--main-font);
   font-size: var(--font-size-button);
   height: var(--height-button);
@@ -44,6 +83,26 @@
   text-align: left;
   cursor: pointer;
   padding-left: 2vw;
+}
+
+.destination-btn {
+  color: white;
+  background: none;
+  /* background-color: #ebe7ef2c !important; */
+  font-family: var(--main-font);
+  font-size: var(--font-size-button);
+  /* height: var(--height-button) !important; */
+  /* width: 50%; */
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
+  margin-top: var(--margin-top-button);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  padding-left: 2vw;
+  letter-spacing: 0.04em;
 }
 
 /* destination  */

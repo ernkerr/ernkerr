@@ -77,40 +77,58 @@ export default function CustomizeTrip({ formData, setFormData }) {
   }
 
   return (
-    <div className="customize-trip">
-      <TripName formData={formData} setFormData={setFormData} />
-      <DateSelector formData={formData} setFormData={setFormData} />
-      <Destination formData={formData} setFormData={setFormData} />
-      <TripBackground formData={formData} setFormData={setFormData} />
-      {/* set the glow color  */}
-      <button
-        className="customize-trip-btns"
-        style={{
-          background: formData?.tripBackground?.scrim || "transparent",
-        }}
-      >
-        <label htmlFor="glowColor">Change Glow Color </label>
-        <input
-          className="glowColor"
-          type="color"
-          id="glowColor"
-          name="glowColor"
-          value={formData.glowColor || "#04aa6d"}
-          onChange={handleGlowColorChange} // update the glow color on change
-        />
-      </button>
+    <div className="customize-trip-container">
+      <div className="trip-details-container">
+        <TripName formData={formData} setFormData={setFormData} />
+        <Destination formData={formData} setFormData={setFormData} />
+        <div className="customize-trip">
+          <DateSelector formData={formData} setFormData={setFormData} />
 
-      <button
-        onClick={handleAddNewCar}
-        className="glow-button"
-        style={{
-          background: formData?.tripBackground?.scrim || "transparent",
-          border: ` 2px solid ${formData.glowColor}`,
-          boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-        }}
-      >
-        add a car
-      </button>
+          <TripBackground formData={formData} setFormData={setFormData} />
+          {/* set the glow color  */}
+          <button
+            className="customize-trip-btns"
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+            }}
+          >
+            <label htmlFor="glowColor">Change Glow Color </label>
+            <input
+              className="glowColor"
+              type="color"
+              id="glowColor"
+              name="glowColor"
+              value={formData.glowColor || "#04aa6d"}
+              onChange={handleGlowColorChange} // update the glow color on change
+            />
+          </button>
+
+          <button
+            onClick={handleAddNewCar}
+            className="glow-button"
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+              border: ` 2px solid ${formData.glowColor}`,
+              boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+            }}
+          >
+            add a car
+          </button>
+        </div>
+      </div>
+
+      {/* <button
+          onClick={handleAddNewCar}
+          className="glow-button"
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+            border: ` 2px solid ${formData.glowColor}`,
+            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+          }}
+        >
+          add a car
+        </button> */}
+
       {/* // style it like a plus in the bottom corner + add a car  */}
 
       {/* 
@@ -127,32 +145,38 @@ export default function CustomizeTrip({ formData, setFormData }) {
       {/* 5 cars | activeCarIndex = 3 */}
       {/* Check if formData.cars exists and has more than 0 items */}
       {/* {formData.cars?.length > 0 && */}
-      {formData.cars.map((car, index) => {
-        if (index === activeCarIndex && isCustomizingCar) {
-          return (
-            <CustomizeCar
-              key={index}
-              formData={formData}
-              setFormData={setFormData}
-              activeCarIndex={activeCarIndex}
-              setActiveCarIndex={setActiveCarIndex}
-              setIsCustomizingCar={setIsCustomizingCar}
-            />
-          );
-        } else {
-          return (
-            <RenderCar
-              formData={formData}
-              setFormData={setFormData}
-              key={index}
-              car={car}
-              carIndex={index}
-              setIsCustomizingCar={setIsCustomizingCar}
-              setActiveCarIndex={setActiveCarIndex}
-            />
-          );
-        }
-      })}
+
+      <div className="customize-car-container">
+        {formData.cars.map((car, index) => {
+          if (index === activeCarIndex && isCustomizingCar) {
+            return (
+              <div className="customize-car">
+                <CustomizeCar
+                  key={index}
+                  formData={formData}
+                  setFormData={setFormData}
+                  activeCarIndex={activeCarIndex}
+                  setActiveCarIndex={setActiveCarIndex}
+                  setIsCustomizingCar={setIsCustomizingCar}
+                />
+              </div>
+            );
+          } else {
+            return (
+              <RenderCar
+                formData={formData}
+                setFormData={setFormData}
+                key={index}
+                car={car}
+                carIndex={index}
+                activeCarIndex={activeCarIndex}
+                setIsCustomizingCar={setIsCustomizingCar}
+                setActiveCarIndex={setActiveCarIndex}
+              />
+            );
+          }
+        })}
+      </div>
     </div>
   );
 }
