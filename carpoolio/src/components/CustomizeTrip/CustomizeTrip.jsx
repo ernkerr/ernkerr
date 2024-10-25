@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import hexRgb from "hex-rgb";
-import TripName from "./TripName";
+import TripName from "./TripName/TripName.jsx";
 import DateSelector from "./DateSelector/DateSelector.jsx";
-import Destination from "./Destination";
+import Destination from "./Destination/Destination.jsx";
 import TripBackground from "./TripBackground";
-
 import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 
@@ -86,7 +85,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
             <DateSelector formData={formData} setFormData={setFormData} />
           </div>
 
-          <div className="optional-details-container">
+          <div className="styling-options-container">
             <TripBackground formData={formData} setFormData={setFormData} />
             {/* set the glow color  */}
             <button

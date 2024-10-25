@@ -6,6 +6,7 @@
   width: 70vw;
 }
 
+/* trip name and destination  */
 .name-destination-container {
   display: flex;
   flex-direction: column;
@@ -14,11 +15,13 @@
   width: 70vw;
 }
 
+/* date and time and styling options */
 .details-container {
   display: flex;
   flex-direction: row;
 }
 
+/* date and time  */
 .trip-details-container {
   display: flex;
   flex-direction: column;
@@ -27,7 +30,8 @@
   width: 35vw;
 }
 
-.optional-details-container {
+/* glow color and background */
+.styling-options-container {
   display: flex;
   flex-direction: column;
   height: 70vh;
@@ -43,11 +47,6 @@
   width: 35vw;
   /* justify-content: space-between; */
 }
-/* 
-.trip-styling {
-  display: flex;
-  flex-direction: row;
-} */
 
 .customize-car-container {
   display: flex;
@@ -69,27 +68,6 @@
   display: flex;
   flex-direction: column;
 }
-/* trip title  */
-
-.trip-title {
-  color: white;
-  font-family: var(--main-font);
-  font-size: var(--font-size-title);
-  height: var(--height-title);
-  /* border: none; */
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  padding: var(--padding-title);
-  align-items: flex-start;
-  cursor: pointer;
-  padding-left: 2vw;
-  letter-spacing: 0.07em;
-}
-
-.trip-title::placeholder {
-  color: white;
-  text-align: left;
-}
 
 /* optional buttons for customization  */
 .customize-trip-btns {
@@ -109,26 +87,6 @@
   text-align: left;
   cursor: pointer;
   padding-left: 2vw;
-}
-
-.destination-btn {
-  color: white;
-  background: none;
-  /* background-color: #ebe7ef2c !important; */
-  font-family: var(--main-font);
-  font-size: var(--font-size-button);
-  /* height: var(--height-button) !important; */
-  /* width: 50%; */
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  margin-top: var(--margin-top-button);
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  text-align: left;
-  cursor: pointer;
-  padding-left: 2vw;
-  letter-spacing: 0.04em;
 }
 
 .calendar-button-container {

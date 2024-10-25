@@ -1,0 +1,19 @@
+.destination-btn {
+  color: white;
+  background: none;
+  /* background-color: #ebe7ef2c !important; */
+  font-family: var(--main-font);
+  font-size: var(--font-size-button);
+  /* height: var(--height-button) !important; */
+  /* width: 50%; */
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
+  margin-top: var(--margin-top-button);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  padding-left: 2vw;
+  letter-spacing: 0.04em;
+}

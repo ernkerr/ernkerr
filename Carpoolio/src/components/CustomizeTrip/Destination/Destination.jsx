@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Autocomplete from "react-google-autocomplete";
+import "./Destination.css";
 
 export default function Destination({ formData, setFormData }) {
   const [destination, setDestination] = useState("");
@@ -49,7 +50,6 @@ export default function Destination({ formData, setFormData }) {
         className="destination-btn"
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
-          // height: "4vh",
         }}
       />
     </>

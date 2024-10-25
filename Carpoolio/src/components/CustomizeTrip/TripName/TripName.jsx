@@ -1,4 +1,4 @@
-import "./CustomizeTrip.css";
+import "./TripName.css";
 
 export default function TripName({ formData, setFormData }) {
   return (

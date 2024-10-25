@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import { TimeSelector } from "../TimeSelector/TimeSelector";
+import clockIcon from "../../../assets/img/Clock.png";
 import "../../NewTripForm/Calendar.css";
 import "./DateSelector.css";
-import clockIcon from "../../../assets/img/Clock.png";
 
 // go back to opening in a modal?
 
@@ -15,7 +15,6 @@ export default function DateSelector({ formData, setFormData }) {
   // Toggle calendar visibility
   const toggleCalendar = () => {
     setIsCalendarVisible((prev) => !prev);
-    setIsTimeSelectorVisible((prev) => !prev);
   };
 
   const toggleTimeSelector = () => {
@@ -96,12 +95,14 @@ export default function DateSelector({ formData, setFormData }) {
             className="day-picker"
             style={{
               background: formData?.tripBackground?.scrim || "transparent",
+              zIndex: 2,
             }}
           />
           <div className="calendar-button-container">
             <button
               style={{
                 background: formData?.tripBackground?.scrim || "transparent",
+                zIndex: 2,
               }}
               className="calendar-button"
               onClick={() => {
@@ -114,6 +115,7 @@ export default function DateSelector({ formData, setFormData }) {
             <button
               style={{
                 background: formData?.tripBackground?.scrim || "transparent",
+                zIndex: 2,
               }}
               className="calendar-button"
               onClick={toggleCalendar}
