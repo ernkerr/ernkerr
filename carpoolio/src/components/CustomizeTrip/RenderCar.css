@@ -3,7 +3,6 @@
   display: flex;
   margin: 0 auto;
   position: relative;
-
   /* margin-left: 50%; */
   /* margin-bottom: 10%; */
 }
@@ -33,18 +32,24 @@
   gap: 1.5%;
 }
 
-.render-seat-input {
+.seat-input {
   background-color: #f0f0f085; /* Input background color */
   border: var(--transparent-border);
   padding: 0.5px; /* Padding for inputs */
   cursor: pointer; /* Change cursor on hover */
   border-radius: 5px; /* Rounded corners */
-  height: 3vh;
+  height: 2dvh;
   width: 30%; /* Set input width */
   text-align: center;
   font-family: var(--main-font);
   pointer-events: auto; /* make seat buttons are clickable */
   font-size: 2vw;
+}
+
+.seat-buttons {
+  background-color: #f0f0f085;
+  border: var(--transparent-border);
+  border-radius: 5px;
 }
 
 .render-seat-inputs:hover {
@@ -71,9 +76,8 @@
   font-family: var(--main-font);
   font-size: var(--font-size-button);
   height: var(--height-button);
-  /* width: 50%; */
-  margin-top: var(--margin-top-button);
-  padding: var(--paddding-button);
+  margin-top: 1dvh;
+  /* padding: var(--paddding-button); */
   align-items: flex-start;
   text-align: left;
   cursor: pointer;
@@ -83,12 +87,10 @@
   color: white;
   background: none;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
   height: 2.5dvh;
   width: 30%;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  margin-top: var(--margin-top-button);
   padding: var(--paddding-button);
   align-items: flex-start;
   text-align: left;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
+import "../CustomizeTrip/RenderCar.css";
 
 /**
  * cars = [
@@ -105,7 +106,9 @@ export default function CustomizeCar({
         <div className="render-seat-container">
           {/* row 1 */}
           <div className="render-seat-row">
-            <button onClick={() => removeSeat("row1")}>-</button>
+            <button className="seat-buttons" onClick={() => removeSeat("row1")}>
+              -
+            </button>
 
             {Array.from({ length: seatDistribution.row1 }).map((_, index) => (
               <input
@@ -115,11 +118,15 @@ export default function CustomizeCar({
                 className="seat-input"
               />
             ))}
-            <button onClick={() => addSeat("row1")}>+</button>
+            <button className="seat-buttons" onClick={() => addSeat("row1")}>
+              +
+            </button>
           </div>
           {/* row 2 */}
           <div className="render-seat-row">
-            <button onClick={() => removeSeat("row2")}>-</button>
+            <button className="seat-buttons" onClick={() => removeSeat("row2")}>
+              -
+            </button>
 
             {Array.from({ length: seatDistribution.row2 }).map((_, index) => (
               <input
@@ -129,11 +136,15 @@ export default function CustomizeCar({
                 className="seat-input"
               />
             ))}
-            <button onClick={() => addSeat("row2")}>+</button>
+            <button className="seat-buttons" onClick={() => addSeat("row2")}>
+              +
+            </button>
           </div>
           {/* row 3 */}
           <div className="render-seat-row">
-            <button onClick={() => removeSeat("row3")}>-</button>
+            <button className="seat-buttons" onClick={() => removeSeat("row3")}>
+              -
+            </button>
 
             {Array.from({ length: seatDistribution.row3 }).map((_, index) => (
               <input
@@ -143,12 +154,16 @@ export default function CustomizeCar({
                 className="seat-input"
               />
             ))}
-            <button onClick={() => addSeat("row3")}>+</button>
+            <button className="seat-buttons" onClick={() => addSeat("row3")}>
+              +
+            </button>
           </div>
 
           {/* row 4 */}
           <div className="render-seat-row">
-            <button onClick={() => removeSeat("row4")}>-</button>
+            <button className="seat-buttons" onClick={() => removeSeat("row4")}>
+              -
+            </button>
 
             {Array.from({ length: seatDistribution.row4 }).map((_, index) => (
               <input
@@ -158,17 +173,16 @@ export default function CustomizeCar({
                 className="seat-input"
               />
             ))}
-            <button onClick={() => addSeat("row4")}>+</button>
+            <button className="seat-buttons" onClick={() => addSeat("row4")}>
+              +
+            </button>
           </div>
         </div>
       </div>
+
+      {/* <NumSeats formData={formData} setFormData={setFormData} /> */}
+
       <>
-        {/* <NumSeats formData={formData} setFormData={setFormData} /> */}
-
-        <p className="custom-car-option">
-          Number of avaliable seats: {numSeats}
-        </p>
-
         <div className="custom-car-option">
           <label htmlFor="car-color">Change Car Color </label>
           <input
@@ -179,22 +193,25 @@ export default function CustomizeCar({
             value={carColor}
             onChange={changeCarColor}
           />
+          <p className="custom-car-option">
+            Number of avaliable seats: {numSeats}
+          </p>
+          <button
+            className="glow-button"
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+              border: ` 2px solid ${formData.glowColor}`,
+              boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+              // Temporary
+              // position: "absolute",
+              // bottom: 0,
+              // right: 0,
+            }}
+            onClick={handleSaveCar}
+          >
+            save car
+          </button>
         </div>
-        <button
-          className="glow-button"
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-            border: ` 2px solid ${formData.glowColor}`,
-            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-            // Temporary
-            position: "absolute",
-            bottom: 0,
-            right: 0,
-          }}
-          onClick={handleSaveCar}
-        >
-          save car
-        </button>
       </>
 
       {/* // spotify playlist 

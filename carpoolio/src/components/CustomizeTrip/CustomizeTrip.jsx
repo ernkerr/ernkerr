@@ -80,6 +80,7 @@ export default function CustomizeTrip({ formData, setFormData }) {
       <div className="name-destination-container">
         <TripName formData={formData} setFormData={setFormData} />
         <Destination formData={formData} setFormData={setFormData} />
+
         <div className="details-container">
           <div className="trip-details-container">
             <DateSelector formData={formData} setFormData={setFormData} />
@@ -106,30 +107,12 @@ export default function CustomizeTrip({ formData, setFormData }) {
             </button>
           </div>
         </div>
-      </div>
 
-      {/* // style it like a plus in the bottom corner + add a car  */}
-
-      {/* 
-        cars = [
-          {
-            'color': 'red',
-            'seatDistribution': ['jam', 'ern', 'joris']
-          },
-          {
-            'color': 'grey',
-          },
-        ]
-      */}
-      {/* 5 cars | activeCarIndex = 3 */}
-      {/* Check if formData.cars exists and has more than 0 items */}
-      {/* {formData.cars?.length > 0 && */}
-
-      <div className="customize-car-container">
-        {formData.cars.map((car, index) => {
-          if (index === activeCarIndex && isCustomizingCar) {
-            return (
-              <div className="customize-car">
+        <div className="customize-car-container">
+          {formData.cars.map((car, index) => {
+            if (index === activeCarIndex && isCustomizingCar) {
+              return (
+                // <div className="customize-car">
                 <CustomizeCar
                   key={index}
                   formData={formData}
@@ -138,38 +121,37 @@ export default function CustomizeTrip({ formData, setFormData }) {
                   setActiveCarIndex={setActiveCarIndex}
                   setIsCustomizingCar={setIsCustomizingCar}
                 />
-              </div>
-            );
-          } else {
-            return (
-              <RenderCar
-                formData={formData}
-                setFormData={setFormData}
-                key={index}
-                car={car}
-                carIndex={index}
-                activeCarIndex={activeCarIndex}
-                setIsCustomizingCar={setIsCustomizingCar}
-                setActiveCarIndex={setActiveCarIndex}
-              />
-            );
-          }
-        })}
+                // </div>
+              );
+            } else {
+              return (
+                <RenderCar
+                  formData={formData}
+                  setFormData={setFormData}
+                  key={index}
+                  car={car}
+                  carIndex={index}
+                  activeCarIndex={activeCarIndex}
+                  setIsCustomizingCar={setIsCustomizingCar}
+                  setActiveCarIndex={setActiveCarIndex}
+                />
+              );
+            }
+          })}
+        </div>
+        <button
+          onClick={handleAddNewCar}
+          className="glow-button"
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+            border: ` 2px solid ${formData.glowColor}`,
+            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+            width: "50%",
+          }}
+        >
+          add a car
+        </button>
       </div>
-      <button
-        onClick={handleAddNewCar}
-        className="glow-button"
-        style={{
-          background: formData?.tripBackground?.scrim || "transparent",
-          border: ` 2px solid ${formData.glowColor}`,
-          boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-          width: "50%",
-        }}
-      >
-        add a car
-      </button>
     </div>
   );
 }
-
-// add a description?
