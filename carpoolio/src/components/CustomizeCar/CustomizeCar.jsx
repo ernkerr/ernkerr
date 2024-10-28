@@ -2,19 +2,6 @@ import { useState, useEffect } from "react";
 import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
 import "../CustomizeTrip/RenderCar.css";
 
-/**
- * cars = [
- *  {
- *      'name': 'jammydodger',
- *      'color': 'red'
- *  }
- * ]
- */
-
-//   console.log("Send car to database");
-//   console.log(newCar);
-//   console.log(formData.cars);
-
 export default function CustomizeCar({
   formData,
   setFormData,

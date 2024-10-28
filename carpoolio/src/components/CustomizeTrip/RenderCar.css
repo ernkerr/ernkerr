@@ -26,24 +26,26 @@
 .render-seat-row {
   display: flex;
   justify-content: center;
-  margin-top: 5%;
+  margin-top: 1%;
   max-width: 80%;
   pointer-events: auto; /* make seat buttons are clickable */
-  gap: 1.5%;
+  gap: 1%;
 }
 
 .seat-input {
-  background-color: #f0f0f085; /* Input background color */
+  background-color: #f0f0f085;
   border: var(--transparent-border);
-  padding: 0.5px; /* Padding for inputs */
-  cursor: pointer; /* Change cursor on hover */
-  border-radius: 5px; /* Rounded corners */
+  padding: 0.5px;
+  cursor: pointer;
+  border-radius: 5px;
   height: 2dvh;
-  width: 30%; /* Set input width */
+  width: 30%;
+
   text-align: center;
   font-family: var(--main-font);
-  pointer-events: auto; /* make seat buttons are clickable */
-  font-size: 2vw;
+  font-size: var(--font-size-button);
+  pointer-events: auto;
+  font-size: 16px;
 }
 
 .seat-buttons {
