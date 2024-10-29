@@ -67,7 +67,7 @@ body::-webkit-scrollbar {
   --height-button: 4vh;
 
   --border-radius-button: 5px;
-  --margin-top-button: 2%;
+  --margin-top-button: 1dvh;
 
   --padding-button: 15px;
 

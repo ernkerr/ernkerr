@@ -8,7 +8,11 @@ import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import "./CustomizeTrip.css";
 
-export default function CustomizeTrip({ formData, setFormData }) {
+export default function CustomizeTrip({
+  formData,
+  setFormData,
+  isCustomizingTrip,
+}) {
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [newCarCreated, setNewCarCreated] = useState(false);
@@ -77,8 +81,16 @@ export default function CustomizeTrip({ formData, setFormData }) {
   return (
     <div className="customize-trip-container">
       <div className="name-destination-container">
-        <TripName formData={formData} setFormData={setFormData} />
-        <Destination formData={formData} setFormData={setFormData} />
+        <TripName
+          formData={formData}
+          setFormData={setFormData}
+          isCustomizingTrip={isCustomizingTrip}
+        />
+        <Destination
+          formData={formData}
+          setFormData={setFormData}
+          isCustomizingTrip={isCustomizingTrip}
+        />
 
         <div className="details-container">
           <div className="trip-details-container">

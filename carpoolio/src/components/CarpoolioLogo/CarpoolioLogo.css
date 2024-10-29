@@ -1,9 +1,12 @@
 .plate-logo {
   perspective: 1000px;
-  width: 16dvw;
-  height: 10dvh;
+  width: 130px;
+  height: 4dvh;
+  max-height: 4dvh; /* Ensures the height stays within 5dvh */
+  position: fixed; /* Fixes the logo to the top-left corner */
+  top: 0; /* Aligns the logo to the top of the viewport */
+  left: 0;
   cursor: pointer;
-
   /* border-radius: 25px; */
 }
 

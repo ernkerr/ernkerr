@@ -3,14 +3,13 @@ import { useState } from "react";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "../components/NewTripForm/NewTripForm.css";
-import TripPage from "./TripPage";
 import GetTripName from "../components/NewTripForm/GetTripName";
 import GetTripDate from "../components/NewTripForm/GetTripDate";
 import GetDestination from "../components/NewTripForm/GetDestination";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
-  const [isCustomizeTrip, setIsCustomizingTrip] = useState(false); // New state for CustomizeTrip
+  const [isCustomizingTrip, setIsCustomizingTrip] = useState(false); // New state for CustomizeTrip
 
   const [formData, setFormData] = useState({
     name: "",
@@ -46,7 +45,13 @@ export default function NewTripForm() {
         return <GetTripDate formData={formData} setFormData={setFormData} />;
 
       case 3:
-        return <CustomizeTrip formData={formData} setFormData={setFormData} />;
+        return (
+          <CustomizeTrip
+            formData={formData}
+            setFormData={setFormData}
+            isCustomizingTrip={isCustomizingTrip}
+          />
+        );
 
       // case 4:
       //   return <TripPage formData={formData} setFormData={setFormData} />;
@@ -55,6 +60,14 @@ export default function NewTripForm() {
 
   function handleContinue() {
     setPage(page + 1);
+  }
+
+  function handlePreview() {
+    setIsCustomizingTrip(true);
+  }
+
+  function handleEdit() {
+    setIsCustomizingTrip(false);
   }
 
   return (
@@ -72,7 +85,7 @@ export default function NewTripForm() {
         style={{
           boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}, 0 0 20px ${formData?.lighterGlowColor}`,
           background: `${formData?.glowColor}`,
-          height: page === 3 ? "90dvh" : "85dvh", // Increase height when on CustomizeTrip
+          height: page === 3 ? "85dvh" : "85dvh", // Increase height when on CustomizeTrip
           width: page === 3 ? "95dvw" : "80dvw", // Increase width when on CustomizeTrip
           // transition: "all 0.3s ease", // Smooth transition for resizing
         }}
@@ -89,7 +102,7 @@ export default function NewTripForm() {
         >
           {conditionalComponent()}
           <div className="button-group">
-            {page !== 0 && (
+            {page !== 0 && page !== 3 && (
               <button
                 style={{
                   background: formData?.tripBackground?.scrim || "transparent",
@@ -104,7 +117,7 @@ export default function NewTripForm() {
             )}
 
             {/* Show the continue button on all pages except page 4 */}
-            {page !== 4 && (
+            {page <= 2 && (
               <button
                 style={{
                   background: formData?.tripBackground?.scrim || "transparent",
@@ -117,6 +130,35 @@ export default function NewTripForm() {
                 continue
               </button>
             )}
+
+            {page > 2 &&
+              (isCustomizingTrip ? (
+                <button
+                  style={{
+                    background:
+                      formData?.tripBackground?.scrim || "transparent",
+                    border: ` 2px solid ${formData?.glowColor}`,
+                    boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                  }}
+                  className="glow-button"
+                  onClick={handleEdit}
+                >
+                  edit
+                </button>
+              ) : (
+                <button
+                  style={{
+                    background:
+                      formData?.tripBackground?.scrim || "transparent",
+                    border: ` 2px solid ${formData?.glowColor}`,
+                    boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                  }}
+                  className="glow-button"
+                  onClick={handlePreview}
+                >
+                  preview
+                </button>
+              ))}
 
             {/* add a car functionality */}
             {/* {page == 1 && (
