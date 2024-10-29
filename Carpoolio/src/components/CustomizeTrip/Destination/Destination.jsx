@@ -2,7 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import Autocomplete from "react-google-autocomplete";
 import "./Destination.css";
 
-export default function Destination({ formData, setFormData }) {
+export default function Destination({
+  formData,
+  setFormData,
+  isCustomizingTrip,
+}) {
   const [destination, setDestination] = useState("");
   const autocompleteRef = useRef(null); // Create a ref for the Autocomplete component
 
@@ -50,6 +54,10 @@ export default function Destination({ formData, setFormData }) {
         className="destination-btn"
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
+          border: isCustomizingTrip
+            ? "2px solid transparent"
+            : "2px solid rgba(255, 255, 255, 0.182)",
+          borderRadius: isCustomizingTrip ? "0" : "5px",
         }}
       />
     </>

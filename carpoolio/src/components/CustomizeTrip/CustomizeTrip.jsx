@@ -7,6 +7,7 @@ import TripBackground from "./TripBackground";
 import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import "./CustomizeTrip.css";
+import Description from "./Description/Description.jsx";
 
 export default function CustomizeTrip({
   formData,
@@ -80,24 +81,27 @@ export default function CustomizeTrip({
 
   return (
     <div className="customize-trip-container">
-      <div className="name-destination-container">
+      <div className="details-container">
         <TripName
           formData={formData}
           setFormData={setFormData}
           isCustomizingTrip={isCustomizingTrip}
         />
+
         <Destination
           formData={formData}
           setFormData={setFormData}
           isCustomizingTrip={isCustomizingTrip}
         />
+        <DateSelector formData={formData} setFormData={setFormData} />
+        <Description
+          formData={formData}
+          setFormData={setFormData}
+          isCustomizingTrip={isCustomizingTrip}
+        />
 
-        <div className="details-container">
-          <div className="trip-details-container">
-            <DateSelector formData={formData} setFormData={setFormData} />
-          </div>
-
-          <div className="styling-options-container">
+        {!isCustomizingTrip && (
+          <div className="styling-container">
             <TripBackground formData={formData} setFormData={setFormData} />
             {/* set the glow color  */}
             <button
@@ -117,7 +121,7 @@ export default function CustomizeTrip({
               />
             </button>
           </div>
-        </div>
+        )}
 
         <div className="customize-car-container">
           {formData.cars.map((car, index) => {
@@ -153,14 +157,14 @@ export default function CustomizeTrip({
         <button
           onClick={handleAddNewCar}
           className="glow-button"
+          id="add-new-car-btn"
           style={{
             background: formData?.tripBackground?.scrim || "transparent",
             border: ` 2px solid ${formData.glowColor}`,
             boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-            width: "50%",
           }}
         >
-          add a car
+          + add a car
         </button>
       </div>
     </div>

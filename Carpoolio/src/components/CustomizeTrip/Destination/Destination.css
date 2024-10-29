@@ -6,14 +6,14 @@
   font-size: var(--font-size-button);
   /* height: var(--height-button) !important; */
   /* width: 50%; */
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
+  /* border: var(--transparent-border);
+  border-radius: var(--border-radius-button); */
   margin-top: var(--margin-top-button);
-  padding: 15px;
+  padding: 10px;
   display: flex;
   align-items: center;
   text-align: left;
   cursor: pointer;
-  padding-left: 2vw;
+  padding-left: 0.5dvw;
   letter-spacing: 0.04em;
 }

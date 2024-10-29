@@ -1,35 +1,30 @@
 .customize-trip-container {
   display: flex;
   flex-direction: column;
-  height: 85vh;
+  height: 70vh;
   min-height: 40vh;
-  width: 90vw;
+  width: 80dvw;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  width: 40dvw;
 }
 
 /* trip name and destination  */
-.name-destination-container {
-  display: flex;
-  flex-direction: column;
-  height: 70vh;
+/* width: 35dvw; */
+/* height: 70vh;
   min-height: 40vh;
-  width: 90vw;
-}
-
-/* date and time and styling options */
-.details-container {
-  display: flex;
-  flex-direction: row;
-}
+  width: 80dvw; */
 
 /* date and time  */
-.trip-details-container {
-  display: flex;
+/* display: flex;
   flex-direction: column;
-  width: 35vw;
-}
+  width: 35vw; */
 
 /* glow color and background */
-.styling-options-container {
+.styling-container {
   display: flex;
   flex-direction: column;
   width: 35vw;
@@ -39,6 +34,16 @@
   background-color: rgba(255, 255, 255, 0.182);
   height: 30dvh;
   min-height: 30dvh;
+}
+
+#add-new-car-btn {
+  position: absolute;
+  bottom: 12dvh;
+  right: 9dvw;
+  padding: 10px 30px; /* Wider padding for oval shape */
+  border-radius: 50px; /* High border-radius for oval */
+  /* 
+  width: 10dvw; */
 }
 
 .customize-car-container {
@@ -78,7 +83,7 @@
   align-items: center;
   text-align: left;
   cursor: pointer;
-  padding-left: 2vw;
+  padding-left: 0.5dvw;
 }
 
 /* .style-container {

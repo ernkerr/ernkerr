@@ -3,15 +3,10 @@
   color: white;
   font-family: var(--main-font);
   font-size: var(--font-size-title);
-  /* height: var(--height-title);
-  border: none; */
-  /* border: var(--transparent-border);
-  border-radius: var(--border-radius-button); */
-  /* border: none; */
   padding: var(--padding-title);
   align-items: flex-start;
   cursor: pointer;
-  padding-left: 2vw;
+  padding-left: 0.5dvw;
   letter-spacing: 0.07em;
 }
 

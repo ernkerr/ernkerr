@@ -8,7 +8,7 @@ export default function TripName({ formData, setFormData, isCustomizingTrip }) {
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
           border: isCustomizingTrip
-            ? "none"
+            ? "2px solid transparent"
             : "2px solid rgba(255, 255, 255, 0.182)",
           borderRadius: isCustomizingTrip ? "0" : "5px",
         }}

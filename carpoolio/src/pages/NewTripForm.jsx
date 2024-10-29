@@ -19,6 +19,7 @@ export default function NewTripForm() {
     tripBackground: {},
     departureTime: "",
     destination: "",
+    tripDescription: "",
     underglowColor: "",
     glowColor: "#34bd34",
     lighterGlowColor: "",
@@ -86,7 +87,7 @@ export default function NewTripForm() {
           boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}, 0 0 20px ${formData?.lighterGlowColor}`,
           background: `${formData?.glowColor}`,
           height: page === 3 ? "85dvh" : "85dvh", // Increase height when on CustomizeTrip
-          width: page === 3 ? "95dvw" : "80dvw", // Increase width when on CustomizeTrip
+          width: page === 3 ? "90dvw" : "80dvw", // Increase width when on CustomizeTrip
           // transition: "all 0.3s ease", // Smooth transition for resizing
         }}
       >
