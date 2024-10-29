@@ -1,9 +1,9 @@
 .customize-trip-container {
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  height: 85vh;
   min-height: 40vh;
-  width: 70vw;
+  width: 90vw;
 }
 
 /* trip name and destination  */
@@ -12,7 +12,7 @@
   flex-direction: column;
   height: 70vh;
   min-height: 40vh;
-  width: 70vw;
+  width: 90vw;
 }
 
 /* date and time and styling options */
@@ -35,21 +35,30 @@
   width: 35vw;
 }
 
-.customize-car-container {
+.render-car-container {
   background-color: rgba(255, 255, 255, 0.182);
-  height: 40dvh;
-  min-height: 50dvh;
+  height: 30dvh;
+  min-height: 30dvh;
+}
+
+.customize-car-container {
+  display: flex;
+  flex-direction: row;
+  height: 50dvh;
+
+  flex-wrap: wrap;
+  /* justify-content: flex-start; Aligns items at the start of the row */
+  /* align-items: flex-start; Aligns items at the top of the row */
 }
 
 /* .customize-car-container {
   display: flex;
   flex-direction: row;
-  /* min-height: 80dvh; */
-/* width: 100%; */
-/* margin-top: 10dvh; */
-/* height: 60vh;
-  width: 35dvw; */
-/* background-color: rgba(255, 255, 255, 0.182);
+  min-height: 80dvh;
+  width: 100%;
+  margin-top: 10dvh;
+  height: 60vh;
+  width: 35dvw;
 } */
 
 /* main btn styling */

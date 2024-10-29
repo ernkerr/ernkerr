@@ -1,6 +1,5 @@
 import DefaultCar from "../CustomizeCar/DefaultCar";
 import "./RenderCar.css";
-import EditCar from "./EditCar";
 import { useState } from "react";
 
 export default function RenderCar({
@@ -11,7 +10,7 @@ export default function RenderCar({
   setIsCustomizingCar,
   setActiveCarIndex,
 }) {
-  console.log("render car");
+  // console.log("render car");
 
   const handleSeatClick = (row, carIndex, seatIndex, event) => {
     const newCars = [...formData.cars]; // Create a copy of cars array
@@ -71,12 +70,17 @@ export default function RenderCar({
             />
           ))}
         </div>
-        <button onClick={() => handleCustomizeCar(carIndex)}>
+        <button
+          className="glow-button"
+          onClick={() => handleCustomizeCar(carIndex)}
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+            border: ` 2px solid ${formData.glowColor}`,
+            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+          }}
+        >
           Customize Car
         </button>
-        {/* {editingCarIndex === carIndex && ( // Render EditCar if this car is being edited
-            <EditCar car={car} onUpdate={handleUpdateCar} /> */}
-        {/* )} */}
       </div>
     </div>
   );

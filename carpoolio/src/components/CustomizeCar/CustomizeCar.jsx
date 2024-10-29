@@ -20,6 +20,7 @@ export default function CustomizeCar({
   const [seatDistribution, setSeatDistribution] = useState(
     formData.cars[activeCarIndex].seatDistribution
   );
+  const [carName, setCarName] = useState(formData.cars[activeCarIndex].carName);
 
   useEffect(() => {
     console.log({
@@ -29,6 +30,11 @@ export default function CustomizeCar({
       seatDistribution,
     });
   }, [carColor, numSeats, seatNames, seatDistribution]);
+
+  // const changeCarName = (event) => {
+  //   const newName = event.target.value;
+  //   setCarName(newName);
+  // };
 
   const changeCarColor = (event) => {
     const newColor = event.target.value;
@@ -68,8 +74,7 @@ export default function CustomizeCar({
       const updatedCars = [...formData.cars];
       updatedCars[activeCarIndex] = {
         ...updatedCars[activeCarIndex],
-        // add changes here
-        // view changes in the state then save them to form data on save car
+        carName: carName,
         carColor: carColor,
         numSeats: numSeats,
         seatNames: seatNames,
@@ -85,6 +90,12 @@ export default function CustomizeCar({
 
   return (
     <>
+      {/* <input
+        key="carName"
+        id="carName"
+        value={formData?.cars[activeCarIndex].carName || "Optional Car Name"}
+        onChange={changeCarName}
+      /> */}
       <div className="render-car-container">
         <DefaultCar
           carColor={carColor}
@@ -167,89 +178,33 @@ export default function CustomizeCar({
         </div>
       </div>
 
-      {/* <NumSeats formData={formData} setFormData={setFormData} /> */}
-
-      <>
-        <div className="custom-car-option">
-          <label htmlFor="car-color">Change Car Color </label>
-          <input
-            className="car-color-picker"
-            type="color"
-            id="car-color"
-            name="carColor"
-            value={carColor}
-            onChange={changeCarColor}
-          />
-          <p className="custom-car-option">
+      <div className="custom-car-option">
+        <label htmlFor="car-color">Change Car Color</label>
+        <input
+          className="car-color-picker"
+          type="color"
+          id="car-color"
+          name="carColor"
+          key="carColor"
+          value={carColor}
+          onChange={changeCarColor}
+        />
+        {/* <p className="custom-car-option">
             Number of avaliable seats: {numSeats}
-          </p>
-          <button
-            className="glow-button"
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-              border: ` 2px solid ${formData.glowColor}`,
-              boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-              // Temporary
-              // position: "absolute",
-              // bottom: 0,
-              // right: 0,
-            }}
-            onClick={handleSaveCar}
-          >
-            save car
-          </button>
-        </div>
-      </>
-
-      {/* // spotify playlist 
-
-                // car chat  */}
-
-      {/* <CarIcon fill={carColor} /> {/* Set the color dynamically */}
-      {/* <button className="glow-button" onClick={changeCarColor}>Change Car Color</button> */}
-
-      {/* <h6>{formData.name}</h6> */}
+          </p> */}
+        <button
+          className="glow-button"
+          id="save-car-btn"
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+            border: ` 2px solid ${formData.glowColor}`,
+            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+          }}
+          onClick={handleSaveCar}
+        >
+          save car
+        </button>
+      </div>
     </>
   );
 }
-
-//logic for if you want to add a new car and have it calculate how many seats per row based on numSeats
-//maybe l8r
-//   const handleSeatDistribution = () => {
-//     const totalSeats = formData.numSeats; // account for the driver
-
-//     // default seat distribution
-//     const defaultFrontSeats = Math.min(2, totalSeats); // at least two front seats if there are seats
-//     const defaultMiddleSeats = Math.min(3, totalSeats - defaultFrontSeats); // middle row gets remaining seats, max 3
-//     const defaultBackSeats = Math.min(
-//       3,
-//       totalSeats - (defaultFrontSeats + defaultMiddleSeats)
-//     ); // assign remaining seats to back, max 3
-//     const remainingSeats =
-//       totalSeats - (defaultFrontSeats + defaultMiddleSeats + defaultBackSeats);
-
-//     // divide the seats into rows (max 3 seats per row)
-//     const newSeats = {
-//       row1: defaultFrontSeats, // front seats
-//       row2: defaultMiddleSeats, // middle seats
-//       row3: defaultBackSeats, // back seats
-//       row4: Math.min(3, remainingSeats), // assign remaining seats to row 4
-//     };
-
-// const newSeatNames = {
-//   // do I need?
-//   // initialize seat names if they don't exist
-//   row1: formData.cars[activeCarIndex].seatNames?.row1 || [],
-//   row2: formData.cars[activeCarIndex].seatNames?.row2 || [],
-//   row3: formData.cars[activeCarIndex].seatNames?.row3 || [],
-//   row4: formData.cars[activeCarIndex].seatNames?.row4 || [],
-// };
-
-// update formData with new seat distribution and names
-
-// setFormData({
-//   ...formData,
-//   seatDistribution: newSeats,
-//   seatNames: newSeatNames,
-// });
-//   };

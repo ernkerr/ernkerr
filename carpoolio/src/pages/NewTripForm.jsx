@@ -10,6 +10,7 @@ import GetDestination from "../components/NewTripForm/GetDestination";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
+  const [isCustomizeTrip, setIsCustomizingTrip] = useState(false); // New state for CustomizeTrip
 
   const [formData, setFormData] = useState({
     name: "",
@@ -23,7 +24,7 @@ export default function NewTripForm() {
     glowColor: "#34bd34",
     lighterGlowColor: "",
     cars: [],
-    // carName: "",
+    carName: "",
     // newCarColorGradient: "",
     carColor: "",
     numSeats: 5,
@@ -47,8 +48,8 @@ export default function NewTripForm() {
       case 3:
         return <CustomizeTrip formData={formData} setFormData={setFormData} />;
 
-      case 4:
-        return <TripPage formData={formData} setFormData={setFormData} />;
+      // case 4:
+      //   return <TripPage formData={formData} setFormData={setFormData} />;
     }
   };
 
@@ -71,6 +72,9 @@ export default function NewTripForm() {
         style={{
           boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}, 0 0 20px ${formData?.lighterGlowColor}`,
           background: `${formData?.glowColor}`,
+          height: page === 3 ? "90dvh" : "85dvh", // Increase height when on CustomizeTrip
+          width: page === 3 ? "95dvw" : "80dvw", // Increase width when on CustomizeTrip
+          // transition: "all 0.3s ease", // Smooth transition for resizing
         }}
       >
         <div
@@ -98,6 +102,7 @@ export default function NewTripForm() {
                 back
               </button>
             )}
+
             {/* Show the continue button on all pages except page 4 */}
             {page !== 4 && (
               <button

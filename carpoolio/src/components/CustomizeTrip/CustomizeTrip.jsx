@@ -6,7 +6,6 @@ import Destination from "./Destination/Destination.jsx";
 import TripBackground from "./TripBackground";
 import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
-
 import "./CustomizeTrip.css";
 
 export default function CustomizeTrip({ formData, setFormData }) {

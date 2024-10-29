@@ -30,8 +30,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
+  scrollbar-width: none; /* For Firefox */
 }
 
+.container::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Chrome, Safari, Edge */
+}
 /* Center elements and space them nicely */
 .container > * {
   margin-bottom: 20px;

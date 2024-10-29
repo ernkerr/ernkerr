@@ -10,9 +10,9 @@ export default function GetDestination({ formData, setFormData }) {
     const selectedAddress = place.formatted_address || ""; // check if the place has a formatted address
 
     // set the destination in formData to the selected place's name and address
-    const tripDestination = selectedAddress
-      ? `${selectedPlaceName}, ${selectedAddress}`
-      : selectedPlaceName;
+    const tripDestination = selectedAddress.includes(selectedPlaceName)
+      ? selectedAddress
+      : `${selectedPlaceName}, ${selectedAddress}`;
 
     setDestination(tripDestination);
     setFormData({ ...formData, destination: tripDestination });
