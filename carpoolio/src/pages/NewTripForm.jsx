@@ -9,7 +9,7 @@ import GetDestination from "../components/NewTripForm/GetDestination";
 
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
-  const [isCustomizingTrip, setIsCustomizingTrip] = useState(false); // New state for CustomizeTrip
+  const [isPreviewingTrip, setIsPreviewingTrip] = useState(false); // New state for CustomizeTrip
 
   const [formData, setFormData] = useState({
     name: "",
@@ -50,7 +50,7 @@ export default function NewTripForm() {
           <CustomizeTrip
             formData={formData}
             setFormData={setFormData}
-            isCustomizingTrip={isCustomizingTrip}
+            isPreviewingTrip={isPreviewingTrip}
           />
         );
 
@@ -64,11 +64,11 @@ export default function NewTripForm() {
   }
 
   function handlePreview() {
-    setIsCustomizingTrip(true);
+    setIsPreviewingTrip(true);
   }
 
   function handleEdit() {
-    setIsCustomizingTrip(false);
+    setIsPreviewingTrip(false);
   }
 
   return (
@@ -133,7 +133,7 @@ export default function NewTripForm() {
             )}
 
             {page > 2 &&
-              (isCustomizingTrip ? (
+              (isPreviewingTrip ? (
                 <button
                   style={{
                     background:

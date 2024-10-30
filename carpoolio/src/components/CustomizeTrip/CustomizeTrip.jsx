@@ -12,7 +12,7 @@ import Description from "./Description/Description.jsx";
 export default function CustomizeTrip({
   formData,
   setFormData,
-  isCustomizingTrip,
+  isPreviewingTrip,
 }) {
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
@@ -85,22 +85,26 @@ export default function CustomizeTrip({
         <TripName
           formData={formData}
           setFormData={setFormData}
-          isCustomizingTrip={isCustomizingTrip}
+          isPreviewingTrip={isPreviewingTrip}
         />
 
         <Destination
           formData={formData}
           setFormData={setFormData}
-          isCustomizingTrip={isCustomizingTrip}
+          isPreviewingTrip={isPreviewingTrip}
         />
-        <DateSelector formData={formData} setFormData={setFormData} />
+        <DateSelector
+          formData={formData}
+          setFormData={setFormData}
+          isPreviewingTrip={isPreviewingTrip}
+        />
         <Description
           formData={formData}
           setFormData={setFormData}
-          isCustomizingTrip={isCustomizingTrip}
+          isPreviewingTrip={isPreviewingTrip}
         />
 
-        {!isCustomizingTrip && (
+        {!isPreviewingTrip && (
           <div className="styling-container">
             <TripBackground formData={formData} setFormData={setFormData} />
             {/* set the glow color  */}

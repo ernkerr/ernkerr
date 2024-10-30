@@ -7,9 +7,14 @@ import "./DateSelector.css";
 
 // go back to opening in a modal?
 
-export default function DateSelector({ formData, setFormData }) {
+export default function DateSelector({
+  formData,
+  setFormData,
+  isPreviewingTrip,
+}) {
+  // State to manage visibility of calendar and time selector
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
-  const [isTimeSelectorVisible, setIsTimeSelectorVisible] = useState(false); // Time selector state
+  const [isTimeSelectorVisible, setIsTimeSelectorVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
   // Toggle calendar visibility
@@ -17,6 +22,7 @@ export default function DateSelector({ formData, setFormData }) {
     setIsCalendarVisible((prev) => !prev);
   };
 
+  // Toggle time selector visibility
   const toggleTimeSelector = () => {
     setIsTimeSelectorVisible((prev) => !prev);
   };
@@ -26,65 +32,94 @@ export default function DateSelector({ formData, setFormData }) {
     if (date) {
       setSelectedDate(date); // Set selected date
 
+      // Format date for display
       const formattedDate = date.toLocaleDateString("en-US", {
         weekday: "long",
         month: "long",
         day: "numeric",
       });
 
+      // Update formData with the selected date
       setFormData({ ...formData, tripDate: formattedDate });
-      setIsCalendarVisible(false);
+      setIsCalendarVisible(false); // Close calendar after date is selected
     }
   };
 
-  // extract month and day for calendar icon
+  // Extract month and day for calendar icon display
   const tripDateObj =
-    formData.tripDate && formData.tripDate !== "TBD"
+    formData.tripDate && formData.tripDate !== "TBD" // Check if tripDate is set and not "TBD"
       ? new Date(formData.tripDate)
       : null;
   const tripMonth = tripDateObj
     ? tripDateObj.toLocaleDateString("en-US", { month: "short" })
-    : ""; // Get month abbreviation
+    : ""; // Get month abbreviation or empty if "TBD"
   const tripDay = tripDateObj ? tripDateObj.getDate() : "TBD"; // Get day of the month or show "TBD"
 
   return (
     <div className="date-selector">
-      <div className="calendar-icon-container">
+      {/* Show calendar icon only if customizing or tripDate is set (and not "TBD") */}
+      {!isPreviewingTrip ||
+      (formData.tripDate && formData.tripDate !== "TBD") ? (
+        <>
+          <div className="calendar-icon-container">
+            <button
+              style={{
+                background: formData?.tripBackground?.scrim || "transparent",
+              }}
+              className="date-icon"
+              onClick={toggleCalendar}
+            >
+              <div className="month">{tripMonth || " "}</div>
+              <div className="day">{tripDay || "TBD"}</div>
+            </button>
+
+            <div className="date-text-container">
+              {/* Conditionally render the tripDate button if tripDate exists and is not "TBD" */}
+              {formData.tripDate && formData.tripDate !== "TBD" && (
+                <>
+                  <button
+                    style={{
+                      background:
+                        formData?.tripBackground?.scrim || "transparent",
+                    }}
+                    className="date-text"
+                    onClick={toggleCalendar}
+                  >
+                    {formData.tripDate}
+                  </button>
+                  <button
+                    style={{
+                      background:
+                        formData?.tripBackground?.scrim || "transparent",
+                    }}
+                    className="time-text"
+                    onClick={toggleTimeSelector}
+                  >
+                    <img src={clockIcon} alt="Departure Time Icon" />
+                    {formData.departureTime || "TBD"}
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </>
+      ) : null}
+
+      {/* Always render the time selector button if a tripDate is selected */}
+      {/* {formData.tripDate && (
         <button
           style={{
             background: formData?.tripBackground?.scrim || "transparent",
           }}
-          className="date-icon"
-          onClick={toggleCalendar}
+          className="time-text"
+          onClick={toggleTimeSelector}
         >
-          <div className="month">{tripMonth || " "}</div>
-          <div className="day">{tripDay || "TBD"}</div>
+          <img src={clockIcon} alt="Departure Time Icon" />
+          {formData.departureTime || "TBD"}
         </button>
-        <div className="date-text-container">
-          <button
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-            }}
-            className="date-text"
-            onClick={toggleCalendar}
-          >
-            {formData.tripDate ? formData.tripDate : ""}
-          </button>
+      )} */}
 
-          <button
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-            }}
-            className="time-text"
-            onClick={toggleTimeSelector}
-          >
-            {" "}
-            <img src={clockIcon} alt="Departure Time Icon" />
-            {formData.departureTime || "TBD"}
-          </button>
-        </div>
-      </div>
-
+      {/* Render DayPicker if calendar is visible */}
       {isCalendarVisible && (
         <>
           <DayPicker
@@ -107,7 +142,7 @@ export default function DateSelector({ formData, setFormData }) {
               className="calendar-button"
               onClick={() => {
                 toggleCalendar();
-                formData.tripDate = "TBD";
+                formData.tripDate = "TBD"; // Reset tripDate to "TBD"
               }}
             >
               Not sure yet
@@ -126,6 +161,7 @@ export default function DateSelector({ formData, setFormData }) {
         </>
       )}
 
+      {/* Render TimeSelector if time selector is visible */}
       {isTimeSelectorVisible && (
         <TimeSelector
           formData={formData}

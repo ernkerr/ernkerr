@@ -1,16 +1,16 @@
 import "./TripName.css";
 
-export default function TripName({ formData, setFormData, isCustomizingTrip }) {
+export default function TripName({ formData, setFormData, isPreviewingTrip }) {
   return (
     <>
       <input
         className="trip-title"
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
-          border: isCustomizingTrip
+          border: isPreviewingTrip
             ? "2px solid transparent"
             : "2px solid rgba(255, 255, 255, 0.182)",
-          borderRadius: isCustomizingTrip ? "0" : "5px",
+          borderRadius: isPreviewingTrip ? "0" : "5px",
         }}
         type="text"
         required
