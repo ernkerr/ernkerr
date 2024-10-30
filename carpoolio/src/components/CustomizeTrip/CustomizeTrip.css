@@ -12,16 +12,9 @@
   width: 40dvw;
 }
 
-/* trip name and destination  */
-/* width: 35dvw; */
-/* height: 70vh;
-  min-height: 40vh;
-  width: 80dvw; */
-
-/* date and time  */
-/* display: flex;
-  flex-direction: column;
-  width: 35vw; */
+#destination-button {
+  width: 100%;
+}
 
 /* glow color and background */
 .styling-container {
@@ -78,7 +71,7 @@
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
   margin-top: var(--margin-top-button);
-  padding: var(--paddding-button);
+  padding: var(--padding-button);
   display: flex;
   align-items: center;
   text-align: left;
@@ -119,11 +112,6 @@
 .day-picker {
   width: 50%;
   margin-top: var(--margin-top-button);
-}
-
-/* set a destination  */
-#destination-button {
-  width: 100%;
 }
 
 /* // backgrounds  */

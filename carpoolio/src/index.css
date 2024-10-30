@@ -59,12 +59,12 @@ body::-webkit-scrollbar {
 
   /* titles */
   --font-size-title: 2.5em;
-  --height-title: 4vh;
+  --height-title: 4dvh;
   --padding-title: 5px;
 
   /* buttons */
   --font-size-button: 1.2em;
-  --height-button: 4vh;
+  --height-button: 4dvh;
 
   --border-radius-button: 5px;
   --margin-top-button: 1dvh;

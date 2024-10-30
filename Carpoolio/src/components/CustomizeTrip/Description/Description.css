@@ -1,8 +1,11 @@
-.destination-btn {
+#description-textarea {
   color: white;
   background: none;
   font-family: var(--main-font);
   font-size: var(--font-size-button);
+  min-height: 4dvh;
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
   margin-top: var(--margin-top-button);
   padding: 10px;
   display: flex;
@@ -10,5 +13,7 @@
   text-align: left;
   cursor: pointer;
   padding-left: 0.5dvw;
-  letter-spacing: 0.04em;
+  box-sizing: border-box;
+  resize: none;
+  overflow-y: hidden;
 }
