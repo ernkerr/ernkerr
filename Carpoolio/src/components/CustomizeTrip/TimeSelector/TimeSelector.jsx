@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../CustomizeTrip.css";
+// import "../CustomizeTrip.css";
 import "./TimeSelector.css";
 
 export function TimeSelector({ formData, setFormData, toggleTimeSelector }) {
@@ -76,30 +76,27 @@ export function TimeSelector({ formData, setFormData, toggleTimeSelector }) {
             </select>
           </div>
         </div>
-
-        <>
-          <button
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-            }}
-            className="time-calendar-button"
-            onClick={handleTimeChange}
-          >
-            Okay
-          </button>
-          <button
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-            }}
-            className="time-calendar-button"
-            onClick={() => {
-              formData.departureTime = "TBD";
-              toggleTimeSelector(); // Hide the time selector
-            }}
-          >
-            Not sure yet
-          </button>
-        </>
+        <button
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
+          className="time-calendar-button"
+          onClick={handleTimeChange}
+        >
+          Okay
+        </button>
+        <button
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
+          className="time-calendar-button"
+          onClick={() => {
+            formData.departureTime = "TBD";
+            toggleTimeSelector(); // Hide the time selector
+          }}
+        >
+          TBD
+        </button>
       </div>
     </>
   );

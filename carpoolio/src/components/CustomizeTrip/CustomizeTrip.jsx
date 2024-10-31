@@ -161,7 +161,7 @@ export default function CustomizeTrip({
         <button
           onClick={handleAddNewCar}
           className="glow-button"
-          id="add-new-car-btn"
+          id="new-car-btn"
           style={{
             background: formData?.tripBackground?.scrim || "transparent",
             border: ` 2px solid ${formData.glowColor}`,

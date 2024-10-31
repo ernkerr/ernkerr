@@ -1,32 +1,35 @@
 /* set a time */
 .time-picker-container {
-  width: 99%;
+  width: 40dvw;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 5px;
+  gap: 0.5dvw;
   margin-top: var(--margin-top-button);
+  box-sizing: border-box;
 }
 
 .time-column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  width: 6dvw;
+  box-sizing: border-box;
+  width: 20%;
 }
 
 .scrollable select {
+  width: 100%;
   color: white;
   font-family: var(--main-font);
   font-size: var(--font-size-button);
   border: none;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  margin-top: var(--margin-top-button);
-  padding: var(--paddding-button);
-  padding: 10px;
+  /* margin-top: var(--margin-top-button); */
+  padding: 0.2dvw;
+
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .time-calendar-button {
@@ -37,5 +40,7 @@
   height: 100%;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
+  cursor: pointer;
   box-sizing: border-box;
+  width: 20%;
 }
