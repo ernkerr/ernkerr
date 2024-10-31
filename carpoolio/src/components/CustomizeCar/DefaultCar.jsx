@@ -2,8 +2,14 @@ import hexRgb from "hex-rgb";
 
 export default function DefaultCar({ carColor }) {
   const { red: r, green: g, blue: b } = hexRgb(carColor);
+
+  // Clamp function to ensure RGB values stay within 0-255
+  const clamp = (value) => Math.max(0, Math.min(255, value));
+
   const newCarColor = `rgb(${r},${g},${b})`;
-  const newCarColorGradient = `rgb(${r + 5},${g + 5},${b + 5})`;
+  const newCarColorGradient = `rgb(${clamp(r + 20)},${clamp(g + 20)},${clamp(
+    b + 20
+  )})`;
 
   //   const { red: ur, green: ug, blue: ub } = hexRgb(underglowColor);
   //   const newUnderglowColor = `rgb(${ur},${ug},${ub})`;
@@ -26,8 +32,8 @@ export default function DefaultCar({ carColor }) {
       >
         <defs id="defs173">
           <linearGradient id="linearGradient239">
-            <stop id="stop240" stopColor={newCarColor} offset={0} />
-            <stop id="stop241" stopColor={newCarColorGradient} offset={1} />
+            <stop id="stop240" stopColor={newCarColor} offset="0%" />
+            <stop id="stop241" stopColor={newCarColorGradient} offset="100%" />
           </linearGradient>
           <radialGradient
             id="radialGradient3189"

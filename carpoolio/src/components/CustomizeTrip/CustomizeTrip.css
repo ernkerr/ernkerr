@@ -1,6 +1,6 @@
 .customize-trip-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 70vh;
   min-height: 40vh;
   width: 80dvw;
@@ -10,6 +10,17 @@
   display: flex;
   flex-direction: column;
   width: 40dvw;
+}
+
+.customize-car-container {
+  display: flex;
+  flex-direction: column;
+  /* height: 50dvh; */
+  width: 40dvw;
+  flex-wrap: wrap;
+  /* justify-content: flex-start; Aligns items at the start of the row */
+  /* align-items: flex-start; Aligns items at the top of the row */
+  /* overflow-y: scroll; */
 }
 
 #destination-button {
@@ -35,16 +46,6 @@
   right: 9dvw;
   padding: 10px 30px; /* Wider padding for oval shape */
   border-radius: 50px; /* High border-radius for oval */
-}
-
-.customize-car-container {
-  display: flex;
-  flex-direction: row;
-  height: 50dvh;
-
-  flex-wrap: wrap;
-  /* justify-content: flex-start; Aligns items at the start of the row */
-  /* align-items: flex-start; Aligns items at the top of the row */
 }
 
 /* main btn styling */
@@ -79,7 +80,7 @@
 
 /* optional buttons for customization  */
 
-.calendar-button-container {
+/* .calendar-button-container {
   width: 50%;
   display: flex;
   justify-content: space-between;
@@ -100,7 +101,7 @@
 .day-picker {
   width: 50%;
   margin-top: var(--margin-top-button);
-}
+} */
 
 /* // backgrounds  */
 /* TripBackground.css */
