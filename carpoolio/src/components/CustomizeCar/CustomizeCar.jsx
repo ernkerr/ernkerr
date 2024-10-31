@@ -98,6 +98,7 @@ export default function CustomizeCar({
       /> */}
       <div className="render-car-container">
         <DefaultCar
+          key={activeCarIndex}
           carColor={carColor}
           style={{ width: "100%", height: "auto" }}
         />

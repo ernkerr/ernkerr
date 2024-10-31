@@ -27,8 +27,6 @@ export default function CustomizeTrip({
   }, [newCarCreated]);
 
   const handleAddNewCar = () => {
-    // Add a new car to formData.cars
-    // [...existingCars, new car: {}]
     const newCar = {
       carColor: "#216191",
       numSeats: 5,
@@ -45,7 +43,7 @@ export default function CustomizeTrip({
     });
 
     const newCarIndex = formData?.cars.length;
-    console.log(`active car index: ${newCarIndex}`);
+    console.log(`new car index: ${newCarIndex}`);
 
     setActiveCarIndex(newCarIndex);
     setNewCarCreated(true);
@@ -131,7 +129,6 @@ export default function CustomizeTrip({
         {formData.cars.map((car, index) => {
           if (index === activeCarIndex && isCustomizingCar) {
             return (
-              // <div className="customize-car">
               <CustomizeCar
                 key={index}
                 formData={formData}
@@ -140,7 +137,6 @@ export default function CustomizeTrip({
                 setActiveCarIndex={setActiveCarIndex}
                 setIsCustomizingCar={setIsCustomizingCar}
               />
-              // </div>
             );
           } else {
             return (

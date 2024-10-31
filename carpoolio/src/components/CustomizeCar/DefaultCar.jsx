@@ -191,19 +191,19 @@ export default function DefaultCar({ carColor }) {
           fillRule="evenodd"
           stroke="#000"
           strokeWidth="1pt"
-          fill="url(#radialGradient3205)"
+          fill={carColor} // outside body
         />
         <path
           id="path272"
           d="m41.537 281.88s21.534 82.442 21.534 82.442 0 154.58-3.0758 157.15c-3.0771 2.5759-27.686 46.372-27.686 46.372s6.1517-280.81 9.2288-285.97z"
           fillRule="evenodd"
-          fill="url(#radialGradient3200)"
+          fill={carColor} // left window
         />
         <path
           id="path274"
           d="m318.84 276.88s-21.534 82.442-21.534 82.442 0 154.58 3.0758 157.15c3.0771 2.5759 27.686 46.372 27.686 46.372s-6.1517-280.81-9.2288-285.97z"
           fillRule="evenodd"
-          fill="url(#radialGradient3197)"
+          fill={carColor} // right window
         />
         <path
           id="path230"
@@ -212,13 +212,13 @@ export default function DefaultCar({ carColor }) {
           fillRule="evenodd"
           stroke="#000"
           strokeWidth="1pt"
-          fill={carColor}
+          fill={carColor} // hoood
         />
         <path
           id="path275"
           d="m41.764 257.39s65.53-26.897 138.64-27.585c65.833-0.64088 95.565 9.623 135.61 25.019-4.8534 48.756-9.7078 94.943-21.843 110.34-111.64-28.23-118.92-28.23-230.56 0-2.43-15.39-24.273-105.21-21.846-107.77z"
           fillRule="evenodd"
-          fill="url(#radialGradient3193)"
+          fill={carColor} // windshieild
         />
         <path
           id="path185"
@@ -232,7 +232,7 @@ export default function DefaultCar({ carColor }) {
           id="path270"
           d="m75.697 531.43c-12.369 59.368-22.263 173.16-22.263 173.16 19.79 17.316 121.21 24.737 123.69 24.737 7.4212 0 108.84-7.4212 126.16-32.158 0-14.842-9.8956-121.21-19.79-168.21-86.579 12.368-202.84 7.4212-207.79 2.4734z"
           fillRule="evenodd"
-          fill="url(#radialGradient3189)"
+          fill={carColor} // back windshield
         />
         <path
           id="path188"
