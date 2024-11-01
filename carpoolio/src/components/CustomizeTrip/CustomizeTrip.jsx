@@ -74,9 +74,10 @@ export default function CustomizeTrip({
     }));
   };
 
-  function handleClick() {
+  function handleSave() {
     // add to database
     // create a dynamic route
+    // create api here
     console.log("send data to database");
     console.log(formData);
   }
@@ -171,6 +172,8 @@ export default function CustomizeTrip({
       >
         + add a car
       </button>
+
+      {/* // save & handle save  */}
     </div>
   );
 }

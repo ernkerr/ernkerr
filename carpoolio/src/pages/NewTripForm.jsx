@@ -161,14 +161,7 @@ export default function NewTripForm() {
                   preview
                 </button>
               ))}
-
-            {/* add a car functionality */}
-            {/* {page == 1 && (
-              <>
-                <NewCar formData={formData} setFormData={setFormData} />
-              </>
-              // style it like a plus in the bottom corner  + add a car : brings up a modal not a new page!
-            )} */}
+            {/* save trip functionality  */}
           </div>
         </div>
       </div>
