@@ -23,6 +23,7 @@ export default function NewTripForm() {
     underglowColor: "",
     glowColor: "#34bd34",
     lighterGlowColor: "",
+    transparentGlowColor: "#4bfe4b52",
     cars: [],
     carName: "",
     // newCarColorGradient: "",
@@ -154,7 +155,7 @@ export default function NewTripForm() {
                     border: ` 2px solid ${formData?.glowColor}`,
                     boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
                   }}
-                  className="glow-button"
+                  className="customize-trip-glow-btns"
                   onClick={handlePreview}
                 >
                   preview

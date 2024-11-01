@@ -28,6 +28,7 @@ export default function CustomizeTrip({
 
   const handleAddNewCar = () => {
     const newCar = {
+      carName: "untitled car",
       carColor: "#216191",
       numSeats: 5,
       seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
@@ -63,10 +64,13 @@ export default function CustomizeTrip({
     )}, ${Math.min(b + 10, 255)})`;
     // TODO: recalculate lighterGlowColor without having to store it in the database
 
+    const transparentGlowColor = `rgba(${r}, ${g}, ${b}, 0.6)`;
+
     setFormData((prevData) => ({
       ...prevData,
       glowColor: newGlowColor,
       lighterGlowColor: lighterGlowColor,
+      transparentGlowColor: transparentGlowColor,
     }));
   };
 
@@ -85,7 +89,6 @@ export default function CustomizeTrip({
           setFormData={setFormData}
           isPreviewingTrip={isPreviewingTrip}
         />
-
         <Destination
           formData={formData}
           setFormData={setFormData}
@@ -125,7 +128,7 @@ export default function CustomizeTrip({
           </div>
         )}
       </div>
-      <div className="customize-car-container">
+      <div className="car-container">
         {formData.cars.map((car, index) => {
           if (index === activeCarIndex && isCustomizingCar) {
             return (
@@ -157,10 +160,11 @@ export default function CustomizeTrip({
 
       <button
         onClick={handleAddNewCar}
-        className="glow-button"
+        className="customize-trip-glow-btns"
         id="new-car-btn"
         style={{
-          background: formData?.tripBackground?.scrim || "transparent",
+          background:
+            formData?.tripBackground?.scrim || formData.transparentGlowColor,
           border: ` 2px solid ${formData.glowColor}`,
           boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
         }}

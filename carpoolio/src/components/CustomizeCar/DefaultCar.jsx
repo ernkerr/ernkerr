@@ -218,7 +218,7 @@ export default function DefaultCar({ carColor }) {
           id="path275"
           d="m41.764 257.39s65.53-26.897 138.64-27.585c65.833-0.64088 95.565 9.623 135.61 25.019-4.8534 48.756-9.7078 94.943-21.843 110.34-111.64-28.23-118.92-28.23-230.56 0-2.43-15.39-24.273-105.21-21.846-107.77z"
           fillRule="evenodd"
-          fill={carColor} // windshieild
+          fill={carColor} // windshield
         />
         <path
           id="path185"

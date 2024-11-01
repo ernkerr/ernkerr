@@ -6,6 +6,7 @@
   padding: var(--padding-title);
   align-items: flex-start;
   cursor: pointer;
+  margin-top: 2dvh;
   padding-left: 0.5dvw;
   letter-spacing: 0.07em;
 }

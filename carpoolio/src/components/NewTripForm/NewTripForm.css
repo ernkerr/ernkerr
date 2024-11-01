@@ -12,20 +12,20 @@
   /* max-width: 1500px; */
   padding: 5px;
   width: 80dvw;
-  height: 85dvh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 /* Container with gradient border and glow */
 .container {
-  padding: 20px;
+  /* padding: 20px; */
   border-radius: 1rem;
   background-color: rgb(0, 0, 0);
   /* max-width: 1500px; */
   margin: auto;
   width: 100%;
-  height: -webkit-fill-available; /* Fill the parent container */
+  height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,7 +51,7 @@
 .text-input {
   border: 2px solid rgb(52, 189, 52);
   border-radius: 15px;
-  background-color: rgba(75, 254, 75, 0.323);
+  background-color: #4bfe4b52;
   height: 50px;
   width: 30vw;
   padding: 15px;

@@ -75,7 +75,7 @@ body::-webkit-scrollbar {
   --transparent: rgba(255, 255, 255, 0.182);
   --transparent-border: 2px solid rgba(255, 255, 255, 0.182);
   --yellow-glow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00;
-  --main-green: rgb(52, 189, 52);
+  --main-green: #34bd3490;
   --green-glow: 0 0 5px #04aa6d, 0 0 15px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5);
   --green-glow-hover: 0 0 5px #04aa6d, 0 0 15px #04aa6d,
     0 0 30px rgba(0, 255, 0, 0.5);
