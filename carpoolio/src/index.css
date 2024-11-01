@@ -84,3 +84,7 @@ body::-webkit-scrollbar {
 /* delete */
 /* text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff; Electric blue glow */
 /* box-shadow: 0 0 5px #00BFFF, 0 0 10px #00BFFF, 0 0 15px #00BFFF; Electric blue glow */
+
+/* #root::-webkit-scrollbar {
+  height: 10px;
+} */

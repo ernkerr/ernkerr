@@ -12,7 +12,6 @@ import city8bit from "../../assets/gifs/8bitcity.gif";
 import drivefast from "../../assets/gifs/drivefast.gif";
 import heatwave from "../../assets/gifs/heatwave.gif";
 import icy from "../../assets/gifs/icy.gif";
-
 import purple from "../../assets/gifs/purple.gif";
 // import orange from "../../assets/gifs/orange.gif";
 // import red from "../../assets/gifs/red.gif";
@@ -20,7 +19,6 @@ import purple from "../../assets/gifs/purple.gif";
 // import moreclouds from "../../assets/gifs/moreclouds.gif";
 // import pixelcity from "../../assets/gifs/pixelcity.gif";
 // import roomService from "../../assets/gifs/roomService.gif";
-
 import blue from "../../assets/gifs/blue.gif";
 import wavy from "../../assets/gifs/circles.gif";
 import palms from "../../assets/gifs/palms.gif";
@@ -29,13 +27,10 @@ import purpleaura from "../../assets/gifs/purpleaura.gif";
 import silverliquid from "../../assets/gifs/silverliquid.gif";
 // import stripes from "../../assets/gifs/stripes.gif";
 import sunwater from "../../assets/gifs/sunwater.gif";
-
 import warped from "../../assets/gifs/warped.gif";
 // import galaxy from "../../assets/gifs/galaxy.gif";
 // import wavelike from "../../assets/gifs/wavelike.gif";
-
 // import yellow from "../../assets/gifs/yellow.gif";
-
 // import purpleblobs from "../../assets/gifs/purpleblobs.gif";
 
 const backgrounds = [
