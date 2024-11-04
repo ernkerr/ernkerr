@@ -78,12 +78,12 @@
   background: none;
   /* background-color: #ebe7ef2c !important; */
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   height: var(--height-button);
   width: 40dvw;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
   padding: var(--padding-button);
   display: flex;
   align-items: center;
@@ -114,17 +114,17 @@
   color: white;
   background: none;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   height: var(--height-button);
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
   box-sizing: border-box;
 }
 
 .day-picker {
   width: 50%;
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
 }
 
 /* // backgrounds  */
@@ -139,7 +139,7 @@
   max-height: 200px; /* Set a maximum height for the scrollable area */
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
   width: 40dvw;
   font-family: var(--main-font);
   /* border: 1px solid #ccc; Optional: border around the container */
@@ -196,7 +196,7 @@
   color: white;
   background: none;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   height: 2.5vh;
   width: 20%;
   border: var(--transparent-border);

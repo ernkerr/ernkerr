@@ -1,6 +1,6 @@
 /* .car-name {
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+
   
 } */
 
@@ -50,7 +50,7 @@
 
   text-align: center;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   pointer-events: auto;
   font-size: 16px;
 }
@@ -69,10 +69,9 @@
   color: white;
   background: none;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
   height: var(--height-button);
   width: 50%;
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
   padding: var(--paddding-button);
   align-items: flex-start;
   text-align: left;
@@ -83,10 +82,10 @@
   color: white;
   background: none;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   /* height: var(--height-button); */
   /* width: 50%; */
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
   /* padding: var(--paddding-button); */
   cursor: pointer;
   display: flex;
@@ -100,13 +99,13 @@
   background: none;
   border: none;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   width: 95%; /* Take full width of parent */
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically if needed */
   margin: 0;
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
@@ -114,7 +113,6 @@
   color: white; /* Change placeholder text color to white */
   opacity: 1; /* Optional: Ensure full opacity for better visibility */
   font-family: var(--main-font);
-  /* font-size: var(--font-size-button); */
 }
 
 .color-picker-container {
@@ -123,7 +121,7 @@
   align-items: center; /* Center vertically */
   gap: 10px; /* Space between items */
   width: 95%; /* Take full width of parent */
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 

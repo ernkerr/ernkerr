@@ -2,8 +2,8 @@
   color: white;
   background: none;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
-  margin-top: var(--margin-top-button);
+  font-size: var(--font-size-small);
+  margin-top: var(--margin-small);
   padding: 10px;
   display: flex;
   align-items: center;

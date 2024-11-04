@@ -1,12 +1,12 @@
 /* trip title  */
 .trip-title {
   color: white;
-  font-family: var(--main-font);
-  font-size: var(--font-size-title);
+  /* font-family: var(--main-font); */
+  font-size: var(--font-size-large);
   padding: var(--padding-title);
   align-items: flex-start;
   cursor: pointer;
-  margin-top: 2dvh;
+  margin-top: var(--margin-medium);
   padding-left: 0.5dvw;
   letter-spacing: 0.07em;
 }

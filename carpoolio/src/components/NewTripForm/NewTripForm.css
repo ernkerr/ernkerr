@@ -92,7 +92,7 @@
   color: white;
   background: none;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   height: var(--height-button);
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
@@ -100,5 +100,5 @@
 }
 
 .calendar {
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
 }

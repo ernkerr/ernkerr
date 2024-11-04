@@ -2,11 +2,11 @@
   color: white;
   background: none;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   min-height: 40px;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
   padding: 10px;
   display: flex;
   align-items: center;

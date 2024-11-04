@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.5dvw;
-  margin-top: var(--margin-top-button);
+  margin-top: var(--margin-small);
   box-sizing: border-box;
 }
 
@@ -21,11 +21,10 @@
   width: 100%;
   color: white;
   font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   border: none;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  /* margin-top: var(--margin-top-button); */
   padding: 0.2dvw;
 
   cursor: pointer;
@@ -35,8 +34,7 @@
 .time-calendar-button {
   color: white;
   background: none;
-  font-family: var(--main-font);
-  font-size: var(--font-size-button);
+  font-size: var(--font-size-small);
   height: 100%;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
