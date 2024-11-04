@@ -22,25 +22,23 @@ export default function CustomizeCar({
   );
   const [carName, setCarName] = useState(formData.cars[activeCarIndex].carName);
 
-  useEffect(() => {
-    console.log({
-      carColor,
-      numSeats,
-      seatNames,
-      seatDistribution,
-    });
-  }, [carColor, numSeats, seatNames, seatDistribution]);
+  // useEffect(() => {
+  //   console.log({
+  //     carColor,
+  //     numSeats,
+  //     seatNames,
+  //     seatDistribution,
+  //   });
+  // }, [carColor, numSeats, seatNames, seatDistribution]);
 
-  // const changeCarName = (event) => {
-  //   const newName = event.target.value;
-  //   setCarName(newName);
-  // };
+  const changeCarName = (event) => {
+    const carName = event.target.value;
+    setCarName(carName);
+  };
 
   const changeCarColor = (event) => {
     const newColor = event.target.value;
-    setCarColor(newColor); // update local state to preview
-    console.log(`new car color: ${newColor}`);
-    console.log(`activeCarIndex: ${activeCarIndex}`);
+    setCarColor(newColor);
   };
 
   const handleSeatClick = (row, seatIndex, event) => {
@@ -90,12 +88,6 @@ export default function CustomizeCar({
 
   return (
     <>
-      {/* <input
-        key="carName"
-        id="carName"
-        value={formData?.cars[activeCarIndex].carName || "Optional Car Name"}
-        onChange={changeCarName}
-      /> */}
       <div className="render-car-container">
         <DefaultCar
           key={activeCarIndex}
@@ -180,19 +172,28 @@ export default function CustomizeCar({
       </div>
 
       <div className="custom-car-option">
-        <label htmlFor="car-color">Change Car Color</label>
         <input
-          className="car-color-picker"
-          type="color"
-          id="car-color"
-          name="carColor"
-          key="carColor"
-          value={carColor}
-          onChange={changeCarColor}
+          className="car-name"
+          key="carName"
+          id="carName"
+          value={carName}
+          placeholder="Optional Car Name"
+          onChange={changeCarName}
         />
-        {/* <p className="custom-car-option">
-            Number of avaliable seats: {numSeats}
-          </p> */}
+
+        <div className="color-picker-container">
+          <label htmlFor="car-color">Change Car Color</label>
+          <input
+            className="car-color-picker"
+            type="color"
+            id="car-color"
+            name="carColor"
+            key="carColor"
+            value={carColor}
+            onChange={changeCarColor}
+          />
+        </div>
+
         <button
           className="glow-button"
           id="save-car-btn"

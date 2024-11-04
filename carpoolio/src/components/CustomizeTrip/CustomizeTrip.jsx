@@ -28,7 +28,7 @@ export default function CustomizeTrip({
 
   const handleAddNewCar = () => {
     const newCar = {
-      carName: "untitled car",
+      carName: "",
       carColor: "#216191",
       numSeats: 5,
       seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
@@ -62,7 +62,7 @@ export default function CustomizeTrip({
       g + 10,
       255
     )}, ${Math.min(b + 10, 255)})`;
-    // TODO: recalculate lighterGlowColor without having to store it in the database
+    // TODO: recalculate lighterGlowColor without having to store it in the database ?
 
     const transparentGlowColor = `rgba(${r}, ${g}, ${b}, 0.6)`;
 
@@ -73,14 +73,6 @@ export default function CustomizeTrip({
       transparentGlowColor: transparentGlowColor,
     }));
   };
-
-  function handleSave() {
-    // add to database
-    // create a dynamic route
-    // create api here
-    console.log("send data to database");
-    console.log(formData);
-  }
 
   return (
     <div className="customize-trip-container">
@@ -172,8 +164,6 @@ export default function CustomizeTrip({
       >
         + add a car
       </button>
-
-      {/* // save & handle save  */}
     </div>
   );
 }

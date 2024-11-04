@@ -72,6 +72,13 @@ export default function NewTripForm() {
     setIsPreviewingTrip(false);
   }
 
+  function handleSave() {
+    // api call
+    // save trip and load new page
+    console.log("send data to database");
+    console.log(formData);
+  }
+
   return (
     <div
       className="full-screen-wrapper"
@@ -117,7 +124,6 @@ export default function NewTripForm() {
                 back
               </button>
             )}
-
             {/* Show the continue button on all pages except page 4 */}
             {page <= 2 && (
               <button
@@ -132,7 +138,6 @@ export default function NewTripForm() {
                 continue
               </button>
             )}
-
             {page > 2 &&
               (isPreviewingTrip ? (
                 <button
@@ -162,6 +167,19 @@ export default function NewTripForm() {
                 </button>
               ))}
             {/* save trip functionality  */}
+            {page > 2 && (
+              <button
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                  border: ` 2px solid ${formData?.glowColor}`,
+                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                }}
+                className="customize-trip-glow-btns"
+                onClick={handleSave}
+              >
+                save
+              </button>
+            )}
           </div>
         </div>
       </div>

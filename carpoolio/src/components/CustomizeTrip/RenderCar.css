@@ -11,6 +11,7 @@
   position: relative;
   /* margin-left: 50%; */
   /* margin-bottom: 10%; */
+  overflow: hidden;
 }
 
 .render-car-container svg {
@@ -83,12 +84,47 @@
   background: none;
   font-family: var(--main-font);
   font-size: var(--font-size-button);
-  height: var(--height-button);
-  margin-top: 1dvh;
+  /* height: var(--height-button); */
+  /* width: 50%; */
+  margin-top: var(--margin-top-button);
   /* padding: var(--paddding-button); */
-  align-items: flex-start;
-  text-align: left;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+
+.car-name {
+  color: white;
+  background: none;
+  border: none;
+  font-family: var(--main-font);
+  font-size: var(--font-size-button);
+  width: 95%; /* Take full width of parent */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically if needed */
+  margin: 0;
+  margin-top: var(--margin-top-button);
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.car-name::placeholder {
+  color: white; /* Change placeholder text color to white */
+  opacity: 1; /* Optional: Ensure full opacity for better visibility */
+  font-family: var(--main-font);
+  /* font-size: var(--font-size-button); */
+}
+
+.color-picker-container {
+  display: flex;
+  flex-direction: row; /* Ensure row layout */
+  align-items: center; /* Center vertically */
+  gap: 10px; /* Space between items */
+  width: 95%; /* Take full width of parent */
+  margin-top: var(--margin-top-button);
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .car-color-picker {
@@ -99,8 +135,8 @@
   width: 30%;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  padding: var(--paddding-button);
-  align-items: flex-start;
+  /* padding: var(--paddding-button); */
+
   text-align: left;
   cursor: pointer;
 }
