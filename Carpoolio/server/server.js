@@ -21,9 +21,10 @@ app.post("/api/trips", async (req, res) => {
     const newTrip = await prisma.trip.create({
       data: {
         tripName: tripData.tripName,
-        tripDate: new Date(tripData.tripDate), // Ensure date is in DateTime format
+        tripDate: tripData.tripDate,
         tripBackground: tripData.tripBackground,
         departureTime: tripData.departureTime,
+        destination: tripData.destination,
         tripDescription: tripData.tripDescription,
         glowColor: tripData.glowColor,
         lighterGlowColor: tripData.lighterGlowColor,

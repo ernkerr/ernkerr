@@ -9,11 +9,10 @@ import GetTripDate from "../components/NewTripForm/GetTripDate";
 import GetDestination from "../components/NewTripForm/GetDestination";
 import axios from "axios";
 
-const navigate = useNavigate();
-
 export default function NewTripForm() {
   const [page, setPage] = useState(0);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(false); // New state for CustomizeTrip
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     // name: "",
