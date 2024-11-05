@@ -12,3 +12,7 @@
   padding-left: 0.5dvw;
   letter-spacing: 0.04em;
 }
+
+.destination-btn::placeholder {
+  color: white;
+}

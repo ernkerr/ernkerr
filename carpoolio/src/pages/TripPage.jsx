@@ -27,3 +27,9 @@ export default function TripPage() {
     </div>
   );
 }
+
+// Example query to fetch a trip with its associated cars
+// const tripWithCars = await prisma.trip.findUnique({
+//   where: { id: tripId },
+//   include: { cars: true },
+// });

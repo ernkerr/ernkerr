@@ -17,3 +17,7 @@
   resize: none;
   overflow-y: hidden;
 }
+
+#description-textarea::placeholder {
+  color: white;
+}

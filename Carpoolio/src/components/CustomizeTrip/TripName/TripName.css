@@ -1,7 +1,7 @@
 /* trip title  */
 .trip-title {
   color: white;
-  /* font-family: var(--main-font); */
+  font-family: var(--main-font);
   font-size: var(--font-size-large);
   padding: var(--padding-title);
   align-items: flex-start;
