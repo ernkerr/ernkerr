@@ -39,11 +39,11 @@ export default function DateSelector({
         day: "numeric",
       });
 
-      // Convert selected date to ISO-8601 format for consistency with API
-      const isoFormattedDate = date.toISOString().split("T")[0]; // "YYYY-MM-DD"
+      // // Convert selected date to ISO-8601 format for consistency with API
+      // const isoFormattedDate = date.toISOString().split("T")[0]; // "YYYY-MM-DD"
 
       // Update formData with the selected date
-      setFormData({ ...formData, tripDate: isoFormattedDate });
+      setFormData({ ...formData, tripDate: formattedDate });
       setIsCalendarVisible(false); // Close calendar after date is selected
     }
   };

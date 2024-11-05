@@ -42,7 +42,7 @@ model Trip {
   tripName             String?
   // userName             String?
   // userEmail            String?
-  tripDate             DateTime?
+  tripDate             String?
   tripBackground       Json?      // To store more complex background data
   departureTime        String?
   destination          String?
