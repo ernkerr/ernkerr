@@ -14,7 +14,7 @@ app.use(cors(corsOptions));
 
 app.use(express.json()); // middleware to parse json
 
-app.post("/api/trips", async (req, res) => {
+app.post("/api/trip", async (req, res) => {
   try {
     const tripData = req.body; // full formData object from the client
     console.log(tripData);
@@ -49,12 +49,57 @@ app.post("/api/trips", async (req, res) => {
   }
 });
 
+app.get("/api/trip/:tripId/:adminId", async (req, res) => {
+  const { tripId, adminId } = req.params;
+
+  try {
+    const trip = await prisma.trip.findUnique({
+      where: { tripId },
+      include: { cars: true },
+    });
+
+    // Validate if adminId matches
+    if (!trip || trip.adminId !== adminId) {
+      return res
+        .status(404)
+        .json({ error: "Trip not found or admin ID does not match" });
+    }
+
+    res.json(trip); // Send the trip data as JSON
+  } catch (error) {
+    console.error("Error fetching trip:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching the trip" });
+  }
+});
+
+// GET route to retrieve a trip by its tripId
+app.get("/api/trip/:tripId", async (req, res) => {
+  const { tripId } = req.params;
+  try {
+    const trip = await prisma.trip.findUnique({
+      where: { tripId: parseInt(tripId) }, // Ensure tripId is the correct format (int if necessary)
+      include: { cars: true }, // Include related cars if needed
+    });
+
+    if (trip) {
+      res.json(trip); // Send the trip data as JSON
+    } else {
+      res.status(404).json({ error: "Trip not found" });
+    }
+  } catch (error) {
+    console.error("Error retrieving trip:", error);
+    res.status(500).json({ error: "Failed to retrieve trip" });
+  }
+});
+
 // example GET route
 // app.get("/api", (req, res) => {
 //   // send data here
 //   res.json({ fruits: ["apple", "orange", "banana"] });
 // });
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
   console.log("Server started on port 8080");
 });
