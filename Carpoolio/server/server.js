@@ -94,6 +94,80 @@ app.get("/api/trip/:tripId", async (req, res) => {
   }
 });
 
+app.put("/api/trips/:tripId", async (req, res) => {
+  const { tripId } = req.params; // This will match the unique tripId string, not the database ID
+  const { cars, ...updatedTripData } = req.body; // Separate cars from the rest of the trip data
+
+  try {
+    // Find the trip using `tripId` string to get the database ID
+    const trip = await prisma.trip.findUnique({
+      where: { tripId: tripId },
+      include: { cars: true }, // Include cars in case you need to check for existing entries
+    });
+
+    if (!trip) {
+      return res.status(404).json({ message: "Trip not found" });
+    }
+
+    // Step 1: Update the main trip data using the database `id`
+    const updatedTrip = await prisma.trip.update({
+      where: { id: trip.id },
+      data: updatedTripData,
+    });
+
+    // Step 2: Update related cars if they are provided
+    if (cars && cars.length > 0) {
+      const existingCarIds = trip.cars.map((car) => car.id);
+      // Iterate over the provided cars
+      for (const car of cars) {
+        if (car.id && existingCarIds.includes(car.id)) {
+          // If car ID exists, update that specific car
+          await prisma.car.update({
+            where: { id: car.id },
+            data: {
+              carName: car.carName,
+              carColor: car.carColor,
+              seatDistribution: car.seatDistribution,
+              seatNames: car.seatNames,
+            },
+          });
+        } else {
+          // If no car ID, create a new car associated with this trip
+          await prisma.car.create({
+            data: {
+              tripId: trip.id,
+              carName: car.carName,
+              carColor: car.carColor,
+              seatDistribution: car.seatDistribution,
+              seatNames: car.seatNames,
+            },
+          });
+        }
+      }
+      // Step 3: Remove any cars from the database that weren't included in the update
+      const carIdsToUpdate = cars.filter((car) => car.id).map((car) => car.id);
+      const carsToDelete = trip.cars.filter(
+        (car) => !carIdsToUpdate.includes(car.id)
+      );
+
+      for (const car of carsToDelete) {
+        await prisma.car.delete({
+          where: { id: car.id },
+        });
+      }
+    }
+
+    res.json(updatedTrip);
+    res.status(200).json({
+      message: "Trip and cars updated successfully",
+      adminId: trip.adminId,
+    });
+  } catch (error) {
+    console.error("Error updating trip:", error);
+    res.status(500).json({ message: "Error updating trip", error });
+  }
+});
+
 // example GET route
 // app.get("/api", (req, res) => {
 //   // send data here

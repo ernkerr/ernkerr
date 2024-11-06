@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "../components/NewTripForm/NewTripForm.css";
+import axios from "axios";
 
 export default function TripPage() {
   const { tripId, adminId } = useParams(); // Extract tripId and adminId from route parameters
@@ -60,9 +61,43 @@ export default function TripPage() {
     setIsPreviewingTrip(false);
   }
 
-  function handleSave() {
-    // add functionality here to check the trip id, if it existis in the database we should update that trip with the
-  }
+  const handleSave = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Check if the formData has a tripId (indicating an existing trip)
+      if (formData.tripId) {
+        // Update existing trip if tripId is present
+        const response = await axios.put(
+          `http://localhost:8080/api/trips/${formData.tripId}`,
+          formData // Send the updated formData object
+        );
+
+        if (response.status === 200) {
+          console.log("Trip updated:", response.data);
+          navigate(`/trip/${formData.tripId}/${response.data.adminId}`);
+        } else {
+          console.log("Failed to update trip");
+        }
+      } else {
+        // Create a new trip if no tripId is present
+        const response = await axios.post(
+          "http://localhost:8080/api/trips",
+          formData // Send the entire formData object to create a new trip
+        );
+
+        if (response.status === 201) {
+          const { tripId, adminId } = response.data;
+          console.log("Trip created:", response.data);
+          navigate(`/trip/${tripId}/${adminId}`);
+        } else {
+          console.log("Failed to create trip");
+        }
+      }
+    } catch (error) {
+      console.error("Error saving trip:", error);
+    }
+  };
 
   // Render the trip customization and details once data is loaded and valid
   return (

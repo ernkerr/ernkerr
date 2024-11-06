@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
+import CustomizeTrip from "./CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "../components/NewTripForm/NewTripForm.css";
-import GetTripName from "../components/NewTripForm/GetTripName";
-import GetTripDate from "../components/NewTripForm/GetTripDate";
-import GetDestination from "../components/NewTripForm/GetDestination";
+import GetTripName from "./NewTripForm/GetTripName";
+import GetTripDate from "./NewTripForm/GetTripDate";
+import GetDestination from "./NewTripForm/GetDestination";
 import axios from "axios";
 
 export default function NewTripForm() {
@@ -15,24 +15,16 @@ export default function NewTripForm() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    // name: "",
-    // email: "",
     tripName: "", // str
     tripDate: "", //"Monday, November 4"
     tripBackground: {}, // {name: 'bluegoo', path: 'src/..'}
     departureTime: "", // str
     destination: "", // str
     tripDescription: "", //str
-    // underglowColor: "",
     glowColor: "#34bd34", //str
     lighterGlowColor: "", //str
     transparentGlowColor: "#4bfe4b52", //str
     cars: [], // carColor, carName
-    // carName: "",
-    // carColor: "",
-    // numSeats: 5,
-    // seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
-    // seatNames: { row1: [""], row2: [""], row3: [""], row4: [""] },
   });
 
   // useEffect(() => {
@@ -70,16 +62,6 @@ export default function NewTripForm() {
   function handleEdit() {
     setIsPreviewingTrip(false);
   }
-
-  // function handleSubmit() {
-  //   // save trip and load new page
-  //   // TODO: send formData to database
-  //   console.log("send data to database");
-  //   console.log(formData);
-
-  //   // TODO: create tripId and adminId to route to the trip page (custmoize trip, is previewing(true), add edit button, modal, and sharable link)
-  //   <a href="/trip/:tripId/:adminId" className=""></a>; // how to navigate to trip page
-  // }
 
   const handleSave = async (e) => {
     e.preventDefault();

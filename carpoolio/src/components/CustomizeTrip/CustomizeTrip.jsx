@@ -30,7 +30,6 @@ export default function CustomizeTrip({
     const newCar = {
       carName: "",
       carColor: "#216191",
-      numSeats: 5,
       seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
       seatNames: { row1: [""], row2: [""], row3: [""], row4: [""] },
     };
