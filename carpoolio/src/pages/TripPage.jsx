@@ -4,8 +4,8 @@ import axios from "axios";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "../components/NewTripForm/NewTripForm.css";
-
-import { TripContext } from "@/components/TripContext";
+import "@components/CustomizeTrip/CustomizeTrip.css";
+import { TripContext } from "@components/TripContext";
 
 export default function TripPage() {
   const { formData, setFormData } = useContext(TripContext);
@@ -13,8 +13,6 @@ export default function TripPage() {
   const [tripDetails, setTripDetails] = useState(null);
   const [error, setError] = useState(null);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
-
-  // import {Button} from "@/components/TripName"
 
   // Function to fetch trip details
   const getTripDetails = async () => {
@@ -29,6 +27,7 @@ export default function TripPage() {
 
       const data = await response.json();
       setTripDetails(data); // Store the fetched data in state
+      setFormData(data); // populate formData with fetched trip data
     } catch (err) {
       setError(err.message); // Store error in state if fetching fails
     }
@@ -39,7 +38,6 @@ export default function TripPage() {
     getTripDetails();
   }, [tripId, adminId]);
 
-  // Show error message if there was an error
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -80,6 +78,10 @@ export default function TripPage() {
 
         if (response.status === 200) {
           console.log("Trip updated:", response.data);
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            ...response.data,
+          }));
         } else {
           console.log("Failed to update trip");
         }
@@ -95,9 +97,7 @@ export default function TripPage() {
       <div
         className="full-screen-wrapper"
         style={{
-          backgroundImage: `url(${
-            tripDetails?.tripBackground?.path || bluegoo
-          })`,
+          backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -105,8 +105,8 @@ export default function TripPage() {
         <div
           className="container-wrapper"
           style={{
-            boxShadow: `0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.glowColor}, 0 0 20px ${tripDetails?.lighterGlowColor}`,
-            background: `${tripDetails?.glowColor}`,
+            boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}, 0 0 20px ${tripDetails?.lighterGlowColor}`,
+            background: `${formData?.glowColor}`,
             height: "85dvh",
             width: "80dvw",
           }}
@@ -115,23 +115,20 @@ export default function TripPage() {
             className="container"
             style={{
               backgroundImage: `url(${
-                tripDetails?.tripBackground?.path || bluegoo
+                formData?.tripBackground?.path || bluegoo
               })`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
             <CustomizeTrip isPreviewingTrip={isPreviewingTrip} />
-            {/* Pass trip details as props */}
-            {/* <h1>Hello {tripId}</h1>
-          <p>You are currently editing {tripDetails.tripName}</p> */}
+
             {isPreviewingTrip ? (
               <button
                 style={{
-                  background:
-                    tripDetails?.tripBackground?.scrim || "transparent",
-                  border: ` 2px solid ${tripDetails?.glowColor}`,
-                  boxShadow: `0 0 10px ${tripDetails?.glowColor}, 0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.lighterGlowColor}`,
+                  background: formData?.tripBackground?.scrim || "transparent",
+                  border: ` 2px solid ${formData?.glowColor}`,
+                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
                 }}
                 className="glow-button"
                 onClick={handleEdit}
@@ -141,10 +138,9 @@ export default function TripPage() {
             ) : (
               <button
                 style={{
-                  background:
-                    tripDetails?.tripBackground?.scrim || "transparent",
-                  border: ` 2px solid ${tripDetails?.glowColor}`,
-                  boxShadow: `0 0 10px ${tripDetails?.glowColor}, 0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.lighterGlowColor}`,
+                  background: formData?.tripBackground?.scrim || "transparent",
+                  border: ` 2px solid ${formData?.glowColor}`,
+                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
                 }}
                 className="customize-trip-glow-btns"
                 onClick={handlePreview}
@@ -155,9 +151,9 @@ export default function TripPage() {
             {/* save trip functionality  */}
             <button
               style={{
-                background: tripDetails?.tripBackground?.scrim || "transparent",
-                border: ` 2px solid ${tripDetails?.glowColor}`,
-                boxShadow: `0 0 10px ${tripDetails?.glowColor}, 0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.lighterGlowColor}`,
+                background: formData?.tripBackground?.scrim || "transparent",
+                border: ` 2px solid ${formData?.glowColor}`,
+                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
               }}
               className="customize-trip-glow-btns"
               onClick={handleSave}

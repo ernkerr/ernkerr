@@ -77,6 +77,7 @@ app.get("/api/trip/:tripId/:adminId", async (req, res) => {
 // GET route to retrieve a trip by its tripId
 app.get("/api/trip/:tripId", async (req, res) => {
   const { tripId } = req.params;
+
   try {
     const trip = await prisma.trip.findUnique({
       where: { tripId: parseInt(tripId) }, // Ensure tripId is the correct format (int if necessary)
@@ -157,11 +158,8 @@ app.put("/api/trip/:tripId", async (req, res) => {
       }
     }
 
-    res.json(updatedTrip);
-    res.status(200).json({
-      message: "Trip and cars updated successfully",
-      adminId: trip.adminId,
-    });
+    // Send updated trip back to frontend
+    res.json({ ...updatedTrip, cars });
   } catch (error) {
     console.error("Error updating trip:", error);
     res.status(500).json({ message: "Error updating trip", error });

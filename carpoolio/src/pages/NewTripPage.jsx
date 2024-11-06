@@ -1,4 +1,4 @@
-import NewTripForm from "../components/NewTripForm.jsx";
+import NewTripForm from "./NewTripForm.jsx";
 import StickyNavBar from "../components/StickyNavBar/StickyNavBar.jsx";
 import "../components/NewTripForm/NewTripForm.css";
 
