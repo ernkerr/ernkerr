@@ -106,7 +106,6 @@ export default function NewTripForm() {
       className="full-screen-wrapper"
       style={{
         backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
-
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
