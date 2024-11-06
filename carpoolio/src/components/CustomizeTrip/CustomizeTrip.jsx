@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useContext } from "react";
 import hexRgb from "hex-rgb";
 import TripName from "./TripName/TripName.jsx";
 import DateSelector from "./DateSelector/DateSelector.jsx";
@@ -8,12 +9,10 @@ import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import Description from "./Description/Description.jsx";
 import "./CustomizeTrip.css";
+import { TripContext } from "@components/TripContext";
 
-export default function CustomizeTrip({
-  formData,
-  setFormData,
-  isPreviewingTrip,
-}) {
+export default function CustomizeTrip({ isPreviewingTrip }) {
+  const { formData, setFormData } = useContext(TripContext); // Access TripContext here
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [newCarCreated, setNewCarCreated] = useState(false);
@@ -76,30 +75,14 @@ export default function CustomizeTrip({
   return (
     <div className="customize-trip-container">
       <div className="details-container">
-        <TripName
-          formData={formData}
-          setFormData={setFormData}
-          isPreviewingTrip={isPreviewingTrip}
-        />
-        <Destination
-          formData={formData}
-          setFormData={setFormData}
-          isPreviewingTrip={isPreviewingTrip}
-        />
-        <DateSelector
-          formData={formData}
-          setFormData={setFormData}
-          isPreviewingTrip={isPreviewingTrip}
-        />
-        <Description
-          formData={formData}
-          setFormData={setFormData}
-          isPreviewingTrip={isPreviewingTrip}
-        />
+        <TripName isPreviewingTrip={isPreviewingTrip} />
+        <Destination isPreviewingTrip={isPreviewingTrip} />
+        <DateSelector isPreviewingTrip={isPreviewingTrip} />
+        <Description isPreviewingTrip={isPreviewingTrip} />
 
         {!isPreviewingTrip && (
           <div className="styling-container">
-            <TripBackground formData={formData} setFormData={setFormData} />
+            <TripBackground />
             {/* set the glow color  */}
             <button
               className="customize-trip-btns"
@@ -113,7 +96,7 @@ export default function CustomizeTrip({
                 type="color"
                 id="glowColor"
                 name="glowColor"
-                value={formData.glowColor || " #34bd34"}
+                value={formData?.glowColor || " #34bd34"}
                 onChange={handleGlowColorChange} // update the glow color on change
               />
             </button>
@@ -121,13 +104,11 @@ export default function CustomizeTrip({
         )}
       </div>
       <div className="car-container">
-        {formData.cars.map((car, index) => {
+        {formData?.cars?.map((car, index) => {
           if (index === activeCarIndex && isCustomizingCar) {
             return (
               <CustomizeCar
                 key={index}
-                formData={formData}
-                setFormData={setFormData}
                 activeCarIndex={activeCarIndex}
                 setActiveCarIndex={setActiveCarIndex}
                 setIsCustomizingCar={setIsCustomizingCar}
@@ -136,8 +117,6 @@ export default function CustomizeTrip({
           } else {
             return (
               <RenderCar
-                formData={formData}
-                setFormData={setFormData}
                 key={index}
                 car={car}
                 carIndex={index}

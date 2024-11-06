@@ -94,7 +94,7 @@ app.get("/api/trip/:tripId", async (req, res) => {
   }
 });
 
-app.put("/api/trips/:tripId", async (req, res) => {
+app.put("/api/trip/:tripId", async (req, res) => {
   const { tripId } = req.params; // This will match the unique tripId string, not the database ID
   const { cars, ...updatedTripData } = req.body; // Separate cars from the rest of the trip data
 

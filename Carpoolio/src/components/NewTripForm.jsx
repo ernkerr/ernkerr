@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import CustomizeTrip from "./CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "../components/NewTripForm/NewTripForm.css";
@@ -8,24 +7,14 @@ import GetTripName from "./NewTripForm/GetTripName";
 import GetTripDate from "./NewTripForm/GetTripDate";
 import GetDestination from "./NewTripForm/GetDestination";
 import axios from "axios";
+import { TripContext } from "@/components/TripContext";
 
 export default function NewTripForm() {
+  const navigate = useNavigate();
+  const { formData, setFormData } = useContext(TripContext);
+
   const [page, setPage] = useState(0);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(false); // New state for CustomizeTrip
-  const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    tripName: "", // str
-    tripDate: "", //"Monday, November 4"
-    tripBackground: {}, // {name: 'bluegoo', path: 'src/..'}
-    departureTime: "", // str
-    destination: "", // str
-    tripDescription: "", //str
-    glowColor: "#34bd34", //str
-    lighterGlowColor: "", //str
-    transparentGlowColor: "#4bfe4b52", //str
-    cars: [], // carColor, carName
-  });
 
   // useEffect(() => {
   //   console.log(formData);
@@ -34,20 +23,14 @@ export default function NewTripForm() {
   const conditionalComponent = () => {
     switch (page) {
       case 0:
-        return <GetTripName formData={formData} setFormData={setFormData} />;
+        return <GetTripName />;
       case 1:
-        return <GetDestination formData={formData} setFormData={setFormData} />;
+        return <GetDestination />;
       case 2:
-        return <GetTripDate formData={formData} setFormData={setFormData} />;
+        return <GetTripDate />;
 
       case 3:
-        return (
-          <CustomizeTrip
-            formData={formData}
-            setFormData={setFormData}
-            isPreviewingTrip={isPreviewingTrip}
-          />
-        );
+        return <CustomizeTrip isPreviewingTrip={isPreviewingTrip} />;
     }
   };
 
@@ -67,9 +50,9 @@ export default function NewTripForm() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/trips",
+        "http://localhost:8080/api/trip",
         formData
-      ); // Send the entire formData object to the server
+      ); // send formData object to the server
 
       if (response.status === 201) {
         const { tripId, adminId } = response.data; // create admin id

@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { TripContext } from "@/components/TripContext";
 import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
 import "../CustomizeTrip/RenderCar.css";
 
-export default function CustomizeCar({
-  formData,
-  setFormData,
-  activeCarIndex,
-  setIsCustomizingCar,
-}) {
+export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
+  const { formData, setFormData } = useContext(TripContext);
   const [carColor, setCarColor] = useState(
     formData.cars[activeCarIndex].carColor
   );

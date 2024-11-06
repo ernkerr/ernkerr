@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TripContext } from "@/components/TripContext";
 
 import "./CustomizeTrip.css";
 import none from "../../assets/gifs/none.png";
@@ -77,7 +78,8 @@ const backgrounds = [
   // { name: "color", path: color },
 ];
 
-export default function TripBackground({ formData, setFormData }) {
+export default function TripBackground({}) {
+  const { formData, setFormData } = useContext(TripContext);
   const [isShowingBackgrounds, setIsShowingBackgrounds] = useState(false);
 
   const toggleBackgrounds = () => {

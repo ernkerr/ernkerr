@@ -6,6 +6,7 @@ import NewTripPage from "./pages/NewTripPage.jsx";
 import InvitePage from "./pages/InvitePage.jsx";
 import TripPage from "./pages/TripPage.jsx";
 import "./index.css";
+import { TripContextProvider } from "@components/TripContext"; // Adjust path if needed
 
 const router = createBrowserRouter([
   {
@@ -27,4 +28,8 @@ const router = createBrowserRouter([
 ]);
 
 const entryPoint = document.getElementById("root");
-ReactDOM.createRoot(entryPoint).render(<RouterProvider router={router} />);
+ReactDOM.createRoot(entryPoint).render(
+  <TripContextProvider>
+    <RouterProvider router={router} />
+  </TripContextProvider>
+);

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TripContext } from "@/components/TripContext";
 import { DayPicker } from "react-day-picker";
 import { TimeSelector } from "../TimeSelector/TimeSelector";
 import clockIcon from "../../../assets/img/Clock.png";
@@ -7,11 +8,8 @@ import "./DateSelector.css";
 
 // go back to opening in a modal?
 
-export default function DateSelector({
-  formData,
-  setFormData,
-  isPreviewingTrip,
-}) {
+export default function DateSelector({ isPreviewingTrip }) {
+  const { formData, setFormData } = useContext(TripContext);
   // State to manage visibility of calendar and time selector
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isTimeSelectorVisible, setIsTimeSelectorVisible] = useState(false);

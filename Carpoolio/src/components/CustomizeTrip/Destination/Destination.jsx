@@ -1,15 +1,15 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import Autocomplete from "react-google-autocomplete";
+import { TripContext } from "@/components/TripContext";
+
 import "./Destination.css";
 
-export default function Destination({
-  formData,
-  setFormData,
-  isPreviewingTrip,
-}) {
-  const [destination, setDestination] = useState("");
+export default function Destination({ isPreviewingTrip }) {
+  const { formData, setFormData } = useContext(TripContext);
+  const [destination, setDestination] = useState(formData?.destination || "");
   const autocompleteRef = useRef(null); // Create a ref for the Autocomplete component
 
+  // handle the location selection fromthe autocomplete
   const handleSelectedLocation = (place) => {
     const selectedPlaceName = place.name || ""; // check place name
     const selectedAddress = place.formatted_address || ""; // check if the place has a formatted address
@@ -23,11 +23,14 @@ export default function Destination({
     setFormData({ ...formData, destination: tripDestination });
   };
 
+  // handle chabges in the input field
   const handleInputChange = (event) => {
     const newDestination = event.target.value;
     setDestination(newDestination);
     setFormData({ ...formData, destination: newDestination });
   };
+
+  // update the inout field value based on state changes
 
   useEffect(() => {
     // If the autocompleteRef is available, manually set its value from state
@@ -50,7 +53,7 @@ export default function Destination({
         }}
         value={destination}
         onChange={handleInputChange}
-        placeholder={formData.destination || "Choose your destination"}
+        placeholder={destination ? destination : "Choose your destination"}
         className="destination-btn"
         style={{
           background: formData?.tripBackground?.scrim || "transparent",

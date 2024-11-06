@@ -1,4 +1,8 @@
-export default function GetTripName({ formData, setFormData }) {
+import { useContext } from "react";
+import { TripContext } from "@components/TripContext"; // Adjust the import path as needed
+
+export default function GetTripName() {
+  const { formData, setFormData } = useContext(TripContext);
   return (
     <>
       {/* What would you like to call your trip? */}

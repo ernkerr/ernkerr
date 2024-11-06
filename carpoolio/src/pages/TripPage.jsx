@@ -1,15 +1,20 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "../components/NewTripForm/NewTripForm.css";
-import axios from "axios";
+
+import { TripContext } from "@/components/TripContext";
 
 export default function TripPage() {
+  const { formData, setFormData } = useContext(TripContext);
   const { tripId, adminId } = useParams(); // Extract tripId and adminId from route parameters
   const [tripDetails, setTripDetails] = useState(null);
   const [error, setError] = useState(null);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
+
+  // import {Button} from "@/components/TripName"
 
   // Function to fetch trip details
   const getTripDetails = async () => {
@@ -65,33 +70,18 @@ export default function TripPage() {
     e.preventDefault();
 
     try {
-      // Check if the formData has a tripId (indicating an existing trip)
-      if (formData.tripId) {
-        // Update existing trip if tripId is present
+      // Check if tripId from the route exists (indicating an existing trip)
+      if (tripId) {
+        // Update existing trip using PUT request if tripId is present
         const response = await axios.put(
-          `http://localhost:8080/api/trips/${formData.tripId}`,
+          `http://localhost:8080/api/trip/${tripId}`,
           formData // Send the updated formData object
         );
 
         if (response.status === 200) {
           console.log("Trip updated:", response.data);
-          navigate(`/trip/${formData.tripId}/${response.data.adminId}`);
         } else {
           console.log("Failed to update trip");
-        }
-      } else {
-        // Create a new trip if no tripId is present
-        const response = await axios.post(
-          "http://localhost:8080/api/trips",
-          formData // Send the entire formData object to create a new trip
-        );
-
-        if (response.status === 201) {
-          const { tripId, adminId } = response.data;
-          console.log("Trip created:", response.data);
-          navigate(`/trip/${tripId}/${adminId}`);
-        } else {
-          console.log("Failed to create trip");
         }
       }
     } catch (error) {
@@ -101,53 +91,68 @@ export default function TripPage() {
 
   // Render the trip customization and details once data is loaded and valid
   return (
-    <div
-      className="full-screen-wrapper"
-      style={{
-        backgroundImage: `url(${tripDetails?.tripBackground?.path || bluegoo})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <>
       <div
-        className="container-wrapper"
+        className="full-screen-wrapper"
         style={{
-          boxShadow: `0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.glowColor}, 0 0 20px ${tripDetails?.lighterGlowColor}`,
-          background: `${tripDetails?.glowColor}`,
-          height: "85dvh",
-          width: "80dvw",
+          backgroundImage: `url(${
+            tripDetails?.tripBackground?.path || bluegoo
+          })`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div
-          className="container"
+          className="container-wrapper"
           style={{
-            backgroundImage: `url(${
-              tripDetails?.tripBackground?.path || bluegoo
-            })`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            boxShadow: `0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.glowColor}, 0 0 20px ${tripDetails?.lighterGlowColor}`,
+            background: `${tripDetails?.glowColor}`,
+            height: "85dvh",
+            width: "80dvw",
           }}
         >
-          <CustomizeTrip
-            formData={tripDetails}
-            isPreviewingTrip={isPreviewingTrip}
-          />
-          {/* Pass trip details as props */}
-          {/* <h1>Hello {tripId}</h1>
+          <div
+            className="container"
+            style={{
+              backgroundImage: `url(${
+                tripDetails?.tripBackground?.path || bluegoo
+              })`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <CustomizeTrip isPreviewingTrip={isPreviewingTrip} />
+            {/* Pass trip details as props */}
+            {/* <h1>Hello {tripId}</h1>
           <p>You are currently editing {tripDetails.tripName}</p> */}
-          {isPreviewingTrip ? (
-            <button
-              style={{
-                background: tripDetails?.tripBackground?.scrim || "transparent",
-                border: ` 2px solid ${tripDetails?.glowColor}`,
-                boxShadow: `0 0 10px ${tripDetails?.glowColor}, 0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.lighterGlowColor}`,
-              }}
-              className="glow-button"
-              onClick={handleEdit}
-            >
-              edit
-            </button>
-          ) : (
+            {isPreviewingTrip ? (
+              <button
+                style={{
+                  background:
+                    tripDetails?.tripBackground?.scrim || "transparent",
+                  border: ` 2px solid ${tripDetails?.glowColor}`,
+                  boxShadow: `0 0 10px ${tripDetails?.glowColor}, 0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.lighterGlowColor}`,
+                }}
+                className="glow-button"
+                onClick={handleEdit}
+              >
+                edit
+              </button>
+            ) : (
+              <button
+                style={{
+                  background:
+                    tripDetails?.tripBackground?.scrim || "transparent",
+                  border: ` 2px solid ${tripDetails?.glowColor}`,
+                  boxShadow: `0 0 10px ${tripDetails?.glowColor}, 0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.lighterGlowColor}`,
+                }}
+                className="customize-trip-glow-btns"
+                onClick={handlePreview}
+              >
+                preview
+              </button>
+            )}
+            {/* save trip functionality  */}
             <button
               style={{
                 background: tripDetails?.tripBackground?.scrim || "transparent",
@@ -155,26 +160,14 @@ export default function TripPage() {
                 boxShadow: `0 0 10px ${tripDetails?.glowColor}, 0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.lighterGlowColor}`,
               }}
               className="customize-trip-glow-btns"
-              onClick={handlePreview}
+              onClick={handleSave}
             >
-              preview
+              save
             </button>
-          )}
-          {/* save trip functionality  */}
-          <button
-            style={{
-              background: tripDetails?.tripBackground?.scrim || "transparent",
-              border: ` 2px solid ${tripDetails?.glowColor}`,
-              boxShadow: `0 0 10px ${tripDetails?.glowColor}, 0 0 5px ${tripDetails?.glowColor}, 0 0 15px ${tripDetails?.lighterGlowColor}`,
-            }}
-            className="customize-trip-glow-btns"
-            onClick={handleSave}
-          >
-            save
-          </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

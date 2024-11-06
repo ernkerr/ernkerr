@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { TripContext } from "@components/TripContext";
 import "./TripName.css";
 
-export default function TripName({ formData, setFormData, isPreviewingTrip }) {
+export default function TripName({ isPreviewingTrip }) {
+  const { formData, setFormData } = useContext(TripContext);
   return (
     <>
       <input

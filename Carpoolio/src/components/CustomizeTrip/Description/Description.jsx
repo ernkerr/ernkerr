@@ -1,10 +1,10 @@
+import { useContext } from "react";
+import { TripContext } from "@/components/TripContext";
 import "./Description.css";
 
-export default function Description({
-  formData,
-  setFormData,
-  isPreviewingTrip,
-}) {
+export default function Description({ isPreviewingTrip }) {
+  const { formData, setFormData } = useContext(TripContext);
+
   const handleInput = (event) => {
     event.target.style.height = "4dvh";
     event.target.style.height = `${event.target.scrollHeight}px`;

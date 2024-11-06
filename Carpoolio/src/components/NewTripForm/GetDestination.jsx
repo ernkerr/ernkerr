@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import Autocomplete from "react-google-autocomplete";
+import { TripContext } from "@components/TripContext";
 
-export default function GetDestination({ formData, setFormData }) {
+export default function GetDestination() {
   const [destination, setDestination] = useState("");
   const autocompleteRef = useRef(null); // Create a ref for the Autocomplete component
+  const { formData, setFormData } = useContext(TripContext);
 
   const handleSelectedLocation = (place) => {
     const selectedPlaceName = place.name || ""; // check place name

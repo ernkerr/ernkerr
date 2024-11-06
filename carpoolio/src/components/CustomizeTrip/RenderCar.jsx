@@ -1,15 +1,15 @@
 import DefaultCar from "../CustomizeCar/DefaultCar";
 import "./RenderCar.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TripContext } from "@components/TripContext";
 
 export default function RenderCar({
   car,
   carIndex,
-  formData,
-  setFormData,
   setIsCustomizingCar,
   setActiveCarIndex,
 }) {
+  const { formData, setFormData } = useContext(TripContext);
   const handleSeatClick = (row, carIndex, seatIndex, event) => {
     const newCars = [...formData.cars]; // Create a copy of cars array
     const newSeatNames = { ...newCars[carIndex].seatNames }; // Access the seat names of the specific car
