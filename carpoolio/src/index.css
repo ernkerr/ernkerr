@@ -56,6 +56,8 @@ body::-webkit-scrollbar {
   --main-font: "Gruppo", sans-serif;
   --main-cursor: pointer;
 
+  /* spacing and sizing system */
+
   /* font size */
   --font-size-tiny: 8em;
   --font-size-small: 1.2em;

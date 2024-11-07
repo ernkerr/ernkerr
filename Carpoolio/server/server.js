@@ -80,7 +80,7 @@ app.get("/api/trip/:tripId", async (req, res) => {
 
   try {
     const trip = await prisma.trip.findUnique({
-      where: { tripId: parseInt(tripId) }, // Ensure tripId is the correct format (int if necessary)
+      where: { tripId }, // Ensure tripId is the correct format (int if necessary)
       include: { cars: true }, // Include related cars if needed
     });
 
