@@ -19,6 +19,7 @@ export default function Description({ isPreviewingTrip }) {
           placeholder={formData?.tripDescription || "Trip Description"}
           value={formData.tripDescription || ""}
           onChange={handleInput}
+          disabled={isPreviewingTrip}
           style={{
             height: "4dvh",
             background: formData?.tripBackground?.scrim || "transparent",

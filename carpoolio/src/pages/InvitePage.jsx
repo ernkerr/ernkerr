@@ -1,6 +1,9 @@
 import NewTripButton from "../components/NewTripButton/NewTripButton.jsx";
 import NewCarButton from "../components/NewCarButton/NewCarButton.jsx";
 
+// this is all repeated
+// instead use Trip Page and conditionally show or hide the edit button based on whether the admin id is in the route or not
+
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";

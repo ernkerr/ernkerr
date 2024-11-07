@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { TripContext } from "@/components/TripContext";
 import { DayPicker } from "react-day-picker";
 import { TimeSelector } from "../TimeSelector/TimeSelector";
@@ -10,10 +10,17 @@ import "./DateSelector.css";
 
 export default function DateSelector({ isPreviewingTrip }) {
   const { formData, setFormData } = useContext(TripContext);
-  // State to manage visibility of calendar and time selector
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isTimeSelectorVisible, setIsTimeSelectorVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+
+  // Close calendar and time selector when isPreviewingTrip is true
+  useEffect(() => {
+    if (isPreviewingTrip) {
+      setIsCalendarVisible(false);
+      setIsTimeSelectorVisible(false);
+    }
+  }, [isPreviewingTrip]);
 
   // Toggle calendar visibility
   const toggleCalendar = () => {
@@ -63,8 +70,9 @@ export default function DateSelector({ isPreviewingTrip }) {
               style={{
                 background: formData?.tripBackground?.scrim || "transparent",
               }}
-              className="date-icon"
+              className={`date-icon ${isPreviewingTrip ? "disabled" : ""}`}
               onClick={toggleCalendar}
+              disabled={isPreviewingTrip}
             >
               <div className="month">{tripMonth || " "}</div>
               <div className="day">{tripDay || "TBD"}</div>
@@ -79,8 +87,11 @@ export default function DateSelector({ isPreviewingTrip }) {
                       background:
                         formData?.tripBackground?.scrim || "transparent",
                     }}
-                    className="date-text"
+                    className={`date-text ${
+                      isPreviewingTrip ? "disabled" : ""
+                    }`}
                     onClick={toggleCalendar}
+                    disabled={isPreviewingTrip}
                   >
                     {formData.tripDate}
                   </button>
@@ -89,7 +100,9 @@ export default function DateSelector({ isPreviewingTrip }) {
                       background:
                         formData?.tripBackground?.scrim || "transparent",
                     }}
-                    className="time-text"
+                    className={`time-text ${
+                      isPreviewingTrip ? "disabled" : ""
+                    }`}
                     onClick={toggleTimeSelector}
                   >
                     <img src={clockIcon} alt="Departure Time Icon" />
@@ -101,20 +114,6 @@ export default function DateSelector({ isPreviewingTrip }) {
           </div>
         </>
       ) : null}
-
-      {/* Always render the time selector button if a tripDate is selected */}
-      {/* {formData.tripDate && (
-        <button
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-          }}
-          className="time-text"
-          onClick={toggleTimeSelector}
-        >
-          <img src={clockIcon} alt="Departure Time Icon" />
-          {formData.departureTime || "TBD"}
-        </button>
-      )} */}
 
       {/* Render DayPicker if calendar is visible */}
       {isCalendarVisible && (
@@ -159,7 +158,7 @@ export default function DateSelector({ isPreviewingTrip }) {
       )}
 
       {/* Render TimeSelector if time selector is visible */}
-      {isTimeSelectorVisible && (
+      {isTimeSelectorVisible && !isPreviewingTrip && (
         <TimeSelector
           formData={formData}
           setFormData={setFormData}
@@ -169,5 +168,3 @@ export default function DateSelector({ isPreviewingTrip }) {
     </div>
   );
 }
-
-// if Date is TBD, set time to not show

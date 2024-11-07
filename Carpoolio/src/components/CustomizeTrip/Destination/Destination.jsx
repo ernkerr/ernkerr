@@ -1,37 +1,37 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import Autocomplete from "react-google-autocomplete";
-import { TripContext } from "@/components/TripContext";
-
+import { TripContext } from "@components/TripContext";
 import "./Destination.css";
 
 export default function Destination({ isPreviewingTrip }) {
   const { formData, setFormData } = useContext(TripContext);
   const [destination, setDestination] = useState(formData?.destination || "");
-  const autocompleteRef = useRef(null); // Create a ref for the Autocomplete component
+  const autocompleteRef = useRef(null); // create a ref for the Autocomplete component
 
   // handle the location selection fromthe autocomplete
   const handleSelectedLocation = (place) => {
-    const selectedPlaceName = place.name || ""; // check place name
-    const selectedAddress = place.formatted_address || ""; // check if the place has a formatted address
+    if (!isPreviewingTrip) {
+      const selectedPlaceName = place.name || ""; // check place name
+      const selectedAddress = place.formatted_address || ""; // check if the place has a formatted address
+      const tripDestination = selectedAddress.includes(selectedPlaceName) // only include the address if it doesn't already contain the place name
+        ? selectedAddress
+        : `${selectedPlaceName}, ${selectedAddress}`;
 
-    // set the destination in formData to the selected place's name and address
-    const tripDestination = selectedAddress
-      ? `${selectedPlaceName}, ${selectedAddress}`
-      : selectedPlaceName;
-
-    setDestination(tripDestination);
-    setFormData({ ...formData, destination: tripDestination });
+      setDestination(tripDestination);
+      setFormData({ ...formData, destination: tripDestination });
+    }
   };
 
-  // handle chabges in the input field
+  // handle manual input changes
   const handleInputChange = (event) => {
-    const newDestination = event.target.value;
-    setDestination(newDestination);
-    setFormData({ ...formData, destination: newDestination });
+    if (!isPreviewingTrip) {
+      const newDestination = event.target.value;
+      setDestination(newDestination);
+      setFormData({ ...formData, destination: newDestination });
+    }
   };
 
-  // update the inout field value based on state changes
-
+  // update the input field value based on state changes
   useEffect(() => {
     // If the autocompleteRef is available, manually set its value from state
     if (
@@ -48,7 +48,7 @@ export default function Destination({ isPreviewingTrip }) {
         apiKey={"AIzaSyAjYJexrKl - byyNcP9kEwmsi3OzPHcEtng"} // API key
         onPlaceSelected={handleSelectedLocation}
         options={{
-          types: ["geocode", "establishment"], // use 'establishment' to search for businesses, museums, etc.
+          types: ["geocode", "establishment"], // establishment to search for businesses, museums, etc.
           fields: ["name", "formatted_address", "geometry"],
         }}
         value={destination}
@@ -61,10 +61,9 @@ export default function Destination({ isPreviewingTrip }) {
             ? "2px solid transparent"
             : "2px solid rgba(255, 255, 255, 0.182)",
           borderRadius: isPreviewingTrip ? "0" : "5px",
+          pointerEvents: isPreviewingTrip ? "none" : "auto", // Prevent interaction in preview mode
         }}
       />
     </>
   );
 }
-
-// apiKey={"AIzaSyAjYJexrKl - byyNcP9kEwmsi3OzPHcEtng"}

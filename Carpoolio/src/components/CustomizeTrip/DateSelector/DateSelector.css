@@ -92,3 +92,10 @@
   width: 16px;
   height: 16px;
 }
+
+.date-icon.disabled,
+.date-text.disabled,
+.time-text.disabled {
+  cursor: default; /* Removes the pointer cursor */
+  pointer-events: none; /* Optional: disables all interaction */
+}

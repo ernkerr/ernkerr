@@ -3,6 +3,7 @@
   color: white;
   font-family: var(--main-font);
   font-size: var(--font-size-large);
+  border-radius: var(--border-radius);
   padding: var(--padding-title);
   align-items: flex-start;
   cursor: pointer;
@@ -14,4 +15,8 @@
 .trip-title::placeholder {
   color: white;
   text-align: left;
+}
+
+.trip-title[disabled] {
+  cursor: default;
 }

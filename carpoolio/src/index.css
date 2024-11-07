@@ -55,7 +55,6 @@ body::-webkit-scrollbar {
   color: rgb(255, 255, 255);
   --main-font: "Gruppo", sans-serif;
   --main-cursor: pointer;
-  --border-radius: 10px;
 
   /* font size */
   --font-size-tiny: 8em;
@@ -64,6 +63,12 @@ body::-webkit-scrollbar {
   --font-size-large: 2.4em;
   --font-size-extra-large: 3.2em;
   /* --font-size-button: 1.2em; */
+
+  /* border */
+
+  /* border radius */
+  --border-radius: 5px;
+  --border-radius-button: 10px;
 
   /* titles */
   --font-size-title: 2.5em;
@@ -77,12 +82,11 @@ body::-webkit-scrollbar {
 
   --height-button: 4dvh;
 
-  --border-radius-button: 10px;
-
   --padding-button: 15px;
 
   /* colors */
-  --transparent: rgba(255, 255, 255, 0.182);
+  --red: rgba(255, 0, 0, 0.288);
+  --transparent: rgba(2, 1, 1, 0.182);
   --transparent-border: 2px solid rgba(255, 255, 255, 0.182);
   --yellow-glow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00;
   --main-green: #34bd3490;
