@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
+import CustomizeTrip from "@components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
-import "../components/NewTripForm/NewTripForm.css";
+import "@components/NewTripForm/NewTripForm.css";
 import "@components/CustomizeTrip/CustomizeTrip.css";
 import { TripContext } from "@components/TripContext";
 

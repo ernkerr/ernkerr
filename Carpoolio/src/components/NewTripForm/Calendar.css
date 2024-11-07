@@ -160,7 +160,6 @@
   width: var(--rdp-nav_button-width);
   height: var(--rdp-nav_button-height);
 }
-
 .rdp-button_next:disabled,
 .rdp-button_previous:disabled {
   cursor: revert;

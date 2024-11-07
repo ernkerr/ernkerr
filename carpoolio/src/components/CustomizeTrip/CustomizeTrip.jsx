@@ -46,22 +46,17 @@ export default function CustomizeTrip({ isPreviewingTrip }) {
 
     setActiveCarIndex(newCarIndex);
     setNewCarCreated(true);
-
     setIsCustomizingCar(true);
-    console.log("entering customizing mode for new car... ");
   };
 
   // styling
   const handleGlowColorChange = (event) => {
     const newGlowColor = event.target.value;
     const { red: r, green: g, blue: b } = hexRgb(newGlowColor);
-    // TODO : refactor so that the r, g, b are stored seperately as TINYINTs
     const lighterGlowColor = `rgb(${Math.min(r + 10, 255)}, ${Math.min(
       g + 10,
       255
     )}, ${Math.min(b + 10, 255)})`;
-    // TODO: recalculate lighterGlowColor without having to store it in the database ?
-
     const transparentGlowColor = `rgba(${r}, ${g}, ${b}, 0.6)`;
 
     setFormData((prevData) => ({
