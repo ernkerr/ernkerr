@@ -27,3 +27,10 @@ export default function TripName({ isPreviewingTrip }) {
 }
 
 // on hover (required)
+
+// <input
+//   key={`row1-seat${index}`}
+//   value={seatNames.row1[index] || ""}
+//   onChange={(event) => handleSeatClick("row1", index, event)}
+//   className="seat-input"
+// />;

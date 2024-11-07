@@ -32,6 +32,7 @@
 }
 
 .time-calendar-button {
+  font: var(--main_font);
   color: white;
   background: none;
   font-size: var(--font-size-small);
