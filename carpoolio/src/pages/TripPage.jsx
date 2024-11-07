@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
@@ -8,6 +8,7 @@ import "@components/CustomizeTrip/CustomizeTrip.css";
 import { TripContext } from "@components/TripContext";
 
 export default function TripPage() {
+  const navigate = useNavigate();
   const { formData, setFormData } = useContext(TripContext);
   const { tripId, adminId } = useParams(); // Extract tripId and adminId from route parameters
   const [tripDetails, setTripDetails] = useState(null);
@@ -91,6 +92,10 @@ export default function TripPage() {
     }
   };
 
+  const handleInvite = () => {
+    navigate(`/trip/${tripId}`);
+  };
+
   // Render the trip customization and details once data is loaded and valid
   return (
     <>
@@ -108,7 +113,7 @@ export default function TripPage() {
             boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}, 0 0 20px ${tripDetails?.lighterGlowColor}`,
             background: `${formData?.glowColor}`,
             height: "85dvh",
-            width: "80dvw",
+            width: "90dvw",
           }}
         >
           <div
@@ -122,6 +127,18 @@ export default function TripPage() {
             }}
           >
             <CustomizeTrip isPreviewingTrip={isPreviewingTrip} />
+
+            <button
+              style={{
+                background: formData?.tripBackground?.scrim || "transparent",
+                border: ` 2px solid ${formData?.glowColor}`,
+                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+              }}
+              className="glow-button"
+              onClick={handleInvite}
+            >
+              Invite Link
+            </button>
 
             {isPreviewingTrip ? (
               <button
