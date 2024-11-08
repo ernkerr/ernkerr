@@ -18,7 +18,10 @@ export default function Destination({ isPreviewingTrip }) {
         : `${selectedPlaceName}, ${selectedAddress}`;
 
       setDestination(tripDestination);
-      setFormData({ ...formData, destination: tripDestination });
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        destination: tripDestination,
+      }));
     }
   };
 
@@ -27,7 +30,10 @@ export default function Destination({ isPreviewingTrip }) {
     if (!isPreviewingTrip) {
       const newDestination = event.target.value;
       setDestination(newDestination);
-      setFormData({ ...formData, destination: newDestination });
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        destination: newDestination,
+      }));
     }
   };
 
@@ -54,7 +60,7 @@ export default function Destination({ isPreviewingTrip }) {
         value={destination}
         onChange={handleInputChange}
         placeholder={destination ? destination : "Choose your destination"}
-        className="destination-btn"
+        className="destination"
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
           border: isPreviewingTrip
