@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { TripContext } from "@/components/TripContext";
+import { TripContext } from "@components/TripContext";
 import { DayPicker } from "react-day-picker";
 import { TimeSelector } from "../TimeSelector/TimeSelector";
 import clockIcon from "../../../assets/img/Clock.png";

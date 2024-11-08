@@ -76,7 +76,7 @@ export default function CustomizeTrip({ isPreviewingTrip }) {
         <Description isPreviewingTrip={isPreviewingTrip} />
 
         {!isPreviewingTrip && (
-          <div className="styling-container">
+          <>
             <TripBackground />
             {/* set the glow color  */}
             <button
@@ -95,7 +95,7 @@ export default function CustomizeTrip({ isPreviewingTrip }) {
                 onChange={handleGlowColorChange} // update the glow color on change
               />
             </button>
-          </div>
+          </>
         )}
       </div>
       <div className="car-container">
@@ -126,8 +126,7 @@ export default function CustomizeTrip({ isPreviewingTrip }) {
 
       <button
         onClick={handleAddNewCar}
-        className="customize-trip-glow-btns"
-        id="new-car-btn"
+        className="new-car-btn"
         style={{
           background:
             formData?.tripBackground?.scrim || formData.transparentGlowColor,

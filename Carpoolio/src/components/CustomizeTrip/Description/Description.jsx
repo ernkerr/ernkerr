@@ -6,7 +6,7 @@ export default function Description({ isPreviewingTrip }) {
   const { formData, setFormData } = useContext(TripContext);
 
   const handleInput = (event) => {
-    event.target.style.height = "4dvh";
+    // event.target.style.height = "4dvh";
     event.target.style.height = `${event.target.scrollHeight}px`;
     setFormData({ ...formData, tripDescription: event.target.value });
   };

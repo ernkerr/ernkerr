@@ -1,11 +1,5 @@
-/* .car-name {
-  font-family: var(--main-font);
-
-  
-} */
-
 .render-car-container {
-  height: 20dvh;
+  height: 64dvh;
   display: flex;
   margin: 0 auto;
   position: relative;

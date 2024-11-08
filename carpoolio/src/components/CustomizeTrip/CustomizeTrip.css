@@ -1,25 +1,26 @@
 .customize-trip-container {
   display: flex;
   flex-direction: row;
-  height: 80vh;
+  height: 100vh;
   min-height: 40vh;
-  width: 90dvw;
+  width: 100dvw;
 }
 
 .details-container {
   display: flex;
   flex-direction: column;
-  width: 40dvw;
-  margin-right: 1dvw;
-  margin-left: 5dvw;
+  width: 60%;
+  margin-top: 5dvh;
+  /* margin-right: 1dvw; */
+  /* margin-left: 5dvw; */
 }
 
 .car-container {
   display: flex;
   flex-direction: column;
-  height: 85dvh;
-  width: 60dvw;
-  gap: 2dvh;
+  /* height: 90dvh; */
+  width: 40%;
+  gap: 1dvh;
   overflow-x: auto;
 }
 
@@ -52,57 +53,27 @@
 }
 
 .render-car-container {
-  min-height: 30dvh;
-  margin-bottom: 10px;
+  min-height: 40dvh;
+  /* margin-bottom: 10px; */
 }
 
-/* glow color and background */
-.styling-container {
-  display: flex;
-  flex-direction: column;
-  width: 35vw;
-}
+/* background & glow color  */
 
-#new-car-btn {
-  position: absolute;
-  bottom: 12dvh;
-  right: 9dvw;
-  padding: 10px 30px; /* Wider padding for oval shape */
-  border-radius: 50px; /* High border-radius for oval */
-  z-index: 3;
-}
-
-/* main btn styling */
 .customize-trip-btns {
+  width: 80%;
   color: white;
-  background: none;
-  /* background-color: #ebe7ef2c !important; */
+  cursor: pointer;
   font-family: var(--main-font);
   font-size: var(--font-size-small);
-  height: var(--height-button);
-  width: 40dvw;
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  margin-top: var(--margin-small);
   padding: var(--padding-button);
+  border: var(--transparent-border);
+  border-radius: var(--border-radius);
+  margin-top: var(--margin-small);
+  margin-left: var(--margin-left);
   display: flex;
   align-items: center;
   text-align: left;
-  cursor: pointer;
-  padding-left: 0.5dvw;
 }
-
-/* .style-container {
-  display: flex;
-  flex-direction: column;
-} */
-/* 
-.customize-car {
-  display: flex;
-  flex-direction: column;
-} */
-
-/* optional buttons for customization  */
 
 .calendar-button-container {
   width: 50%;
@@ -130,20 +101,20 @@
 /* // backgrounds  */
 /* TripBackground.css */
 .background-container {
+  width: 80%;
+  font-family: var(--main-font);
+  border: var(--transparent-border);
+  border-radius: var(--border-radius);
+  margin-top: var(--margin-small);
+  margin-left: var(--margin-left);
+
   display: flex;
   flex-wrap: wrap; /* Allow items to wrap to the next line */
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   overflow-y: auto; /* Allow vertical scrolling */
-  max-height: 200px; /* Set a maximum height for the scrollable area */
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  margin-top: var(--margin-small);
-  width: 40dvw;
-  font-family: var(--main-font);
-  /* border: 1px solid #ccc; Optional: border around the container */
-  /* border-radius: 8px; Optional: rounded corners */
+  max-height: 300px; /* Set a maximum height for the scrollable area */
 }
 
 /* scrollbar  */
@@ -169,7 +140,7 @@
 
 /* options */
 .background-option {
-  width: calc((100% / 3) - 20px); /* 3 items per row, accounting for the gap */
+  width: calc((100% / 4) - 20px); /* 4 items per row, accounting for the gap */
   display: flex;
   flex-direction: column;
   align-items: center; /* Center items horizontally */
@@ -178,8 +149,8 @@
 }
 
 .background-image {
-  width: 50px; /* Set the width of the image */
-  height: 50px; /* Set the height of the image */
+  width: 70px; /* Set the width of the image */
+  height: 70px; /* Set the height of the image */
   border-radius: 50%; /* Make the image a circle */
   object-fit: cover; /* Crop the image to fit the circle */
   border: 2px solid transparent; /* Optional: border for hover effect */
@@ -191,7 +162,7 @@
   box-shadow: 0 0 5px #f3fffb, 0 0 10px #ffffff, 0 0 10px #ffffff;
 }
 
-/* glow color  */
+/* glow color picker */
 .glowColor {
   color: white;
   background: none;
@@ -200,7 +171,7 @@
   height: 2.5vh;
   width: 20%;
   border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
+  border-radius: var(--border-radius);
   padding: var(--paddding-button);
   display: flex;
   align-items: center;
@@ -252,4 +223,21 @@
 .customize-trip-glow-btns:hover {
   background-color: rgb(255, 255, 255); /* Green background on hover */
   box-shadow: 0 0 5px #ffffff25, 0 0 15px #ffffff56, 0 0 30px #ffffff52 !important;
+}
+
+.new-car-btn {
+  color: white;
+  z-index: 2;
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  width: 160px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: var(--border-radius-buttton-medium);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: var(--margin-large);
+  margin-left: var(--margin-left-xlarge);
 }

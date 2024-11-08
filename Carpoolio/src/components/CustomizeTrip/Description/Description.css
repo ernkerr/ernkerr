@@ -1,21 +1,18 @@
 #description-textarea {
+  width: 80%;
   color: white;
-  background: none;
+  cursor: pointer;
   font-family: var(--main-font);
   font-size: var(--font-size-small);
-  min-height: 40px;
+  padding: var(--padding-text-area);
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  margin-top: var(--margin-small);
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  text-align: left;
-  cursor: pointer;
-  padding-left: 0.5dvw;
+  margin-top: var(--margin-medium);
+  margin-left: var(--margin-left);
   box-sizing: border-box;
   resize: none;
   overflow-y: hidden;
+  min-height: 40px;
 }
 
 #description-textarea::placeholder {

@@ -1,12 +1,14 @@
 /* From Uiverse.io by MuhammadHasann */
 .star-button {
+  height: 60px;
   font: var(--main-font);
   font-size: var(--font-size-small);
   position: absolute;
-  bottom: 5dvh;
-  left: 50;
+  bottom: 0;
+  left: 0;
+  margin-bottom: var(--margin-large);
+  margin-left: var(--margin-left-large);
   padding: 12px 25px;
-  margin: 0;
 
   color: white;
   border: var(--transparent-border);

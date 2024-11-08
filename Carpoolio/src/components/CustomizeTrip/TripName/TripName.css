@@ -1,22 +1,23 @@
 /* trip title  */
-.trip-title {
+.trip-name {
+  width: 80%;
   color: white;
-  font-family: var(--main-font);
-  font-size: var(--font-size-large);
-  border-radius: var(--border-radius);
-  padding: var(--padding-title);
-  align-items: flex-start;
   cursor: pointer;
-  margin-top: var(--margin-medium);
-  padding-left: 0.5dvw;
-  letter-spacing: 0.07em;
+  font-family: var(--main-font);
+  font-size: var(--font-size-extra-large);
+  /* font-weight: var(--font-weight-bold); */
+  letter-spacing: var(--letter-spacing-title);
+  padding: var(--padding-title);
+  border-radius: var(--border-radius);
+  margin-left: var(--margin-left);
+  /* align-items: flex-start; */
 }
 
-.trip-title::placeholder {
+.trip-name::placeholder {
   color: white;
   text-align: left;
 }
 
-.trip-title[disabled] {
+.trip-name[disabled] {
   cursor: default;
 }

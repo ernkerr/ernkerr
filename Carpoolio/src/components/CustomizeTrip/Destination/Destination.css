@@ -1,18 +1,14 @@
-.destination-btn {
+.destination {
+  width: 80%;
   color: white;
-  background: none;
+  cursor: pointer;
   font-family: var(--main-font);
   font-size: var(--font-size-small);
+  padding: var(--padding-button);
   margin-top: var(--margin-small);
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  text-align: left;
-  cursor: pointer;
-  padding-left: 0.5dvw;
-  letter-spacing: 0.04em;
+  margin-left: var(--margin-left);
 }
 
-.destination-btn::placeholder {
+.destination::placeholder {
   color: white;
 }

@@ -23,7 +23,7 @@ export default function TripName({ isPreviewingTrip }) {
   return (
     <>
       <input
-        className={`trip-title ${isPreviewingTrip ? "disabled" : ""}`}
+        className={`trip-name ${isPreviewingTrip ? "disabled" : ""}`}
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
           border: isPreviewingTrip

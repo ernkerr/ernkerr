@@ -34,6 +34,8 @@ html {
   font-size: 16px;
 }
 
+/* adjust these for media query!!! */
+
 /* Hide scroll bar in most modern browsers */
 body {
   overflow: auto;
@@ -54,40 +56,55 @@ body::-webkit-scrollbar {
   height: 100dvh;
   color: rgb(255, 255, 255);
   --main-font: "Gruppo", sans-serif;
-  --main-cursor: pointer;
+  /* --main-cursor: pointer; */
 
   /* spacing and sizing system */
 
   /* font size */
-  --font-size-tiny: 8em;
-  --font-size-small: 1.2em;
+  --font-size-tiny: 0.8em;
+  --font-size-extra-small: 1em;
+  --font-size-small: 1.2em; /* --font-size-button: 1.2em; */
   --font-size-medium: 1.6em;
   --font-size-large: 2.4em;
   --font-size-extra-large: 3.2em;
-  /* --font-size-button: 1.2em; */
+
+  /* font-weight */
+  --font-weight-normal: 400;
+  --font-weight-bold: 600;
+  --font-weight-xbold: 800;
+
+  /* letter-spacing */
+  --letter-spacing-title: 0.09em;
+
+  /* padding */
+  --padding-title: 5px 0 5px 10px;
+  --padding-button: 5px 0 5px 10px;
+  --padding-text-area: 8px 5px 5px 10px;
 
   /* border */
+  --transparent-border: 2px solid rgba(255, 255, 255, 0.182);
 
   /* border radius */
   --border-radius: 5px;
   --border-radius-button: 10px;
+  --border-radius-buttton-medium: 15px;
+
+  /* margin */
+  --margin-small: 0.5dvh;
+  --margin-medium: 2dvh;
+  --margin-large: 10dvh;
+
+  --margin-left: 16dvw;
+  --margin-left-medium: 32dvw;
+  --margin-left-large: 48dvw;
+  --margin-left-xlarge: 64dvw;
 
   /* titles */
-  --font-size-title: 2.5em;
+
   --height-title: 4dvh;
-  --padding-title: 5px;
-
-  /* margins */
-  --margin-small: 1dvh;
-  --margin-medium: 2dvh;
-  /* --margin-top-button: 1dvh; */
-
   --height-button: 4dvh;
 
-  --padding-button: 15px;
-
   /* colors */
-  --red: rgba(255, 0, 0, 0.288);
   --transparent: rgba(2, 1, 1, 0.182);
   --transparent-border: 2px solid rgba(255, 255, 255, 0.182);
   --yellow-glow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00;

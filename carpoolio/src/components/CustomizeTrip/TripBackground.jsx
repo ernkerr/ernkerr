@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { TripContext } from "@/components/TripContext";
-
 import "./CustomizeTrip.css";
+
 import none from "../../assets/gifs/none.png";
 import clouds from "../../assets/gifs/cloud.gif";
 import bluegoo from "../../assets/bluegoo.gif";
