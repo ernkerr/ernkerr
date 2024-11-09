@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { TripContext } from "@/components/TripContext";
+import { TripContext } from "@components/TripContext";
 import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
 import "../CustomizeTrip/RenderCar.css";
 
@@ -18,6 +18,15 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     formData.cars[activeCarIndex].seatDistribution
   );
   const [carName, setCarName] = useState(formData.cars[activeCarIndex].carName);
+
+  // use onBlur to save the seat inputs / buttons / whatever they end up becoming
+
+  // onBlur={handleSave}
+  const handleSave = async (e) => {
+    e.preventDefault(); // prevent page reload
+
+    // send
+  };
 
   // useEffect(() => {
   //   console.log({
@@ -81,6 +90,18 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
       };
     });
     setIsCustomizingCar(false);
+  };
+
+  const handleDeleteCar = () => {
+    setFormData((prevData) => {
+      const updatedCars = prevData.cars.filter(
+        (_, index) => index !== activeCarIndex
+      );
+      return {
+        ...prevData,
+        cars: updatedCars,
+      };
+    });
   };
 
   return (
@@ -202,6 +223,17 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
           onClick={handleSaveCar}
         >
           save car
+        </button>
+        <button
+          className="delete-car-button"
+          onClick={handleDeleteCar}
+          style={{
+            background: "red",
+            color: "white",
+            marginTop: "10px",
+          }}
+        >
+          Delete Car
         </button>
       </div>
     </>

@@ -3,11 +3,11 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CustomizeTrip from "@components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
+import { TripContext } from "@components/TripContext";
+import InviteBtn from "@components/InviteBtn.jsx";
 import "@components/NewTripForm/NewTripForm.css";
 import "@components/CustomizeTrip/CustomizeTrip.css";
 import "./TripPage.css";
-import { TripContext } from "@components/TripContext";
-import InviteBtn from "@components/InviteBtn.jsx";
 
 export default function TripPage() {
   const { formData, setFormData } = useContext(TripContext);
@@ -113,6 +113,7 @@ export default function TripPage() {
             backgroundPosition: "center",
           }}
         > */}
+        {/* // no more glow */}
         <CustomizeTrip isPreviewingTrip={isPreviewingTrip} />
         <InviteBtn tripId={formData.tripId} />
 

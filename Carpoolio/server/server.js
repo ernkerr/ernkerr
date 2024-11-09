@@ -49,6 +49,11 @@ app.post("/api/trip", async (req, res) => {
   }
 });
 
+app.post("/api/saveFormData", (req, res) => {
+  const formData = req.body;
+  res.json(formData);
+});
+
 app.get("/api/trip/:tripId/:adminId", async (req, res) => {
   const { tripId, adminId } = req.params;
 
