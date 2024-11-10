@@ -22,7 +22,7 @@ export default function InviteBtn({ tripId }) {
           boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
         }}
       >
-        Invite
+        invite
         <div className="star-1"></div>
         <div className="star-2"></div>
         <div className="star-3"></div>

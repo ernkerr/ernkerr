@@ -93,7 +93,10 @@ body::-webkit-scrollbar {
   --margin-small: 0.5dvh;
   --margin-medium: 2dvh;
   --margin-large: 10dvh;
+  --margin-xlarge: 12dvh;
+  --margin-xxlarge: 24dvh;
 
+  --margin-left-small: 2dvw;
   --margin-left: 16dvw;
   --margin-left-medium: 32dvw;
   --margin-left-large: 48dvw;

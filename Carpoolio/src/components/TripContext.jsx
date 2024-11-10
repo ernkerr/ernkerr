@@ -33,9 +33,16 @@ export function TripContextProvider({ children }) {
         throw new Error("Network response error");
       }
 
-      const responseData = await response.json();
-      setFormData(data); // save fetched data to local state
-      console.log("Data saved successfully:", responseData);
+      // Check if the response has a body
+      const text = await response.text();
+      if (text) {
+        const responseData = JSON.parse(text); // Parse if there's content
+        setFormData(data); // Save formData to local state
+        console.log("Data saved successfully:", responseData);
+      } else {
+        console.warn("No content in response.");
+        setFormData(data); // Still set local state even if there's no response data
+      }
     } catch (error) {
       console.error("Error saving data:", error);
     }

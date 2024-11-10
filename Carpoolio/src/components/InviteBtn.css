@@ -16,6 +16,18 @@
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .star-button {
+    width: 120px;
+    height: 60px;
+    /* right: 0; */
+    margin-left: var(--margin-small);
+    margin-bottom: var(--margin-large);
+
+    /* margin-left: var(--margin-left-xlarge); */
+  }
+}
+
 .star-1 {
   position: absolute;
   top: 20%;

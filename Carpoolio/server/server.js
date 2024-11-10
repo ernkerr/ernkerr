@@ -4,6 +4,7 @@ const { PrismaClient } = require("@prisma/client");
 const { Await } = require("react-router-dom");
 
 const app = express(); // create an app instance
+app.use(express.json()); // middleware to parse data
 const prisma = new PrismaClient();
 const PORT = 8080;
 
@@ -12,7 +13,19 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.use(express.json()); // middleware to parse json
+// const corsOptions = {
+//   origin: ["http://192.168.0.18:5173"], // frontend url (change to domain later)
+// };
+// app.use(cors(corsOptions));
+
+//localhost:5173/trip/7aa186c5-d76e-4713-a991-a3eecc893393/bed6f574-b980-4e8d-a3e3-0dc2f75a3a86
+
+// http: app.use(express.json()); // middleware to parse json
+
+app.get("/api", (req, res) => {
+  console.log("Received a request on /api");
+  res.send("Hello from the backend!");
+});
 
 app.post("/api/trip", async (req, res) => {
   try {

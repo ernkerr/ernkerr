@@ -10,15 +10,12 @@
   display: flex;
   flex-direction: column;
   width: 60%;
-  margin-top: 5dvh;
-  /* margin-right: 1dvw; */
-  /* margin-left: 5dvw; */
+  margin-top: 10dvh;
 }
 
 .car-container {
   display: flex;
   flex-direction: column;
-  /* height: 90dvh; */
   width: 40%;
   gap: 1dvh;
   overflow-x: auto;
@@ -234,10 +231,41 @@
   width: 160px;
   height: 60px;
   cursor: pointer;
-  border-radius: var(--border-radius-buttton-medium);
+  border-radius: var(--border-radius-button);
   position: absolute;
   bottom: 0;
   left: 0;
   margin-bottom: var(--margin-large);
   margin-left: var(--margin-left-xlarge);
+}
+
+@media (max-width: 768px) {
+  .customize-trip-container {
+    flex-direction: column;
+    /* height: 100dvh; */
+    overflow-x: auto;
+  }
+
+  .details-container {
+    margin-top: 5dvh;
+    width: 100dvw;
+  }
+
+  .car-container {
+    width: 100dvw;
+  }
+
+  .new-car-btn {
+    width: 120px;
+    height: 60px;
+    margin-left: var(--margin-small);
+    margin-bottom: var(--margin-small);
+  }
+
+  .customize-trip-btns {
+    width: 90dvw;
+    font-size: var(--font-size-small);
+    margin-left: var(--margin-left-small);
+    align-items: center;
+  }
 }

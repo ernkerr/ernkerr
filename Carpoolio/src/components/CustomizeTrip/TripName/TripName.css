@@ -21,3 +21,13 @@
 .trip-name[disabled] {
   cursor: default;
 }
+
+/* Media query for phones (screen width 768px or smaller) */
+@media (max-width: 768px) {
+  .trip-name {
+    width: 90dvw; /* Make the input wider for smaller screens */
+    font-size: var(--font-size-large);
+    margin-left: var(--margin-left-small);
+    align-items: center;
+  }
+}

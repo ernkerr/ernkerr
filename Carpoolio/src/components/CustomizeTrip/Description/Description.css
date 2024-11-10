@@ -18,3 +18,12 @@
 #description-textarea::placeholder {
   color: white;
 }
+
+@media (max-width: 768px) {
+  #description-textarea {
+    width: 90dvw; /* Make the input wider for smaller screens */
+    font-size: var(--font-size-small);
+    margin-left: var(--margin-left-small);
+    align-items: center;
+  }
+}

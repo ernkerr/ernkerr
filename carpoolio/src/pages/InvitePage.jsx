@@ -164,18 +164,6 @@ export default function TripPage() {
               save
             </button>
           )}
-          {/* save trip functionality 
-          <button
-            style={{
-              background: formData?.transparentGlowColor || "transparent",
-              border: ` 2px solid ${formData?.glowColor}`,
-              boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-            }}
-            className="customize-trip-glow-btns"
-            onClick={handleSave}
-          >
-            save
-          </button> */}
         </div>
       </div>
       {/* </div> */}

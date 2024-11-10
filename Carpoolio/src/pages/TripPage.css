@@ -25,7 +25,7 @@
   height: 60px;
   cursor: pointer;
   border-radius: var(--border-radius-buttton-medium);
-  border: none;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,6 +36,7 @@
   margin-left: var(--margin-left-medium);
   overflow: hidden;
 }
+
 .editBtn::before {
   content: "";
   width: 200%;
@@ -43,6 +44,7 @@
   position: absolute;
   z-index: 1;
   transform: scale(0);
+
   border-radius: 50%;
   filter: blur(10px);
 }
@@ -81,4 +83,21 @@
   transform: scaleX(1);
   left: 0px;
   transform-origin: right;
+}
+
+@media (max-width: 768px) {
+  .editBtn {
+    /* width: 120px;
+    height: 60px; */
+
+    margin-left: var(--margin-small);
+    margin-bottom: var(--margin-xxlarge);
+  }
+  .saveBtn {
+    width: 120px;
+    height: 60px;
+
+    margin-left: var(--margin-small);
+    margin-bottom: var(--margin-xxlarge);
+  }
 }
