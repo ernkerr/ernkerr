@@ -7,7 +7,7 @@
   cursor: pointer;
   width: 60px;
   height: 60px;
-  border-radius: var(--border-radius-buttton-medium);
+  border-radius: var(--border-radius-button);
   border: none;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@
   width: 60px;
   height: 60px;
   cursor: pointer;
-  border-radius: var(--border-radius-buttton-medium);
+  border-radius: var(--border-radius-button);
 
   display: flex;
   align-items: center;
@@ -86,18 +86,31 @@
 }
 
 @media (max-width: 768px) {
-  .editBtn {
-    /* width: 120px;
-    height: 60px; */
+  .bottom-nav-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100dvw;
+    height: 56px;
+    background-color: var(--dark);
+  }
 
-    margin-left: var(--margin-small);
-    margin-bottom: var(--margin-xxlarge);
+  .editBtn {
+    width: 100px;
+    height: 48px;
+    margin-left: var(--margin-medium);
+    margin-bottom: var(--margin-small);
+  }
+  .editBtn::after {
+    background-color: rgba(255, 255, 255, 0);
   }
   .saveBtn {
-    width: 120px;
-    height: 60px;
-
-    margin-left: var(--margin-small);
-    margin-bottom: var(--margin-xxlarge);
+    font-size: var(--font-size-extra-small);
+    width: 25dvw;
+    height: 48px;
+    margin-left: 5dvw;
+    margin-bottom: var(--margin-small);
   }
 }
+
+/* margin: top right bottom left; */

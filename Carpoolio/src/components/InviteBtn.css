@@ -18,13 +18,11 @@
 
 @media (max-width: 768px) {
   .star-button {
-    width: 120px;
-    height: 60px;
-    /* right: 0; */
-    margin-left: var(--margin-small);
-    margin-bottom: var(--margin-large);
-
-    /* margin-left: var(--margin-left-xlarge); */
+    font-size: var(--font-size-extra-small);
+    width: 25dvw;
+    height: 48px;
+    margin-left: 37.5dvw;
+    margin-bottom: var(--margin-small);
   }
 }
 

@@ -242,8 +242,7 @@
 @media (max-width: 768px) {
   .customize-trip-container {
     flex-direction: column;
-    /* height: 100dvh; */
-    overflow-x: auto;
+    overflow-x: scroll;
   }
 
   .details-container {
@@ -253,12 +252,15 @@
 
   .car-container {
     width: 100dvw;
+    margin-bottom: 56px;
   }
 
   .new-car-btn {
-    width: 120px;
-    height: 60px;
-    margin-left: var(--margin-small);
+    font-size: var(--font-size-extra-small);
+    width: 25dvw;
+    height: 48px;
+
+    margin-left: 70dvw;
     margin-bottom: var(--margin-small);
   }
 
