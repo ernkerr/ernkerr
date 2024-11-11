@@ -19,7 +19,7 @@ function HomePage() {
   return (
     <div className="home-page">
       <Header />
-      <NewTripButton>Try It Out</NewTripButton>
+      <NewTripButton className="new-trip">Try It Out</NewTripButton>
       <MovingCar />
     </div>
   );

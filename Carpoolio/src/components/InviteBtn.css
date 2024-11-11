@@ -1,6 +1,7 @@
 /* From Uiverse.io by MuhammadHasann */
 .star-button {
   height: 60px;
+  width: 120px;
   font: var(--main-font);
   font-size: var(--font-size-small);
   position: absolute;

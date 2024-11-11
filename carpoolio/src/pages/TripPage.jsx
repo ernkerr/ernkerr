@@ -5,6 +5,7 @@ import CustomizeTrip from "@components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import { TripContext } from "@components/TripContext";
 import InviteBtn from "@components/InviteBtn.jsx";
+import NewTripButton from "@components/NewTripButton/NewTripButton.jsx";
 import "@components/NewTripForm/NewTripForm.css";
 import "@components/CustomizeTrip/CustomizeTrip.css";
 import "./TripPage.css";
@@ -154,7 +155,18 @@ export default function TripPage() {
                 save
               </button>
             )
-          ) : null}
+          ) : (
+            <NewTripButton
+              className="new-trip-btn"
+              style={{
+                background: formData?.transparentGlowColor || "transparent",
+                border: `2px solid ${formData?.glowColor}`,
+                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+              }}
+            >
+              + new trip
+            </NewTripButton>
+          )}
         </div>
       </div>
       {/* </div> */}

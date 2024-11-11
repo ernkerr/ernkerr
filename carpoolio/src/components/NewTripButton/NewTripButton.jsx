@@ -1,9 +1,9 @@
 import "../../pages/HomePage.css";
 
-export default function NewTripButton({ children }) {
+export default function NewTripButton({ children, ...rest }) {
   return (
-    <a href="/trip/create" className="new-trip">
-      <button>{children}</button>
+    <a href="/trip/create" style={{ textDecoration: "none" }}>
+      <button {...rest}>{children}</button>
     </a>
   );
 }

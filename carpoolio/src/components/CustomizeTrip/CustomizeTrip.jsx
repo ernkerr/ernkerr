@@ -134,7 +134,7 @@ export default function CustomizeTrip({ isPreviewingTrip }) {
           boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
         }}
       >
-        + add a car
+        + add car
       </button>
     </div>
   );

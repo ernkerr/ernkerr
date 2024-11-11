@@ -98,9 +98,9 @@ body::-webkit-scrollbar {
 
   --margin-left-small: 2dvw;
   --margin-left: 16dvw;
-  --margin-left-medium: 32dvw;
-  --margin-left-large: 48dvw;
-  --margin-left-xlarge: 64dvw;
+  --margin-left-medium: 18dvw;
+  --margin-left-large: 34dvw;
+  --margin-left-xlarge: 50dvw;
 
   --margin-right-small: 2dvw;
 

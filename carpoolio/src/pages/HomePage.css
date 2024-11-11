@@ -18,7 +18,7 @@
   text-decoration: none;
 }
 
-.new-trip button {
+.new-trip {
   background-color: rgb(255, 255, 255);
   border: none;
   color: black;
@@ -32,13 +32,13 @@
   font-size: 1.5em;
 }
 
-.new-trip button:hover {
+.new-trip:hover {
   background-color: rgb(52, 189, 52);
   color: #ebe7ef;
   box-shadow: 0 0 5px #04aa6d, 0 0 15px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
 }
 
-.new-trip button:active {
+.new-trip:active {
   background-color: rgb(52, 189, 52);
   color: #ebe7ef;
   box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */

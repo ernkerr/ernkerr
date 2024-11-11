@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   height: 100vh;
-  min-height: 40vh;
+  min-height: 100%;
   width: 100dvw;
 }
 
@@ -18,7 +18,7 @@
   flex-direction: column;
   width: 40%;
   gap: 1dvh;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -227,8 +227,7 @@
   z-index: 2;
   font-family: var(--main-font);
   font-size: var(--font-size-small);
-  font-weight: var(--font-weight-bold);
-  width: 160px;
+  width: 120px;
   height: 60px;
   cursor: pointer;
   border-radius: var(--border-radius-button);
@@ -242,17 +241,20 @@
 @media (max-width: 768px) {
   .customize-trip-container {
     flex-direction: column;
-    overflow-x: scroll;
+    height: 100dvh; /* Ensure it takes full height for scrolling */
+    overflow-y: auto;
   }
 
   .details-container {
     margin-top: 5dvh;
     width: 100dvw;
+    /* padding-bottom: 20px; Add bottom padding if needed */
   }
 
   .car-container {
     width: 100dvw;
     margin-bottom: 56px;
+    /* overflow: hidden; */
   }
 
   .new-car-btn {

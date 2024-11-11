@@ -1,11 +1,32 @@
-/* From Uiverse.io by vinodjangid07 */
+.new-trip-btn {
+  all: unset; /* Resets all button defaults */
+  color: white;
+  font: var(--main-font);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  width: 120px;
+  height: 60px;
+  border-radius: var(--border-radius-button);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: var(--margin-large);
+  margin-left: var(--margin-left-medium);
+  overflow: hidden;
+}
+
 .saveBtn {
   color: white;
   font: var(--main-font);
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-bold);
   cursor: pointer;
-  width: 60px;
+  width: 120px;
   height: 60px;
   border-radius: var(--border-radius-button);
   border: none;
@@ -21,7 +42,7 @@
 }
 
 .editBtn {
-  width: 60px;
+  width: 120px;
   height: 60px;
   cursor: pointer;
   border-radius: var(--border-radius-button);
@@ -51,9 +72,9 @@
 .editBtn:hover::before {
   transform: scale(1);
 }
-.editBtn:hover {
+/* .editBtn:hover {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.336);
-}
+} */
 
 .editBtn svg {
   height: 17px;
@@ -67,7 +88,7 @@
 }
 .editBtn::after {
   content: "";
-  width: 25px;
+  width: 55px;
   height: 1.5px;
   position: absolute;
   bottom: 19px;
@@ -105,6 +126,14 @@
     background-color: rgba(255, 255, 255, 0);
   }
   .saveBtn {
+    font-size: var(--font-size-extra-small);
+    width: 25dvw;
+    height: 48px;
+    margin-left: 5dvw;
+    margin-bottom: var(--margin-small);
+  }
+
+  .new-trip-btn {
     font-size: var(--font-size-extra-small);
     width: 25dvw;
     height: 48px;
