@@ -11,7 +11,7 @@ import Description from "./Description/Description.jsx";
 import "./CustomizeTrip.css";
 import { TripContext } from "@components/TripContext";
 
-export default function CustomizeTrip({ isPreviewingTrip }) {
+export default function CustomizeTrip({ isPreviewingTrip, isAdmin }) {
   const { formData, setFormData } = useContext(TripContext); // Access TripContext here
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
@@ -134,7 +134,7 @@ export default function CustomizeTrip({ isPreviewingTrip }) {
           boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
         }}
       >
-        + add car
+        + Add Car
       </button>
     </div>
   );

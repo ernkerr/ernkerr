@@ -246,7 +246,7 @@
   }
 
   .details-container {
-    margin-top: 5dvh;
+    margin-top: 3dvh;
     width: 100dvw;
     /* padding-bottom: 20px; Add bottom padding if needed */
   }
@@ -255,13 +255,13 @@
     width: 100dvw;
     margin-bottom: 56px;
     /* overflow: hidden; */
+    gap: 5dvh;
   }
 
   .new-car-btn {
     font-size: var(--font-size-extra-small);
     width: 25dvw;
     height: 48px;
-
     margin-left: 70dvw;
     margin-bottom: var(--margin-small);
   }
@@ -271,5 +271,23 @@
     font-size: var(--font-size-small);
     margin-left: var(--margin-left-small);
     align-items: center;
+  }
+
+  .customize-car-btn {
+    color: white;
+    font-family: var(--main-font);
+    font-size: var(--font-size-small);
+    padding: 10px 10px 10px 10px;
+    border-radius: var(--border-radius-button);
+    margin-top: var(--margin-small);
+  }
+
+  #save-car-btn {
+    margin-left: var(--margin-medium);
+    margin-top: var(--margin-small);
+  }
+
+  #delete-car-btn {
+    margin-top: var(--margin-small);
   }
 }

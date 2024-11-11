@@ -29,7 +29,7 @@ export default function RenderCar({
       <div className="render-car-container">
         <DefaultCar
           carColor={car.carColor}
-          style={{ width: "100%", height: "auto" }}
+          // style={{ width: "100%", height: "auto" }}
         />
         <div className="render-seat-container">
           <div className="render-seat-row">
@@ -77,7 +77,7 @@ export default function RenderCar({
             )}
           </div>
           <button
-            className="glow-button"
+            className="customize-car-btn"
             onClick={() => handleCustomizeCar(carIndex)}
             style={{
               background: formData?.tripBackground?.scrim || "transparent",
@@ -85,7 +85,7 @@ export default function RenderCar({
               boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
             }}
           >
-            Customize Car
+            Customize
           </button>
         </div>
       </div>

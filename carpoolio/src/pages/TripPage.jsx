@@ -115,7 +115,7 @@ export default function TripPage() {
         > */}
         {/* // no more glow */}
 
-        <CustomizeTrip isPreviewingTrip={isPreviewingTrip} />
+        <CustomizeTrip isPreviewingTrip={isPreviewingTrip} isAdmin={isAdmin} />
 
         <div
           className="bottom-nav-bar"
@@ -152,7 +152,7 @@ export default function TripPage() {
                 }}
                 onClick={handleSave}
               >
-                save
+                Save
               </button>
             )
           ) : (
@@ -164,7 +164,7 @@ export default function TripPage() {
                 boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
               }}
             >
-              + new trip
+              + New Trip
             </NewTripButton>
           )}
         </div>

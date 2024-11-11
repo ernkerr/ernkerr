@@ -28,15 +28,6 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     // send
   };
 
-  // useEffect(() => {
-  //   console.log({
-  //     carColor,
-  //     numSeats,
-  //     seatNames,
-  //     seatDistribution,
-  //   });
-  // }, [carColor, numSeats, seatNames, seatDistribution]);
-
   const changeCarName = (event) => {
     const carName = event.target.value;
     setCarName(carName);
@@ -212,29 +203,32 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
           />
         </div>
 
-        <button
-          className="glow-button"
-          id="save-car-btn"
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-            border: ` 2px solid ${formData.glowColor}`,
-            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-          }}
-          onClick={handleSaveCar}
-        >
-          save car
-        </button>
-        <button
-          className="delete-car-button"
-          onClick={handleDeleteCar}
-          style={{
-            background: "red",
-            color: "white",
-            marginTop: "10px",
-          }}
-        >
-          Delete Car
-        </button>
+        <div className="customize-car-btn-container">
+          <button
+            className="customize-car-btn"
+            id="delete-car-btn"
+            onClick={handleDeleteCar}
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+              border: ` 2px solid ${formData.glowColor}`,
+              boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+            }}
+          >
+            Delete
+          </button>
+          <button
+            className="customize-car-btn"
+            id="save-car-btn"
+            style={{
+              background: formData?.tripBackground?.scrim || "transparent",
+              border: ` 2px solid ${formData.glowColor}`,
+              boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+            }}
+            onClick={handleSaveCar}
+          >
+            Save
+          </button>
+        </div>
       </div>
     </>
   );

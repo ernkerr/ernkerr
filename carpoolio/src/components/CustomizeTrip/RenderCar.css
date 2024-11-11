@@ -1,11 +1,11 @@
 .render-car-container {
-  height: 64dvh;
+  /* height: 64dvh; */
   display: flex;
   margin: 0 auto;
   position: relative;
   /* margin-left: 50%; */
   /* margin-bottom: 10%; */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .render-car-container svg {
@@ -16,7 +16,7 @@
   position: absolute;
   top: 40%;
   height: 60%;
-  width: 40vw;
+  width: 40dvw;
   display: flex;
   flex-direction: column;
   z-index: 2;
@@ -34,23 +34,23 @@
 }
 
 .seat-input {
-  background-color: #f0f0f085;
+  background-color: #f0f0f0b0;
   border: var(--transparent-border);
-  padding: 0.5px;
+  padding: 1px;
   cursor: pointer;
   border-radius: 5px;
-  height: 2dvh;
-  width: 25%;
+  height: 3dvh;
+  width: 30%;
 
   text-align: center;
   font-family: var(--main-font);
   font-size: var(--font-size-small);
   pointer-events: auto;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .seat-buttons {
-  background-color: #f0f0f085;
+  background-color: #f0f0f0ac;
   border: var(--transparent-border);
   border-radius: 5px;
 }
@@ -94,7 +94,7 @@
   border: none;
   font-family: var(--main-font);
   font-size: var(--font-size-small);
-  width: 95%; /* Take full width of parent */
+  width: 75%; /* Take full width of parent */
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically if needed */
@@ -114,7 +114,7 @@
   flex-direction: row; /* Ensure row layout */
   align-items: center; /* Center vertically */
   gap: 10px; /* Space between items */
-  width: 95%; /* Take full width of parent */
+  width: 75%; /* Take full width of parent */
   margin-top: var(--margin-small);
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
@@ -131,4 +131,60 @@
 
   text-align: left;
   cursor: pointer;
+}
+
+.customize-car-btn-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.customize-car-btn {
+  color: white;
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: 10px 10px 10px 10px;
+  border-radius: var(--border-radius-button);
+}
+
+#save-car-btn {
+  margin-left: var(--margin-medium);
+  margin-top: var(--margin-medium);
+}
+
+#delete-car-btn {
+  margin-top: var(--margin-medium);
+}
+
+@media (max-width: 768px) {
+  .render-car-container svg {
+    width: 100dvw;
+    height: 50dvh;
+  }
+
+  .render-seat-container {
+    top: 50%;
+    width: 100dvw;
+  }
+
+  .seat-input {
+    padding: 1px;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 3dvh;
+    width: 30%;
+
+    text-align: center;
+    font-family: var(--main-font);
+    font-size: var(--font-size-small);
+    pointer-events: auto;
+    font-size: 18px;
+  }
+
+  .car-name {
+    margin-top: var(--margin-medium);
+  }
+
+  .custom-car-option {
+    margin-top: var(--margin-large);
+  }
 }

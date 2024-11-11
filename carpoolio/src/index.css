@@ -110,7 +110,7 @@ body::-webkit-scrollbar {
   --height-button: 4dvh;
 
   /* colors */
-  --dark: rgba(12, 12, 12, 0.6);
+  --dark: rgba(12, 12, 12, 0.4);
   --transparent: rgba(2, 1, 1, 0.182);
   --transparent-border: 2px solid rgba(255, 255, 255, 0.182);
   --yellow-glow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00;
