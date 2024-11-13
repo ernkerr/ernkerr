@@ -68,9 +68,10 @@ export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
         }}
         value={destination}
         onChange={handleInputChange}
-        placeholder={destination}
+        placeholder={destination ? destination : "Choose your destination"}
         // className="destination"
         className="form-response"
+        id="destination"
         style={{
           // background: formData?.tripBackground?.scrim || "transparent",
           // borderRadius: isPreviewingTrip ? "0" : "5px",

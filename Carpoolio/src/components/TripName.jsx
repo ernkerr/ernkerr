@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { TripContext } from "@components/TripContext";
 
-export default function TripName({ isPreviewingTrip }) {
+export default function TripName({ isPreviewingTrip, onTripNameUpdate }) {
   const { formData, setFormData } = useContext(TripContext);
   const [error, setError] = useState("");
 
@@ -17,6 +17,10 @@ export default function TripName({ isPreviewingTrip }) {
     if (!isPreviewingTrip) {
       setFormData({ ...formData, tripName: event.target.value });
       if (event.target.value) setError("");
+      // pass the destination up to parent
+      if (onTripNameUpdate) {
+        onTripNameUpdate(event.target.value);
+      }
     }
   };
   return (

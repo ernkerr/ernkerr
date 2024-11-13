@@ -1,7 +1,7 @@
 .form-question-container {
-  margin-left: var(--margin-left-small);
+  margin-left: var(--margin-small);
   margin-bottom: var(--margin-bottom);
-  width: 90dvw;
+  width: 95dvw;
 }
 
 .form-question {
@@ -24,7 +24,7 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-  width: 85dvw;
+  width: 92dvw;
 }
 
 .form-response::placeholder {
@@ -35,6 +35,19 @@
   border: 1px solid var(--main-green);
   outline: none; /* Removes the focus outline */
   box-shadow: var(--green-glow);
+}
+
+form-response {
+  font-size: var(--font-size-small);
+  /* transition: font-size 0.2s ease; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.more-options {
+  color: var(--white);
+  font-family: var(--main-font);
 }
 
 .primary-btn {
