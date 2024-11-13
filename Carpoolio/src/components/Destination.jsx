@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import Autocomplete from "react-google-autocomplete";
 import { TripContext } from "@components/TripContext";
-import "./Destination.css";
 
-export default function Destination({ isPreviewingTrip }) {
+export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
   const { formData, setFormData } = useContext(TripContext);
   const [destination, setDestination] = useState(formData?.destination || "");
   const autocompleteRef = useRef(null); // create a ref for the Autocomplete component
 
-  // handle the location selection fromthe autocomplete
+  // handle the location selection from the autocomplete
   const handleSelectedLocation = (place) => {
     if (!isPreviewingTrip) {
       const selectedPlaceName = place.name || ""; // check place name
@@ -22,6 +21,11 @@ export default function Destination({ isPreviewingTrip }) {
         ...prevFormData,
         destination: tripDestination,
       }));
+
+      // pass the destination up to parent
+      if (onDestinationUpdate) {
+        onDestinationUpdate(tripDestination);
+      }
     }
   };
 
@@ -34,6 +38,11 @@ export default function Destination({ isPreviewingTrip }) {
         ...prevFormData,
         destination: newDestination,
       }));
+
+      // pass the destination up to parent
+      if (onDestinationUpdate) {
+        onDestinationUpdate(newDestination);
+      }
     }
   };
 
@@ -59,14 +68,12 @@ export default function Destination({ isPreviewingTrip }) {
         }}
         value={destination}
         onChange={handleInputChange}
-        placeholder={destination ? destination : "Choose your destination"}
-        className="destination"
+        placeholder={destination}
+        // className="destination"
+        className="form-response"
         style={{
-          background: formData?.tripBackground?.scrim || "transparent",
-          border: isPreviewingTrip
-            ? "2px solid transparent"
-            : "2px solid rgba(255, 255, 255, 0.182)",
-          borderRadius: isPreviewingTrip ? "0" : "5px",
+          // background: formData?.tripBackground?.scrim || "transparent",
+          // borderRadius: isPreviewingTrip ? "0" : "5px",
           pointerEvents: isPreviewingTrip ? "none" : "auto", // Prevent interaction in preview mode
         }}
       />

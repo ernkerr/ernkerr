@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { TripContext } from "@components/TripContext";
-import "./TripName.css";
 
 export default function TripName({ isPreviewingTrip }) {
   const { formData, setFormData } = useContext(TripContext);
@@ -23,24 +22,25 @@ export default function TripName({ isPreviewingTrip }) {
   return (
     <>
       <input
-        className={`trip-name ${isPreviewingTrip ? "disabled" : ""}`}
-        style={{
-          background: formData?.tripBackground?.scrim || "transparent",
-          border: isPreviewingTrip
-            ? "2px solid transparent"
-            : error
-            ? "2px solid red"
-            : "2px solid rgba(255, 255, 255, 0.182)",
-        }}
+        // className={`trip-name ${isPreviewingTrip ? "disabled" : ""}`}
+        className="form-response"
+        // style={{
+        //   border: isPreviewingTrip
+        //     ? "2px solid transparent"
+        //     : error
+        //     ? "2px solid red"
+        //     : "2px solid rgba(255, 255, 255, 0.182)",
+        // }}
+
         type="text"
         required
-        placeholder={"Untitled Trip"}
+        placeholder={"Give your trip a name.."}
         value={formData.tripName || ""}
         disabled={isPreviewingTrip}
         onChange={handleChange}
         onBlur={handleBlur} // trigger validation when input loses focus
       />
-      {error && <p className="error-message">{error}</p>}
+      {/* {error && <p className="error-message">{error}</p>} */}
     </>
   );
 }

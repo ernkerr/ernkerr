@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import hexRgb from "hex-rgb";
-import TripName from "./TripName/TripName.jsx";
 import DateSelector from "./DateSelector/DateSelector.jsx";
-import Destination from "./Destination/Destination.jsx";
 import TripBackground from "./TripBackground";
 import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import Description from "./Description/Description.jsx";
 import "./CustomizeTrip.css";
 import { TripContext } from "@components/TripContext";
+
+import Destination from "../Destination.jsx";
+import TripName from "../TripName.jsx";
 
 export default function CustomizeTrip({ isPreviewingTrip, isAdmin }) {
   const { formData, setFormData } = useContext(TripContext); // Access TripContext here

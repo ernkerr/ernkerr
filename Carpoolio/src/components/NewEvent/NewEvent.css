@@ -24,7 +24,17 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-  width: 80dvw;
+  width: 85dvw;
+}
+
+.form-response::placeholder {
+  color: rgb(161, 161, 161);
+}
+
+.form-response:focus {
+  border: 1px solid var(--main-green);
+  outline: none; /* Removes the focus outline */
+  box-shadow: var(--green-glow);
 }
 
 .primary-btn {
@@ -51,24 +61,4 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-}
-
-#destination {
-  width: 80%;
-  color: white;
-  cursor: pointer;
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  border: none;
-}
-
-#destination::placeholder {
-  color: rgb(161, 161, 161);
-}
-
-@media (max-width: 768px) {
-  .destination {
-    width: 90dvw; /* Make the input wider for smaller screens */
-    font-size: var(--font-size-small);
-  }
 }
