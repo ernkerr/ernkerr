@@ -1,18 +1,22 @@
 .full-screen-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100dvh;
   width: 100dvw;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 @media (max-width: 768px) {
   .full-screen-wrapper {
-    overflow: visible;
+    overflow: scroll;
+    background-attachment: scroll;
   }
 }
 
-.container-wrapper {
+/* .container-wrapper {
   border-radius: 1.25rem;
   overflow: clip;
   padding: 5px;
@@ -21,9 +25,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 /* Container with gradient border and glow */
-.container {
+/* .container {
   border-radius: 1rem;
   background-color: rgb(0, 0, 0);
   margin: auto;
@@ -35,21 +39,15 @@
   align-items: center;
   overflow-y: scroll;
   scrollbar-width: none;
-}
+} */
 
-.container::-webkit-scrollbar {
+/* .container::-webkit-scrollbar {
   display: none;
 }
 
 .container > * {
   margin-bottom: 20px;
-}
-
-.form-question {
-  font-size: 2.25em;
-  font-family: var(--main-font);
-  margin-bottom: 2.5rem;
-}
+} */
 
 .text-input {
   border: 2px solid rgb(52, 189, 52);

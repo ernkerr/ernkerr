@@ -61,12 +61,7 @@ body::-webkit-scrollbar {
   /* spacing and sizing system */
 
   /* font size */
-  --font-size-tiny: 0.8em;
-  --font-size-extra-small: 1em;
-  --font-size-small: 1.2em; /* --font-size-button: 1.2em; */
-  --font-size-medium: 1.6em;
-  --font-size-large: 2.4em;
-  --font-size-extra-large: 3.2em;
+  --font-size-small: 1.2em;
 
   /* font-weight */
   --font-weight-normal: 400;
@@ -74,22 +69,38 @@ body::-webkit-scrollbar {
   --font-weight-xbold: 800;
 
   /* letter-spacing */
+  --letter-spacing-btn: 0.03em;
   --letter-spacing-title: 0.09em;
 
+  --font-size-tiny: 0.8em;
+  --font-size-extra-small: 1em;
+  --font-size-medium: 1.6em;
+  --font-size-large: 2.4em;
+  --font-size-extra-large: 3.2em;
+
   /* padding */
+  --padding-primary-btn: 10px 20px 10px 20px;
+  --padding-form-response: 10px 0px 10px 10px;
+
   --padding-title: 5px 0 5px 10px;
   --padding-button: 5px 0 5px 10px;
   --padding-text-area: 8px 5px 5px 10px;
 
   /* border */
-  --transparent-border: 2px solid rgba(255, 255, 255, 0.182);
+  --transparent-border: 1px solid rgba(255, 255, 255, 0.182);
 
   /* border radius */
+  --border-radius-btn: 10px;
+
   --border-radius: 5px;
   --border-radius-button: 10px;
   --border-radius-buttton-medium: 15px;
 
   /* margin */
+  --margin-btn: 5dvh;
+
+  --margin-bottom: 40dvh;
+
   --margin-small: 0.5dvh;
   --margin-medium: 2dvh;
   --margin-large: 10dvh;
@@ -101,8 +112,12 @@ body::-webkit-scrollbar {
   --margin-left-medium: 18dvw;
   --margin-left-large: 34dvw;
   --margin-left-xlarge: 50dvw;
-
   --margin-right-small: 2dvw;
+
+  /* height  */
+  --btn-height: 48px;
+
+  /* width */
 
   /* titles */
 
@@ -110,6 +125,9 @@ body::-webkit-scrollbar {
   --height-button: 4dvh;
 
   /* colors */
+  --white: white;
+  --grey: rgb(112, 112, 112);
+
   --dark: rgba(12, 12, 12, 0.4);
   --transparent: rgba(2, 1, 1, 0.182);
   --transparent-border: 2px solid rgba(255, 255, 255, 0.182);

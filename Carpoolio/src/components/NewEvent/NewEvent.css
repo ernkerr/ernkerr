@@ -1,0 +1,74 @@
+.form-question-container {
+  margin-left: var(--margin-left-small);
+  margin-bottom: var(--margin-bottom);
+  width: 90dvw;
+}
+
+.form-question {
+  font-family: var(--main-font);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-btn);
+}
+
+.form-response {
+  color: white;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: var(--padding-form-response);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius-btn);
+
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  width: 80dvw;
+}
+
+.primary-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-btn);
+  padding: var(--padding-primary-btn);
+  border-radius: var(--border-radius-btn);
+
+  height: var(--btn-height);
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  margin-bottom: var(--margin-btn);
+  transform: translateX(-50%);
+}
+
+/* transform: offsets the button by half of its own width, centering it horizontally */
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+}
+
+#destination {
+  width: 80%;
+  color: white;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  border: none;
+}
+
+#destination::placeholder {
+  color: rgb(161, 161, 161);
+}
+
+@media (max-width: 768px) {
+  .destination {
+    width: 90dvw; /* Make the input wider for smaller screens */
+    font-size: var(--font-size-small);
+  }
+}

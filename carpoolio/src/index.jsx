@@ -3,8 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import HomePage from "./pages/HomePage.jsx";
 import NewTripPage from "./pages/NewTripPage.jsx";
-import InvitePage from "./pages/InvitePage.jsx";
 import TripPage from "./pages/TripPage.jsx";
+import NewTripForm from "./pages/NewTripForm.jsx";
 import "./index.css";
 import { TripContextProvider } from "@components/TripContext"; // Adjust path if needed
 
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/trip/create",
-    element: <NewTripPage />,
+    element: <NewTripForm />,
   },
 ]);
 

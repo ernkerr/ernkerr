@@ -5,8 +5,10 @@ import "../components/NewTripForm/NewTripForm.css";
 export default function NewTripPage() {
   return (
     <>
-      <StickyNavBar />
+      {/* <StickyNavBar /> */}
       <NewTripForm />
     </>
   );
 }
+
+// delete?

@@ -1,4 +1,4 @@
-.destination {
+/* .destination {
   width: 80%;
   color: white;
   cursor: pointer;
@@ -15,8 +15,8 @@
 
 @media (max-width: 768px) {
   .destination {
-    width: 90dvw; /* Make the input wider for smaller screens */
+    width: 90dvw; 
     font-size: var(--font-size-small);
     margin-left: var(--margin-left-small);
   }
-}
+} */
