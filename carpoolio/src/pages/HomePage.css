@@ -19,6 +19,7 @@
 }
 
 .new-trip {
+  text-decoration: none;
   background-color: rgb(255, 255, 255);
   border: none;
   color: black;

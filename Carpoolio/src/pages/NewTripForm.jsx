@@ -9,6 +9,7 @@ import GetDestination from "../components/NewTripForm/GetDestination";
 import axios from "axios";
 import { TripContext } from "@/components/TripContext";
 
+import ProgressBar from "../components/ProgressBar";
 import NewEvent from "@components/NewEvent/NewEvent.jsx";
 
 export default function NewTripForm() {
@@ -16,6 +17,7 @@ export default function NewTripForm() {
   const { formData, setFormData } = useContext(TripContext);
   const [page, setPage] = useState(0);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(false); // New state for CustomizeTrip
+  const [currentStep, setCurrentStep] = useState(1);
 
   // onboarding:
   // step 1: NewEvent
@@ -39,6 +41,12 @@ export default function NewTripForm() {
 
   function handleNext() {
     setPage(page + 1);
+    setCurrentStep(currentStep + 1);
+  }
+
+  function handleBack() {
+    setPage(page - 1);
+    setCurrentStep(currentStep - 1);
   }
 
   function handlePreview() {
@@ -70,46 +78,18 @@ export default function NewTripForm() {
   };
 
   return (
-    <div
-      className="full-screen-wrapper"
-      style={{
-        backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
-        backgroundPosition: "center",
-      }}
-    >
-      {conditionalComponent()}
-      <div className="button-group">
-        {page !== 0 && page !== 3 && (
-          <button
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-              border: ` 2px solid ${formData?.glowColor}`,
-              boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-            }}
-            className="glow-button"
-            onClick={() => setPage(page - 1)}
-          >
-            back
-          </button>
-        )}
-        {/* Show the continue button on all pages except page 4 */}
-        {page <= 2 && (
-          <button
-            style={{
-              background:
-                formData?.tripBackground?.scrim ||
-                formData?.transparentGlowColor,
-              border: ` 1px solid ${formData?.glowColor}`,
-              boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-            }}
-            className="primary-btn"
-            onClick={handleNext}
-          >
-            Next
-          </button>
-        )}
-        {page > 2 &&
-          (isPreviewingTrip ? (
+    <>
+      <div
+        className="full-screen-wrapper"
+        style={{
+          backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
+          backgroundPosition: "center",
+        }}
+      >
+        <ProgressBar currentStep={currentStep} />
+        {conditionalComponent()}
+        <div className="button-group">
+          {page !== 0 && page !== 3 && (
             <button
               style={{
                 background: formData?.tripBackground?.scrim || "transparent",
@@ -117,11 +97,55 @@ export default function NewTripForm() {
                 boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
               }}
               className="glow-button"
-              onClick={handleEdit}
+              onClick={handleBack}
             >
-              edit
+              back
             </button>
-          ) : (
+          )}
+          {/* Show the continue button on all pages except page 4 */}
+          {page <= 2 && (
+            <button
+              style={{
+                background:
+                  formData?.tripBackground?.scrim ||
+                  formData?.transparentGlowColor,
+                border: ` 1px solid ${formData?.glowColor}`,
+                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+              }}
+              className="primary-btn"
+              onClick={handleNext}
+            >
+              Next
+            </button>
+          )}
+          {page > 2 &&
+            (isPreviewingTrip ? (
+              <button
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                  border: ` 2px solid ${formData?.glowColor}`,
+                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                }}
+                className="glow-button"
+                onClick={handleEdit}
+              >
+                edit
+              </button>
+            ) : (
+              <button
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                  border: ` 2px solid ${formData?.glowColor}`,
+                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                }}
+                className="customize-trip-glow-btns"
+                onClick={handlePreview}
+              >
+                preview
+              </button>
+            ))}
+          {/* save trip functionality  */}
+          {page > 2 && (
             <button
               style={{
                 background: formData?.tripBackground?.scrim || "transparent",
@@ -129,28 +153,13 @@ export default function NewTripForm() {
                 boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
               }}
               className="customize-trip-glow-btns"
-              onClick={handlePreview}
+              onClick={handleSave}
             >
-              preview
+              save
             </button>
-          ))}
-        {/* save trip functionality  */}
-        {page > 2 && (
-          <button
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-              border: ` 2px solid ${formData?.glowColor}`,
-              boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-            }}
-            className="customize-trip-glow-btns"
-            onClick={handleSave}
-          >
-            save
-          </button>
-        )}
+          )}
+        </div>
       </div>
-    </div>
-    // </div>
-    // </div>
+    </>
   );
 }
