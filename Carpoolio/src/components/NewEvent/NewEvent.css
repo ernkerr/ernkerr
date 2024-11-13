@@ -1,6 +1,8 @@
 .form-question-container {
-  margin-left: var(--margin-small);
-  margin-bottom: var(--margin-bottom);
+  position: absolute;
+  top: 0;
+  left: 0;
+    margin-left: var(--margin-small);
   width: 95dvw;
 }
 
@@ -9,6 +11,7 @@
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-btn);
+  margin-top: var(--margin-large);
 }
 
 .form-response {
@@ -37,19 +40,6 @@
   box-shadow: var(--green-glow);
 }
 
-form-response {
-  font-size: var(--font-size-small);
-  /* transition: font-size 0.2s ease; */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.more-options {
-  color: var(--white);
-  font-family: var(--main-font);
-}
-
 .primary-btn {
   color: var(--white);
   font-family: var(--main-font);
@@ -65,6 +55,25 @@ form-response {
   bottom: 0;
   margin-bottom: var(--margin-btn);
   transform: translateX(-50%);
+}
+
+.secondary-btn {
+  color: var(--main-green);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: var(--padding-secondary-btn);
+  border: 1px solid var(--main-green);
+  border-radius: var(--border-radius-btn);
+  margin-top: var(--margin-btn);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  height: var(--btn-height);
+}
+
+.secondary-btn.active {
+  box-shadow: var(--green-glow);
 }
 
 /* transform: offsets the button by half of its own width, centering it horizontally */

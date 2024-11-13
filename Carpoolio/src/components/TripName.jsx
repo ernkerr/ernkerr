@@ -28,6 +28,7 @@ export default function TripName({ isPreviewingTrip, onTripNameUpdate }) {
       <input
         // className={`trip-name ${isPreviewingTrip ? "disabled" : ""}`}
         className="form-response"
+        id="trip-name"
         // style={{
         //   border: isPreviewingTrip
         //     ? "2px solid transparent"

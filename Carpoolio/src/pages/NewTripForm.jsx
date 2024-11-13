@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/bluegoo.gif";
 import "../components/NewTripForm/NewTripForm.css";
-import GetTripName from "../components/NewTripForm/GetTripName";
+
 import GetTripDate from "../components/NewTripForm/GetTripDate";
 import GetDestination from "../components/NewTripForm/GetDestination";
 import axios from "axios";

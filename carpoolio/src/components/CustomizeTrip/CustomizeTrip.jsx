@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import hexRgb from "hex-rgb";
-import DateSelector from "./DateSelector/DateSelector.jsx";
+import DateSelector from "@components/DateSelector/DateSelector.jsx";
 import TripBackground from "./TripBackground";
 import RenderCar from "../CustomizeTrip/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
-import Description from "./Description/Description.jsx";
+import Description from "@components/Description/Description.jsx";
 import "./CustomizeTrip.css";
 import { TripContext } from "@components/TripContext";
 

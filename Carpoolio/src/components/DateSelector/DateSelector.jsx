@@ -2,8 +2,8 @@ import { useState, useContext, useEffect } from "react";
 import { TripContext } from "@components/TripContext";
 import { DayPicker } from "react-day-picker";
 import { TimeSelector } from "../TimeSelector/TimeSelector";
-import clockIcon from "../../../assets/img/Clock.png";
-import "../../NewTripForm/Calendar.css";
+import clockIcon from "../../assets/img/Clock.png";
+import "./Calendar.css";
 import "./DateSelector.css";
 
 // go back to opening in a modal?

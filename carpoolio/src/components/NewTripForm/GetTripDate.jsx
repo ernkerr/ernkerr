@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { DayPicker } from "react-day-picker";
 import { TripContext } from "@components/TripContext";
 import "../NewTripForm/NewTripForm.css";
-import "../NewTripForm/Calendar.css";
+import "@components/DateSelector/Calendar.css";
 
 export default function GetTripDate() {
   const [selectedDate, setSelectedDate] = useState(null);
