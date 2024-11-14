@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { TripContext } from "@/components/TripContext";
+import { TripContext } from "@components/TripContext";
 import "./Description.css";
 
 export default function Description({ isPreviewingTrip }) {
   const { formData, setFormData } = useContext(TripContext);
 
   const handleInput = (event) => {
-    // event.target.style.height = "4dvh";
+    event.target.style.height = "17.5px";
     event.target.style.height = `${event.target.scrollHeight}px`;
     setFormData({ ...formData, tripDescription: event.target.value });
   };
@@ -16,7 +16,7 @@ export default function Description({ isPreviewingTrip }) {
       {!isPreviewingTrip || formData.tripDescription ? (
         <textarea
           className="form-response"
-          // id="description-textarea"
+          id="description-textarea"
           placeholder={
             formData?.tripDescription || "Tell us more about the trip"
           }

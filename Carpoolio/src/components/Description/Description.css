@@ -1,29 +1,18 @@
 #description-textarea {
-  width: 80%;
   color: white;
   cursor: pointer;
   font-family: var(--main-font);
   font-size: var(--font-size-small);
-  padding: var(--padding-text-area);
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
+  /* padding: var(--padding-text-area); */
   margin-top: var(--margin-medium);
-  margin-left: var(--margin-left);
+  margin-bottom: var(--margin-medium);
+  /* margin-left: var(--margin-left); */
   box-sizing: border-box;
   resize: none;
   overflow-y: hidden;
-  min-height: 40px;
+  /* min-height: 40px; */
 }
 
 #description-textarea::placeholder {
   color: white;
-}
-
-@media (max-width: 768px) {
-  #description-textarea {
-    width: 90dvw; /* Make the input wider for smaller screens */
-    font-size: var(--font-size-small);
-    margin-left: var(--margin-left-small);
-    align-items: center;
-  }
 }

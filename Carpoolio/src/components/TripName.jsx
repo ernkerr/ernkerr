@@ -1,22 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext, useState, forwardRef } from "react";
 import { TripContext } from "@components/TripContext";
 
-export default function TripName({ isPreviewingTrip, onTripNameUpdate }) {
+const TripName = forwardRef(({ isPreviewingTrip, onTripNameUpdate }, ref) => {
   const { formData, setFormData } = useContext(TripContext);
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
-  const handleBlur = () => {
-    if (!formData.tripName) {
-      setError("Trip name is required");
-    } else {
-      setError("");
-    }
-  };
+  // const handleBlur = () => {
+  //   if (!formData.tripName) {
+  //     setError("Trip name is required");
+  //   } else {
+  //     setError("");
+  //   }
+  // };
 
   const handleChange = (event) => {
     if (!isPreviewingTrip) {
       setFormData({ ...formData, tripName: event.target.value });
-      if (event.target.value) setError("");
+      // if (event.target.value) setError("");
       // pass the destination up to parent
       if (onTripNameUpdate) {
         onTripNameUpdate(event.target.value);
@@ -29,6 +29,7 @@ export default function TripName({ isPreviewingTrip, onTripNameUpdate }) {
         // className={`trip-name ${isPreviewingTrip ? "disabled" : ""}`}
         className="form-response"
         id="trip-name"
+        ref={ref}
         // style={{
         //   border: isPreviewingTrip
         //     ? "2px solid transparent"
@@ -39,16 +40,18 @@ export default function TripName({ isPreviewingTrip, onTripNameUpdate }) {
 
         type="text"
         required
-        placeholder={"Give your trip a name.."}
+        placeholder={"Give your trip a name"}
         value={formData.tripName || ""}
         disabled={isPreviewingTrip}
         onChange={handleChange}
-        onBlur={handleBlur} // trigger validation when input loses focus
+        // onBlur={handleBlur} // trigger validation when input loses focus
       />
       {/* {error && <p className="error-message">{error}</p>} */}
     </>
   );
-}
+});
+
+export default TripName;
 
 // on hover (required)
 

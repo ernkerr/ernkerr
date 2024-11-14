@@ -1,0 +1,37 @@
+.pac-container {
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  background-color: rgba(255, 255, 255, 0.15);
+  border: var(--glass-border);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+}
+
+.pac-item-query {
+  color: white;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+}
+
+.pac-matched {
+  color: white;
+  font-size: var(--font-size-small);
+}
+
+.pac-item {
+  color: rgb(173, 173, 173);
+  border-top: 1px solid rgba(173, 173, 173, 0.3);
+  font-size: var(--font-size-small);
+  padding: 10px;
+}
+
+.pac-item:hover {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
+.pac-item-selected:hover {
+  background-color: rgba(52, 114, 63, 0.5);
+  color: rgba(52, 114, 63, 0.15);
+}

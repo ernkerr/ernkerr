@@ -2,11 +2,16 @@ import { useState, useEffect, useRef, useContext } from "react";
 import Autocomplete from "react-google-autocomplete";
 import { TripContext } from "@components/TripContext";
 
-export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
+import "./Destination.css";
+
+export default function Destination({
+  isPreviewingTrip,
+  onDestinationUpdate,
+  onKeyDown,
+}) {
   const { formData, setFormData } = useContext(TripContext);
   const [destination, setDestination] = useState(formData?.destination || "");
   const [isManualEntry, setIsManualEntry] = useState(false);
-  const lastManualValue = useRef("");
   const autocompleteRef = useRef(null); // create a ref for the Autocomplete component
 
   // handle the location selection from the autocomplete
@@ -14,11 +19,13 @@ export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
     if (!isPreviewingTrip) {
       const selectedPlaceName = place.name || ""; // check place name
       const selectedAddress = place.formatted_address || ""; // check if the place has a formatted address
-      const tripDestination = selectedAddress.includes(selectedPlaceName) // only include the address if it doesn't already contain the place name
-        ? selectedAddress
-        : `${selectedPlaceName}, ${selectedAddress}`;
+      const tripDestination =
+        selectedAddress && selectedPlaceName
+          ? selectedAddress.includes(selectedPlaceName)
+            ? selectedAddress
+            : `${selectedPlaceName}, ${selectedAddress}`
+          : selectedPlaceName; // if no address, just use place name
 
-      setIsManualEntry(false);
       setDestination(tripDestination);
       updateFormData(tripDestination);
     }
@@ -29,21 +36,8 @@ export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
     if (!isPreviewingTrip) {
       const newDestination = event.target.value;
 
-      setIsManualEntry(true);
       setDestination(newDestination);
       updateFormData(newDestination);
-    }
-  };
-
-  // handle key press events
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      if (isManualEntry) {
-        setDestination(lastManualValue.current);
-        updateFormData(lastManualValue.current); // use the last manual value instead of letting Google format it
-        autocompleteRef.current?.blur(); // remove focus from the input
-      }
     }
   };
 
@@ -82,10 +76,10 @@ export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
         ref={autocompleteRef}
         value={destination}
         onChange={handleInputChange}
+        onKeyDown={onKeyDown}
         placeholder={destination ? destination : "Choose your destination"}
         // className="destination"
         className="form-response"
-        id="destination"
         style={{
           // background: formData?.tripBackground?.scrim || "transparent",
           // borderRadius: isPreviewingTrip ? "0" : "5px",

@@ -12,7 +12,7 @@
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-btn);
-  margin-top: var(--margin-large);
+  /* margin-top: var(--margin-large); */
 }
 
 .form-response {
@@ -23,12 +23,11 @@
   padding: var(--padding-form-response);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--glass-background);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-  width: 92dvw;
+  width: 90dvw;
 }
 
 .form-response::placeholder {
