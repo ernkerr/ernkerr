@@ -92,12 +92,13 @@ body::-webkit-scrollbar {
   --border-radius-btn: 10px;
 
   /* margin */
-  --margin-btn: 5dvh;
+  --margin-btn: 4dvh;
 
   --margin-small: 0.5dvh;
-
   --margin-medium: 2dvh;
   --margin-large: 10dvh;
+
+  /* margin end*/
 
   --margin-xlarge: 12dvh;
   --margin-xxlarge: 24dvh;
@@ -116,15 +117,16 @@ body::-webkit-scrollbar {
 
   /* titles */
 
-  --height-title: 4dvh;
-  --height-button: 4dvh;
+  /* --height-title: 4dvh;
+  --height-button: 4dvh; */
 
   /* colors */
   --white: white;
   --glass-background: rgba(255, 255, 255, 0.15);
-  --glass-background-light: rgba(255, 255, 255, 0.75);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.15);
 
-  --grey: rgb(112, 112, 112);
+  /* --glass-background-light: rgba(255, 255, 255, 0.75); */
+  /* --grey: rgb(112, 112, 112); */
 
   --dark: rgba(12, 12, 12, 0.4);
   --transparent: rgba(2, 1, 1, 0.182);

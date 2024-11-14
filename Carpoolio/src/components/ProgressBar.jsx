@@ -1,7 +1,24 @@
 export default function ProgressBar({ currentStep }) {
+  const steps = ["Create Event", "Car Details", "Share"];
+  const progress = (currentStep / steps.length) * 100;
   return (
-    <>
-      <section className="progress-stepper">
+    <div className="progress-container">
+      <div className="progress-info">
+        <span className="progress-step">
+          Step {currentStep} of {steps.length} :
+        </span>
+        <span className="progress-title">{steps[currentStep - 1]}</span>
+      </div>
+
+      <div className="progress-track">
+        <div className="progress-fill" style={{ width: `${progress}%` }} />
+        <div className="progress-glow" />
+      </div>
+    </div>
+  );
+}
+
+/* <section className="progress-stepper">
         <ul className="stepper-list">
           {[...Array(3)].map((_, index) => {
             // creates an array of 3 steps
@@ -28,8 +45,4 @@ export default function ProgressBar({ currentStep }) {
             );
           })}
         </ul>
-      </section>
-      {/* # 2 */}
-    </>
-  );
-}
+      </section> */

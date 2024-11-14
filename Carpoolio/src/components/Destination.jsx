@@ -5,6 +5,8 @@ import { TripContext } from "@components/TripContext";
 export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
   const { formData, setFormData } = useContext(TripContext);
   const [destination, setDestination] = useState(formData?.destination || "");
+  const [isManualEntry, setIsManualEntry] = useState(false);
+  const lastManualValue = useRef("");
   const autocompleteRef = useRef(null); // create a ref for the Autocomplete component
 
   // handle the location selection from the autocomplete
@@ -16,16 +18,9 @@ export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
         ? selectedAddress
         : `${selectedPlaceName}, ${selectedAddress}`;
 
+      setIsManualEntry(false);
       setDestination(tripDestination);
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        destination: tripDestination,
-      }));
-
-      // pass the destination up to parent
-      if (onDestinationUpdate) {
-        onDestinationUpdate(tripDestination);
-      }
+      updateFormData(tripDestination);
     }
   };
 
@@ -33,16 +28,34 @@ export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
   const handleInputChange = (event) => {
     if (!isPreviewingTrip) {
       const newDestination = event.target.value;
-      setDestination(newDestination);
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        destination: newDestination,
-      }));
 
-      // pass the destination up to parent
-      if (onDestinationUpdate) {
-        onDestinationUpdate(newDestination);
+      setIsManualEntry(true);
+      setDestination(newDestination);
+      updateFormData(newDestination);
+    }
+  };
+
+  // handle key press events
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (isManualEntry) {
+        setDestination(lastManualValue.current);
+        updateFormData(lastManualValue.current); // use the last manual value instead of letting Google format it
+        autocompleteRef.current?.blur(); // remove focus from the input
       }
+    }
+  };
+
+  // update form data and send to parent
+  const updateFormData = (value) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      destination: value,
+    }));
+
+    if (onDestinationUpdate) {
+      onDestinationUpdate(value);
     }
   };
 
@@ -66,6 +79,7 @@ export default function Destination({ isPreviewingTrip, onDestinationUpdate }) {
           types: ["geocode", "establishment"], // establishment to search for businesses, museums, etc.
           fields: ["name", "formatted_address", "geometry"],
         }}
+        ref={autocompleteRef}
         value={destination}
         onChange={handleInputChange}
         placeholder={destination ? destination : "Choose your destination"}
