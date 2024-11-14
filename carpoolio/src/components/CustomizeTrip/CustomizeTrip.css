@@ -72,28 +72,10 @@
   text-align: left;
 }
 
-.calendar-button-container {
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.calendar-button {
-  color: white;
-  background: none;
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  height: var(--height-button);
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  margin-top: var(--margin-small);
-  box-sizing: border-box;
-}
-
-.day-picker {
+/* .day-picker {
   width: 50%;
   margin-top: var(--margin-small);
-}
+} */
 
 /* // backgrounds  */
 /* TripBackground.css */

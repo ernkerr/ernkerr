@@ -89,7 +89,8 @@
 
 .progress-container {
   width: 70%;
-  margin-top: var(--margin-btn);
+  margin-top: var(--margin-progressbar);
+  margin-bottom: var(--margin-progressbar);
 }
 
 .progress-info {

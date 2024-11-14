@@ -55,14 +55,14 @@ export default function NewEvent() {
         onKeyDown={handleKeyDown}
       />
 
-      {isDestinationSet && (
+      {(isDestinationSet || formData?.destination) && (
         <>
           <p className="form-question">What should we call it?</p>
           <TripName ref={tripNameRef} onTripNameUpdate={handleTripNameUpdate} />
         </>
       )}
 
-      {isTripNameSet && (
+      {(isTripNameSet || formData?.tripName) && (
         <>
           <button
             className={`secondary-btn ${isShowingOptions ? "active" : ""}`}

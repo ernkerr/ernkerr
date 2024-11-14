@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Modal.css";
 
-const Modal = ({ children }) => {
+const Modal = ({ buttonLabel, children }) => {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
@@ -11,14 +11,14 @@ const Modal = ({ children }) => {
   return (
     <>
       <button onClick={toggleModal} className="btn-modal">
-        {children}
+        {buttonLabel}
       </button>
 
       {modal && (
         <div className="modal">
           <div className="overlay">
             <div className="modal-content">
-              <h2>Hello Modal</h2>
+              {children}
               <button className="close-modal-btn" onClick={toggleModal}>
                 close
               </button>

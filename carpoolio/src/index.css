@@ -79,6 +79,7 @@ body::-webkit-scrollbar {
   /* padding */
   --padding-primary-btn: 10px 20px 10px 20px;
   --padding-secondary-btn: 10px 10px 10px 10px;
+
   --padding-form-response: 10px 0px 10px 10px;
 
   --padding-title: 5px 0 5px 10px;
@@ -93,6 +94,7 @@ body::-webkit-scrollbar {
 
   /* margin */
   --margin-btn: 4dvh;
+  --margin-progressbar: 5dvh;
 
   --margin-small: 0.5dvh;
   --margin-medium: 2dvh;
@@ -125,6 +127,8 @@ body::-webkit-scrollbar {
   --glass-background: rgba(255, 255, 255, 0.15);
   --glass-border: 1px solid rgba(255, 255, 255, 0.15);
 
+  --glass-background-light: rgba(255, 255, 255, 0.25);
+
   /* --glass-background-light: rgba(255, 255, 255, 0.75); */
   /* --grey: rgb(112, 112, 112); */
 
@@ -146,3 +150,5 @@ body::-webkit-scrollbar {
 /* #root::-webkit-scrollbar {
   height: 10px;
 } */
+
+/* padding: top, right, bottom, left; */
