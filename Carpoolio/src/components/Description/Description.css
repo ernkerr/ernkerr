@@ -1,12 +1,13 @@
 #description-textarea {
-  color: white;
+  color: var(--white);
   cursor: pointer;
   font-family: var(--main-font);
   font-size: var(--font-size-small);
   /* padding: var(--padding-text-area); */
   margin-top: var(--margin-medium);
   margin-bottom: var(--margin-medium);
-  /* margin-left: var(--margin-left); */
+  margin-left: var(--margin-small);
+
   box-sizing: border-box;
   resize: none;
   overflow-y: hidden;
@@ -14,5 +15,5 @@
 }
 
 #description-textarea::placeholder {
-  color: white;
+  color: var(--placeholder);
 }

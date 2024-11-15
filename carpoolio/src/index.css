@@ -93,8 +93,11 @@ body::-webkit-scrollbar {
   --border-radius-btn: 10px;
 
   /* margin */
-  --margin-btn: 4dvh;
+
   --margin-progressbar: 5dvh;
+  --margin-form-field: 4dvh;
+  --margin-form-response: 2dvh;
+  --margin-btn: 4dvh;
 
   --margin-small: 0.5dvh;
   --margin-medium: 2dvh;
@@ -124,6 +127,7 @@ body::-webkit-scrollbar {
 
   /* colors */
   --white: white;
+  --placeholder: rgb(161, 161, 161);
   --glass-background: rgba(255, 255, 255, 0.15);
   --glass-border: 1px solid rgba(255, 255, 255, 0.15);
 

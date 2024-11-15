@@ -1,45 +1,70 @@
-/* set a time */
+/* Time picker container */
 .time-picker-container {
-  width: 40dvw;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 0.5dvw;
-  margin-top: var(--margin-small);
-  box-sizing: border-box;
+  gap: 10px;
+  margin-top: 20px;
+  /* margin-left: 20px; */
 }
 
+/* Time column without scrollbars */
 .time-column {
+  position: relative;
+  height: 60px; /* Visible area */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 80px;
+  text-align: center;
+  scrollbar-width: none;
+  padding-bottom: 60px;
+}
+
+.time-column::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scrollable inner div styling */
+.scrollable {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
-  width: 20%;
 }
 
-.scrollable select {
-  width: 100%;
-  color: white;
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  border: none;
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  padding: 0.2dvw;
-
-  cursor: pointer;
-  box-sizing: border-box;
+/* Styling for each time option */
+.time-option {
+  font-size: 1.2em;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4; /* Faded opacity for non-selected items */
+  transition: opacity 0.2s, transform 0.2s;
 }
 
-.time-calendar-button {
-  font: var(--main_font);
-  color: white;
-  background: none;
-  font-size: var(--font-size-small);
-  height: 100%;
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  cursor: pointer;
-  box-sizing: border-box;
-  width: 20%;
+/* Selected time styling */
+.time-option.selected {
+  font-size: 1.5em;
+  font-weight: bold;
+  opacity: 1;
+  align-items: center; /* Center the selected item */
+  justify-content: center; /* Center text horizontally */
+  transform: scale(1.1); /* Slight scale effect for selected item */
+}
+
+/* Button container styling */
+.time-calendar-button-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#save-btn {
+  padding: var(--padding-secondary-btn);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Prevent background scroll when modal is open */
+body.active-modal {
+  overflow: hidden;
 }

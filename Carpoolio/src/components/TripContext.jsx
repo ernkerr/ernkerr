@@ -9,7 +9,8 @@ export function TripContextProvider({ children }) {
     tripName: "", // str
     tripDate: "", //"Monday, November 4" str
     tripBackground: {}, // {name: 'bluegoo', path: 'src/..'} obj
-    departureTime: "", // str
+    departureTime: "", // TODO: add to individual car schema
+    tripTime: "", // TODO: add to schema
     destination: "", // str
     tripDescription: "", //str
     glowColor: "#34bd34", //str

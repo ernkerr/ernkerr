@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 10dvh;
+  margin-top: 12dvh;
   margin-left: var(--margin-medium);
   width: 95dvw;
 }
@@ -12,11 +12,12 @@
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-btn);
-  /* margin-top: var(--margin-large); */
+  margin-top: var(--margin-form-field);
+  margin-bottom: 0;
 }
 
 .form-response {
-  color: white;
+  color: var(--white);
   cursor: pointer;
   font-family: var(--main-font);
   font-size: var(--font-size-small);
@@ -28,10 +29,11 @@
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
   width: 90dvw;
+  margin-top: var(--margin-form-response);
 }
 
 .form-response::placeholder {
-  color: rgb(161, 161, 161);
+  color: var(--placeholder);
 }
 
 .form-response:focus {
@@ -90,7 +92,6 @@
 .progress-container {
   width: 70%;
   margin-top: var(--margin-progressbar);
-  margin-bottom: var(--margin-progressbar);
 }
 
 .progress-info {

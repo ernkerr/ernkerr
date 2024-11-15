@@ -1,7 +1,7 @@
 /* Variables declaration */
 /* prettier-ignore */
 .rdp-root {
-    --rdp-accent-color: white; /* The accent color used for selected days and UI elements. */
+    --rdp-accent-color: var(--main-green); /* The accent color used for selected days and UI elements. */
     --rdp-accent-background-color: #f0f0ff; /* The accent background color used for selected days and UI elements. */
     --rdp-font-family: var(--main-font); /* The font family used by the calendar. Note that `inherit`does not work here. */
   
@@ -14,7 +14,7 @@
     --rdp-day_button-height: var(--rdp-day-width); /* The height of the day cells. */
     --rdp-day_button-width: var(--rdp-day-height); /* The width of the day cells. */
     
-    --rdp-selected-border: 2px solid var(--rdp-accent-color); /* The border of the selected days. */
+    --rdp-selected-border: 1.5px solid var(--rdp-accent-color); /* The border of the selected days. */
     --rdp-selected-font: bold large var(--rdp-font-family); /* The font of the selected days. */
     --rdp-disabled-opacity: 0.5; /* The opacity of the disabled days. */
     --rdp-outside-opacity: 0.75; /* The opacity of the days outside the current month. */
@@ -95,15 +95,15 @@
 
   width: var(--rdp-day_button-width);
   height: var(--rdp-day_button-height);
-  border: 2px solid transparent;
+  border: 1.5px solid transparent;
   border-radius: 50%;
   transition: all 0.2s ease-in-out;
 }
 
 /* Glowing effect for the selected date */
 .rdp-selected .rdp-day_button {
-  border-color: rgb(52, 189, 52); /* Use your accent color */
-  box-shadow: 0 0 15px rgba(52, 189, 52, 0.8); /* Glowing effect */
+  border-color: 1.5px solid var(--main-green);
+  box-shadow: var(--green-glow);
   color: white;
   background-color: rgba(
     52,
@@ -115,8 +115,8 @@
 
 /* Optional hover effect */
 .rdp-day_button:hover {
-  border-color: rgb(52, 189, 52); /* Use your accent color */
-  box-shadow: 0 0 15px rgba(52, 189, 52, 0.8); /* Glowing effect */
+  border-color: var(--main-green); /* Use your accent color */
+  box-shadow: var(--green-glow-hover); /* Glowing effect */
   color: white;
 }
 
@@ -169,7 +169,7 @@
 
 .rdp-chevron {
   display: inline-block;
-  fill: var(--rdp-accent-color);
+  fill: var(--white);
 }
 
 .rdp-root[dir="rtl"] .rdp-nav .rdp-chevron {
