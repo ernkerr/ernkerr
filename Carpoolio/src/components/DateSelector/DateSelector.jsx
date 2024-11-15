@@ -6,64 +6,50 @@ import clockIcon from "../../assets/img/Clock.png";
 import "./Calendar.css";
 import "./DateSelector.css";
 
-// go back to opening in a modal
-
 export default function DateSelector({ isPreviewingTrip }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
-  // const [isTimeSelectorVisible, setIsTimeSelectorVisible] = useState(false);
+  const [isTimeSelectorVisible, setIsTimeSelectorVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  // Close calendar and time selector when isPreviewingTrip is true
   useEffect(() => {
     if (isPreviewingTrip) {
       setIsCalendarVisible(false);
-      // setIsTimeSelectorVisible(false);
+      setIsTimeSelectorVisible(false);
     }
-  }, [isPreviewingTrip]);
+  }, [isPreviewingTrip]); // close calendar and time selector when previewing
 
-  // Toggle calendar visibility
   const toggleCalendar = () => {
-    setIsCalendarVisible((prev) => !prev);
+    setIsCalendarVisible((prev) => !prev); // toggle calendr visibility
   };
 
-  // // Toggle time selector visibility
-  // const toggleTimeSelector = () => {
-  //   setIsTimeSelectorVisible((prev) => !prev);
-  // };
+  const toggleTimeSelector = () => {
+    setIsTimeSelectorVisible((prev) => !prev); // toggle time selector visibility
+  };
 
-  // Handle date change
+  // handle date change
   const handleDateChange = (date) => {
     if (date) {
-      setSelectedDate(date); // Set selected date
+      setSelectedDate(date);
 
-      // Format date for display
+      // format date for display
       const formattedDate = date.toLocaleDateString("en-US", {
         weekday: "long",
         month: "long",
         day: "numeric",
       });
 
-      setFormData({ ...formData, tripDate: formattedDate }); // Update formData with the selected date
-      setIsCalendarVisible(false); // Close calendar after date is selected
+      setFormData({ ...formData, tripDate: formattedDate });
+      setIsCalendarVisible(false);
     }
   };
 
-  // Extract month and day for calendar icon display
-  // const tripDateObj =
-  //   formData.tripDate && formData.tripDate !== "TBD" // Check if tripDate is set and not "TBD"
-  //     ? new Date(formData.tripDate)
-  //     : null;
-  // const tripMonth = tripDateObj
-  //   ? tripDateObj.toLocaleDateString("en-US", { month: "short" })
-  //   : ""; // Get month abbreviation or empty if "TBD"
-  // const tripDay = tripDateObj ? tripDateObj.getDate() : "TBD"; // Get day of the month or show "TBD"
-
   const tripDateExists = formData.tripDate && formData.tripDate !== "TBD";
+  const tripTimeExists = formData.tripTime && formData.tripTime !== "TBD";
 
   return (
     <div className="date-selector">
-      {/* Show calendar icon only if customizing or tripDate is set (and not "TBD") */}
+      {/* show calendar icon only if customizing and tripDate is set (not null or "TBD") */}
       {!isPreviewingTrip && !tripDateExists ? (
         <button
           className="form-response"
@@ -74,7 +60,7 @@ export default function DateSelector({ isPreviewingTrip }) {
           Set a Date
         </button>
       ) : (
-        // Render calendar icon and trip date if trip date exists or if in previewing mode
+        // show calendar icon and trip date if trip date exists or if in previewing mode
         <div className="calendar-icon-container">
           <button
             style={{
@@ -85,7 +71,7 @@ export default function DateSelector({ isPreviewingTrip }) {
             disabled={isPreviewingTrip}
           >
             <div className="month">
-              {/* Extract month for calendar icon display */}
+              {/* extract month for calendar icon display */}
               {new Date(formData.tripDate).toLocaleDateString("en-US", {
                 month: "short",
               })}
@@ -103,11 +89,23 @@ export default function DateSelector({ isPreviewingTrip }) {
             >
               {formData.tripDate}
             </button>
+            {tripTimeExists && (
+              <button
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                }}
+                className="time-text"
+                onClick={toggleTimeSelector}
+              >
+                <img src={clockIcon} alt="Departure Time Icon" />
+                {formData.tripTime}
+              </button>
+            )}
           </div>
         </div>
       )}
 
-      {/* Render DayPicker if calendar is visible */}
+      {/* open modal if calendar is visible */}
       {isCalendarVisible && (
         <>
           <div className="modal">
@@ -141,14 +139,32 @@ export default function DateSelector({ isPreviewingTrip }) {
         </>
       )}
 
-      {/* Render TimeSelector if time selector is visible */}
-      {/* {isTimeSelectorVisible && !isPreviewingTrip && (
-        <TimeSelector
-          formData={formData}
-          setFormData={setFormData}
-          toggleTimeSelector={toggleTimeSelector}
-        />
-      )} */}
+      {!isPreviewingTrip && tripDateExists && !tripTimeExists ? (
+        <button
+          className="form-response"
+          id="set-time-btn"
+          onClick={toggleTimeSelector}
+          disabled={isPreviewingTrip}
+        >
+          Set a Time
+        </button>
+      ) : null}
+
+      {isTimeSelectorVisible && !isPreviewingTrip && (
+        <>
+          <div className="modal">
+            <div className="overlay">
+              <div className="modal-content">
+                <TimeSelector
+                  formData={formData}
+                  setFormData={setFormData}
+                  toggleTimeSelector={toggleTimeSelector}
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
