@@ -5,12 +5,12 @@ import bluegoo from "../assets/bluegoo.gif";
 import "../components/NewTripForm/NewTripForm.css";
 
 import GetTripDate from "../components/NewTripForm/GetTripDate";
-import GetDestination from "../components/NewTripForm/GetDestination";
 import axios from "axios";
 import { TripContext } from "@/components/TripContext";
 
 import ProgressBar from "../components/ProgressBar";
 import NewEvent from "@components/NewEvent/NewEvent.jsx";
+import NewCar from "@components/NewCar/NewCar.jsx";
 
 export default function NewTripForm() {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export default function NewTripForm() {
         // return <GetTripName />;
         return <NewEvent onNext={handleNext} />;
       case 1:
-        return <GetDestination />;
+        return <NewCar onNext={handleNext} />;
       case 2:
         return <GetTripDate />;
 
@@ -39,10 +39,10 @@ export default function NewTripForm() {
     }
   };
 
-  function handleNext() {
-    setPage(page + 1);
-    setCurrentStep(currentStep + 1);
-  }
+  // function handleNext() {
+  //   setPage(page + 1);
+  //   setCurrentStep(currentStep + 1);
+  // }
 
   function handleBack() {
     setPage(page - 1);
@@ -57,7 +57,8 @@ export default function NewTripForm() {
     setIsPreviewingTrip(false);
   }
 
-  const handleSave = async (e) => {
+  // hitting next creates a trip in the backend
+  const handleNext = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
@@ -68,7 +69,9 @@ export default function NewTripForm() {
       if (response.status === 201) {
         const { tripId, adminId } = response.data; // create admin id
         console.log("Trip created:", response.data);
-        navigate(`/trip/${tripId}/${adminId}`); // navigate to the trip page using tripId and adminId
+        // navigate(`/trip/${tripId}/${adminId}`); // navigate to the trip page using tripId and adminId
+        setPage(page + 1);
+        setCurrentStep(currentStep + 1);
       } else {
         console.log("Failed to create trip");
       }
@@ -88,21 +91,23 @@ export default function NewTripForm() {
       >
         <ProgressBar currentStep={currentStep} />
         {conditionalComponent()}
+        {/* back button  */}
         <div className="button-group">
           {page !== 0 && page !== 3 && (
             <button
-              style={{
-                background: formData?.tripBackground?.scrim || "transparent",
-                border: ` 2px solid ${formData?.glowColor}`,
-                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-              }}
+              // style={{
+              //   background: formData?.tripBackground?.scrim || "transparent",
+              //   border: ` 2px solid ${formData?.glowColor}`,
+              //   boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+              // }}
+
               className="glow-button"
               onClick={handleBack}
             >
-              back
+              Back
             </button>
           )}
-          {/* Show the continue button on all pages except page 4 */}
+          {/* next btn */}
           {page <= 2 && (
             <button
               style={{
@@ -118,6 +123,8 @@ export default function NewTripForm() {
               Next
             </button>
           )}
+
+          {/* on next, save to backend  */}
           {page > 2 &&
             (isPreviewingTrip ? (
               <button
@@ -145,7 +152,7 @@ export default function NewTripForm() {
               </button>
             ))}
           {/* save trip functionality  */}
-          {page > 2 && (
+          {/* {page > 2 && (
             <button
               style={{
                 background: formData?.tripBackground?.scrim || "transparent",
@@ -157,7 +164,7 @@ export default function NewTripForm() {
             >
               save
             </button>
-          )}
+          )} */}
         </div>
       </div>
     </>
