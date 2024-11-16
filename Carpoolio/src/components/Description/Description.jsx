@@ -17,9 +17,7 @@ export default function Description({ isPreviewingTrip }) {
         <textarea
           className="form-response"
           id="description-textarea"
-          placeholder={
-            formData?.tripDescription || "Tell us more about the trip"
-          }
+          placeholder={formData?.tripDescription || "Add a description"}
           value={formData.tripDescription || ""}
           onChange={handleInput}
           disabled={isPreviewingTrip}

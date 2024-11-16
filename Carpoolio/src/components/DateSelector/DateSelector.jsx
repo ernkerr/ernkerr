@@ -118,21 +118,19 @@ export default function DateSelector({ isPreviewingTrip }) {
                   onSelect={handleDateChange}
                 />
 
-                <div className="calendar-button-container">
-                  <button
-                    style={{
-                      background:
-                        formData?.tripBackground?.scrim || "transparent",
-                    }}
-                    className="calendar-button"
-                    onClick={() => {
-                      toggleCalendar();
-                      setFormData({ ...formData, tripDate: "TBD" });
-                    }}
-                  >
-                    Not sure yet
-                  </button>
-                </div>
+                <button
+                  style={{
+                    background:
+                      formData?.tripBackground?.scrim || "transparent",
+                  }}
+                  className="calendar-button"
+                  onClick={() => {
+                    toggleCalendar();
+                    setFormData({ ...formData, tripDate: "TBD" });
+                  }}
+                >
+                  Not sure yet
+                </button>
               </div>
             </div>
           </div>
@@ -146,7 +144,7 @@ export default function DateSelector({ isPreviewingTrip }) {
           onClick={toggleTimeSelector}
           disabled={isPreviewingTrip}
         >
-          Set a Time
+          Set a time
         </button>
       ) : null}
 

@@ -90,6 +90,12 @@ export function TimeSelector({ toggleTimeSelector }) {
           className="calendar-button"
           id="save-btn"
           onClick={handleTimeChange}
+          style={{
+            background:
+              formData?.tripBackground?.scrim || formData?.transparentGlowColor,
+            border: ` 2px solid ${formData?.glowColor}`,
+            boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+          }}
         >
           Save
         </button>

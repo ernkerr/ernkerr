@@ -2,8 +2,11 @@
 .time-picker-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 30px;
   margin-top: 20px;
+  margin-right: 5dvw;
+  /* margin-left: 5dvw; */
   /* margin-left: 20px; */
 }
 
@@ -32,7 +35,7 @@
 
 /* Styling for each time option */
 .time-option {
-  font-size: 1.2em;
+  font-size: var(--font-size-medium);
   height: 40px;
   display: flex;
   align-items: center;
@@ -43,7 +46,7 @@
 
 /* Selected time styling */
 .time-option.selected {
-  font-size: 1.5em;
+  font-size: var(--font-size-large);
   font-weight: bold;
   opacity: 1;
   align-items: center; /* Center the selected item */
@@ -54,13 +57,13 @@
 /* Button container styling */
 .time-calendar-button-container {
   display: flex;
-  gap: 30px;
-  justify-content: center;
+  gap: 60px;
+  /* justify-content: center; */
   margin-top: 20px;
+  margin-left: 5dvw;
 }
 
 #save-btn {
-  padding: var(--padding-secondary-btn);
   font-weight: var(--font-weight-bold);
 }
 

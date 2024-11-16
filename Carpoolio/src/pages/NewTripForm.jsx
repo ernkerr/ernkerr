@@ -28,7 +28,7 @@ export default function NewTripForm() {
     switch (page) {
       case 0:
         // return <GetTripName />;
-        return <NewEvent />;
+        return <NewEvent onNext={handleNext} />;
       case 1:
         return <GetDestination />;
       case 2:

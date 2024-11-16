@@ -42,42 +42,6 @@
   box-shadow: var(--green-glow);
 }
 
-.primary-btn {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-btn);
-  padding: var(--padding-primary-btn);
-  border-radius: var(--border-radius-btn);
-
-  height: var(--btn-height);
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  margin-bottom: var(--margin-btn);
-  transform: translateX(-50%);
-}
-
-.secondary-btn {
-  color: var(--main-green);
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  padding: var(--padding-secondary-btn);
-  border: 1px solid var(--main-green);
-  border-radius: var(--border-radius-btn);
-  margin-top: var(--margin-btn);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
-  height: var(--btn-height);
-}
-
-.secondary-btn.active {
-  box-shadow: var(--green-glow);
-}
-
 /* transform: offsets the button by half of its own width, centering it horizontally */
 
 .glass-effect {
@@ -171,4 +135,53 @@
   filter: blur(8px);
   opacity: 0.7;
   border-radius: 20px;
+}
+
+.primary-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-btn);
+  padding: var(--padding-primary-btn);
+  border-radius: var(--border-radius-btn);
+
+  height: var(--btn-height);
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  margin-bottom: var(--margin-btn);
+  transform: translateX(-50%);
+}
+
+.secondary-btn {
+  color: var(--main-green);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: var(--padding-secondary-btn);
+  border: 1px solid var(--main-green);
+  border-radius: var(--border-radius-btn);
+  margin-top: var(--margin-btn);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  height: var(--btn-height);
+}
+
+.secondary-btn.active {
+  box-shadow: var(--green-glow);
+}
+
+.tertiary-button {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  background: none;
+  border: none;
+  position: fixed;
+  left: 5%;
+  bottom: 0;
+  margin-bottom: var(--margin-btn);
+  height: var(--btn-height);
 }
