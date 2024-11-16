@@ -11,8 +11,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
@@ -36,35 +36,34 @@ datasource db {
 // }
 
 model Trip {
-  id                   Int       @id @default(autoincrement())
-  tripId               String   @unique @default(cuid()) // Random, unique trip identifier
-  adminId              String   @unique @default(cuid()) // Random, unique admin identifier
+  id                   Int     @id @default(autoincrement())
+  tripId               String  @unique @default(cuid()) // Random, unique trip identifier
+  adminId              String  @unique @default(cuid()) // Random, unique admin identifier
   tripName             String?
   // userName             String?
   // userEmail            String?
+  tripTime             String?
   tripDate             String?
-  tripBackground       Json?      // To store more complex background data
+  tripBackground       Json? // To store more complex background data
   departureTime        String?
   destination          String?
   tripDescription      String?
   // underglowColor       String?
-  glowColor            String?    @default("#34bd34")
+  glowColor            String? @default("#34bd34")
   lighterGlowColor     String?
-  transparentGlowColor String?    @default("#4bfe4b52")
-  cars                 Car[]     // Assuming cars is an array or complex structure, stored as JSON
+  transparentGlowColor String? @default("#4bfe4b52")
+  cars                 Car[] // Assuming cars is an array or complex structure, stored as JSON
 }
 
 model Car {
-  id               Int       @id @default(autoincrement())
+  id               Int    @id @default(autoincrement())
   carName          String
   carColor         String
-  seatDistribution Json      // Store seat distribution as JSON
-  seatNames        Json      // Store seat names as JSON
-  tripId           Int       // Foreign key linking to Trip
-  trip             Trip      @relation(fields: [tripId], references: [id])
+  seatDistribution Json // Store seat distribution as JSON
+  seatNames        Json // Store seat names as JSON
+  tripId           Int // Foreign key linking to Trip
+  trip             Trip   @relation(fields: [tripId], references: [id])
 }
-
-
 
 // This Prisma schema defines two models, each of which will map to a table in the underlying database: User and Post. 
 // Notice that there's also a relation (one-to-many) between the two models, via the author field on Post and the posts field on User.

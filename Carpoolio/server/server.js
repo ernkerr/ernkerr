@@ -3,29 +3,25 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const { Await } = require("react-router-dom");
 
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+
+console.log("Database URL:", process.env.POSTGRES_PRISMA_URL); // Debug
+
 const app = express(); // create an app instance
 app.use(express.json()); // middleware to parse data
 const prisma = new PrismaClient();
 const PORT = 8080;
 
 const corsOptions = {
-  origin: ["http://localhost:5173"], // frontend url (change to domain later)
+  origin: ["http://localhost:5173", "http://192.168.0.28:5173"], // frontend url (change to domain later)
 };
 app.use(cors(corsOptions));
 
-// const corsOptions = {
-//   origin: ["http://192.168.0.18:5173"], // frontend url (change to domain later)
-// };
-// app.use(cors(corsOptions));
-
-//localhost:5173/trip/7aa186c5-d76e-4713-a991-a3eecc893393/bed6f574-b980-4e8d-a3e3-0dc2f75a3a86
-
-// http: app.use(express.json()); // middleware to parse json
-
-app.get("/api", (req, res) => {
-  console.log("Received a request on /api");
-  res.send("Hello from the backend!");
-});
+// app.get("/api", (req, res) => {
+//   console.log("Received a request on /api");
+//   res.send("Hello from the backend!");
+// });
 
 app.post("/api/trip", async (req, res) => {
   try {
@@ -35,6 +31,7 @@ app.post("/api/trip", async (req, res) => {
       data: {
         tripName: tripData.tripName,
         tripDate: tripData.tripDate,
+        tripTime: tripData.tripTime,
         tripBackground: tripData.tripBackground,
         departureTime: tripData.departureTime,
         destination: tripData.destination,
@@ -92,6 +89,54 @@ app.get("/api/trip/:tripId/:adminId", async (req, res) => {
   }
 });
 
+// PUT route to update a trip by its tripID
+app.put("/api/trip/:tripId", async (req, res) => {
+  const { tripId } = req.params;
+  const tripData = req.body;
+
+  try {
+    const updatedTrip = await prisma.trip.update({
+      where: { tripId },
+      data: {
+        tripName: tripData.tripName,
+        tripDate: tripData.tripDate,
+        tripTime: tripData.tripTime,
+        tripBackground: tripData.tripBackground,
+        departureTime: tripData.departureTime,
+        destination: tripData.destination,
+        tripDescription: tripData.tripDescription,
+        glowColor: tripData.glowColor,
+        lighterGlowColor: tripData.lighterGlowColor,
+        transparentGlowColor: tripData.transparentGlowColor,
+        cars: {
+          upsert: tripData.cars.map((car) => ({
+            where: { carId: car.carId || 0 }, // Use unique identifiers like `carId`
+            update: {
+              carName: car.carName,
+              carColor: car.carColor,
+              seatDistribution: car.seatDistribution,
+              seatNames: car.seatNames,
+            },
+            create: {
+              carName: car.carName,
+              carColor: car.carColor,
+              seatDistribution: car.seatDistribution,
+              seatNames: car.seatNames,
+            },
+          })),
+        },
+      },
+    });
+
+    res.status(200).json(updatedTrip);
+  } catch (error) {
+    console.error("Error updating trip:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while updating the trip" });
+  }
+});
+
 // GET route to retrieve a trip by its tripId
 app.get("/api/trip/:tripId", async (req, res) => {
   const { tripId } = req.params;
@@ -112,83 +157,6 @@ app.get("/api/trip/:tripId", async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve trip" });
   }
 });
-
-app.put("/api/trip/:tripId", async (req, res) => {
-  const { tripId } = req.params; // This will match the unique tripId string, not the database ID
-  const { cars, ...updatedTripData } = req.body; // Separate cars from the rest of the trip data
-
-  try {
-    // Find the trip using `tripId` string to get the database ID
-    const trip = await prisma.trip.findUnique({
-      where: { tripId: tripId },
-      include: { cars: true }, // Include cars in case you need to check for existing entries
-    });
-
-    if (!trip) {
-      return res.status(404).json({ message: "Trip not found" });
-    }
-
-    // Step 1: Update the main trip data using the database `id`
-    const updatedTrip = await prisma.trip.update({
-      where: { id: trip.id },
-      data: updatedTripData,
-    });
-
-    // Step 2: Update related cars if they are provided
-    if (cars && cars.length > 0) {
-      const existingCarIds = trip.cars.map((car) => car.id);
-      // Iterate over the provided cars
-      for (const car of cars) {
-        if (car.id && existingCarIds.includes(car.id)) {
-          // If car ID exists, update that specific car
-          await prisma.car.update({
-            where: { id: car.id },
-            data: {
-              carName: car.carName,
-              carColor: car.carColor,
-              seatDistribution: car.seatDistribution,
-              seatNames: car.seatNames,
-            },
-          });
-        } else {
-          // If no car ID, create a new car associated with this trip
-          await prisma.car.create({
-            data: {
-              tripId: trip.id,
-              carName: car.carName,
-              carColor: car.carColor,
-              seatDistribution: car.seatDistribution,
-              seatNames: car.seatNames,
-            },
-          });
-        }
-      }
-      // Step 3: Remove any cars from the database that weren't included in the update
-      const carIdsToUpdate = cars.filter((car) => car.id).map((car) => car.id);
-      const carsToDelete = trip.cars.filter(
-        (car) => !carIdsToUpdate.includes(car.id)
-      );
-
-      for (const car of carsToDelete) {
-        await prisma.car.delete({
-          where: { id: car.id },
-        });
-      }
-    }
-
-    // Send updated trip back to frontend
-    res.json({ ...updatedTrip, cars });
-  } catch (error) {
-    console.error("Error updating trip:", error);
-    res.status(500).json({ message: "Error updating trip", error });
-  }
-});
-
-// example GET route
-// app.get("/api", (req, res) => {
-//   // send data here
-//   res.json({ fruits: ["apple", "orange", "banana"] });
-// });
 
 app.listen(PORT, () => {
   console.log("Server started on port 8080");

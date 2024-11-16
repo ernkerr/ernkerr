@@ -7,28 +7,32 @@ export const TripContext = createContext();
 export function TripContextProvider({ children }) {
   const [formData, setFormData] = useState({
     tripName: "", // str
-    tripDate: "", //"Monday, November 4" str
-    tripBackground: {}, // {name: 'bluegoo', path: 'src/..'} obj
-    departureTime: "", // TODO: add to individual car schema
-    tripTime: "", // TODO: add to schema
     destination: "", // str
+    tripDate: "", //"Monday, November 4" str
+    tripTime: "", // TODO: add to schema
     tripDescription: "", //str
+
+    tripBackground: {}, // {name: 'bluegoo', path: 'src/..'} obj
     glowColor: "#34bd34", //str
     lighterGlowColor: "", //str
     transparentGlowColor: "#4bfe4b52", //str
     cars: [], // {carColor, carName} array of objects
+    departureTime: "", // TODO: add to individual car schema
   });
 
   // Function to save formData to the backend API
   const saveFormDataToBackend = async (data) => {
     try {
-      const response = await fetch("http://localhost:8080/api/saveFormData", {
-        method: "POST", // use POST to send data
-        headers: {
-          "Content-Type": "application/json", // figure out what these are later
-        },
-        body: JSON.stringify(data), // send formData
-      });
+      const response = await fetch(
+        "http://192.168.0.28:8080/api/saveFormData",
+        {
+          method: "POST", // use POST to send data
+          headers: {
+            "Content-Type": "application/json", // figure out what these are later
+          },
+          body: JSON.stringify(data), // send formData
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Network response error");
@@ -50,9 +54,11 @@ export function TripContextProvider({ children }) {
   };
 
   // watch for changes in formData and save to backend API
-  useEffect(() => {
-    saveFormDataToBackend(formData); // pass formData to saveFormData whenever it changes
-  }, [formData]);
+
+  // useEffect(() => {
+  //   saveFormDataToBackend(formData); // pass formData to saveFormData whenever it changes
+  // }, [formData]);
+
   // may not be the most efficient, onBlur & saveData to backend for each component?
   // at next?
 

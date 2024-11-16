@@ -61,24 +61,73 @@ export default function NewTripForm() {
   const handleNext = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/trip",
-        formData
-      ); // send formData object to the server
+      if (formData.tripId) {
+        const response = await axios.put(
+          `http://192.168.0.28:8080/api/trip/${formData.tripId}`,
+          formData
+        ); // update the existing trip
 
-      if (response.status === 201) {
-        const { tripId, adminId } = response.data; // create admin id
-        console.log("Trip created:", response.data);
-        // navigate(`/trip/${tripId}/${adminId}`); // navigate to the trip page using tripId and adminId
-        setPage(page + 1);
-        setCurrentStep(currentStep + 1);
+        if (response.status === 200) {
+          console.log("Trip updated:", response.data);
+          setPage(page + 1);
+          setCurrentStep(currentStep + 1);
+        } else {
+          console.log("Failed to update trip");
+        }
       } else {
-        console.log("Failed to create trip");
+        // if trip id does not exist, create a new trip
+        const response = await axios.post(
+          "http://192.168.0.28:8080/api/trip",
+          formData
+        ); // creates a new trip in the backend
+
+        if (response.status === 201) {
+          const { tripId, adminId } = response.data; // get tripId and adminId from backend
+          console.log("Trip created:", response.data);
+
+          setFormData((prevFormData) => ({
+            // save tripId and adminId to formData
+            ...prevFormData,
+            tripId,
+            adminId,
+          }));
+
+          setPage(page + 1);
+          setCurrentStep(currentStep + 1);
+          // navigate(`/trip/${tripId}/${adminId}`); // navigate to the trip page using tripId and adminId
+          // if page = 3 where you can edit/share, navigate to ^
+        } else {
+          console.log("Failed to create trip");
+        }
       }
     } catch (error) {
-      console.error("Error creating trip:", error);
+      console.error("Error processing trip:", error);
     }
   };
+
+  // const handleNext = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:8080/api/trip",
+  //       formData
+  //     ); // send formData object to the server
+
+  //     if (response.status === 201) {
+  //       const { tripId, adminId } = response.data; // create admin id
+  //       console.log("Trip created:", response.data);
+  //       // navigate(`/trip/${tripId}/${adminId}`); // navigate to the trip page using tripId and adminId
+  //       // if page = 3 where you can edit/share, navigate to ^
+
+  //       setPage(page + 1);
+  //       setCurrentStep(currentStep + 1);
+  //     } else {
+  //       console.log("Failed to create trip");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error creating trip:", error);
+  //   }
+  // };
 
   return (
     <>
@@ -94,17 +143,19 @@ export default function NewTripForm() {
         {/* back button  */}
         <div className="button-group">
           {page !== 0 && page !== 3 && (
-            <button
-              // style={{
-              //   background: formData?.tripBackground?.scrim || "transparent",
-              //   border: ` 2px solid ${formData?.glowColor}`,
-              //   boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-              // }}
-
-              className="glow-button"
-              onClick={handleBack}
-            >
-              Back
+            <button className="back-btn" onClick={handleBack}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+                />
+              </svg>
             </button>
           )}
           {/* next btn */}

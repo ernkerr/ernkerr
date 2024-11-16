@@ -15,7 +15,8 @@ export default function NewCar({ onNext }) {
   const handleMoreOptions = () => {
     setIsShowingOptions((prevState) => !prevState);
   };
-
+  // if /trip/create conditionally render are you drivin toggle and link to share trip
+  // else if /trip/:tripId/addcar don't show ^
   return (
     <div className="form-question-container">
       <p className="form-question">Are you drivin?</p>
