@@ -18,8 +18,19 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   );
   const [carName, setCarName] = useState(car ? car.carName : "");
 
-  // use onBlur to save the seat inputs / buttons / whatever they end up becoming
+  // // Use effect to update seatNames when driverName is available
+  // useEffect(() => {
+  //   if (driverName) {
+  //     setSeatNames((prevSeatNames) => {
+  //       const newSeatNames = { ...prevSeatNames };
+  //       if (!newSeatNames.row1) newSeatNames.row1 = [];
+  //       newSeatNames.row1[0] = driverName;
+  //       return newSeatNames;
+  //     });
+  //   }
+  // }, [driverName]);
 
+  // use onBlur to save the seat inputs / buttons / whatever they end up becoming
   // onBlur={handleSave}
   const handleSave = async (e) => {
     e.preventDefault(); // prevent page reload
@@ -64,6 +75,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   };
 
   const handleSaveCar = () => {
+    console.log("saving car");
     setFormData((formData) => {
       const updatedCars = [...formData.cars];
       updatedCars[activeCarIndex] = {
@@ -96,6 +108,32 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
 
   return (
     <>
+      <p className="form-question">Give your car a name?</p>
+      <input
+        className="form-response"
+        key="carName"
+        id="carName"
+        type="text"
+        required
+        placeholder="Optional"
+        value={carName}
+        onChange={changeCarName}
+        style={{ marginBottom: "4dvh" }}
+      />
+      <div className="color-picker-container">
+        <label htmlFor="car-color" className="form-question">
+          Change car color
+        </label>
+        <input
+          className="car-color-picker"
+          type="color"
+          id="car-color"
+          name="carColor"
+          key="carColor"
+          value={carColor}
+          onChange={changeCarColor}
+        />
+      </div>
       <div className="render-car-container">
         <DefaultCar
           key={activeCarIndex}
@@ -179,55 +217,33 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
         </div>
       </div>
 
-      <div className="custom-car-option">
-        <input
-          className="car-name"
-          key="carName"
-          id="carName"
-          value={carName}
-          placeholder="Optional Car Name"
-          onChange={changeCarName}
-        />
-
-        <div className="color-picker-container">
-          <label htmlFor="car-color">Change Car Color</label>
-          <input
-            className="car-color-picker"
-            type="color"
-            id="car-color"
-            name="carColor"
-            key="carColor"
-            value={carColor}
-            onChange={changeCarColor}
-          />
-        </div>
-
-        <div className="customize-car-btn-container">
-          <button
-            className="customize-car-btn"
-            id="delete-car-btn"
-            onClick={handleDeleteCar}
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-              border: ` 2px solid ${formData.glowColor}`,
-              boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-            }}
-          >
-            Delete
-          </button>
-          <button
-            className="customize-car-btn"
-            id="save-car-btn"
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-              border: ` 2px solid ${formData.glowColor}`,
-              boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-            }}
-            onClick={handleSaveCar}
-          >
-            Save
-          </button>
-        </div>
+      <div className="customize-car-btn-container">
+        <button
+          className="customize-car-btn"
+          id="delete-car-btn"
+          onClick={handleDeleteCar}
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+            border: ` 2px solid ${formData.glowColor}`,
+            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+          }}
+        >
+          Delete
+        </button>
+        <button
+          className="primary-btn"
+          id="save-car-btn"
+          onClick={handleSaveCar}
+          style={{
+            background:
+              formData?.tripBackground?.scrim || formData?.transparentGlowColor,
+            border: ` 1px solid ${formData?.glowColor}`,
+            boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+            Zindex: "100",
+          }}
+        >
+          Save
+        </button>
       </div>
     </>
   );

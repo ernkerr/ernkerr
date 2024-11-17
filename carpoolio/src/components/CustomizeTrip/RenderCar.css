@@ -109,30 +109,6 @@
   font-family: var(--main-font);
 }
 
-.color-picker-container {
-  display: flex;
-  flex-direction: row; /* Ensure row layout */
-  align-items: center; /* Center vertically */
-  gap: 10px; /* Space between items */
-  width: 75%; /* Take full width of parent */
-  margin-top: var(--margin-small);
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-}
-
-.car-color-picker {
-  color: white;
-  background: none;
-  font-family: var(--main-font);
-  height: 2.5dvh;
-  width: 30%;
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  /* padding: var(--paddding-button); */
-
-  text-align: left;
-  cursor: pointer;
-}
-
 .customize-car-btn-container {
   display: flex;
   flex-direction: row;
@@ -147,12 +123,15 @@
 }
 
 #save-car-btn {
-  margin-left: var(--margin-medium);
-  margin-top: var(--margin-medium);
+  position: relative;
+  /* left: 80%;
+  bottom: 0;
+  margin-bottom: 0;
+  transform: translateX(-50%); */
 }
 
 #delete-car-btn {
-  margin-top: var(--margin-medium);
+  position: relative;
 }
 
 @media (max-width: 768px) {

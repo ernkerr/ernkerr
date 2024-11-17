@@ -45,38 +45,72 @@
   }
 } */
 
-.slider {
+.numSeatsSlider {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
-  width: 30%;
-  height: 10px;
-  border-radius: 5px;
-  background: rgb(52, 189, 52);
+  width: 95%;
+  height: 5px;
+  border: var(--glass-border);
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--main-green), rgba(0, 255, 0, 0.8));
   outline: none;
   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
   transition: opacity 0.2s;
-  box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
+  box-shadow: var(--green-glow);
+
+  /* margin-top: var(); */
+  margin-top: var(--margin-form-field);
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
+.numSeatsSlider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
+  background: rgb(35, 179, 35);
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  border: 5px var(--glass-border);
   border-radius: 50%;
-  background: #000000; /* Green background */
   cursor: pointer; /* Cursor on hover */
-  box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
+  box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5);
 }
 
-.slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04aa6d; /* Green background */
+.numSeatsSlider::-moz-range-thumb {
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: linear-gradient(90deg, var(--main-green), rgba(0, 255, 0, 0.8));
+  border: 2px var(--glass-border);
   cursor: pointer; /* Cursor on hover */
-  box-shadow: 0 0 10px #04aa6d, 0 0 5px #04aa6d, 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect */
+  box-shadow: var(--green-glow);
 }
+
+.color-picker-container {
+  display: flex;
+  flex-direction: row; /* Ensure row layout */
+  align-items: center; /* Center vertically */
+  gap: 10px; /* Space between items */
+
+  margin-top: var(--margin-small);
+  height: 40px;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  align-items: flex-end;
+}
+
+.car-color-picker {
+  color: white;
+  background: none;
+  font-family: var(--main-font);
+  height: 3.5dvh;
+  width: 20%;
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
+  /* padding: var(--paddding-button); */
+
+  text-align: left;
+  cursor: pointer;
+}
+
+/* can delete if not using toggle */
 
 .checkbox {
   --blue: var(--main-green);

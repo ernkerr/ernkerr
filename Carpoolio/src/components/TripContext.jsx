@@ -55,9 +55,9 @@ export function TripContextProvider({ children }) {
 
   // watch for changes in formData and save to backend API
 
-  // useEffect(() => {
-  //   saveFormDataToBackend(formData); // pass formData to saveFormData whenever it changes
-  // }, [formData]);
+  useEffect(() => {
+    saveFormDataToBackend(formData); // pass formData to saveFormData whenever it changes
+  }, [formData]);
 
   // may not be the most efficient, onBlur & saveData to backend for each component?
   // at next?

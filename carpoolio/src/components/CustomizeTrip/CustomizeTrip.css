@@ -264,11 +264,6 @@
     margin-top: var(--margin-small);
   }
 
-  #save-car-btn {
-    margin-left: var(--margin-medium);
-    margin-top: var(--margin-small);
-  }
-
   #delete-car-btn {
     margin-top: var(--margin-small);
   }

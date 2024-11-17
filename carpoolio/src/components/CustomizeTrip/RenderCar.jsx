@@ -10,12 +10,14 @@ export default function RenderCar({
   setActiveCarIndex,
 }) {
   const { formData, setFormData } = useContext(TripContext);
+  // const car = formData?.cars?.[carIndex];
+
   const handleSeatClick = (row, carIndex, seatIndex, event) => {
-    const newCars = [...formData.cars]; // Create a copy of cars array
-    const newSeatNames = { ...newCars[carIndex].seatNames }; // Access the seat names of the specific car
-    newSeatNames[row][seatIndex] = event.target.value; // Update the specific seat name in the row
-    newCars[carIndex].seatNames = newSeatNames; // Update the seat names in the specific car object
-    setFormData({ ...formData, cars: newCars }); // Update formData with new cars
+    const newCars = [...formData.cars]; // create a copy of cars array
+    const newSeatNames = { ...newCars[carIndex].seatNames }; // access the seat names of the specific car
+    newSeatNames[row][seatIndex] = event.target.value; // update the specific seat name in the row
+    newCars[carIndex].seatNames = newSeatNames; // update the seat names in the specific car object
+    setFormData({ ...formData, cars: newCars });
   };
 
   const handleCustomizeCar = (carToCustomize) => {
@@ -28,16 +30,16 @@ export default function RenderCar({
       <h6 className="car-name">{car?.carName || ""}</h6>
       <div className="render-car-container">
         <DefaultCar
-          carColor={car.carColor}
+          carColor={car?.carColor || "#216191"}
           // style={{ width: "100%", height: "auto" }}
         />
         <div className="render-seat-container">
           <div className="render-seat-row">
-            {Array.from({ length: car.seatDistribution.row1 }).map(
+            {Array.from({ length: car?.seatDistribution.row1 }).map(
               (_, index) => (
                 <input
                   key={`row1-seat${index}`}
-                  value={car.seatNames.row1[index] || ""}
+                  value={car?.seatNames.row1[index] || ""}
                   onChange={(event) =>
                     handleSeatClick("row1", carIndex, index, event)
                   }
@@ -48,11 +50,11 @@ export default function RenderCar({
           </div>
 
           <div className="render-seat-row">
-            {Array.from({ length: car.seatDistribution.row2 }).map(
+            {Array.from({ length: car?.seatDistribution.row2 }).map(
               (_, index) => (
                 <input
                   key={`row2-seat${index}`}
-                  value={car.seatNames.row2[index] || ""}
+                  value={car?.seatNames.row2[index] || ""}
                   onChange={(event) =>
                     handleSeatClick("row2", carIndex, index, event)
                   }
@@ -63,11 +65,11 @@ export default function RenderCar({
           </div>
 
           <div className="render-seat-row">
-            {Array.from({ length: car.seatDistribution.row3 }).map(
+            {Array.from({ length: car?.seatDistribution.row3 }).map(
               (_, index) => (
                 <input
                   key={`row3-seat${index}`}
-                  value={car.seatNames.row3[index] || ""}
+                  value={car?.seatNames.row3[index] || ""}
                   onChange={(event) =>
                     handleSeatClick("row3", carIndex, index, event)
                   }
@@ -81,8 +83,8 @@ export default function RenderCar({
             onClick={() => handleCustomizeCar(carIndex)}
             style={{
               background: formData?.tripBackground?.scrim || "transparent",
-              border: ` 2px solid ${formData.glowColor}`,
-              boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+              border: ` 2px solid ${formData?.glowColor}`,
+              boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
             }}
           >
             Customize
