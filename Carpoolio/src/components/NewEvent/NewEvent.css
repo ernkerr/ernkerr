@@ -173,7 +173,7 @@
   box-shadow: var(--green-glow);
 }
 
-.tertiary-button {
+.tertiary-btn {
   color: var(--white);
   font-family: var(--main-font);
   font-size: var(--font-size-small);

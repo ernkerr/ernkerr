@@ -17,21 +17,8 @@
   border: none;
   position: fixed;
   left: 5%;
-  bottom: 0;
+  bottom: 0.5%;
   margin-bottom: var(--margin-btn);
-}
-
-.tertiary-button {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  background: none;
-  border: none;
-  position: fixed;
-  left: 5%;
-  bottom: 0;
-  margin-bottom: var(--margin-btn);
-  height: var(--btn-height);
 }
 
 /* get the image to stretch to the whole screen  */

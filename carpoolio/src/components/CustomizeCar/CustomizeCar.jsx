@@ -5,19 +5,18 @@ import "../CustomizeTrip/RenderCar.css";
 
 export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   const { formData, setFormData } = useContext(TripContext);
-  const [carColor, setCarColor] = useState(
-    formData.cars[activeCarIndex].carColor
-  );
-  const [numSeats, setNumSeats] = useState(
-    formData.cars[activeCarIndex].numSeats
-  );
+  const car = formData?.cars?.[activeCarIndex];
+
+  const [carColor, setCarColor] = useState(car ? car.carColor : "#216191");
+  const [numSeats, setNumSeats] = useState(car ? car.numSeats : 0);
   const [seatNames, setSeatNames] = useState(
-    formData.cars[activeCarIndex].seatNames
+    car?.seatNames || { row1: [], row2: [], row3: [], row4: [] }
   );
+
   const [seatDistribution, setSeatDistribution] = useState(
-    formData.cars[activeCarIndex].seatDistribution
+    car ? car.seatDistribution : { row1: 2, row2: 3, row3: 0, row4: 0 }
   );
-  const [carName, setCarName] = useState(formData.cars[activeCarIndex].carName);
+  const [carName, setCarName] = useState(car ? car.carName : "");
 
   // use onBlur to save the seat inputs / buttons / whatever they end up becoming
 

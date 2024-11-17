@@ -1,7 +1,54 @@
+.glass-buttons-container {
+  display: flex;
+  gap: 5%;
+  width: 100%;
+  margin-top: var(--margin-form-response);
+}
+
+.glass-button {
+  color: var(--white);
+  font: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: var(--padding-secondary-btn);
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
+  background: var(--glass-background);
+  cursor: pointer;
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  width: 45%;
+  height: var(--btn-height);
+}
+
+.glass-button:hover {
+  background: var(--glass-background);
+  color: var(--white);
+}
+
+.glass-button.selected {
+  color: var(--white);
+  background: var(--glass-background-light);
+  border-color: var(--main-green);
+  box-shadow: var(--green-glow);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+}
+
+/* For browser compatibility
+@supports not (backdrop-filter: blur(8px)) {
+  .glass-button {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-button.selected {
+    background: rgba(255, 255, 255, 0.35);
+  }
+} */
+
 .checkbox {
-  --blue: #0d7eff;
-  --g08: #e1e5eb;
-  --g04: #848ea1;
+  --blue: var(--main-green);
+  --g08: var(--glass-background);
+  --g04: var(--main-white);
   text-align: center;
 }
 
@@ -29,13 +76,13 @@
 .checkbox .tgl + .tgl-btn {
   outline: 0;
   display: block;
-  width: 57px;
-  height: 27px;
+  width: 80px;
+  height: 30px;
   position: relative;
   cursor: pointer;
   user-select: none;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: var(--font-size-small);
+  /* font-weight: 400; */
   color: #fff;
 }
 .checkbox .tgl + .tgl-btn:after,
@@ -61,20 +108,20 @@
 .checkbox .tgl + .tgl-btn {
   background: var(--g08);
   border-radius: 20rem;
-  padding: 2px;
+  /* padding: 2px; */
   transition: all 0.4s ease;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 .checkbox .tgl + .tgl-btn:after {
-  border-radius: 2em;
-  background: #fff;
+  border-radius: 50%;
+  background: var(--white);
   transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     padding 0.3s ease, margin 0.3s ease;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
 .checkbox .tgl + .tgl-btn:before {
   content: "No";
-  left: 28px;
+  left: 40px;
   color: var(--g04);
   transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -95,6 +142,6 @@
 }
 .checkbox .tgl:checked + .tgl-btn:before {
   content: "Yes";
-  left: 4px;
+  left: 6px;
   color: #fff;
 }
