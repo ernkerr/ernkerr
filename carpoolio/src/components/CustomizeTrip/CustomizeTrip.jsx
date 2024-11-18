@@ -118,7 +118,6 @@ export default function CustomizeTrip({ isPreviewingTrip, isAdmin }) {
                 key={index}
                 car={car}
                 carIndex={index}
-                activeCarIndex={activeCarIndex}
                 setIsCustomizingCar={setIsCustomizingCar}
                 setActiveCarIndex={setActiveCarIndex}
               />

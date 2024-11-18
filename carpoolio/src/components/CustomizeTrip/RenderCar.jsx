@@ -78,19 +78,19 @@ export default function RenderCar({
               )
             )}
           </div>
-          <button
-            className="customize-car-btn"
-            onClick={() => handleCustomizeCar(carIndex)}
-            style={{
-              background: formData?.tripBackground?.scrim || "transparent",
-              border: ` 2px solid ${formData?.glowColor}`,
-              boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-            }}
-          >
-            Customize
-          </button>
         </div>
       </div>
+      <button
+        className="secondary-btn"
+        onClick={() => handleCustomizeCar(carIndex)}
+        style={{
+          background: formData?.tripBackground?.scrim || "transparent",
+          border: ` 2px solid ${formData?.glowColor}`,
+          boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+        }}
+      >
+        Customize
+      </button>
     </>
   );
 }

@@ -8,9 +8,7 @@ import "./NewCar.css";
 
 export default function NewCar({ onNext }) {
   const { formData, setFormData } = useContext(TripContext);
-
   const [isAddingCar, setIsAddingCar] = useState("");
-
   const [driverName, setDriverName] = useState("");
 
   const [isNumSeatsSet, setIsNumSeatsSet] = useState("");
@@ -24,27 +22,27 @@ export default function NewCar({ onNext }) {
 
   // progressive disclosure logic
   const handleYes = () => {
-    setIsAddingCar(true);
-    handleAddNewCar();
+    if (!newCarCreated) {
+      // only proceed if no car has been created yet
+      setIsAddingCar(true);
+      handleAddNewCar();
+    }
   };
 
   // handle add new car
   useEffect(() => {
     if (newCarCreated) {
-      console.log("Active car index pre use effect : ", activeCarIndex);
       setActiveCarIndex(formData.cars.length - 1);
-      console.log("Active car index post: ", activeCarIndex);
-
       setNewCarCreated(false);
     }
   }, [newCarCreated]);
 
   const handleAddNewCar = (driverName) => {
-    if (formData.cars && formData.cars.length > 0) {
-      console.log("A car already exists. Skipping creation.");
-      console.log("Active car index: ", activeCarIndex);
-      return;
-    }
+    // if (formData.cars && formData.cars.length > 0) {
+    //   console.log("A car already exists. Skipping creation.");
+    //   console.log("Active car index: ", activeCarIndex);
+    //   return;
+    // } // fix this logic later so we can reuse component (!)
 
     const newCar = {
       carName: "",
@@ -63,20 +61,19 @@ export default function NewCar({ onNext }) {
     });
 
     const newCarIndex = formData?.cars.length;
-
     setActiveCarIndex(newCarIndex);
     console.log(`new car index: ${newCarIndex}`);
+
     setNewCarCreated(true);
     setIsCustomizingCar(false);
 
     // send to backend ?
   };
 
+  // update driver name in the active car
   const changeDriverName = (event) => {
     const driverName = event.target.value;
     setDriverName(driverName);
-    console.log("Active car index change driver name: ", activeCarIndex);
-
     setFormData((prevData) => {
       const updatedCars = [...prevData.cars];
       if (activeCarIndex !== null && updatedCars[activeCarIndex]) {
@@ -88,12 +85,13 @@ export default function NewCar({ onNext }) {
   };
 
   const handleNumSeatsUpdate = (numSeats) => {
-    // check if activeCarIndex is valid and update car data
-    console.log("Active car index: ", activeCarIndex);
-    console.log("numSeats from slider: ", numSeats);
+    // console.log("Active car index: ", activeCarIndex);
+    // console.log("numSeats from slider: ", numSeats);
 
     setFormData((prevData) => {
       const updatedCars = [...(prevData.cars || [])];
+
+      // check if activeCarIndex is valid and update car data
       if (activeCarIndex !== null && updatedCars[activeCarIndex]) {
         updatedCars[activeCarIndex].numSeats = numSeats;
 
@@ -104,14 +102,12 @@ export default function NewCar({ onNext }) {
       }
       return { ...prevData, cars: updatedCars, numSeats };
     });
-    // console.log("Updated formData with distribution:", distribution); // Debug log
     setIsNumSeatsSet(true);
-
-    console.log("Updated formData:", formData);
+    // console.log("Updated formData:", formData);
   };
 
   const computeSeatDistribution = (numSeats) => {
-    console.log("numSeats: ", numSeats); // logging
+    // console.log("numSeats: ", numSeats); // logging
     // logic to render seats based on numSeats
     const distribution = { row1: 0, row2: 0, row3: 0, row4: 0 }; // handle invalid inputs
     if (numSeats <= 0) return distribution;
@@ -142,7 +138,7 @@ export default function NewCar({ onNext }) {
 
   return (
     <div className="form-question-container">
-      <p className="form-question"></p>
+      {/* <p className="form-question"></p> */}
 
       <div className="glass-buttons-container">
         <button
@@ -162,7 +158,7 @@ export default function NewCar({ onNext }) {
 
       {isAddingCar && (
         <>
-          {/* is driving  */}
+          {/* get driver's name  */}
           <p className="form-question">Who's driving?</p>
           <input
             className="form-response"
@@ -173,13 +169,13 @@ export default function NewCar({ onNext }) {
             value={driverName}
             onChange={changeDriverName}
           />
+
           {/* if driver name is set, show num seats slider  */}
           {driverName && <NumSeats onUpdate={handleNumSeatsUpdate} />}
+
           {/* if NumSeats is set render car and customize car btn */}
           {(isNumSeatsSet || formData?.numSeats) && (
             <>
-              {/* add a default car here ?*/}
-
               {isCustomizingCar ? (
                 <CustomizeCar
                   activeCarIndex={activeCarIndex}
