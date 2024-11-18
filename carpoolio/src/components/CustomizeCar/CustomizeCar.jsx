@@ -1,10 +1,13 @@
 import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import { TripContext } from "@components/TripContext";
 import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
+
 import "../CustomizeTrip/RenderCar.css";
 
 export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   const { formData, setFormData } = useContext(TripContext);
+
   const car = formData?.cars?.[activeCarIndex];
 
   const [carColor, setCarColor] = useState(car ? car.carColor : "#216191");
@@ -32,11 +35,11 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
 
   // use onBlur to save the seat inputs / buttons / whatever they end up becoming
   // onBlur={handleSave}
-  const handleSave = async (e) => {
-    e.preventDefault(); // prevent page reload
+  // const handleSave = async (e) => {
+  //   e.preventDefault(); // prevent page reload
 
-    // send
-  };
+  //   // send
+  // };
 
   const changeCarName = (event) => {
     const carName = event.target.value;
@@ -74,25 +77,81 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     }
   };
 
-  const handleSaveCar = () => {
-    console.log("saving car");
-    setFormData((formData) => {
-      const updatedCars = [...formData.cars];
-      updatedCars[activeCarIndex] = {
-        ...updatedCars[activeCarIndex],
-        carName: carName,
-        carColor: carColor,
-        numSeats: numSeats,
-        seatNames: seatNames,
-        seatDistribution: seatDistribution,
-      };
-      return {
-        ...formData,
-        cars: updatedCars,
-      };
-    });
-    setIsCustomizingCar(false);
+  // Save or update car details
+  const handleSaveCar = async (e) => {
+    console.log("Car:", car);
+    e.preventDefault(); // prevent page refresh
+    try {
+      if (car) {
+        const response = await axios.put(
+          `http://192.168.0.28:8080/api/trip/${formData.tripId}/car/${car.carId}`,
+          car
+        ); // update existing car
+        console.log("Car:", car);
+
+        if (response.status === 200) {
+          console.log("Car updated in backend:", response.data);
+        }
+      } else {
+        // if car doesn't exist, make one
+        const response = await axios.post(
+          `http://192.168.0.28:8080/api/trip/${formData.tripId}/car`,
+          car
+        ); // should create a new car associated with that tripId
+        console.log("Car being created:", response.date);
+
+        if (response.status === 201) {
+          console.log("Car created:", response.data);
+        } else {
+          console.log("Failed to save car");
+        }
+      }
+    } catch (error) {
+      console.error("Error saving car:", error);
+    }
   };
+  // const handleSaveCar = async () => {
+  //   try {
+  //     const updatedCar = {
+  //       carName,
+  //       carColor,
+  //       numSeats,
+  //       seatNames,
+  //       seatDistribution,
+  //     };
+
+  //     let updatedFormData;
+
+  //     if (activeCarIndex === null) {
+  //       // Add a new car
+  //       updatedFormData = {
+  //         ...formData,
+  //         cars: [...(formData.cars || []), updatedCar],
+  //       };
+  //     } else {
+  //       // Update existing car
+  //       const updatedCars = [...formData.cars];
+  //       updatedCars[activeCarIndex] = updatedCar;
+  //       updatedFormData = { ...formData, cars: updatedCars };
+  //     }
+
+  //     // Send to backend
+  //     const response = await fetch(`/api/trip/${formData.tripId}/car`, {
+  //       method: activeCarIndex === null ? "POST" : "PUT",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(updatedFormData),
+  //     });
+
+  //     if (!response.ok)
+  //       throw new Error(`Failed to save car: ${response.statusText}`);
+
+  //     const updatedTrip = await response.json();
+  //     setFormData(updatedTrip);
+  //     setIsCustomizingCar(false);
+  //   } catch (error) {
+  //     console.error("Error saving car:", error);
+  //   }
+  // };
 
   const handleDeleteCar = () => {
     setFormData((prevData) => {

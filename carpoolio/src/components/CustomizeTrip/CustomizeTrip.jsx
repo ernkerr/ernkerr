@@ -16,39 +16,41 @@ export default function CustomizeTrip({ isPreviewingTrip, isAdmin }) {
   const { formData, setFormData } = useContext(TripContext); // Access TripContext here
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
-  const [newCarCreated, setNewCarCreated] = useState(false);
+  // const [newCarCreated, setNewCarCreated] = useState(false);
 
   // handle add new car
-  useEffect(() => {
-    if (newCarCreated) {
-      setActiveCarIndex(formData.cars.length - 1);
-      setNewCarCreated(false);
-    }
-  }, [newCarCreated]);
+  // useEffect(() => {
+  //   if (newCarCreated) {
+  //     setActiveCarIndex(formData.cars.length - 1);
+  //     setNewCarCreated(false);
+  //   }
+  // }, [newCarCreated]);
 
-  const handleAddNewCar = () => {
-    const newCar = {
-      carName: "",
-      carColor: "#216191",
-      seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
-      seatNames: { row1: [""], row2: [""], row3: [""], row4: [""] },
-    };
-    setFormData(() => {
-      const updatedCars = [...(formData.cars || []), newCar];
+  // const handleAddNewCar = () => {
+  //   const newCar = {
+  //     carName: "",
+  //     carColor: "#216191",
+  //     seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
+  //     seatNames: { row1: [""], row2: [""], row3: [""], row4: [""] },
+  //   };
+  //   setFormData(() => {
+  //     const updatedCars = [...(formData.cars || []), newCar];
+  //     updatedCars.push({ ...newCar });
 
-      return {
-        ...formData,
-        cars: updatedCars,
-      };
-    });
+  //     return {
+  //       ...formData,
+  //       cars: updatedCars,
+  //     };
+  //   });
 
-    const newCarIndex = formData?.cars.length;
-    console.log(`new car index: ${newCarIndex}`);
+  //   const newCarIndex = formData?.cars.length;
+  //   console.log(`new car index: ${newCarIndex}`);
+  //   // setActiveCarIndex(prevData?.cars?.length || 0);
 
-    setActiveCarIndex(newCarIndex);
-    setNewCarCreated(true);
-    setIsCustomizingCar(true);
-  };
+  //   setActiveCarIndex(newCarIndex);
+  //   setNewCarCreated(true);
+  //   setIsCustomizingCar(true);
+  // };
 
   // styling
   const handleGlowColorChange = (event) => {

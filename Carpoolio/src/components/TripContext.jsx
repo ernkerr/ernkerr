@@ -11,7 +11,6 @@ export function TripContextProvider({ children }) {
     tripDate: "", //"Monday, November 4" str
     tripTime: "", // TODO: add to schema
     tripDescription: "", //str
-
     tripBackground: {}, // {name: 'bluegoo', path: 'src/..'} obj
     glowColor: "#34bd34", //str
     lighterGlowColor: "", //str
@@ -61,6 +60,52 @@ export function TripContextProvider({ children }) {
 
   // may not be the most efficient, onBlur & saveData to backend for each component?
   // at next?
+
+  // handle save car
+
+  const saveCarToBackend = async (carData) => {
+    try {
+      const updatedTripData = {
+        ...formData,
+        cars: [...formData.cars, carData],
+      };
+
+      const response = await fetch(
+        `http://192.168.0.28:8080/api/trip/${formData.tripId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedTripData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to save car data to backend");
+      }
+
+      const updatedTrip = await response.json();
+
+      // Update the state with the saved car data
+      setFormData((prev) => ({
+        ...prev,
+        cars: updatedTrip.cars,
+      }));
+
+      console.log("Car saved successfully:", updatedTrip.cars);
+    } catch (error) {
+      console.error("Error saving car:", error);
+    }
+  };
+
+  // const handleSaveCar = (carData) => {
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     cars: [...prev.cars, carData],
+  //   }));
+  //   saveCarToBackend(carData);
+  // };
 
   return (
     <TripContext.Provider value={{ formData, setFormData }}>

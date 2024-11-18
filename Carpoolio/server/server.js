@@ -89,6 +89,36 @@ app.get("/api/trip/:tripId/:adminId", async (req, res) => {
   }
 });
 
+// to create a new car
+app.post("/api/trip/:tripId/car", async (req, res) => {
+  const { tripId } = req.params;
+  const car = req.body;
+
+  const existingTrip = await prisma.trip.findUnique({ where: { tripId } });
+  if (!existingTrip) {
+    return res.status(404).json({ error: "Trip not found" });
+  }
+
+  try {
+    const newCar = await prisma.car.create({
+      data: {
+        carName: car.carName,
+        carColor: car.carColor,
+        seatDistribution: car.seatDistribution,
+        seatNames: car.seatNames,
+        tripId,
+      },
+    });
+    res.status(201).json(newCar); // Return the created car object
+  } catch (error) {
+    console.error("Error creating car:", error);
+    res.status(500).json({ error: "Failed to create car" });
+  }
+});
+
+// to update a car that already exists in the backend
+app.put("/api/trip/:tripId/car/:carId");
+
 // PUT route to update a trip by its tripID
 app.put("/api/trip/:tripId", async (req, res) => {
   const { tripId } = req.params;

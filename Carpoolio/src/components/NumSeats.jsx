@@ -1,14 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { TripContext } from "@components/TripContext";
 
 export default function NumSeats({ onUpdate }) {
   const { formData, setFormData } = useContext(TripContext);
-  const [numSeats, setNumSeats] = useState(null);
+  // const [numSeats, setNumSeats] = useState("");
 
   const handleSliderChange = (event) => {
     const newNumSeats = Number(event.target.value);
     setFormData({ ...formData, numSeats: newNumSeats });
-    setNumSeats(newNumSeats);
+    // setNumSeats(newNumSeats);
+    onUpdate(newNumSeats);
   };
 
   return (
@@ -22,7 +23,7 @@ export default function NumSeats({ onUpdate }) {
         type="range"
         min="0"
         max="12"
-        value={formData.numSeats || null}
+        value={formData.numSeats || ""}
         onChange={handleSliderChange}
         className="numSeatsSlider"
         id="numSeatRange"
@@ -31,3 +32,5 @@ export default function NumSeats({ onUpdate }) {
     </>
   );
 }
+
+// check activeCarIndex is valid and update car data

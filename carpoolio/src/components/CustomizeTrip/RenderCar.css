@@ -124,6 +124,7 @@
 
 #save-car-btn {
   position: relative;
+  z-index: 100;
   /* left: 80%;
   bottom: 0;
   margin-bottom: 0;

@@ -32,9 +32,6 @@ export default function NewTripForm() {
       case 1:
         return <NewCar onNext={handleNext} />;
       case 2:
-        return <GetTripDate />;
-
-      case 3:
         return <CustomizeTrip isPreviewingTrip={isPreviewingTrip} />;
     }
   };
