@@ -59,6 +59,7 @@ model Car {
   id               Int    @id @default(autoincrement())
   carName          String
   carColor         String
+  numSeats         Int
   seatDistribution Json // Store seat distribution as JSON
   seatNames        Json // Store seat names as JSON
   tripId           Int // Foreign key linking to Trip

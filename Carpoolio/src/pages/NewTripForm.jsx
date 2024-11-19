@@ -60,7 +60,8 @@ export default function NewTripForm() {
     try {
       if (formData.tripId) {
         const response = await axios.put(
-          `http://192.168.0.28:8080/api/trip/${formData.tripId}`,
+          // `http://192.168.0.28:8080/api/trip/${formData.tripId}`,
+          `http://127.0.2.2:8080/api/trip/${formData.tripId}`, // agape
           formData
         ); // update the existing trip
 
@@ -74,7 +75,8 @@ export default function NewTripForm() {
       } else {
         // if trip id does not exist, create a new trip
         const response = await axios.post(
-          "http://192.168.0.28:8080/api/trip",
+          // `http://192.168.0.28:8080/api/trip`,
+          `http://127.0.2.2:8080/api/trip/`, // agape
           formData
         ); // creates a new trip in the backend
 

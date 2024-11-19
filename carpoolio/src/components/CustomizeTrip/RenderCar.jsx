@@ -20,9 +20,9 @@ export default function RenderCar({
     setFormData({ ...formData, cars: newCars });
   };
 
-  const handleCustomizeCar = (carToCustomize) => {
+  const handleCustomizeCar = () => {
     setIsCustomizingCar(true);
-    setActiveCarIndex(carToCustomize);
+    setActiveCarIndex(carIndex);
   };
 
   return (
@@ -82,7 +82,7 @@ export default function RenderCar({
       </div>
       <button
         className="secondary-btn"
-        onClick={() => handleCustomizeCar(carIndex)}
+        onClick={handleCustomizeCar}
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
           border: ` 2px solid ${formData?.glowColor}`,
@@ -94,3 +94,6 @@ export default function RenderCar({
     </>
   );
 }
+
+// is adminId or carId in link? if yes, allow customization
+// if no, only allow selection of empty seats

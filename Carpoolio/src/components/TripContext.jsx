@@ -23,7 +23,8 @@ export function TripContextProvider({ children }) {
   const saveFormDataToBackend = async (data) => {
     try {
       const response = await fetch(
-        "http://192.168.0.28:8080/api/saveFormData",
+        // "http://192.168.0.28:8080/api/saveFormData",
+        "http://127.0.2.2:8080/api/saveFormData", // agape
         {
           method: "POST", // use POST to send data
           headers: {
@@ -71,7 +72,9 @@ export function TripContextProvider({ children }) {
       };
 
       const response = await fetch(
-        `http://192.168.0.28:8080/api/trip/${formData.tripId}`,
+        // `http://192.168.0.28:8080/api/trip/${formData.tripId}`,
+        `http://127.0.2.2:8080/api/trip/${formData.tripId}`, // agape
+
         {
           method: "PUT",
           headers: {

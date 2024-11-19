@@ -1,6 +1,6 @@
 import hexRgb from "hex-rgb";
 
-export default function DefaultCar({ carColor }) {
+export default function DefaultCar({ carColor = "#216191" }) {
   const { red: r, green: g, blue: b } = hexRgb(carColor);
 
   const clamp = (value) => Math.max(0, Math.min(255, value)); // clamp function to ensure RGB values stay within 0-255

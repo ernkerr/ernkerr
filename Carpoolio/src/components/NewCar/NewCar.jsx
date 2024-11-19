@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import { TripContext } from "@components/TripContext";
-
 import CustomizeCar from "../CustomizeCar/CustomizeCar";
 import RenderCar from "../CustomizeTrip/RenderCar";
 import NumSeats from "@components/NumSeats.jsx";
@@ -13,12 +12,15 @@ export default function NewCar({ onNext }) {
 
   const [isNumSeatsSet, setIsNumSeatsSet] = useState("");
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
-  const [activeCarIndex, setActiveCarIndex] = useState(null);
-
+  const [activeCarIndex, setActiveCarIndex] = useState(0);
   const [newCarCreated, setNewCarCreated] = useState(false);
 
   // departure details
   const [isShowingOptions, setIsShowingOptions] = useState(false);
+
+  // useEffect(() => {
+  //   console.log("Active Car Index Updated in New Car:", activeCarIndex);
+  // }, [activeCarIndex]);
 
   // progressive disclosure logic
   const handleYes = () => {
@@ -38,12 +40,6 @@ export default function NewCar({ onNext }) {
   }, [newCarCreated]);
 
   const handleAddNewCar = (driverName) => {
-    // if (formData.cars && formData.cars.length > 0) {
-    //   console.log("A car already exists. Skipping creation.");
-    //   console.log("Active car index: ", activeCarIndex);
-    //   return;
-    // } // fix this logic later so we can reuse component (!)
-
     const newCar = {
       carName: "",
       carColor: "#216191",
@@ -51,6 +47,7 @@ export default function NewCar({ onNext }) {
       seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
       seatNames: { row1: [driverName, ""], row2: [""], row3: [""], row4: [""] },
     };
+
     setFormData(() => {
       const updatedCars = [...(formData.cars || []), newCar]; // add newCar to updatedCars array using the spread operator
 
@@ -85,9 +82,6 @@ export default function NewCar({ onNext }) {
   };
 
   const handleNumSeatsUpdate = (numSeats) => {
-    // console.log("Active car index: ", activeCarIndex);
-    // console.log("numSeats from slider: ", numSeats);
-
     setFormData((prevData) => {
       const updatedCars = [...(prevData.cars || [])];
 
@@ -187,7 +181,7 @@ export default function NewCar({ onNext }) {
                 //   setIsCustomizingCar={setIsCustomizingCar}
                 // />
                 <RenderCar
-                  activeCarIndex={activeCarIndex}
+                  carIndex={activeCarIndex}
                   setIsCustomizingCar={setIsCustomizingCar}
                   setActiveCarIndex={setActiveCarIndex}
                 />

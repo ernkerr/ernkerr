@@ -14,7 +14,11 @@ const prisma = new PrismaClient();
 const PORT = 8080;
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://192.168.0.28:5173"], // frontend url (change to domain later)
+  origin: [
+    "http://localhost:5173",
+    "http://192.168.0.28:5173",
+    "http://127.0.2.2:5173",
+  ], // frontend url (change to domain later)
 };
 app.use(cors(corsOptions));
 
@@ -23,6 +27,7 @@ app.use(cors(corsOptions));
 //   res.send("Hello from the backend!");
 // });
 
+// create a new trip in the backend
 app.post("/api/trip", async (req, res) => {
   try {
     const tripData = req.body; // full formData object from the client
@@ -43,6 +48,7 @@ app.post("/api/trip", async (req, res) => {
           create: tripData.cars.map((car) => ({
             carName: car.carName,
             carColor: car.carColor,
+            numSeats: car.numSeats,
             seatDistribution: car.seatDistribution,
             seatNames: car.seatNames,
           })),
@@ -56,6 +62,56 @@ app.post("/api/trip", async (req, res) => {
     });
   } catch (error) {
     console.error("Error creating trip:", error);
+  }
+});
+
+// PUT route to update a trip by its tripID
+app.put("/api/trip/:tripId", async (req, res) => {
+  const { tripId } = req.params;
+  const tripData = req.body;
+
+  try {
+    const updatedTrip = await prisma.trip.update({
+      where: { tripId },
+      data: {
+        tripName: tripData.tripName,
+        tripDate: tripData.tripDate,
+        tripTime: tripData.tripTime,
+        tripBackground: tripData.tripBackground,
+        departureTime: tripData.departureTime,
+        destination: tripData.destination,
+        tripDescription: tripData.tripDescription,
+        glowColor: tripData.glowColor,
+        lighterGlowColor: tripData.lighterGlowColor,
+        transparentGlowColor: tripData.transparentGlowColor,
+        cars: {
+          upsert: tripData.cars.map((car) => ({
+            where: { carId: car.carId || 0 }, // Use unique identifiers like `carId`
+            update: {
+              carName: car.carName,
+              carColor: car.carColor,
+              numSeats: car.numSeats,
+              seatDistribution: car.seatDistribution,
+              seatNames: car.seatNames,
+            },
+            create: {
+              carName: car.carName,
+              carColor: car.carColor,
+              numSeats: car.numSeats,
+              seatDistribution: car.seatDistribution,
+              seatNames: car.seatNames,
+            },
+          })),
+        },
+      },
+    });
+
+    res.status(200).json(updatedTrip);
+  } catch (error) {
+    console.error("Error updating trip:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while updating the trip" });
   }
 });
 
@@ -89,83 +145,36 @@ app.get("/api/trip/:tripId/:adminId", async (req, res) => {
   }
 });
 
-// to create a new car
-app.post("/api/trip/:tripId/car", async (req, res) => {
-  const { tripId } = req.params;
-  const car = req.body;
+// // to create a new car
+// app.post("/api/trip/:tripId/car", async (req, res) => {
+//   const { tripId } = req.params;
+//   const car = req.body;
 
-  const existingTrip = await prisma.trip.findUnique({ where: { tripId } });
-  if (!existingTrip) {
-    return res.status(404).json({ error: "Trip not found" });
-  }
+//   const existingTrip = await prisma.trip.findUnique({ where: { tripId } });
+//   if (!existingTrip) {
+//     return res.status(404).json({ error: "Trip not found" });
+//   }
 
-  try {
-    const newCar = await prisma.car.create({
-      data: {
-        carName: car.carName,
-        carColor: car.carColor,
-        seatDistribution: car.seatDistribution,
-        seatNames: car.seatNames,
-        tripId,
-      },
-    });
-    res.status(201).json(newCar); // Return the created car object
-  } catch (error) {
-    console.error("Error creating car:", error);
-    res.status(500).json({ error: "Failed to create car" });
-  }
-});
+//   try {
+//     const newCar = await prisma.car.create({
+//       data: {
+//         carName: car.carName,
+//         carColor: car.carColor,
+//         numSeats: car.numSeats,
+//         seatDistribution: car.seatDistribution,
+//         seatNames: car.seatNames,
+//         tripId,
+//       },
+//     });
+//     res.status(201).json(newCar); // Return the created car object
+//   } catch (error) {
+//     console.error("Error creating car:", error);
+//     res.status(500).json({ error: "Failed to create car" });
+//   }
+// });
 
-// to update a car that already exists in the backend
-app.put("/api/trip/:tripId/car/:carId");
-
-// PUT route to update a trip by its tripID
-app.put("/api/trip/:tripId", async (req, res) => {
-  const { tripId } = req.params;
-  const tripData = req.body;
-
-  try {
-    const updatedTrip = await prisma.trip.update({
-      where: { tripId },
-      data: {
-        tripName: tripData.tripName,
-        tripDate: tripData.tripDate,
-        tripTime: tripData.tripTime,
-        tripBackground: tripData.tripBackground,
-        departureTime: tripData.departureTime,
-        destination: tripData.destination,
-        tripDescription: tripData.tripDescription,
-        glowColor: tripData.glowColor,
-        lighterGlowColor: tripData.lighterGlowColor,
-        transparentGlowColor: tripData.transparentGlowColor,
-        cars: {
-          upsert: tripData.cars.map((car) => ({
-            where: { carId: car.carId || 0 }, // Use unique identifiers like `carId`
-            update: {
-              carName: car.carName,
-              carColor: car.carColor,
-              seatDistribution: car.seatDistribution,
-              seatNames: car.seatNames,
-            },
-            create: {
-              carName: car.carName,
-              carColor: car.carColor,
-              seatDistribution: car.seatDistribution,
-              seatNames: car.seatNames,
-            },
-          })),
-        },
-      },
-    });
-
-    res.status(200).json(updatedTrip);
-  } catch (error) {
-    console.error("Error updating trip:", error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while updating the trip" });
-  }
-});
+// // to update a car that already exists in the backend
+// app.put("/api/trip/:tripId/car/:carId");
 
 // GET route to retrieve a trip by its tripId
 app.get("/api/trip/:tripId", async (req, res) => {
