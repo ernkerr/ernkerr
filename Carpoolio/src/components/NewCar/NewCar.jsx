@@ -165,7 +165,12 @@ export default function NewCar({ onNext }) {
           />
 
           {/* if driver name is set, show num seats slider  */}
-          {driverName && <NumSeats onUpdate={handleNumSeatsUpdate} />}
+          {driverName && (
+            <NumSeats
+              activeCarIndex={activeCarIndex}
+              onUpdate={handleNumSeatsUpdate}
+            />
+          )}
 
           {/* if NumSeats is set render car and customize car btn */}
           {(isNumSeatsSet || formData?.numSeats) && (
