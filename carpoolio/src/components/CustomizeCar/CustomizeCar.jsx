@@ -56,15 +56,16 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     // if the row that was passed in has less than 3 seats..
     if (newSeats[row] < 3) {
       newSeats[row]++; // add one seat to the row
-      setSeatDistribution(newSeats);
+      console.log("Car data:", car);
+      console.log("Current numSeats:", car?.numSeats);
     }
 
     setFormData((prevData) => {
       const updatedCars = [...prevData.cars];
       updatedCars[activeCarIndex] = {
         ...updatedCars[activeCarIndex],
-        setSeatDistribution: newSeats, // update seatDistribution for the specific car
-        numSeats: numSeats + 1, // update numSeats to reflect change
+        seatDistribution: newSeats, // update seatDistribution for the specific car
+        numSeats: Math.max((car.numSeats || 1) + 1, 0), // increment numSeats & make sure it doesn’t go below 0
       };
       return { ...prevData, cars: updatedCars };
     });
@@ -75,14 +76,13 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     const newSeats = { ...car.seatDistribution };
     if (newSeats[row] > 0) {
       newSeats[row]--;
-      setSeatDistribution(newSeats);
     }
     setFormData((prevData) => {
       const updatedCars = [...prevData.cars];
       updatedCars[activeCarIndex] = {
         ...updatedCars[activeCarIndex],
         seatDistribution: newSeats,
-        numSeats: numSeats - 1,
+        numSeats: Math.max((car.numSeats || 1) - 1, 0),
       };
       return { ...prevData, cars: updatedCars };
     });
@@ -105,82 +105,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   };
 
   // Save or update car details
-  const handleSaveCar = async (e) => {
-    console.log("Car:", car);
-    e.preventDefault(); // prevent page refresh
-    try {
-      if (car) {
-        const response = await axios.put(
-          `http://127.0.2.2:8080/api/trip/${formData.tripId}/car/${car.carId}`, // agape
-          // `http://192.168.0.28:8080/api/trip/${formData.tripId}/car/${car.carId}`,
-          car
-        ); // update existing car
-        console.log("Car:", car);
-
-        if (response.status === 200) {
-          console.log("Car updated in backend:", response.data);
-        }
-      } else {
-        // if car doesn't exist, make one
-        // car should already exist (!)
-        const response = await axios.post(
-          `http://192.168.0.28:8080/api/trip/${formData.tripId}/car`,
-          car
-        ); // should create a new car associated with that tripId
-        console.log("Car being created:", response.date);
-
-        if (response.status === 201) {
-          console.log("Car created:", response.data);
-        } else {
-          console.log("Failed to save car");
-        }
-      }
-    } catch (error) {
-      console.error("Error saving car:", error);
-    }
-  };
-  // const handleSaveCar = async () => {
-  //   try {
-  //     const updatedCar = {
-  //       carName,
-  //       carColor,
-  //       numSeats,
-  //       seatNames,
-  //       seatDistribution,
-  //     };
-
-  //     let updatedFormData;
-
-  //     if (activeCarIndex === null) {
-  //       // Add a new car
-  //       updatedFormData = {
-  //         ...formData,
-  //         cars: [...(formData.cars || []), updatedCar],
-  //       };
-  //     } else {
-  //       // Update existing car
-  //       const updatedCars = [...formData.cars];
-  //       updatedCars[activeCarIndex] = updatedCar;
-  //       updatedFormData = { ...formData, cars: updatedCars };
-  //     }
-
-  //     // Send to backend
-  //     const response = await fetch(`/api/trip/${formData.tripId}/car`, {
-  //       method: activeCarIndex === null ? "POST" : "PUT",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(updatedFormData),
-  //     });
-
-  //     if (!response.ok)
-  //       throw new Error(`Failed to save car: ${response.statusText}`);
-
-  //     const updatedTrip = await response.json();
-  //     setFormData(updatedTrip);
-  //     setIsCustomizingCar(false);
-  //   } catch (error) {
-  //     console.error("Error saving car:", error);
-  //   }
-  // };
+  const handleSaveCar = () => setIsCustomizingCar(false);
 
   const handleDeleteCar = () => {
     setFormData((prevData) => {
@@ -231,108 +156,139 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                 carColor={car?.carColor}
                 style={{ width: "100%", height: "auto" }}
               />
+              <div className="render-seat-container">
+                {/* row 1 */}
+                <div className="render-seat-row">
+                  <button
+                    className="seat-buttons"
+                    onClick={() => removeSeat("row1")}
+                  >
+                    -
+                  </button>
+
+                  {Array.from({
+                    length: car?.seatDistribution.row1,
+                  }).map((_, index) => (
+                    <input
+                      key={`row1-seat${index}`}
+                      value={car?.seatNames.row1[index] || ""}
+                      onChange={(event) =>
+                        handleSeatClick("row1", index, event)
+                      }
+                      className="seat-input"
+                    />
+                  ))}
+                  <button
+                    className="seat-buttons"
+                    onClick={() => addSeat("row1")}
+                  >
+                    +
+                  </button>
+                </div>
+                {/* row 2 */}
+                <div className="render-seat-row">
+                  <button
+                    className="seat-buttons"
+                    onClick={() => removeSeat("row2")}
+                  >
+                    -
+                  </button>
+
+                  {Array.from({
+                    length: car?.seatDistribution.row2,
+                  }).map((_, index) => (
+                    <input
+                      key={`row2-seat${index}`}
+                      value={car?.seatNames.row2[index] || ""}
+                      onChange={(event) =>
+                        handleSeatClick("row2", index, event)
+                      }
+                      className="seat-input"
+                    />
+                  ))}
+                  <button
+                    className="seat-buttons"
+                    onClick={() => addSeat("row2")}
+                  >
+                    +
+                  </button>
+                </div>
+                {/* row 3 */}
+                <div className="render-seat-row">
+                  <button
+                    className="seat-buttons"
+                    onClick={() => removeSeat("row3")}
+                  >
+                    -
+                  </button>
+
+                  {Array.from({
+                    length: car?.seatDistribution.row3,
+                  }).map((_, index) => (
+                    <input
+                      key={`row3-seat${index}`}
+                      value={car?.seatNames.row3[index] || ""}
+                      onChange={(event) =>
+                        handleSeatClick("row3", index, event)
+                      }
+                      className="seat-input"
+                    />
+                  ))}
+                  <button
+                    className="seat-buttons"
+                    onClick={() => addSeat("row3")}
+                  >
+                    +
+                  </button>
+                </div>
+
+                {/* row 4 */}
+                <div className="render-seat-row">
+                  <button
+                    className="seat-buttons"
+                    onClick={() => removeSeat("row4")}
+                  >
+                    -
+                  </button>
+
+                  {Array.from({
+                    length: car?.seatDistribution.row4,
+                  }).map((_, index) => (
+                    <input
+                      key={`row4-seat${index}`}
+                      value={car?.seatNames.row4[index] || ""}
+                      onChange={(event) =>
+                        handleSeatClick("row4", index, event)
+                      }
+                      className="seat-input"
+                    />
+                  ))}
+                  <button
+                    className="seat-buttons"
+                    onClick={() => addSeat("row4")}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="customize-car-btn-container">
+              <button
+                className="customize-car-btn"
+                id="delete-car-btn"
+                onClick={handleDeleteCar}
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                  border: ` 2px solid ${formData.glowColor}`,
+                  boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+                }}
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="render-seat-container">
-        {/* row 1 */}
-        <div className="render-seat-row">
-          <button className="seat-buttons" onClick={() => removeSeat("row1")}>
-            -
-          </button>
-
-          {Array.from({
-            length: car?.seatDistribution.row1,
-          }).map((_, index) => (
-            <input
-              key={`row1-seat${index}`}
-              value={car?.seatNames.row1[index] || ""}
-              onChange={(event) => handleSeatClick("row1", index, event)}
-              className="seat-input"
-            />
-          ))}
-          <button className="seat-buttons" onClick={() => addSeat("row1")}>
-            +
-          </button>
-        </div>
-        {/* row 2 */}
-        <div className="render-seat-row">
-          <button className="seat-buttons" onClick={() => removeSeat("row2")}>
-            -
-          </button>
-
-          {Array.from({
-            length: car?.seatDistribution.row2,
-          }).map((_, index) => (
-            <input
-              key={`row2-seat${index}`}
-              value={car?.seatNames.row2[index] || ""}
-              onChange={(event) => handleSeatClick("row2", index, event)}
-              className="seat-input"
-            />
-          ))}
-          <button className="seat-buttons" onClick={() => addSeat("row2")}>
-            +
-          </button>
-        </div>
-        {/* row 3 */}
-        <div className="render-seat-row">
-          <button className="seat-buttons" onClick={() => removeSeat("row3")}>
-            -
-          </button>
-
-          {Array.from({
-            length: car?.seatDistribution.row3,
-          }).map((_, index) => (
-            <input
-              key={`row3-seat${index}`}
-              value={car?.seatNames.row3[index] || ""}
-              onChange={(event) => handleSeatClick("row3", index, event)}
-              className="seat-input"
-            />
-          ))}
-          <button className="seat-buttons" onClick={() => addSeat("row3")}>
-            +
-          </button>
-        </div>
-
-        {/* row 4 */}
-        <div className="render-seat-row">
-          <button className="seat-buttons" onClick={() => removeSeat("row4")}>
-            -
-          </button>
-
-          {Array.from({
-            length: car?.seatDistribution.row4,
-          }).map((_, index) => (
-            <input
-              key={`row4-seat${index}`}
-              value={car?.seatNames.row4[index] || ""}
-              onChange={(event) => handleSeatClick("row4", index, event)}
-              className="seat-input"
-            />
-          ))}
-          <button className="seat-buttons" onClick={() => addSeat("row4")}>
-            +
-          </button>
-        </div>
-      </div>
-
-      <div className="customize-car-btn-container">
-        <button
-          className="customize-car-btn"
-          id="delete-car-btn"
-          onClick={handleDeleteCar}
-          style={{
-            background: formData?.tripBackground?.scrim || "transparent",
-            border: ` 2px solid ${formData.glowColor}`,
-            boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-          }}
-        >
-          Delete
-        </button>
         <button
           className="primary-btn"
           id="save-car-btn"

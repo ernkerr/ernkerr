@@ -36,11 +36,6 @@ export default function NewTripForm() {
     }
   };
 
-  // function handleNext() {
-  //   setPage(page + 1);
-  //   setCurrentStep(currentStep + 1);
-  // }
-
   function handleBack() {
     setPage(page - 1);
     setCurrentStep(currentStep - 1);
@@ -103,30 +98,6 @@ export default function NewTripForm() {
       console.error("Error processing trip:", error);
     }
   };
-
-  // const handleNext = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost:8080/api/trip",
-  //       formData
-  //     ); // send formData object to the server
-
-  //     if (response.status === 201) {
-  //       const { tripId, adminId } = response.data; // create admin id
-  //       console.log("Trip created:", response.data);
-  //       // navigate(`/trip/${tripId}/${adminId}`); // navigate to the trip page using tripId and adminId
-  //       // if page = 3 where you can edit/share, navigate to ^
-
-  //       setPage(page + 1);
-  //       setCurrentStep(currentStep + 1);
-  //     } else {
-  //       console.log("Failed to create trip");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error creating trip:", error);
-  //   }
-  // };
 
   return (
     <>
@@ -201,20 +172,6 @@ export default function NewTripForm() {
                 preview
               </button>
             ))}
-          {/* save trip functionality  */}
-          {/* {page > 2 && (
-            <button
-              style={{
-                background: formData?.tripBackground?.scrim || "transparent",
-                border: ` 2px solid ${formData?.glowColor}`,
-                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-              }}
-              className="customize-trip-glow-btns"
-              onClick={handleSave}
-            >
-              save
-            </button>
-          )} */}
         </div>
       </div>
     </>

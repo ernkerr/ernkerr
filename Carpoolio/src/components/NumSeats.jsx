@@ -8,16 +8,12 @@ export default function NumSeats({ onUpdate }) {
   const handleSliderChange = (event) => {
     const newNumSeats = Number(event.target.value);
     setFormData({ ...formData, numSeats: newNumSeats });
-    // setNumSeats(newNumSeats);
     onUpdate(newNumSeats);
   };
 
   return (
     <>
       <p className="form-question">Number of seats: {formData.numSeats}</p>
-      {/* <label htmlFor="numSeatRange" className="custom-car-option">
-        number of avaliable seats: {formData.numSeats}
-      </label> */}
 
       <input
         type="range"
