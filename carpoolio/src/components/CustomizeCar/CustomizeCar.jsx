@@ -5,11 +5,15 @@ import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
 
 import "./CustomizeCar.css";
 
-import "../CustomizeTrip/RenderCar.css";
+import "../RenderCar/RenderCar.css";
+import CarNotes from "../CarNotes.jsx";
 
 export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   const { formData, setFormData } = useContext(TripContext);
   const car = formData?.cars?.[activeCarIndex];
+
+  // departure details
+  const [isShowingOptions, setIsShowingOptions] = useState(false);
 
   // debugging
   // useEffect(() => {
@@ -119,6 +123,10 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     });
   };
 
+  const handleMoreOptions = () => {
+    setIsShowingOptions((prevState) => !prevState);
+  };
+
   return (
     <>
       <div className="modal">
@@ -150,6 +158,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                 onChange={changeCarColor}
               />
             </div>
+            <CarNotes activeCarIndex={activeCarIndex} />
             <div className="render-car-container">
               <DefaultCar
                 key={activeCarIndex}

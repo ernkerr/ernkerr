@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { TripContext } from "@components/TripContext";
 import CustomizeCar from "../CustomizeCar/CustomizeCar";
-import RenderCar from "../CustomizeTrip/RenderCar";
+import RenderCar from "../RenderCar/RenderCar";
 import NumSeats from "@components/NumSeats.jsx";
 import "./NewCar.css";
 
@@ -14,9 +14,6 @@ export default function NewCar({ onNext }) {
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(0);
   const [newCarCreated, setNewCarCreated] = useState(false);
-
-  // departure details
-  const [isShowingOptions, setIsShowingOptions] = useState(false);
 
   // useEffect(() => {
   //   console.log("Active Car Index Updated in New Car:", activeCarIndex);
@@ -126,10 +123,6 @@ export default function NewCar({ onNext }) {
     return distribution;
   };
 
-  const handleMoreOptions = () => {
-    setIsShowingOptions((prevState) => !prevState);
-  };
-
   return (
     <div className="form-question-container">
       {/* <p className="form-question"></p> */}
@@ -181,39 +174,18 @@ export default function NewCar({ onNext }) {
                   setIsCustomizingCar={setIsCustomizingCar}
                 />
               ) : (
-                // <RenderCar
-                //   activeCarIndex={activeCarIndex}
-                //   setIsCustomizingCar={setIsCustomizingCar}
-                // />
                 <RenderCar
+                  car={formData.cars[activeCarIndex]}
                   carIndex={activeCarIndex}
                   setIsCustomizingCar={setIsCustomizingCar}
                   setActiveCarIndex={setActiveCarIndex}
                 />
-                // <CustomizeCar
-                //   activeCarIndex={activeCarIndex}
-                //   setIsCustomizingCar={setIsCustomizingCar}
-                //   // onComplete={handleCarCustomizationComplete}
-                // />
               )}
             </>
           )}
 
           {/* if customize car btn is pressed show carName, color, etc. (modal?) */}
           {/* edit car modal : build? */}
-
-          {/* if departure details is pressed, show date, time, leaving from, etc. (modal?) */}
-          <button
-            className={`secondary-btn ${isShowingOptions ? "active" : ""}`}
-            onClick={handleMoreOptions}
-          >
-            Departure details +{" "}
-          </button>
-          {isShowingOptions && (
-            <>
-              <p className="form-question">Add Departure Details</p>
-            </>
-          )}
         </>
       )}
     </div>

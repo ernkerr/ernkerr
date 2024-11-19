@@ -3,13 +3,13 @@ import { useContext } from "react";
 import hexRgb from "hex-rgb";
 import DateSelector from "@components/DateSelector/DateSelector.jsx";
 import TripBackground from "./TripBackground";
-import RenderCar from "../CustomizeTrip/RenderCar.jsx";
+import RenderCar from "../RenderCar/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import Description from "@components/Description/Description.jsx";
 import "./CustomizeTrip.css";
 import { TripContext } from "@components/TripContext";
 
-import Destination from "../Destination.jsx";
+import Destination from "../Destination/Destination.jsx";
 import TripName from "../TripName.jsx";
 
 export default function CustomizeTrip({ isPreviewingTrip, isAdmin }) {

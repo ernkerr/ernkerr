@@ -1,6 +1,17 @@
+.car-and-details-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.car-details-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .render-car-container {
   /* height: 64dvh; */
   display: flex;
+  flex-direction: column;
   margin: 0 auto;
   position: relative;
   /* margin-left: 50%; */
@@ -10,6 +21,11 @@
 
 .render-car-container svg {
   overflow: hidden;
+}
+
+.car-name {
+  font-size: var(--font-size-large);
+  margin-top: var(--margin-medium);
 }
 
 .render-seat-container {
@@ -158,10 +174,6 @@
     font-size: var(--font-size-small);
     pointer-events: auto;
     font-size: 18px;
-  }
-
-  .car-name {
-    margin-top: var(--margin-medium);
   }
 
   .custom-car-option {

@@ -1,10 +1,10 @@
 import { useContext, useState, useRef } from "react";
 import { TripContext } from "@components/TripContext";
 
-import Destination from "@components/Destination.jsx";
+import Destination from "@components/Destination/Destination.jsx";
 import TripName from "../TripName";
 import DateSelector from "@components/DateSelector/DateSelector";
-import Description from "@components/Description/Description";
+import Description from "@components/Description/Description.jsx";
 
 import "./NewEvent.css";
 
