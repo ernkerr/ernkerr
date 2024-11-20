@@ -12,13 +12,14 @@
 }
 
 .back-btn {
-  color: var(--white);
+  color: var(--placeholder);
   background: none;
   border: none;
   position: fixed;
-  left: 5%;
-  bottom: 0.5%;
-  margin-bottom: var(--margin-btn);
+  left: 1%;
+  top: 1%;
+  /* margin-bottom: var(--margin-btn); */
+  margin-top: var(--margin-progressbar);
 }
 
 /* get the image to stretch to the whole screen  */

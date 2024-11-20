@@ -135,10 +135,7 @@ export default function NewCar({ onNext }) {
           + Add a car
         </button>
 
-        <button
-          onClick={onNext}
-          className={`glass-button ${isAddingCar === false ? "selected" : ""}`} // state starts as am empty string so neither button is selected
-        >
+        <button onClick={onNext} className="tertiary-btn">
           Skip
         </button>
       </div>
