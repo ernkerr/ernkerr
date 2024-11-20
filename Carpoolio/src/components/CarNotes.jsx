@@ -23,7 +23,7 @@ export default function CarNotes({ isPreviewingTrip, activeCarIndex }) {
 
   return (
     <>
-      {!isPreviewingTrip || carNotes
+      {!isPreviewingTrip || carNotes !== undefined
         ? formData?.cars?.[activeCarIndex]?.carNotes && (
             <textarea
               className="form-response"

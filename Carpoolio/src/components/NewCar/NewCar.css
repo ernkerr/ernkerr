@@ -2,6 +2,7 @@
   display: flex;
   gap: 5%;
   width: 100%;
+  justify-content: center;
   margin-top: var(--margin-form-response);
 }
 
@@ -16,8 +17,9 @@
   cursor: pointer;
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-  width: 45%;
+  width: 75%;
   height: var(--btn-height);
+  align-items: center;
 }
 
 .glass-button:hover {

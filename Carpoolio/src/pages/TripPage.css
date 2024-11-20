@@ -28,7 +28,7 @@
   cursor: pointer;
   width: 120px;
   height: 60px;
-  border-radius: var(--border-radius-button);
+  border-radius: var(--border-radius-btn);
   border: none;
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@
   width: 120px;
   height: 60px;
   cursor: pointer;
-  border-radius: var(--border-radius-button);
+  border-radius: var(--border-radius-btn);
 
   display: flex;
   align-items: center;

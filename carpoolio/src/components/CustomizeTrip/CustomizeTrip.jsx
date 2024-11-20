@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import hexRgb from "hex-rgb";
 import DateSelector from "@components/DateSelector/DateSelector.jsx";
-import TripBackground from "./TripBackground";
+import TripBackground from "@components/TripBackground.jsx";
 import RenderCar from "../RenderCar/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import Description from "@components/Description/Description.jsx";

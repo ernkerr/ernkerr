@@ -15,15 +15,6 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   // departure details
   const [isShowingOptions, setIsShowingOptions] = useState(false);
 
-  // debugging
-  // useEffect(() => {
-  //   console.log("CustomizeCar received activeCarIndex:", activeCarIndex);
-  // }, [activeCarIndex]);
-
-  // const [seatNames, setSeatNames] = useState(
-  //   car?.seatNames || { row1: [], row2: [], row3: [], row4: [] }
-  // );
-
   const changeCarName = (event) => {
     const newCarName = event.target.value;
 
