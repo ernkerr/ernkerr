@@ -28,8 +28,8 @@
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
   position: absolute;
-  /* left: 50dvw;
-  transform: translateX(-50%); */
+  left: 50dvw;
+  transform: translateX(-50%);
   text-align: center;
   /* width: 60%; */
 }
@@ -125,6 +125,7 @@
   height: auto;
 }
 
+/* delete?  */
 .car-name {
   color: white;
   background: none;

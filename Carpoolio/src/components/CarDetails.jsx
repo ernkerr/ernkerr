@@ -5,6 +5,8 @@ import CarNotes from "./CarNotes";
 export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
   const { formData, setFormData } = useContext(TripContext);
 
+  // date of departure
+
   // departure date / time / location
   // car notes -> car chat?
   // spotify playlist

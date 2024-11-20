@@ -7,13 +7,15 @@ import "./CustomizeCar.css";
 
 import "../RenderCar/RenderCar.css";
 import CarNotes from "../CarNotes.jsx";
+import CarDetails from "../CarDetails.jsx";
 
 export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   const { formData, setFormData } = useContext(TripContext);
   const car = formData?.cars?.[activeCarIndex];
 
-  // // departure details
-  // const [isShowingOptions, setIsShowingOptions] = useState(false);
+  // departure details
+  const [isShowingOptions, setIsShowingOptions] = useState(false);
+  const [customizeCarBtn, setCustomizeCarBtn] = useState(false);
 
   const changeCarName = (event) => {
     const newCarName = event.target.value;
@@ -120,6 +122,10 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     setIsShowingOptions((prevState) => !prevState);
   };
 
+  const handleCustomizeCar = () => {
+    setCustomizeCarBtn((prevState) => !prevState);
+  };
+
   return (
     <>
       <div className="modal">
@@ -140,40 +146,62 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                 >
                   Delete car
                 </button> */}
-                <p className="form-question">Give your car a name?</p>
-                <div className="carName-and-edit-container">
-                  <input
-                    className="form-response"
-                    id="edit-carName"
-                    key="carName"
-                    type="text"
-                    required
-                    placeholder="Optional car name"
-                    value={car?.carName || ""}
-                    onChange={changeCarName}
-                  />
-                </div>
-                <div className="color-picker-container">
-                  <p className="form-question">Change car color?</p>
-                  <input
-                    className="car-color-picker"
-                    type="color"
-                    id="car-color"
-                    name="carColor"
-                    key="carColor"
-                    value={car?.carColor}
-                    onChange={changeCarColor}
-                  />
-                </div>
 
-                {/* <div
-                  // className="form-response"
-                  // id="color-picker-container"
-                  className="color-picker-container"
-                > */}
-                {/* <label htmlFor="car-color" className="car-color">
-                    Edit car color
-                  </label> */}
+                <button
+                  className={`secondary-btn ${customizeCarBtn ? "active" : ""}`}
+                  id="car-details-btn"
+                  onClick={handleCustomizeCar}
+                >
+                  Customize car +
+                </button>
+                {/* P2: add type of car, shape/color of seats, etc */}
+                {customizeCarBtn && (
+                  <>
+                    <p className="form-question">Give your car a name?</p>
+                    <input
+                      className="form-response"
+                      id="edit-carName"
+                      key="carName"
+                      type="text"
+                      required
+                      placeholder="Optional car name"
+                      value={car?.carName || ""}
+                      onChange={changeCarName}
+                    />
+                    <div className="color-picker-container">
+                      <p className="form-question">Change car color?</p>
+                      <input
+                        className="car-color-picker"
+                        type="color"
+                        id="car-color"
+                        name="carColor"
+                        key="carColor"
+                        value={car?.carColor}
+                        onChange={changeCarColor}
+                      />
+                    </div>
+                  </>
+                )}
+
+                <button
+                  className={`secondary-btn ${
+                    isShowingOptions ? "active" : ""
+                  }`}
+                  id="car-details-btn"
+                  onClick={handleMoreOptions}
+                >
+                  Edit departure details +
+                </button>
+
+                {/* if departure details is pressed, show date, time, leaving from, etc. (modal?) */}
+                {isShowingOptions && (
+                  <>
+                    <p className="form-question">Add Departure Details</p>
+                    <CarDetails activeCarIndex={activeCarIndex} />
+                  </>
+                )}
+
+                {/* <p className="form-question">est departure time?</p> */}
               </div>
             </div>
             {/* </div> */}
