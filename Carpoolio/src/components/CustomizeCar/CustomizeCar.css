@@ -19,14 +19,11 @@ body.active-modal {
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
 }
-.modal-content-car {
-  background: none;
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* margin-left: var(--margin-medium); */
-  width: 95dvw;
+
+.customize-car-btn-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10dvh;
 }
 
 #edit-carName {
@@ -68,7 +65,7 @@ body.active-modal {
 
 .car-color:focus {
   border: 1px solid var(--main-green);
-  outline: none; /* Removes the focus outline */
+  outline: none;
   box-shadow: var(--green-glow);
 }
 
@@ -80,10 +77,34 @@ body.active-modal {
   width: 20%;
   border: var(--transparent-border);
   border-radius: var(--border-radius-button);
-  /* padding: var(--paddding-button); */
-
   text-align: left;
   cursor: pointer;
+}
+
+#departure-details-btn {
+  margin-bottom: var(--margin-form-response);
+}
+
+.departure-date-time-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.departure-details-btns {
+  color: var(--white);
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: var(--padding-form-response);
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
+  background: var(--glass-background);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  width: 50dvw;
+  /* margin-top: var(--margin-form-response); */
+  margin-bottom: var(--margin-form-response);
 }
 
 #save-car-btn {
@@ -99,4 +120,33 @@ body.active-modal {
   margin-left: auto;
   margin-right: var(--margin-medium);
   /* width: 60px; */
+}
+
+/* date picker: departure date  */
+.modal-departure-date,
+.overlay-departure-date {
+  width: 100dvw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 3;
+}
+
+.overlay-departure-date {
+  width: 100dvw;
+  height: 100dvh;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+}
+.modal-content-car-departure-date {
+  background: none;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* margin-left: var(--margin-medium); */
 }

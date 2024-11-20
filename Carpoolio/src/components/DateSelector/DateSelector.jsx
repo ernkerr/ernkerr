@@ -144,7 +144,7 @@ export default function DateSelector({ isPreviewingTrip }) {
           onClick={toggleTimeSelector}
           disabled={isPreviewingTrip}
         >
-          Set a time
+          Set a Time
         </button>
       ) : null}
 

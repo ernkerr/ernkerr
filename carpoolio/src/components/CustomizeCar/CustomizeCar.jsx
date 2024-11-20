@@ -130,10 +130,10 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     <>
       <div className="modal">
         <div className="overlay">
-          <div className="modal-content-car">
-            <div className="car-and-details-container">
-              <div className="car-details-container">
-                {/* <button
+          {/* <div className="modal-content-car"> */}
+          {/* <div className="car-and-details-container"> */}
+          <div className="customize-car-btn-container">
+            {/* <button
                   className="secondary-btn"
                   id="delete-car-btn"
                   onClick={handleDeleteCar}
@@ -147,188 +147,178 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                   Delete car
                 </button> */}
 
-                <button
-                  className={`secondary-btn ${customizeCarBtn ? "active" : ""}`}
-                  id="car-details-btn"
-                  onClick={handleCustomizeCar}
-                >
-                  Customize car +
-                </button>
-                {/* P2: add type of car, shape/color of seats, etc */}
-                {customizeCarBtn && (
-                  <>
-                    <p className="form-question">Give your car a name?</p>
-                    <input
-                      className="form-response"
-                      id="edit-carName"
-                      key="carName"
-                      type="text"
-                      required
-                      placeholder="Optional car name"
-                      value={car?.carName || ""}
-                      onChange={changeCarName}
-                    />
-                    <div className="color-picker-container">
-                      <p className="form-question">Change car color?</p>
-                      <input
-                        className="car-color-picker"
-                        type="color"
-                        id="car-color"
-                        name="carColor"
-                        key="carColor"
-                        value={car?.carColor}
-                        onChange={changeCarColor}
-                      />
-                    </div>
-                  </>
-                )}
+            <button
+              className={`secondary-btn ${customizeCarBtn ? "active" : ""}`}
+              // id="car-details-btn"
+              onClick={handleCustomizeCar}
+            >
+              Customize car +
+            </button>
+            {/* P2: add type of car, shape/color of seats, etc */}
+            {customizeCarBtn && (
+              <>
+                <p className="form-question">Give your car a name?</p>
+                <input
+                  className="form-response"
+                  id="edit-carName"
+                  key="carName"
+                  type="text"
+                  required
+                  placeholder="Optional"
+                  value={car?.carName || ""}
+                  onChange={changeCarName}
+                />
+                <div className="color-picker-container">
+                  <p className="form-question">Change car color?</p>
+                  <input
+                    className="car-color-picker"
+                    type="color"
+                    id="car-color"
+                    name="carColor"
+                    key="carColor"
+                    value={car?.carColor}
+                    onChange={changeCarColor}
+                  />
+                </div>
+              </>
+            )}
 
-                <button
-                  className={`secondary-btn ${
-                    isShowingOptions ? "active" : ""
-                  }`}
-                  id="car-details-btn"
-                  onClick={handleMoreOptions}
-                >
-                  Edit departure details +
-                </button>
+            <button
+              className={`secondary-btn ${isShowingOptions ? "active" : ""}`}
+              // id="car-details-btn"
+              id="departure-details-btn"
+              onClick={handleMoreOptions}
+            >
+              Edit departure details +
+            </button>
 
-                {/* if departure details is pressed, show date, time, leaving from, etc. (modal?) */}
-                {isShowingOptions && (
-                  <>
-                    <p className="form-question">Add Departure Details</p>
-                    <CarDetails activeCarIndex={activeCarIndex} />
-                  </>
-                )}
+            {/* if departure details is pressed, show date, time, leaving from, etc. (modal?) */}
+            {isShowingOptions && (
+              <>
+                <CarDetails activeCarIndex={activeCarIndex} />
+              </>
+            )}
 
-                {/* <p className="form-question">est departure time?</p> */}
-              </div>
-            </div>
+            {/* <p className="form-question">est departure time?</p> */}
             {/* </div> */}
+          </div>
+          {/* </div> */}
 
-            <div className="render-car-container">
-              <DefaultCar
-                key={activeCarIndex}
-                carColor={car?.carColor}
-                style={{ width: "100%", height: "auto" }}
-              />
-              <div className="render-seat-container">
-                {/* row 1 */}
-                <div className="render-seat-row">
-                  <button
-                    className="seat-buttons"
-                    onClick={() => removeSeat("row1")}
-                  >
-                    -
-                  </button>
+          <div className="render-car-container">
+            <DefaultCar
+              key={activeCarIndex}
+              carColor={car?.carColor}
+              style={{ width: "100%", height: "auto" }}
+            />
+            <div className="render-seat-container">
+              {/* row 1 */}
+              <div className="render-seat-row">
+                <button
+                  className="seat-buttons"
+                  onClick={() => removeSeat("row1")}
+                >
+                  -
+                </button>
 
-                  {Array.from({
-                    length: car?.seatDistribution.row1,
-                  }).map((_, index) => (
-                    <input
-                      key={`row1-seat${index}`}
-                      value={car?.seatNames.row1[index] || ""}
-                      onChange={(event) =>
-                        handleSeatClick("row1", index, event)
-                      }
-                      className="seat-input"
-                    />
-                  ))}
-                  <button
-                    className="seat-buttons"
-                    onClick={() => addSeat("row1")}
-                  >
-                    +
-                  </button>
-                </div>
-                {/* row 2 */}
-                <div className="render-seat-row">
-                  <button
-                    className="seat-buttons"
-                    onClick={() => removeSeat("row2")}
-                  >
-                    -
-                  </button>
+                {Array.from({
+                  length: car?.seatDistribution.row1,
+                }).map((_, index) => (
+                  <input
+                    key={`row1-seat${index}`}
+                    value={car?.seatNames.row1[index] || ""}
+                    onChange={(event) => handleSeatClick("row1", index, event)}
+                    className="seat-input"
+                  />
+                ))}
+                <button
+                  className="seat-buttons"
+                  onClick={() => addSeat("row1")}
+                >
+                  +
+                </button>
+              </div>
+              {/* row 2 */}
+              <div className="render-seat-row">
+                <button
+                  className="seat-buttons"
+                  onClick={() => removeSeat("row2")}
+                >
+                  -
+                </button>
 
-                  {Array.from({
-                    length: car?.seatDistribution.row2,
-                  }).map((_, index) => (
-                    <input
-                      key={`row2-seat${index}`}
-                      value={car?.seatNames.row2[index] || ""}
-                      onChange={(event) =>
-                        handleSeatClick("row2", index, event)
-                      }
-                      className="seat-input"
-                    />
-                  ))}
-                  <button
-                    className="seat-buttons"
-                    onClick={() => addSeat("row2")}
-                  >
-                    +
-                  </button>
-                </div>
-                {/* row 3 */}
-                <div className="render-seat-row">
-                  <button
-                    className="seat-buttons"
-                    onClick={() => removeSeat("row3")}
-                  >
-                    -
-                  </button>
+                {Array.from({
+                  length: car?.seatDistribution.row2,
+                }).map((_, index) => (
+                  <input
+                    key={`row2-seat${index}`}
+                    value={car?.seatNames.row2[index] || ""}
+                    onChange={(event) => handleSeatClick("row2", index, event)}
+                    className="seat-input"
+                  />
+                ))}
+                <button
+                  className="seat-buttons"
+                  onClick={() => addSeat("row2")}
+                >
+                  +
+                </button>
+              </div>
+              {/* row 3 */}
+              <div className="render-seat-row">
+                <button
+                  className="seat-buttons"
+                  onClick={() => removeSeat("row3")}
+                >
+                  -
+                </button>
 
-                  {Array.from({
-                    length: car?.seatDistribution.row3,
-                  }).map((_, index) => (
-                    <input
-                      key={`row3-seat${index}`}
-                      value={car?.seatNames.row3[index] || ""}
-                      onChange={(event) =>
-                        handleSeatClick("row3", index, event)
-                      }
-                      className="seat-input"
-                    />
-                  ))}
-                  <button
-                    className="seat-buttons"
-                    onClick={() => addSeat("row3")}
-                  >
-                    +
-                  </button>
-                </div>
+                {Array.from({
+                  length: car?.seatDistribution.row3,
+                }).map((_, index) => (
+                  <input
+                    key={`row3-seat${index}`}
+                    value={car?.seatNames.row3[index] || ""}
+                    onChange={(event) => handleSeatClick("row3", index, event)}
+                    className="seat-input"
+                  />
+                ))}
+                <button
+                  className="seat-buttons"
+                  onClick={() => addSeat("row3")}
+                >
+                  +
+                </button>
+              </div>
 
-                {/* row 4 */}
-                <div className="render-seat-row">
-                  <button
-                    className="seat-buttons"
-                    onClick={() => removeSeat("row4")}
-                  >
-                    -
-                  </button>
+              {/* row 4 */}
+              <div className="render-seat-row">
+                <button
+                  className="seat-buttons"
+                  onClick={() => removeSeat("row4")}
+                >
+                  -
+                </button>
 
-                  {Array.from({
-                    length: car?.seatDistribution.row4,
-                  }).map((_, index) => (
-                    <input
-                      key={`row4-seat${index}`}
-                      value={car?.seatNames.row4[index] || ""}
-                      onChange={(event) =>
-                        handleSeatClick("row4", index, event)
-                      }
-                      className="seat-input"
-                    />
-                  ))}
-                  <button
-                    className="seat-buttons"
-                    onClick={() => addSeat("row4")}
-                  >
-                    +
-                  </button>
-                </div>
+                {Array.from({
+                  length: car?.seatDistribution.row4,
+                }).map((_, index) => (
+                  <input
+                    key={`row4-seat${index}`}
+                    value={car?.seatNames.row4[index] || ""}
+                    onChange={(event) => handleSeatClick("row4", index, event)}
+                    className="seat-input"
+                  />
+                ))}
+                <button
+                  className="seat-buttons"
+                  onClick={() => addSeat("row4")}
+                >
+                  +
+                </button>
               </div>
             </div>
-            {/* <div className="customize-car-btn-container">
+          </div>
+          {/* <div className="customize-car-btn-container">
               <button
                 className="customize-car-btn"
                 id="delete-car-btn"
@@ -342,7 +332,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                 Delete
               </button>
             </div> */}
-          </div>
+          {/* </div> */}
         </div>
 
         <button
