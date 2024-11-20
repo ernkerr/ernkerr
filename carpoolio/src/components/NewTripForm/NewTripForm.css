@@ -3,34 +3,122 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 120vh;
-  width: 100vw;
+  min-height: 100dvh;
+  width: 100dvw;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: auto;
+}
 
-  background-size: 100% 100%;
-  /* background-attachment: fixed; */
-  background-attachment: scroll;
+.onboarding-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-top: var(--margin-progressbar);
+  width: 100%;
 }
 
 .back-btn {
   color: var(--placeholder);
   background: none;
   border: none;
-  position: fixed;
-  left: 1%;
-  top: 1%;
-  /* margin-bottom: var(--margin-btn); */
-  margin-top: var(--margin-progressbar);
+  align-self: flex-start;
 }
 
-/* get the image to stretch to the whole screen  */
+/* progress bar  */
 
-@media (max-width: 768px) {
-  .full-screen-wrapper {
-    background-size: 100% 100%;
-  }
+.progress-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  justify-content: center;
 }
 
-.text-input {
+.progress-info {
+  color: var(--white);
+  font-family: var(--main-font);
+  margin-bottom: var(--margin-medium);
+}
+
+.progress-step {
+  font-size: var(--font-size-small);
+  opacity: 0.8;
+  margin-right: 10px;
+}
+
+.progress-title {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+}
+
+.progress-track {
+  position: relative;
+  height: 5px;
+  background: var(--glass-background);
+  border: var(--glass-border);
+  border-radius: 20px;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--main-green), rgba(0, 255, 0, 0.8));
+  transition: width 300ms ease-in-out;
+  border-radius: 20px;
+  box-shadow: var(--green-glow);
+}
+
+.progress-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 255, 85, 0.2);
+  filter: blur(7.6px);
+  pointer-events: none;
+}
+
+/* Add glass morphism effect */
+.progress-track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+  z-index: 0;
+}
+
+/* Add neon glow effect */
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: blur(8px);
+  opacity: 0.7;
+  border-radius: 20px;
+}
+
+/* .text-input {
   border: 2px solid rgb(52, 189, 52);
   border-radius: 15px;
   background-color: #4bfe4b52;
@@ -49,21 +137,21 @@
   color: rgba(255, 255, 255, 0.7);
   font-family: var(--main-font);
   font-size: 1.3rem;
-}
+} */
 
-.button-container {
+/* .button-container {
   display: flex;
-  justify-content: space-between; /* Position buttons on opposite sides */
-  width: 50%; /* Match the width of the input field */
-}
+  justify-content: space-between; 
+  width: 50%; 
+} */
 
-#left-button {
+/* #left-button {
   margin-left: auto;
 }
 
 #right-button {
   margin-right: auto;
-}
+} */
 
 .calendar-container {
   display: flex;

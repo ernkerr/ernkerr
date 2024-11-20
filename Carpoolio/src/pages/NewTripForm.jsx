@@ -108,10 +108,7 @@ export default function NewTripForm() {
           backgroundPosition: "center",
         }}
       >
-        <ProgressBar currentStep={currentStep} />
-        {conditionalComponent()}
-        {/* back button  */}
-        <div className="button-group">
+        <div className="onboarding-header">
           {page !== 0 && page !== 3 && (
             <button className="back-btn" onClick={handleBack}>
               <svg
@@ -128,6 +125,12 @@ export default function NewTripForm() {
               </svg>
             </button>
           )}
+          <ProgressBar currentStep={currentStep} />
+        </div>
+
+        {conditionalComponent()}
+        {/* back button  */}
+        <div className="button-group">
           {/* next btn */}
           {page <= 2 && (
             <button

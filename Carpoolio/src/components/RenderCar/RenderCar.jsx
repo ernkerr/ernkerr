@@ -39,14 +39,24 @@ export default function RenderCar({
       <div className="car-and-details-container">
         <div className="car-details-container">
           <div className="carName-and-edit-container">
-            <p className="carName">{car?.carName || ""}</p>
+            <button
+              className="carName"
+              style={
+                {
+                  // background: formData?.transparentGlowColor || "transparent",
+                  // border: `1px solid ${formData?.glowColor}`,
+                }
+              }
+            >
+              {car?.carName || "Car name"}
+            </button>
             <button
               className="editBtn"
               id="edit-car-btn"
               style={{
                 background: formData?.transparentGlowColor || "transparent",
-                border: `2px solid ${formData?.glowColor}`,
-                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                border: `1px solid ${formData?.glowColor}`,
+                // boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
               }}
               onClick={handleCustomizeCar}
             >

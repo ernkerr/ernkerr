@@ -2,13 +2,6 @@ body.active-modal {
   overflow-y: hidden;
 }
 
-.btn-modal {
-  padding: 10px 20px;
-  display: block;
-  margin: 100px auto 0;
-  font-size: 18px;
-}
-
 .modal,
 .overlay {
   width: 100dvw;
@@ -23,32 +16,87 @@ body.active-modal {
 
 .overlay {
   background: rgba(255, 255, 255, 0.15);
-  /* 
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
 }
-.modal-content {
+.modal-content-car {
+  background: none;
   position: absolute;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
-  line-height: 1.4;
-
-  background-color: var(--glass-background);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  /* backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px); */
-
-  padding: 14px 28px;
-  border-radius: var(--border-radius-btn);
-  /* max-width: 600px; */
-  min-width: 300px;
+  /* margin-left: var(--margin-medium); */
+  width: 95dvw;
 }
 
-.close-modal-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 7px;
+#edit-carName {
+  cursor: pointer;
+  font-size: var(--font-size-medium);
+  text-align: left;
+  width: 90dvw;
+}
+
+.color-picker-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: var(--margin-form-response);
+
+  /* align-items: center;
+  margin-top: var(--margin-form-response);
+  overflow-x: hidden;
+  border: none;
+  border-radius: var(--border-radius-btn);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  width: 90dvw; */
+}
+
+#color-picker-container {
+  text-align: left;
+}
+
+.car-color {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-medium);
+  padding: var(--padding-primary-btn);
+}
+
+.car-color:focus {
+  border: 1px solid var(--main-green);
+  outline: none; /* Removes the focus outline */
+  box-shadow: var(--green-glow);
+}
+
+.car-color-picker {
+  color: var(--white);
+  background: none;
+  font-family: var(--main-font);
+  height: 3.5dvh;
+  width: 20%;
+  border: var(--transparent-border);
+  border-radius: var(--border-radius-button);
+  /* padding: var(--paddding-button); */
+
+  text-align: left;
+  cursor: pointer;
+}
+
+#save-car-btn {
+  z-index: 100;
+  /* left: 80%;
+  bottom: 0;
+  margin-bottom: 0;
+  transform: translateX(-50%); */
+}
+
+#delete-car-btn {
+  position: relative;
+  margin-left: auto;
+  margin-right: var(--margin-medium);
+  /* width: 60px; */
 }

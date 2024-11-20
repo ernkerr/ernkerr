@@ -16,12 +16,22 @@
 }
 
 .carName {
-  font-size: var(--font-size-large);
-
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-medium);
+  padding: var(--padding-primary-btn);
+  /* border: 1px solid var(--main-green); */
+  border: none;
+  border-radius: var(--border-radius-btn);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
   position: absolute;
-  left: 50dvw;
-  transform: translateX(-50%);
+  /* left: 50dvw;
+  transform: translateX(-50%); */
   text-align: center;
+  /* width: 60%; */
 }
 
 #edit-car-btn {
@@ -99,19 +109,6 @@
   background-color: #ddd;
 }
 
-/* .car-color {
-  color: white;
-  background: none;
-  font-family: var(--main-font);
-  height: var(--height-button);
-  width: 50%;
-  margin-top: var(--margin-small);
-  padding: var(--paddding-button);
-  align-items: flex-start;
-  text-align: left;
-  cursor: pointer;
-} */
-
 .custom-car-option {
   color: white;
   background: none;
@@ -160,15 +157,6 @@
   font-size: var(--font-size-small);
   padding: 10px 10px 10px 10px;
   border-radius: var(--border-radius-button);
-}
-
-#save-car-btn {
-  position: relative;
-  z-index: 100;
-  /* left: 80%;
-  bottom: 0;
-  margin-bottom: 0;
-  transform: translateX(-50%); */
 }
 
 #delete-car-btn {

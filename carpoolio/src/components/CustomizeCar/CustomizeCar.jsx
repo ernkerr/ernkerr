@@ -12,8 +12,8 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   const { formData, setFormData } = useContext(TripContext);
   const car = formData?.cars?.[activeCarIndex];
 
-  // departure details
-  const [isShowingOptions, setIsShowingOptions] = useState(false);
+  // // departure details
+  // const [isShowingOptions, setIsShowingOptions] = useState(false);
 
   const changeCarName = (event) => {
     const newCarName = event.target.value;
@@ -114,6 +114,8 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     });
   };
 
+  // TODO: add some logic for deleting car only if they have adminId
+
   const handleMoreOptions = () => {
     setIsShowingOptions((prevState) => !prevState);
   };
@@ -122,34 +124,60 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     <>
       <div className="modal">
         <div className="overlay">
-          <div className="modal-content">
-            <p className="form-question">Give your car a name?</p>
-            <input
-              className="form-response"
-              key="carName"
-              id="carName"
-              type="text"
-              required
-              placeholder="Optional"
-              value={car?.carName || ""}
-              onChange={changeCarName}
-              style={{ marginBottom: "4dvh" }}
-            />
-            <div className="color-picker-container">
-              <label htmlFor="car-color" className="form-question">
-                Change car color
-              </label>
-              <input
-                className="car-color-picker"
-                type="color"
-                id="car-color"
-                name="carColor"
-                key="carColor"
-                value={car?.carColor}
-                onChange={changeCarColor}
-              />
+          <div className="modal-content-car">
+            <div className="car-and-details-container">
+              <div className="car-details-container">
+                {/* <button
+                  className="secondary-btn"
+                  id="delete-car-btn"
+                  onClick={handleDeleteCar}
+                  style={{
+                    background:
+                      formData?.tripBackground?.scrim || "transparent",
+                    border: ` 2px solid ${formData.glowColor}`,
+                    // boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+                  }}
+                >
+                  Delete car
+                </button> */}
+                <p className="form-question">Give your car a name?</p>
+                <div className="carName-and-edit-container">
+                  <input
+                    className="form-response"
+                    id="edit-carName"
+                    key="carName"
+                    type="text"
+                    required
+                    placeholder="Optional car name"
+                    value={car?.carName || ""}
+                    onChange={changeCarName}
+                  />
+                </div>
+                <div className="color-picker-container">
+                  <p className="form-question">Change car color?</p>
+                  <input
+                    className="car-color-picker"
+                    type="color"
+                    id="car-color"
+                    name="carColor"
+                    key="carColor"
+                    value={car?.carColor}
+                    onChange={changeCarColor}
+                  />
+                </div>
+
+                {/* <div
+                  // className="form-response"
+                  // id="color-picker-container"
+                  className="color-picker-container"
+                > */}
+                {/* <label htmlFor="car-color" className="car-color">
+                    Edit car color
+                  </label> */}
+              </div>
             </div>
-            <CarNotes activeCarIndex={activeCarIndex} />
+            {/* </div> */}
+
             <div className="render-car-container">
               <DefaultCar
                 key={activeCarIndex}
@@ -272,7 +300,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                 </div>
               </div>
             </div>
-            <div className="customize-car-btn-container">
+            {/* <div className="customize-car-btn-container">
               <button
                 className="customize-car-btn"
                 id="delete-car-btn"
@@ -285,7 +313,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
               >
                 Delete
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -297,7 +325,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
             background:
               formData?.tripBackground?.scrim || formData?.transparentGlowColor,
             border: ` 1px solid ${formData?.glowColor}`,
-            boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+            // boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
             Zindex: "100",
           }}
         >

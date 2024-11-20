@@ -86,32 +86,6 @@
   box-shadow: var(--green-glow);
 }
 
-.color-picker-container {
-  display: flex;
-  flex-direction: row; /* Ensure row layout */
-  align-items: center; /* Center vertically */
-  gap: 10px; /* Space between items */
-
-  margin-top: var(--margin-small);
-  height: 40px;
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-  align-items: flex-end;
-}
-
-.car-color-picker {
-  color: white;
-  background: none;
-  font-family: var(--main-font);
-  height: 3.5dvh;
-  width: 20%;
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  /* padding: var(--paddding-button); */
-
-  text-align: left;
-  cursor: pointer;
-}
-
 /* can delete if not using toggle */
 
 .checkbox {
