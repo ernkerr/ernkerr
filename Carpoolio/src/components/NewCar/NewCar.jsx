@@ -118,7 +118,7 @@ export default function NewCar({ onNext }) {
     remainingSeats -= distribution.row3;
 
     // row 4: any remaining seats
-    distribution.row4 = remainingSeats;
+    distribution.row4 = Math.min(3, remainingSeats);
 
     return distribution;
   };
