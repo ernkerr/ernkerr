@@ -1,11 +1,39 @@
 .car-and-details-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-top: var(--margin-form-field);
 }
 
 .car-details-container {
   display: flex;
   flex-direction: column;
+}
+
+.carName-and-edit-container {
+  display: flex;
+  align-items: center; /* Align items vertically if needed */
+  flex-direction: row;
+}
+
+.carName {
+  font-size: var(--font-size-large);
+
+  position: absolute;
+  left: 50dvw;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+#edit-car-btn {
+  position: relative;
+  margin-left: auto;
+  margin-right: var(--margin-medium);
+  width: 60px;
+}
+
+#car-details-btn {
+  margin-top: var(--margin-form-response);
+  margin-bottom: var(--margin-form-response);
 }
 
 .render-car-container {
@@ -14,6 +42,7 @@
   flex-direction: column;
   margin: 0 auto;
   position: relative;
+  /* background: rgba(122, 231, 98, 0.128); */
   /* margin-left: 50%; */
   /* margin-bottom: 10%; */
   /* overflow: hidden; */
@@ -21,11 +50,6 @@
 
 .render-car-container svg {
   overflow: hidden;
-}
-
-.car-name {
-  font-size: var(--font-size-large);
-  margin-top: var(--margin-medium);
 }
 
 .render-seat-container {
