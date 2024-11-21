@@ -67,17 +67,6 @@ app.post("/api/trip", async (req, res) => {
     res.status(201).json({
       tripId: newTrip.tripId,
       adminId: newTrip.adminId,
-      cars: newTrip.cars.map((car) => ({
-        carId: car.carId,
-        carName: car.carName,
-        carColor: car.carColor,
-        numSeats: car.numSeats,
-        seatDistribution: car.seatDistribution,
-        seatNames: car.seatNames,
-        departureDate: car.departureDate,
-        departureTime: car.departureTime,
-        departureLocation: car.departureLocation,
-      })),
       ...newTrip,
     });
   } catch (error) {
