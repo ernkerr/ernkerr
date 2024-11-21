@@ -6,6 +6,7 @@
 
 // schema.prisma
 
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -33,7 +34,7 @@ model Trip {
   glowColor            String? @default("#34bd34")
   lighterGlowColor     String?
   transparentGlowColor String? @default("#4bfe4b52")
-  cars                 Car[] // Assuming cars is an array or complex structure, stored as JSON
+  cars                 Car[] // one-to-many relationship with Car
 }
 
 model Car {
@@ -47,8 +48,13 @@ model Car {
   departureDate    String?
   departureTime    String?
   departureLocation String? 
-  tripId           Int // Foreign key linking to Trip
-  trip             Trip   @relation(fields: [tripId], references: [id])
+  tripId           String // Foreign key linking to Trip
+  trip             Trip   @relation(fields: [tripId], references: [tripId]) 
+  // fields: [tripId]: specifies that the trtripId in the car model is the foreign key that links each car to the trip 
+  // references [tripId]: specifies the reference field  
+  // represents the relationship between a car and it's associated trip (not an actual column)
+  // it's a virtual field that prisma provides to navigate the relationship programmatically 
+
 }
 
 // This Prisma schema defines two models, each of which will map to a table in the underlying database: User and Post. 

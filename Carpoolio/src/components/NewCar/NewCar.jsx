@@ -36,23 +36,44 @@ export default function NewCar({ onNext }) {
     }
   }, [newCarCreated]);
 
-  const handleAddNewCar = (driverName) => {
+  const handleAddNewCar = async (driverName) => {
     const newCar = {
       carName: "",
       carColor: "#216191",
-      numSeats: formData.numSeats,
+      numSeats: 0,
       seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
       seatNames: { row1: [driverName, ""], row2: [""], row3: [""], row4: [""] },
+      departureDate: "",
+      departureTime: "",
+      departureLocation: "",
+      tripId: formData.tripId, // include this Id to link to a trip
     };
 
-    setFormData(() => {
-      const updatedCars = [...(formData.cars || []), newCar]; // add newCar to updatedCars array using the spread operator
+    console.log("tripId: ", formData.tripId);
+    console.log("Attempting to add new car with data:", newCar); // Log input data
 
-      return {
-        ...formData,
-        cars: updatedCars,
-      };
-    });
+    try {
+      const response = await fetch("http://192.168.0.28:8080/api/car", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newCar),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save car");
+      }
+
+      const savedCar = await response.json();
+      console.log("Car saved successfully:", savedCar);
+
+      // Add savedCar to formData
+      setFormData((prevData) => ({
+        ...prevData,
+        cars: [...(prevData.cars || []), savedCar], // add savedCar to cars array using the spread operator
+      }));
+    } catch (error) {
+      console.error("Error saving car:", error);
+    }
 
     const newCarIndex = formData?.cars.length;
     setActiveCarIndex(newCarIndex);
@@ -60,8 +81,6 @@ export default function NewCar({ onNext }) {
 
     setNewCarCreated(true);
     setIsCustomizingCar(false);
-
-    // send to backend ?
   };
 
   // update driver name in the active car

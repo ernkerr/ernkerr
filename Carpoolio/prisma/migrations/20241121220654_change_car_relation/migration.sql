@@ -1,0 +1,8 @@
+-- DropForeignKey
+ALTER TABLE "Car" DROP CONSTRAINT "Car_tripId_fkey";
+
+-- AlterTable
+ALTER TABLE "Car" ALTER COLUMN "tripId" SET DATA TYPE TEXT;
+
+-- AddForeignKey
+ALTER TABLE "Car" ADD CONSTRAINT "Car_tripId_fkey" FOREIGN KEY ("tripId") REFERENCES "Trip"("tripId") ON DELETE RESTRICT ON UPDATE CASCADE;

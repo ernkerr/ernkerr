@@ -66,6 +66,7 @@
   bottom: 0;
   margin-bottom: var(--margin-btn);
   transform: translateX(-50%);
+  z-index: 2;
 }
 
 .secondary-btn {

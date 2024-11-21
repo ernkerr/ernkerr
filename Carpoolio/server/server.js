@@ -32,7 +32,9 @@ app.use(cors(corsOptions));
 app.post("/api/trip", async (req, res) => {
   try {
     const tripData = req.body; // full formData object from the client
-    console.log(tripData);
+    console.log("received formData from client:", tripData); // Log the incoming data
+
+    // create a new trip record in the db
     const newTrip = await prisma.trip.create({
       data: {
         tripName: tripData.tripName,
@@ -52,17 +54,36 @@ app.post("/api/trip", async (req, res) => {
             numSeats: car.numSeats,
             seatDistribution: car.seatDistribution,
             seatNames: car.seatNames,
+            departureDate: car.departureDate,
+            departureTime: car.departureTime,
+            departureLocation: car.departureLocation,
           })),
         },
       },
     });
+    console.log("New trip created successfully:", newTrip); // log the trip saved to the db
+
+    // send newly created tripId and adminId back to the client
     res.status(201).json({
       tripId: newTrip.tripId,
       adminId: newTrip.adminId,
+      cars: newTrip.cars.map((car) => ({
+        carId: car.carId,
+        carName: car.carName,
+        carColor: car.carColor,
+        numSeats: car.numSeats,
+        seatDistribution: car.seatDistribution,
+        seatNames: car.seatNames,
+        departureDate: car.departureDate,
+        departureTime: car.departureTime,
+        departureLocation: car.departureLocation,
+      })),
       ...newTrip,
     });
   } catch (error) {
-    console.error("Error creating trip:", error);
+    console.error("Error creating trip:", error.message); // Log the error message
+    console.error("Full error stack trace:", error); // Log the full error details for debugging
+    res.status(500).json({ error: "Failed to create trip." });
   }
 });
 
@@ -72,6 +93,8 @@ app.put("/api/trip/:tripId", async (req, res) => {
   const tripData = req.body;
 
   try {
+    console.log("Received trip update data for tripId:", tripId, tripData);
+
     const updatedTrip = await prisma.trip.update({
       where: { tripId },
       data: {
@@ -86,13 +109,16 @@ app.put("/api/trip/:tripId", async (req, res) => {
         transparentGlowColor: tripData.transparentGlowColor,
         cars: {
           upsert: tripData.cars.map((car) => ({
-            where: { carId: car.carId || 0 }, // Use unique identifiers like `carId`
+            where: { carId: car.carId }, // Use unique identifiers like `carId`
             update: {
               carName: car.carName,
               carColor: car.carColor,
               numSeats: car.numSeats,
               seatDistribution: car.seatDistribution,
               seatNames: car.seatNames,
+              departureDate: car.departureDate,
+              departureTime: car.departureTime,
+              departureLocation: car.departureLocation,
             },
             create: {
               carName: car.carName,
@@ -202,4 +228,33 @@ app.get("/api/trip/:tripId", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log("Server started on port 8080");
+});
+
+//
+//
+//
+
+// new post route to save cars
+app.post("/api/car", async (req, res) => {
+  const carData = req.body; // getcar data from client
+  const { tripId } = carData;
+  try {
+    const newCar = await prisma.car.create({
+      data: {
+        carName: carData.carName,
+        carColor: carData.carColor,
+        numSeats: carData.numSeats,
+        seatDistribution: carData.seatDistribution,
+        seatNames: carData.seatNames,
+        departureDate: carData.departureDate,
+        departureTime: carData.departureTime,
+        departureLocation: carData.departureLocation,
+        trip: { connect: { tripId: tripId } }, // foreign key to link car to trip (tripId is a str)
+      },
+    });
+    res.status(201).json(newCar);
+  } catch (error) {
+    console.error("Error saving car:", error);
+    res.status(500).json({ error: "An error occurred while saving the car" });
+  }
 });
