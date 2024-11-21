@@ -150,7 +150,7 @@ export default function NewTripForm() {
           )}
 
           {/* on next, save to backend  */}
-          {page > 2 &&
+          {page > 1 &&
             (isPreviewingTrip ? (
               <button
                 style={{

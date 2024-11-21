@@ -126,7 +126,7 @@ export default function CustomizeTrip({ isPreviewingTrip, isAdmin }) {
         })}
       </div>
 
-      <button
+      {/* <button
         onClick={handleAddNewCar}
         className="new-car-btn"
         style={{
@@ -137,7 +137,7 @@ export default function CustomizeTrip({ isPreviewingTrip, isAdmin }) {
         }}
       >
         + Add Car
-      </button>
+      </button> */}
     </div>
   );
 }

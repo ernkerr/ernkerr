@@ -22,8 +22,8 @@ export default function TripPage() {
   const getTripDetails = async () => {
     try {
       const url = adminId
-        ? `http://localhost:8080/api/trip/${tripId}/${adminId}`
-        : `http://localhost:8080/api/trip/${tripId}`;
+        ? `http://192.168.0.28:8080/api/trip/${tripId}/${adminId}`
+        : `http://192.168.0.28:8080/api/trip/${tripId}`;
 
       const response = await fetch(url);
 
