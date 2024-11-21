@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { DayPicker } from "react-day-picker";
 import { TripContext } from "@components/TripContext";
+import { TimeSelector } from "@components/TimeSelector/TimeSelector.jsx";
 import CarNotes from "./CarNotes";
 import "@components/DateSelector/DateSelector.css";
 import "@components/DateSelector/Calendar.css";
@@ -13,9 +14,14 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
   const [selectedDate, setSelectedDate] = useState(null);
 
   // time of departure
+  const [isTimeSelectorVisible, setIsTimeSelectorVisible] = useState(false);
 
   const toggleCalendar = () => {
     setIsCalendarVisible((prev) => !prev); // toggle calendr visibility
+  };
+
+  const toggleTimeSelector = () => {
+    setIsTimeSelectorVisible((prev) => !prev);
   };
 
   const handleDateChange = (date) => {
@@ -39,11 +45,23 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
     setIsCalendarVisible(false);
   };
 
+  const handleTimeChange = (time) => {
+    setFormData((prevData) => {
+      const updatedCars = [...prevData.cars];
+      updatedCars[activeCarIndex] = {
+        ...updatedCars[activeCarIndex],
+        departureTime: time,
+      };
+      return { ...prevData, cars: updatedCars };
+    });
+  };
+
   // departure date / time / location
   // car notes -> car chat?
   // spotify playlist
 
   const departureDateExists = !!formData?.cars?.[activeCarIndex]?.departureDate; // !! converts it to a bool
+  const departureTimeExists = !!formData?.cars?.[activeCarIndex]?.departureTime; // if it exists: true, if it doesn't exist: false
 
   return (
     <>
@@ -54,7 +72,23 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
           </button>
         ) : (
           <button className="departure-details-btns" onClick={toggleCalendar}>
-            Pick a date
+            Date of departure
+          </button>
+        )}
+
+        {departureTimeExists ? (
+          <button
+            className="departure-details-btns"
+            onClick={toggleTimeSelector}
+          >
+            {formData?.cars?.[activeCarIndex]?.departureTime}
+          </button>
+        ) : (
+          <button
+            className="departure-details-btns"
+            onClick={toggleTimeSelector}
+          >
+            Time of departure
           </button>
         )}
       </div>
@@ -89,6 +123,19 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
             </div>
           </div>
         </>
+      )}
+
+      {isTimeSelectorVisible && (
+        <div className="modal">
+          <div className="overlay">
+            <div className="modal-content">
+              <TimeSelector
+                toggleTimeSelector={toggleTimeSelector}
+                onTimeChange={handleTimeChange}
+              />
+            </div>
+          </div>
+        </div>
       )}
 
       <CarNotes activeCarIndex={activeCarIndex} />

@@ -2,7 +2,11 @@ import { useState, useContext } from "react";
 import { TripContext } from "@components/TripContext";
 import "./TimeSelector.css";
 
-export function TimeSelector({ toggleTimeSelector }) {
+// pass onTimeChange function as a prop to update tripTime in DateSelector or departureTime in CarDetails
+// this callback function gets called when the use selects a time and allows the parent component to update it's state
+
+// pass toggleTimeSelector in so that when selecting a time, or setting it to tbd, the function can be called to close the modal
+export function TimeSelector({ toggleTimeSelector, onTimeChange }) {
   const { formData, setFormData } = useContext(TripContext);
   const [hour, setHour] = useState(1);
   const [minute, setMinute] = useState(0);
@@ -29,12 +33,13 @@ export function TimeSelector({ toggleTimeSelector }) {
     const formattedTime = `${hour}:${minute
       .toString()
       .padStart(2, "0")} ${period}`;
-    setFormData({ ...formData, tripTime: formattedTime });
+    onTimeChange(formattedTime); // call the callback function to update the time
   };
 
   return (
     <>
       <div className="time-picker-container">
+        {/* Time selection columns */}
         <div
           className="time-column"
           onScroll={(e) => updateSelectedValue(e, setHour, hours)}
@@ -80,7 +85,7 @@ export function TimeSelector({ toggleTimeSelector }) {
         <button
           className="calendar-button"
           onClick={() => {
-            setFormData({ ...formData, tripTime: "TBD" });
+            onTimeChange("TBD"); // pass tbd when not sure
             toggleTimeSelector();
           }}
         >

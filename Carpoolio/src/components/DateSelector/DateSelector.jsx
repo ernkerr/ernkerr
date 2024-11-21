@@ -154,9 +154,13 @@ export default function DateSelector({ isPreviewingTrip }) {
             <div className="overlay">
               <div className="modal-content">
                 <TimeSelector
-                  formData={formData}
-                  setFormData={setFormData}
                   toggleTimeSelector={toggleTimeSelector}
+                  onTimeChange={(time) =>
+                    setFormData({ ...formData, tripTime: time })
+                  }
+                  // this arrow function recieves the selected time as its argument
+                  // then it spreads the existing formData (to kep all other fields unchanged)
+                  // then it updates the tripTime field with the selected time
                 />
               </div>
             </div>
