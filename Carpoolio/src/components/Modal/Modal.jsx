@@ -31,3 +31,5 @@ const Modal = ({ buttonLabel, children }) => {
 };
 
 export default Modal;
+
+// understand this better

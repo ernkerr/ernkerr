@@ -17,6 +17,7 @@ const corsOptions = {
   origin: [
     "http://localhost:5173",
     "http://192.168.0.28:5173",
+    "http://192.168.0.30:5173",
     "http://127.0.2.2:5173",
   ], // frontend url (change to domain later)
 };
@@ -78,7 +79,6 @@ app.put("/api/trip/:tripId", async (req, res) => {
         tripDate: tripData.tripDate,
         tripTime: tripData.tripTime,
         tripBackground: tripData.tripBackground,
-        departureTime: tripData.departureTime,
         destination: tripData.destination,
         tripDescription: tripData.tripDescription,
         glowColor: tripData.glowColor,
@@ -100,6 +100,9 @@ app.put("/api/trip/:tripId", async (req, res) => {
               numSeats: car.numSeats,
               seatDistribution: car.seatDistribution,
               seatNames: car.seatNames,
+              departureDate: car.departureDate,
+              departureTime: car.departureTime,
+              departureLocation: car.departureLocation,
             },
           })),
         },
