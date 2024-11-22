@@ -90,6 +90,8 @@ body.active-modal {
   cursor: pointer;
 }
 
+/* car details  */
+
 #departure-details-btn {
   margin-bottom: var(--margin-form-response);
 }
@@ -109,11 +111,38 @@ body.active-modal {
   border-radius: var(--border-radius-btn);
   background: var(--glass-background);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
+  /* backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px); */
   width: 50dvw;
   /* margin-top: var(--margin-form-response); */
   margin-bottom: var(--margin-form-response);
+}
+
+.departure-date-btn {
+  color: var(--white);
+  text-align: right;
+}
+
+.departure-time-btn {
+  color: var(--white);
+  text-align: left;
+}
+
+.departure-details-btns.disabled {
+  cursor: default;
+  border: none;
+  background: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.icon {
+  height: 14px;
+  width: 14px;
+  margin-right: 4px;
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
 }
 
 #save-car-btn {

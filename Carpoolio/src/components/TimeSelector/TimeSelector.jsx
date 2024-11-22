@@ -85,7 +85,7 @@ export function TimeSelector({ toggleTimeSelector, onTimeChange }) {
         <button
           className="calendar-button"
           onClick={() => {
-            onTimeChange("TBD"); // pass tbd when not sure
+            onTimeChange(null); // pass tbd when not sure
             toggleTimeSelector();
           }}
         >

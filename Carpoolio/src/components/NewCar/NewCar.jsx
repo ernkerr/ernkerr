@@ -137,8 +137,6 @@ export default function NewCar({ onNext }) {
 
   return (
     <div className="form-question-container">
-      {/* <p className="form-question"></p> */}
-
       <div className="glass-buttons-container">
         <button
           onClick={handleYes}
@@ -155,7 +153,6 @@ export default function NewCar({ onNext }) {
       {isAddingCar && (
         <>
           {/* get driver's name  */}
-          {/* <p className="form-question">Who's driving?</p> */}
           <input
             className="form-response"
             key="driverName"
@@ -174,7 +171,7 @@ export default function NewCar({ onNext }) {
             />
           )}
 
-          {/* if NumSeats is set render car and customize car btn */}
+          {/* if num seats is set render car and customize car btn */}
           {driverName && (isNumSeatsSet || formData?.numSeats) && (
             <>
               {isCustomizingCar ? (

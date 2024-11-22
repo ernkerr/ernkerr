@@ -59,7 +59,7 @@ export default function DateSelector({ isPreviewingTrip }) {
           Set a Date
         </button>
       ) : (
-        // show calendar icon and trip date if trip date exists or if in previewing mode
+        // show calendar icon and trip date if trip date exists or if not in previewing mode
         <div className="calendar-icon-container">
           <button
             style={{

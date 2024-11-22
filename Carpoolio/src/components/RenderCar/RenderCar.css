@@ -9,11 +9,11 @@
   flex-direction: column;
 }
 
-.carName-and-edit-container {
+/* .carName-and-edit-container {
   display: flex;
-  align-items: center; /* Align items vertically if needed */
+  align-items: center; 
   flex-direction: row;
-}
+} */
 
 .carName {
   color: var(--white);
@@ -22,9 +22,10 @@
   padding: var(--padding-primary-btn);
   /* border: 1px solid var(--main-green); */
   border: none;
-  border-radius: var(--border-radius-btn);
+  background: none;
+  /* border-radius: var(--border-radius-btn);
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   /* backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px); for desktop */
   position: absolute;
@@ -32,6 +33,33 @@
   transform: translateX(-50%);
   text-align: center;
   /* width: 60%; */
+}
+
+.departure-date-time-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: var(--margin-small);
+  position: relative;
+  left: 50dvw;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.departure-date {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  border: none;
+  background: none;
+}
+
+.departure-time {
+  font-size: var(--font-size-small);
+  color: var(--white);
+  font-family: var(--main-font);
+  border: none;
+  background: none;
 }
 
 #edit-car-btn {

@@ -3,6 +3,8 @@ import { DayPicker } from "react-day-picker";
 import { TripContext } from "@components/TripContext";
 import { TimeSelector } from "@components/TimeSelector/TimeSelector.jsx";
 import CarNotes from "./CarNotes";
+import clockIcon from "../assets/img/Clock.png";
+import calendarIcon from "../assets/img/Calendar.png";
 import "@components/DateSelector/DateSelector.css";
 import "@components/DateSelector/Calendar.css";
 
@@ -27,8 +29,8 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
   const handleDateChange = (date) => {
     const formattedDate = date
       ? date.toLocaleDateString("en-US", {
-          weekday: "long",
-          month: "long",
+          weekday: "short",
+          month: "short",
           day: "numeric",
         })
       : null; // Set formattedDate to null if no date is selected
@@ -67,34 +69,59 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
     <>
       <div className="departure-date-time-container">
         {departureDateExists ? (
-          <button className="departure-details-btns" onClick={toggleCalendar}>
-            {formData?.cars?.[activeCarIndex]?.departureDate}
-          </button>
+          <>
+            <button
+              className={`departure-details-btns ${
+                isPreviewingTrip ? "disabled" : ""
+              }`}
+              id="departure-date-btn"
+              onClick={toggleCalendar}
+              disabled={isPreviewingTrip}
+            >
+              {/* <img className="icon" src={calendarIcon} alt="Calendar Time Icon" /> */}
+              {formData?.cars?.[activeCarIndex]?.departureDate}
+            </button>
+          </>
         ) : (
-          <button className="departure-details-btns" onClick={toggleCalendar}>
+          <button
+            className={`departure-details-btns ${
+              isPreviewingTrip ? "disabled" : ""
+            }`}
+            // id="departure-date-btn"
+            onClick={toggleCalendar}
+            disabled={isPreviewingTrip}
+          >
+            <img className="icon" src={calendarIcon} alt="Calendar Time Icon" />
             Date of departure
           </button>
         )}
 
         {departureTimeExists ? (
           <button
-            className="departure-details-btns"
+            className={`departure-details-btns ${
+              isPreviewingTrip ? "disabled" : ""
+            }`}
             onClick={toggleTimeSelector}
+            disabled={isPreviewingTrip}
           >
+            <img className="icon" src={clockIcon} alt="Departure Time Icon" />
             {formData?.cars?.[activeCarIndex]?.departureTime}
           </button>
         ) : (
           <button
-            className="departure-details-btns"
+            className={`departure-details-btns ${
+              isPreviewingTrip ? "disabled" : ""
+            }`}
             onClick={toggleTimeSelector}
           >
+            <img className="icon" src={clockIcon} alt="Departure Time Icon" />
             Time of departure
           </button>
         )}
       </div>
 
       {/* {!isPreviewingTrip && isCalendarVisible && ( */}
-      {isCalendarVisible && (
+      {!isPreviewingTrip && isCalendarVisible && (
         <>
           <div className="modal-departure-date">
             <div className="overlay-departure-date">
@@ -125,7 +152,7 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
         </>
       )}
 
-      {isTimeSelectorVisible && (
+      {!isPreviewingTrip && isTimeSelectorVisible && (
         <div className="modal">
           <div className="overlay">
             <div className="modal-content">
