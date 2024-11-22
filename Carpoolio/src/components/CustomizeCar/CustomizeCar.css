@@ -15,9 +15,14 @@ body.active-modal {
 }
 
 .overlay {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
+}
+
+.customize-car-container {
+  margin-left: var(--margin-medium);
+  width: 95dvw;
 }
 
 .customize-car-btn-container {
@@ -28,9 +33,13 @@ body.active-modal {
 
 #edit-carName {
   cursor: pointer;
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-small);
   text-align: left;
   width: 90dvw;
+}
+
+#edit-carName::placeholder {
+  color: var(--white);
 }
 
 .color-picker-container {
@@ -109,6 +118,7 @@ body.active-modal {
 
 #save-car-btn {
   z-index: 100;
+  width: auto;
   /* left: 80%;
   bottom: 0;
   margin-bottom: 0;

@@ -90,11 +90,12 @@ const Destination = forwardRef(
           onKeyDown={onKeyDown}
           placeholder={destination ? destination : "Choose your destination"}
           // className="destination"
-          className="form-response"
+          className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
           id="destination"
           style={{
-            // background: formData?.tripBackground?.scrim || "transparent",
-            // borderRadius: isPreviewingTrip ? "0" : "5px",
+            background: isPreviewingTrip
+              ? formData?.tripBackground?.scrim || "transparent"
+              : undefined, // Default to the original background when not previewing
             pointerEvents: isPreviewingTrip ? "none" : "auto", // Prevent interaction in preview mode
           }}
         />

@@ -25,8 +25,8 @@
   border-radius: var(--border-radius-btn);
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
+  /* backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px); for desktop */
   position: absolute;
   left: 50dvw;
   transform: translateX(-50%);
@@ -39,14 +39,6 @@
   margin-left: auto;
   margin-right: var(--margin-medium);
   width: 60px;
-}
-
-#car-details-btn {
-  margin-top: var(--margin-form-response);
-  margin-bottom: var(--margin-form-response);
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .render-car-container {

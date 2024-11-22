@@ -36,7 +36,7 @@ export default function NewCar({ onNext }) {
     const newCar = {
       carName: "",
       carColor: "#216191",
-      numSeats: "",
+      numSeats: null,
       seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
       seatNames: { row1: [driverName, ""], row2: [""], row3: [""], row4: [""] },
       departureDate: "",

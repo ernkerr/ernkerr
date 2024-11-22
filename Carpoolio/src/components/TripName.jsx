@@ -24,12 +24,19 @@ const TripName = forwardRef(
         }
       }
     };
+
     return (
       <>
         <input
           className={`form-response ${error ? "error" : ""} ${
             isPreviewingTrip ? "disabled" : ""
           }`}
+          style={{
+            background: isPreviewingTrip
+              ? formData?.tripBackground?.scrim || "transparent"
+              : undefined, // default to the original background when not previewing
+            // margin: isPreviewingTrip ? "0" : undefined, // set margin to 0 if previewing
+          }}
           id="trip-name"
           ref={ref}
           type="text"
@@ -48,12 +55,3 @@ const TripName = forwardRef(
 );
 
 export default TripName;
-
-// on hover (required)
-
-// <input
-//   key={`row1-seat${index}`}
-//   value={seatNames.row1[index] || ""}
-//   onChange={(event) => handleSeatClick("row1", index, event)}
-//   className="seat-input"
-// />;

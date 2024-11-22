@@ -86,8 +86,9 @@ body {
   /* padding */
   --padding-primary-btn: 10px 20px 10px 20px;
   --padding-secondary-btn: 10px 10px 10px 10px;
-
   --padding-form-response: 10px 0px 10px 10px;
+
+  --padding-customize-trip: 5px 0px 5px 5px;
 
   --padding-title: 5px 0 5px 10px;
   --padding-button: 5px 0 5px 10px;

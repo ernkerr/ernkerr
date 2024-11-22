@@ -15,8 +15,8 @@
   border-radius: var(--border-radius-btn);
   background: var(--glass-background);
   cursor: pointer;
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
+  /* backdrop-filter: blur(7.6px); ( for desktop )*/
+  /* -webkit-backdrop-filter: blur(7.6px); */
   width: 75%;
   height: var(--btn-height);
   align-items: center;
@@ -32,8 +32,16 @@
   background: var(--glass-background-light);
   border-color: var(--main-green);
   box-shadow: var(--green-glow);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
+
+  /* -webkit-backdrop-filter: blur(7.6px); */
+}
+
+#car-details-btn {
+  margin-top: var(--margin-form-response);
+  margin-bottom: var(--margin-form-response);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* For browser compatibility
@@ -56,7 +64,7 @@
   border-radius: 20px;
   background: linear-gradient(90deg, var(--main-green), rgba(0, 255, 0, 0.8));
   outline: none;
-  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  /* -webkit-transition: 0.2s; 0.2 seconds transition on hover */
   transition: opacity 0.2s;
   box-shadow: var(--green-glow);
 

@@ -26,9 +26,9 @@
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
   background: var(--glass-background);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); */
+  /* backdrop-filter: blur(7.6px); for desktop */
+  /* -webkit-backdrop-filter: blur(7.6px); */
   width: 90dvw;
   margin-top: var(--margin-form-response);
   text-align: center;
@@ -54,7 +54,7 @@
 }
 
 .form-response.disabled {
-  border: 2px solid transparent;
+  border: none;
 }
 
 /* transform: offsets the button by half of its own width, centering it horizontally */

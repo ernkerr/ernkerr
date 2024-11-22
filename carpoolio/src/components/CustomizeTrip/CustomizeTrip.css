@@ -3,7 +3,8 @@
   flex-direction: row;
   height: 100vh;
   min-height: 100%;
-  width: 100dvw;
+  margin-left: var(--margin-medium);
+  width: 95dvw;
 }
 
 .details-container {
