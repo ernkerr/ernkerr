@@ -43,12 +43,13 @@ export default function RenderCar({
               className="carName"
               style={
                 {
+                  // car?.seatNames.row1[index]
                   // background: formData?.transparentGlowColor || "transparent",
                   // border: `1px solid ${formData?.glowColor}`,
                 }
               }
             >
-              {car?.carName || "Car name"}
+              {car?.carName || `${car?.seatNames.row1[0]}'s car`}
             </button>
             <button
               className="editBtn"
