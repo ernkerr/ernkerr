@@ -53,7 +53,6 @@ export default function DateSelector({ isPreviewingTrip }) {
       {!isPreviewingTrip && !tripDateExists ? (
         <button
           className="form-response"
-          id="set-date-btn"
           onClick={toggleCalendar}
           disabled={isPreviewingTrip}
         >

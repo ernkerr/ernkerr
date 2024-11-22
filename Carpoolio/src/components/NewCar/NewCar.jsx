@@ -151,7 +151,7 @@ export default function NewCar({ onNext }) {
           onClick={handleYes}
           className={`glass-button ${isAddingCar === true ? "selected" : ""}`} // assign selected class based on isAddingCar state
         >
-          + Add a car
+          + add a car
         </button>
 
         <button onClick={onNext} className="tertiary-btn">
@@ -162,13 +162,13 @@ export default function NewCar({ onNext }) {
       {isAddingCar && (
         <>
           {/* get driver's name  */}
-          <p className="form-question">Who's driving?</p>
+          {/* <p className="form-question">Who's driving?</p> */}
           <input
             className="form-response"
             key="driverName"
             id="driverName"
             type="text"
-            placeholder="Driver's name here"
+            placeholder="who's drivin?"
             value={driverName}
             onChange={changeDriverName}
           />

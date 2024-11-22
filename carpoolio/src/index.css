@@ -155,6 +155,10 @@ body {
     0 0 25px rgba(0, 255, 0, 0.5);
   --green-glow-hover: 0 0 5px #04aa6d, 0 0 15px #04aa6d,
     0 0 30px rgba(0, 255, 0, 0.5);
+
+  --red: rgb(255, 0, 0);
+  --red-glow: 0 0 5px rgb(255, 0, 0), 0 0 10px rgb(255, 0, 0),
+    0 0 25px rgb(255, 0, 0);
 }
 
 /* delete */

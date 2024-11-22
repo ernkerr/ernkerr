@@ -91,6 +91,7 @@ const Destination = forwardRef(
           placeholder={destination ? destination : "Choose your destination"}
           // className="destination"
           className="form-response"
+          id="destination"
           style={{
             // background: formData?.tripBackground?.scrim || "transparent",
             // borderRadius: isPreviewingTrip ? "0" : "5px",

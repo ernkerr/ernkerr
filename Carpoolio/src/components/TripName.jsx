@@ -4,20 +4,20 @@ import { TripContext } from "@components/TripContext";
 const TripName = forwardRef(
   ({ isPreviewingTrip, onTripNameUpdate, onKeyDown }, ref) => {
     const { formData, setFormData } = useContext(TripContext);
-    // const [error, setError] = useState("");
+    const [error, setError] = useState("");
 
-    // const handleBlur = () => {
-    //   if (!formData.tripName) {
-    //     setError("Trip name is required");
-    //   } else {
-    //     setError("");
-    //   }
-    // };
+    const handleBlur = () => {
+      if (!formData.tripName) {
+        setError("Trip name is required");
+      } else {
+        setError("");
+      }
+    };
 
     const handleChange = (event) => {
       if (!isPreviewingTrip) {
         setFormData({ ...formData, tripName: event.target.value });
-        // if (event.target.value) setError("");
+        if (event.target.value) setError("");
         // pass the destination up to parent
         if (onTripNameUpdate) {
           onTripNameUpdate(event.target.value);
@@ -27,18 +27,11 @@ const TripName = forwardRef(
     return (
       <>
         <input
-          // className={`trip-name ${isPreviewingTrip ? "disabled" : ""}`}
-          className="form-response"
+          className={`form-response ${error ? "error" : ""} ${
+            isPreviewingTrip ? "disabled" : ""
+          }`}
           id="trip-name"
           ref={ref}
-          // style={{
-          //   border: isPreviewingTrip
-          //     ? "2px solid transparent"
-          //     : error
-          //     ? "2px solid red"
-          //     : "2px solid rgba(255, 255, 255, 0.182)",
-          // }}
-
           type="text"
           required
           placeholder={"Give your trip a name"}
@@ -46,9 +39,9 @@ const TripName = forwardRef(
           disabled={isPreviewingTrip}
           onChange={handleChange}
           onKeyDown={onKeyDown}
-          // onBlur={handleBlur} // trigger validation when input loses focus
+          onBlur={handleBlur} // trigger validation when input loses focus
         />
-        {/* {error && <p className="error-message">{error}</p>} */}
+        {error && <p className="error-message">{error}</p>}
       </>
     );
   }

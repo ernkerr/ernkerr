@@ -67,6 +67,7 @@ export default function NewEvent({ onNext }) {
         <>
           <button
             className={`secondary-btn ${isShowingOptions ? "active" : ""}`}
+            id="more-options-btn"
             onClick={handleMoreOptions}
           >
             More options +{" "}

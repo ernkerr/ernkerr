@@ -9,11 +9,12 @@
 
 .form-question {
   font-family: var(--main-font);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-medium);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-btn);
-  margin-top: var(--margin-form-field);
+  /* margin-top: var(--margin-form-field); */
   margin-bottom: 0;
+  text-align: center;
 }
 
 .form-response {
@@ -30,6 +31,7 @@
   -webkit-backdrop-filter: blur(7.6px);
   width: 90dvw;
   margin-top: var(--margin-form-response);
+  text-align: center;
 }
 
 .form-response::placeholder {
@@ -42,6 +44,19 @@
   box-shadow: var(--green-glow);
 }
 
+.form-response.error {
+  border: 1px solid var(--red);
+  box-shadow: var(--red-glow);
+}
+
+.form-response.error:focus {
+  box-shadow: var(--red-glow);
+}
+
+.form-response.disabled {
+  border: 2px solid transparent;
+}
+
 /* transform: offsets the button by half of its own width, centering it horizontally */
 
 .glass-effect {
@@ -49,6 +64,23 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
+}
+
+#trip-name {
+  font-size: var(--font-size-medium);
+  text-align: center;
+}
+
+#destination {
+  text-align: center;
+}
+
+#more-options-btn {
+  width: 60dvw;
+  width: 75%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .primary-btn {
@@ -73,7 +105,7 @@
   color: var(--main-green);
   font-family: var(--main-font);
   font-size: var(--font-size-small);
-  padding: var(--padding-secondary-btn);
+  /* padding: var(--padding-secondary-btn); */
   border: 1px solid var(--main-green);
   border-radius: var(--border-radius-btn);
   margin-top: var(--margin-btn);
