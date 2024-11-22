@@ -7,7 +7,7 @@ import "./CustomizeCar.css";
 
 import "../RenderCar/RenderCar.css";
 import CarNotes from "../CarNotes.jsx";
-import CarDetails from "../CarDetails.jsx";
+import DepartureDetails from "../DepartureDetails/DepartureDetails.jsx";
 
 export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   const { formData, setFormData } = useContext(TripContext);
@@ -169,7 +169,9 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                     onChange={changeCarName}
                   />
                   <div className="color-picker-container">
-                    <p className="form-question">Change car color?</p>
+                    <label className="form-response" htmlFor="car-color">
+                      Change car color?
+                    </label>
                     <input
                       className="car-color-picker"
                       type="color"
@@ -195,11 +197,10 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
               {/* if departure details is pressed, show date, time, leaving from, etc. (modal?) */}
               {isShowingOptions && (
                 <>
-                  <CarDetails activeCarIndex={activeCarIndex} />
+                  <DepartureDetails activeCarIndex={activeCarIndex} />
                 </>
               )}
 
-              {/* <p className="form-question">est departure time?</p> */}
               {/* </div> */}
             </div>
             {/* </div> */}
@@ -353,7 +354,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                 formData?.transparentGlowColor,
               border: ` 1px solid ${formData?.glowColor}`,
               // boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-              Zindex: "100",
+              // Zindex: "2",
             }}
           >
             done

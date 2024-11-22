@@ -22,7 +22,8 @@ body.active-modal {
 
 .customize-car-container {
   margin-left: var(--margin-medium);
-  width: 95dvw;
+  width: 92dvw;
+  background-color: rgba(118, 118, 226, 0.47);
 }
 
 .customize-car-btn-container {
@@ -31,12 +32,12 @@ body.active-modal {
   margin-top: 10dvh;
 }
 
-#edit-carName {
+/* #edit-carName {
   cursor: pointer;
   font-size: var(--font-size-small);
   text-align: left;
   width: 90dvw;
-}
+} */
 
 #edit-carName::placeholder {
   color: var(--white);
@@ -47,93 +48,21 @@ body.active-modal {
   flex-direction: row;
   align-items: flex-end;
   gap: 10px;
-  margin-bottom: var(--margin-form-response);
-
-  /* align-items: center;
-  margin-top: var(--margin-form-response);
-  overflow-x: hidden;
-  border: none;
-  border-radius: var(--border-radius-btn);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
-  width: 90dvw; */
-}
-
-#color-picker-container {
-  text-align: left;
-}
-
-.car-color {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-medium);
-  padding: var(--padding-primary-btn);
-}
-
-.car-color:focus {
-  border: 1px solid var(--main-green);
-  outline: none;
-  box-shadow: var(--green-glow);
 }
 
 .car-color-picker {
+  appearance: none; /* Removes browser-specific styling */
+  -webkit-appearance: none; /* For WebKit-based browsers like Safari */
+  -moz-appearance: none; /* For Firefox */
+
   color: var(--white);
   background: none;
   font-family: var(--main-font);
-  height: 3.5dvh;
-  width: 20%;
-  border: var(--transparent-border);
-  border-radius: var(--border-radius-button);
-  text-align: left;
-  cursor: pointer;
-}
-
-/* car details  */
-
-#departure-details-btn {
-  margin-bottom: var(--margin-form-response);
-}
-
-.departure-date-time-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.departure-details-btns {
-  color: var(--white);
-  cursor: pointer;
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  padding: var(--padding-form-response);
+  height: 40px;
+  width: 60px;
   border: var(--glass-border);
-  border-radius: var(--border-radius-btn);
-  background: var(--glass-background);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  /* backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px); */
-  width: 50dvw;
-  /* margin-top: var(--margin-form-response); */
-  margin-bottom: var(--margin-form-response);
-}
-
-.departure-date-btn {
-  color: var(--white);
-  text-align: right;
-}
-
-.departure-time-btn {
-  color: var(--white);
-  text-align: left;
-}
-
-.departure-details-btns.disabled {
-  cursor: default;
-  border: none;
-  background: none;
-  box-shadow: none;
-  pointer-events: none;
+  cursor: pointer;
+  border-radius: 0;
 }
 
 .icon {
@@ -146,7 +75,7 @@ body.active-modal {
 }
 
 #save-car-btn {
-  z-index: 100;
+  z-index: 2;
   width: auto;
   /* left: 80%;
   bottom: 0;
@@ -159,33 +88,4 @@ body.active-modal {
   margin-left: auto;
   margin-right: var(--margin-medium);
   /* width: 60px; */
-}
-
-/* date picker: departure date  */
-.modal-departure-date,
-.overlay-departure-date {
-  width: 100dvw;
-  height: 100dvh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-  z-index: 3;
-}
-
-.overlay-departure-date {
-  width: 100dvw;
-  height: 100dvh;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
-}
-.modal-content-car-departure-date {
-  background: none;
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* margin-left: var(--margin-medium); */
 }

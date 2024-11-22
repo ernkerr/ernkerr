@@ -2,8 +2,7 @@ import DefaultCar from "../CustomizeCar/DefaultCar";
 import "./RenderCar.css";
 import { useState, useContext } from "react";
 import { TripContext } from "@components/TripContext";
-import CarNotes from "../CarNotes";
-import CarDetails from "../CarDetails";
+// import CarNotes from "../CarNotes";
 
 export default function RenderCar({
   car,

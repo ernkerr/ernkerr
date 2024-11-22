@@ -1,0 +1,60 @@
+.departure-details-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.departure-details-btns {
+  color: var(--white);
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: var(--padding-small);
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
+  background: var(--glass-background);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  /* backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px); */
+  width: 50dvw;
+  margin-bottom: var(--margin-form-response);
+}
+
+.departure-details-btns.disabled {
+  cursor: default;
+  border: none;
+  background: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+#departure-details-btn {
+  margin-bottom: var(--margin-form-response);
+}
+
+/* date picker: departure date  */
+
+.modal-departure-details {
+  width: 100dvw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 3;
+  background-color: var(--dark);
+}
+
+.modal-content-departure-details {
+  background: none;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* margin-left: var(--margin-medium); */
+  padding: var(--padding-cal);
+  background-color: var(--dark);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+}

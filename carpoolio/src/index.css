@@ -90,9 +90,13 @@ body {
 
   --padding-customize-trip: 5px 0px 5px 5px;
 
+  --padding-small: 10px 2px 10px 2px;
+
   --padding-title: 5px 0 5px 10px;
   --padding-button: 5px 0 5px 10px;
   --padding-text-area: 8px 5px 5px 10px;
+
+  --padding-cal: 500px 500px 500px 500px;
 
   /* border */
   --transparent-border: 1px solid rgba(255, 255, 255, 0.182);

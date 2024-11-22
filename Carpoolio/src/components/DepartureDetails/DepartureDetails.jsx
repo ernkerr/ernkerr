@@ -2,13 +2,14 @@ import { useContext, useState } from "react";
 import { DayPicker } from "react-day-picker";
 import { TripContext } from "@components/TripContext";
 import { TimeSelector } from "@components/TimeSelector/TimeSelector.jsx";
-import CarNotes from "./CarNotes";
-import clockIcon from "../assets/img/Clock.png";
-import calendarIcon from "../assets/img/Calendar.png";
+import CarNotes from "../CarNotes.jsx";
+import clockIcon from "../../assets/img/Clock.png";
+import calendarIcon from "../../assets/img/Calendar.png";
 import "@components/DateSelector/DateSelector.css";
 import "@components/DateSelector/Calendar.css";
+import "./DepartureDetails.css";
 
-export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
+export default function DepartureDetails({ isPreviewingTrip, activeCarIndex }) {
   const { formData, setFormData } = useContext(TripContext);
 
   // date of departure
@@ -67,14 +68,13 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
 
   return (
     <>
-      <div className="departure-date-time-container">
+      <div className="departure-details-container">
         {departureDateExists ? (
           <>
             <button
               className={`departure-details-btns ${
                 isPreviewingTrip ? "disabled" : ""
               }`}
-              id="departure-date-btn"
               onClick={toggleCalendar}
               disabled={isPreviewingTrip}
             >
@@ -87,7 +87,6 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
             className={`departure-details-btns ${
               isPreviewingTrip ? "disabled" : ""
             }`}
-            // id="departure-date-btn"
             onClick={toggleCalendar}
             disabled={isPreviewingTrip}
           >
@@ -123,46 +122,43 @@ export default function CarDetails({ isPreviewingTrip, activeCarIndex }) {
       {/* {!isPreviewingTrip && isCalendarVisible && ( */}
       {!isPreviewingTrip && isCalendarVisible && (
         <>
-          <div className="modal-departure-date">
-            <div className="overlay-departure-date">
-              <div className="modal-content-departure-date">
-                <DayPicker
-                  mode="single"
-                  disabled={{ before: new Date() }}
-                  selected={selectedDate}
-                  onSelect={handleDateChange}
-                />
+          <div className="modal-departure-details">
+            <div className="modal-content-departure-details">
+              <DayPicker
+                mode="single"
+                disabled={{ before: new Date() }}
+                selected={selectedDate}
+                onSelect={handleDateChange}
+              />
 
-                <button
-                  style={{
-                    background:
-                      formData?.tripBackground?.scrim || "transparent",
-                  }}
-                  className="calendar-button"
-                  onClick={() => {
-                    toggleCalendar();
-                    handleDateChange(null);
-                  }}
-                >
-                  Not sure yet
-                </button>
-              </div>
+              <button
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                }}
+                className="calendar-button"
+                onClick={() => {
+                  toggleCalendar();
+                  handleDateChange(null);
+                }}
+              >
+                Not sure yet
+              </button>
             </div>
           </div>
         </>
       )}
 
       {!isPreviewingTrip && isTimeSelectorVisible && (
-        <div className="modal">
-          <div className="overlay">
-            <div className="modal-content">
+        <>
+          <div className="modal-departure-details">
+            <div className="modal-content-departure-details">
               <TimeSelector
                 toggleTimeSelector={toggleTimeSelector}
                 onTimeChange={handleTimeChange}
               />
             </div>
           </div>
-        </div>
+        </>
       )}
 
       <CarNotes activeCarIndex={activeCarIndex} />
