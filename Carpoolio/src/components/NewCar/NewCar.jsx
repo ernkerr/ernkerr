@@ -15,10 +15,6 @@ export default function NewCar({ onNext }) {
   const [activeCarIndex, setActiveCarIndex] = useState(0);
   const [newCarCreated, setNewCarCreated] = useState(false);
 
-  // useEffect(() => {
-  //   console.log("Active Car Index Updated in New Car:", activeCarIndex);
-  // }, [activeCarIndex]);
-
   // progressive disclosure logic
   const handleYes = () => {
     if (!newCarCreated) {
@@ -40,7 +36,7 @@ export default function NewCar({ onNext }) {
     const newCar = {
       carName: "",
       carColor: "#216191",
-      numSeats: 0,
+      numSeats: "",
       seatDistribution: { row1: 2, row2: 3, row3: 0, row4: 0 },
       seatNames: { row1: [driverName, ""], row2: [""], row3: [""], row4: [""] },
       departureDate: "",
@@ -66,7 +62,7 @@ export default function NewCar({ onNext }) {
       const savedCar = await response.json();
       console.log("Car saved successfully:", savedCar);
 
-      // Add savedCar to formData
+      // add savedCar to formData
       setFormData((prevData) => ({
         ...prevData,
         cars: [...(prevData.cars || []), savedCar], // add savedCar to cars array using the spread operator
@@ -92,7 +88,6 @@ export default function NewCar({ onNext }) {
       if (activeCarIndex !== null && updatedCars[activeCarIndex]) {
         updatedCars[activeCarIndex].seatNames.row1[0] = driverName;
       }
-      // console.log("formData", formData); // logging
       return { ...prevData, cars: updatedCars };
     });
   };
@@ -113,11 +108,9 @@ export default function NewCar({ onNext }) {
       return { ...prevData, cars: updatedCars, numSeats };
     });
     setIsNumSeatsSet(true);
-    // console.log("Updated formData:", formData);
   };
 
   const computeSeatDistribution = (numSeats) => {
-    // console.log("numSeats: ", numSeats); // logging
     // logic to render seats based on numSeats
     const distribution = { row1: 0, row2: 0, row3: 0, row4: 0 }; // handle invalid inputs
     if (numSeats <= 0) return distribution;
@@ -182,7 +175,7 @@ export default function NewCar({ onNext }) {
           )}
 
           {/* if NumSeats is set render car and customize car btn */}
-          {(isNumSeatsSet || formData?.numSeats) && (
+          {driverName && (isNumSeatsSet || formData?.numSeats) && (
             <>
               {isCustomizingCar ? (
                 <CustomizeCar

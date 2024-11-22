@@ -148,8 +148,8 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                 </button> */}
 
             <button
-              className={`secondary-btn ${customizeCarBtn ? "active" : ""}`}
-              // id="car-details-btn"
+              className={`glass-button ${customizeCarBtn ? "selected" : ""}`}
+              id="car-details-btn"
               onClick={handleCustomizeCar}
             >
               Customize car +
@@ -184,9 +184,9 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
             )}
 
             <button
-              className={`secondary-btn ${isShowingOptions ? "active" : ""}`}
-              // id="car-details-btn"
-              id="departure-details-btn"
+              className={`glass-button ${isShowingOptions ? "selected" : ""}`}
+              id="car-details-btn"
+              // id="departure-details-btn"
               onClick={handleMoreOptions}
             >
               Edit departure details +

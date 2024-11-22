@@ -77,7 +77,7 @@
 
 #more-options-btn {
   width: 60dvw;
-  width: 75%;
+  /* width: 75%; */
   position: relative;
   left: 50%;
   transform: translateX(-50%);

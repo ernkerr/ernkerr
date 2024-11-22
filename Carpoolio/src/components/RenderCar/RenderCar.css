@@ -44,6 +44,9 @@
 #car-details-btn {
   margin-top: var(--margin-form-response);
   margin-bottom: var(--margin-form-response);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .render-car-container {
