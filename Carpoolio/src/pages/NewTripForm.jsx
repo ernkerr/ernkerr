@@ -19,6 +19,8 @@ export default function NewTripForm() {
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(false); // New state for CustomizeTrip
   const [currentStep, setCurrentStep] = useState(1);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // onboarding:
   // step 1: NewEvent
   // step 2: NewCar
@@ -54,9 +56,9 @@ export default function NewTripForm() {
     e.preventDefault();
     try {
       if (formData.tripId) {
+        console.log(formData.tripId);
         const response = await axios.put(
-          `http://192.168.0.28:8080/api/trip/${formData.tripId}`,
-          // `http://127.0.2.2:8080/api/trip/${formData.tripId}`, // agape
+          `${API_BASE_URL}/api/trip/${formData.tripId}`,
           formData
         ); // update the existing trip
 
@@ -70,9 +72,7 @@ export default function NewTripForm() {
       } else {
         // if trip id does not exist, create a new trip
         const response = await axios.post(
-          `http://192.168.0.28:8080/api/trip`,
-
-          // `http://127.0.2.2:8080/api/trip/`, // agape
+          `${API_BASE_URL}/api/trip/`,
           formData
         ); // creates a new trip in the backend
 

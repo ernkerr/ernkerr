@@ -18,12 +18,14 @@ export default function TripPage() {
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
   const isAdmin = !!adminId;
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // fetch trip details
   const getTripDetails = async () => {
     try {
       const url = adminId
-        ? `http://192.168.0.28:8080/api/trip/${tripId}/${adminId}`
-        : `http://192.168.0.28:8080/api/trip/${tripId}`;
+        ? `${API_BASE_URL}/api/trip/${tripId}/${adminId}`
+        : `${API_BASE_URL}/api/trip/${tripId}`;
 
       const response = await fetch(url);
 
@@ -93,28 +95,6 @@ export default function TripPage() {
           backgroundPosition: "center",
         }}
       >
-        {/* <div
-          className="container-wrapper"
-          style={{
-            boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}, 0 0 20px ${tripDetails?.lighterGlowColor}`,
-            background: `${formData?.glowColor}`,
-            height: "85dvh",
-            width: "90dvw",
-          }}
-        > */}
-        {/* // no more glow */}
-        {/* <div
-          className="container"
-          style={{
-            backgroundImage: `url(${
-              formData?.tripBackground?.path || bluegoo
-            })`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        > */}
-        {/* // no more glow */}
-
         <CustomizeTrip isPreviewingTrip={isPreviewingTrip} isAdmin={isAdmin} />
 
         <div

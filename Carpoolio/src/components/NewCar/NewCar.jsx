@@ -15,6 +15,8 @@ export default function NewCar({ onNext }) {
   const [activeCarIndex, setActiveCarIndex] = useState(0);
   const [newCarCreated, setNewCarCreated] = useState(false);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // progressive disclosure logic
   const handleYes = () => {
     if (!newCarCreated) {
@@ -49,7 +51,7 @@ export default function NewCar({ onNext }) {
     console.log("Attempting to add new car with data:", newCar); // Log input data
 
     try {
-      const response = await fetch("http://192.168.0.28:8080/api/car", {
+      const response = await fetch(`${API_BASE_URL}/api/car`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newCar),
