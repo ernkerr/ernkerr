@@ -8,11 +8,13 @@ const Destination = forwardRef(
   ({ isPreviewingTrip, onDestinationUpdate, onKeyDown }, ref) => {
     const { formData, setFormData } = useContext(TripContext);
     const [destination, setDestination] = useState(formData?.destination || "");
+    const [location, setLocation] = useState(null);
     // const [isManualEntry, setIsManualEntry] = useState(false);
 
     const autocompleteRef = useRef(null); // create an internal ref for the Autocomplete component
 
     // Combine internal ref (autocompleteRef) with forwarded ref
+    // one ref needed for
     useEffect(() => {
       if (ref) {
         // if ref is a function, call it with the DOM node ?
@@ -30,6 +32,8 @@ const Destination = forwardRef(
       if (!isPreviewingTrip) {
         const selectedPlaceName = place.name || ""; // check place name
         const selectedAddress = place.formatted_address || ""; // check if the place has a formatted address
+        const selectedLocation = place.geometry?.location;
+
         const tripDestination =
           selectedAddress && selectedPlaceName
             ? selectedAddress.includes(selectedPlaceName)
@@ -39,6 +43,16 @@ const Destination = forwardRef(
 
         setDestination(tripDestination);
         updateFormData(tripDestination);
+
+        // location data for map
+        if (selectedLocation) {
+          setLocation({
+            lat: selectedLocation.lat(),
+            lng: selectedLocation.lng(),
+          });
+        }
+        // else try address
+        // else
       }
     };
 
@@ -59,8 +73,9 @@ const Destination = forwardRef(
         destination: value,
       }));
 
+      // if onDestinationUpdate prop is defined, pass updated values as an object
       if (onDestinationUpdate) {
-        onDestinationUpdate(value);
+        onDestinationUpdate({ value, location: location || null });
       }
     };
 
@@ -78,7 +93,8 @@ const Destination = forwardRef(
     return (
       <>
         <Autocomplete
-          apiKey={"AIzaSyAjYJexrKl - byyNcP9kEwmsi3OzPHcEtng"} // API key
+          // apiKey={"AIzaSyAjYJexrKl - byyNcP9kEwmsi3OzPHcEtng"}
+          apiKey={import.meta.env.VITE_GMAPS_API_KEY} //needs to be passed directly to the component as a prop
           onPlaceSelected={handleSelectedLocation}
           options={{
             types: ["geocode", "establishment"], // establishment to search for businesses, museums, etc.
@@ -105,3 +121,9 @@ const Destination = forwardRef(
 );
 
 export default Destination;
+
+// on DestinationUpdate is a function that sends the destination and location data to the parent container
+// the parent container (NewTripForm)
+
+// useEffect(() => { ... }, [dependencies])
+// this react hook (useEffect) runs whenever any of the variables in the dependency array change

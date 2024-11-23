@@ -18,6 +18,7 @@ export default function NewTripForm() {
   const [page, setPage] = useState(0);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(false); // New state for CustomizeTrip
   const [currentStep, setCurrentStep] = useState(1);
+  const [destination, setDestination] = useState(null);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -38,6 +39,7 @@ export default function NewTripForm() {
           <CustomizeTrip
             isPreviewingTrip={isPreviewingTrip}
             setIsPreviewingTrip={setIsPreviewingTrip}
+            destinationInfo={destination} // pass address and lat/lng
           />
         );
     }
@@ -55,6 +57,11 @@ export default function NewTripForm() {
   function handleEdit() {
     setIsPreviewingTrip(false);
   }
+
+  const handleDestinationUpdate = (data) => {
+    console.log("Destination updated: ", data);
+    setDestination(data); // save the address and lat/lng
+  };
 
   // hitting next creates a trip in the backend
   const handleNext = async (e) => {

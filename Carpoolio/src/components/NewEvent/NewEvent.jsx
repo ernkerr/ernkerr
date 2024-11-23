@@ -1,5 +1,6 @@
 import { useContext, useState, useRef } from "react";
 import { TripContext } from "@components/TripContext";
+// import { LoadScript } from "@react-google-maps/api"; // Assuming you use this package
 
 import Destination from "@components/Destination/Destination.jsx";
 import TripName from "../TripName";
@@ -18,6 +19,10 @@ export default function NewEvent({ onNext }) {
   // once we attach it to a specific element (ex:<input>) React fills .current with a reference to that element
   // by accessing .current you can call any method (like .focus()) on the referenced element (tripdestination)
 
+  const googleMapsApiKey = import.meta.env.VITE_GMAPS_API_KEY;
+  //   const center = { lat: 37.7749, lng: -122.4194 }; // Example coordinates (San Francisco)
+  //   const markerPosition = { lat: 37.7749, lng: -122.4194 };
+
   // update state when tripName is set
   const handleTripNameUpdate = (tripName) => {
     if (tripName) {
@@ -31,6 +36,12 @@ export default function NewEvent({ onNext }) {
       setIsDestinationSet(true);
     }
   };
+
+  //   const handleDestinationUpdate = ({ value, location }) => {
+  //     if (value && location) {
+  //       setIsDestinationSet(true);
+  //     }
+  //   };
 
   const handleMoreOptions = () => {
     setIsShowingOptions((prevState) => !prevState);
@@ -56,10 +67,12 @@ export default function NewEvent({ onNext }) {
 
       {(isTripNameSet || formData?.tripName) && (
         <>
+          {/* <LoadScript googleMapsApiKey={googleMapsApiKey}> */}
           <Destination
             ref={destinationRef}
             onDestinationUpdate={handleDestinationUpdate}
           />
+          {/* </LoadScript> */}
         </>
       )}
 

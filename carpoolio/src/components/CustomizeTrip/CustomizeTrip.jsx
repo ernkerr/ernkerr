@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import hexRgb from "hex-rgb";
+import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api"; // Assuming you use this package
+
 import DateSelector from "@components/DateSelector/DateSelector.jsx";
 import TripBackground from "@components/TripBackground.jsx";
 import RenderCar from "../RenderCar/RenderCar.jsx";
@@ -17,11 +19,16 @@ import TripName from "../TripName.jsx";
 export default function CustomizeTrip({
   isPreviewingTrip,
   setIsPreviewingTrip,
+  destinationInfo,
   isAdmin,
 }) {
   const { formData, setFormData } = useContext(TripContext); // Access TripContext here
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
+
+  const googleMapsApiKey = import.meta.env.VITE_GMAPS_API_KEY;
+  const center = { lat: 37.7749, lng: -122.4194 }; // Example coordinates (San Francisco)
+  const markerPosition = { lat: 37.7749, lng: -122.4194 };
 
   const handlePreviewToggle = () => {
     setIsPreviewingTrip((prev) => !prev);
@@ -59,6 +66,17 @@ export default function CustomizeTrip({
     <div className="customize-trip-container">
       <div className="details-container">
         <TripName isPreviewingTrip={isPreviewingTrip} />
+        {/* load gmaps api with the key from the env var  */}
+        {/* <LoadScript googleMapsApiKey={googleMapsApiKey}> */}
+        {/* make a map */}
+        {/* <GoogleMap
+            mapContainerStyle={{ width: "100%", height: "400px" }}
+            center={center}
+            zoom={12}
+          >
+            <Marker position={markerPosition} />
+          </GoogleMap>
+        </LoadScript> */}
 
         <div className="destination-container">
           <img
@@ -161,3 +179,6 @@ export default function CustomizeTrip({
     </div>
   );
 }
+
+// else if no coordinates
+//  const center = { lat: 37.7749, lng: -122.4194 }; // Example coordinates (San Francisco)
