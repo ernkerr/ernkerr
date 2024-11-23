@@ -8,14 +8,34 @@ import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import Description from "@components/Description/Description.jsx";
 import "./CustomizeTrip.css";
 import { TripContext } from "@components/TripContext";
+import navArrow from "../../assets/img/navarrow.png";
+import locationIcon from "../../assets/img/location-icon.png";
 
 import Destination from "../Destination/Destination.jsx";
 import TripName from "../TripName.jsx";
 
-export default function CustomizeTrip({ isPreviewingTrip, isAdmin }) {
+export default function CustomizeTrip({
+  isPreviewingTrip,
+  setIsPreviewingTrip,
+  isAdmin,
+}) {
   const { formData, setFormData } = useContext(TripContext); // Access TripContext here
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
+
+  const handlePreviewToggle = () => {
+    setIsPreviewingTrip((prev) => !prev);
+  };
+
+  // handle get directions
+  const isAddress = formData?.destination && formData.destination.includes(","); // Check if destination has a comma
+  // check if the destination resembles an address by looking for a comma
+
+  const handleGetDirections = () => {
+    const destination = encodeURIComponent(formData?.destination || "");
+    const url = `http://maps.apple.com/?q=${destination}`;
+    window.open(url, "_blank");
+  };
 
   // styling
   const handleGlowColorChange = (event) => {
@@ -39,9 +59,44 @@ export default function CustomizeTrip({ isPreviewingTrip, isAdmin }) {
     <div className="customize-trip-container">
       <div className="details-container">
         <TripName isPreviewingTrip={isPreviewingTrip} />
-        <Destination isPreviewingTrip={isPreviewingTrip} />
-        <DateSelector isPreviewingTrip={isPreviewingTrip} />
+
+        <div className="destination-container">
+          <img
+            className="location-icon"
+            src={locationIcon}
+            alt="Location Icon"
+          />
+          <Destination isPreviewingTrip={isPreviewingTrip} />
+          {isAddress && (
+            <button className="get-directions" onClick={handleGetDirections}>
+              <img
+                className="nav-arrow"
+                src={navArrow}
+                alt="Navigational Arrow"
+              />
+              Get Directions
+            </button>
+          )}
+        </div>
+
+        <div className="date-selector">
+          <DateSelector isPreviewingTrip={isPreviewingTrip} />
+        </div>
+
         <Description isPreviewingTrip={isPreviewingTrip} />
+
+        <button
+          className="preview-btn"
+          style={{
+            background:
+              formData?.tripBackground?.scrim || formData?.transparentGlowColor,
+            border: ` 1px solid ${formData?.glowColor}`,
+            boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+          }}
+          onClick={handlePreviewToggle}
+        >
+          {isPreviewingTrip ? "Edit Trip" : "Preview Trip"}
+        </button>
 
         {!isPreviewingTrip && (
           <>

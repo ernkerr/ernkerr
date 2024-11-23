@@ -54,7 +54,10 @@
 }
 
 .form-response.disabled {
+  cursor: default;
+  padding: none;
   border: none;
+  margin: 0;
 }
 
 /* transform: offsets the button by half of its own width, centering it horizontally */
@@ -67,7 +70,7 @@
 }
 
 #trip-name {
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-large);
   text-align: center;
 }
 

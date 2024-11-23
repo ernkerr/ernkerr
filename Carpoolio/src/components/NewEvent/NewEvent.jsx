@@ -77,7 +77,9 @@ export default function NewEvent({ onNext }) {
 
       {isShowingOptions && (
         <>
-          <DateSelector />
+          <div className="date-selector-new-event ">
+            <DateSelector />
+          </div>
           <Description />
           <button className="tertiary-btn" onClick={onNext}>
             Skip

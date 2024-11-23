@@ -48,9 +48,10 @@ export default function DateSelector({ isPreviewingTrip }) {
   const tripTimeExists = formData.tripTime && formData.tripTime !== "TBD";
 
   return (
-    <div className="date-selector">
+    <>
       {/* show calendar icon only if customizing and tripDate is set (not null or "TBD") */}
       {!isPreviewingTrip && !tripDateExists ? (
+        // <div className="">
         <button
           className="form-response"
           onClick={toggleCalendar}
@@ -59,7 +60,8 @@ export default function DateSelector({ isPreviewingTrip }) {
           Set a Date
         </button>
       ) : (
-        // show calendar icon and trip date if trip date exists or if not in previewing mode
+        // </div>
+        // show calendar icon and trip date if trip date exists or if  in previewing mode
         <div className="calendar-icon-container">
           <button
             style={{
@@ -125,7 +127,7 @@ export default function DateSelector({ isPreviewingTrip }) {
                   className="calendar-button"
                   onClick={() => {
                     toggleCalendar();
-                    setFormData({ ...formData, tripDate: "TBD" });
+                    setFormData({ ...formData, tripDate: null });
                   }}
                 >
                   Not sure yet
@@ -166,6 +168,6 @@ export default function DateSelector({ isPreviewingTrip }) {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }

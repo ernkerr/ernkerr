@@ -34,7 +34,12 @@ export default function NewTripForm() {
       case 1:
         return <NewCar onNext={handleNext} />;
       case 2:
-        return <CustomizeTrip isPreviewingTrip={isPreviewingTrip} />;
+        return (
+          <CustomizeTrip
+            isPreviewingTrip={isPreviewingTrip}
+            setIsPreviewingTrip={setIsPreviewingTrip}
+          />
+        );
     }
   };
 
@@ -150,7 +155,7 @@ export default function NewTripForm() {
           )}
 
           {/* on next, save to backend  */}
-          {page > 1 &&
+          {page > 2 &&
             (isPreviewingTrip ? (
               <button
                 style={{
