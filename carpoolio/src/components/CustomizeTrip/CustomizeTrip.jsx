@@ -240,9 +240,9 @@ export default function CustomizeTrip({
           {isAddress && (
             <GoogleMap
               mapContainerStyle={{
-                width: "35%",
+                width: "45%",
                 height: "100px",
-                margin: "10px",
+                margin: "15px",
                 borderRadius: "10px",
               }}
               center={center}
@@ -260,31 +260,38 @@ export default function CustomizeTrip({
               />
             </GoogleMap>
           )}
-        </div>
-        <div className="address-directions-container">
-          <div className="address-container">
+
+          <div className="address-directions-container">
+            <div className="address-container">
+              {isAddress ? (
+                <>
+                  <img
+                    className="location-icon"
+                    src={locationIcon}
+                    alt="Location Icon"
+                  />
+                  <p className="destination-customize-trip">
+                    {formData?.destination}
+                  </p>
+                </>
+              ) : (
+                <Destination
+                  isPreviewingTrip={isPreviewingTrip}
+                  isCustomizeTripPage={true}
+                />
+              )}
+            </div>
             {isAddress && (
-              <img
-                className="location-icon"
-                src={locationIcon}
-                alt="Location Icon"
-              />
+              <button className="get-directions" onClick={handleGetDirections}>
+                <img
+                  className="nav-arrow"
+                  src={navArrow}
+                  alt="Navigational Arrow"
+                />
+                Get Directions
+              </button>
             )}
-            <Destination
-              isPreviewingTrip={isPreviewingTrip}
-              isCustomizeTripPage={true}
-            />
           </div>
-          {isAddress && (
-            <button className="get-directions" onClick={handleGetDirections}>
-              <img
-                className="nav-arrow"
-                src={navArrow}
-                alt="Navigational Arrow"
-              />
-              Get Directions
-            </button>
-          )}
         </div>
 
         <div className="date-selector">

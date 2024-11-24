@@ -5,7 +5,10 @@ import { TripContext } from "@components/TripContext";
 import "./Destination.css";
 
 const Destination = forwardRef(
-  ({ isPreviewingTrip, onDestinationUpdate, onKeyDown }, ref) => {
+  (
+    { isPreviewingTrip, onDestinationUpdate, onKeyDown, isCustomizeTripPage },
+    ref
+  ) => {
     const { formData, setFormData } = useContext(TripContext);
     const [destination, setDestination] = useState(formData?.destination || "");
     const [location, setLocation] = useState(null);

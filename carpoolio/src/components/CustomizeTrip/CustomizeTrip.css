@@ -13,9 +13,10 @@
   flex-direction: row;
   background-color: var(--glass-background);
   border-radius: var(--border-radius-btn);
-  overflow: "hidden";
+  /* overflow: "hidden"; */
   margin-top: var(--margin-small);
   /* width: 90dvw; */
+  max-width: 90dvw;
 }
 
 .address-directions-container {
@@ -23,18 +24,31 @@
   flex-direction: column;
 }
 
+.address-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.location-icon {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  position: relative;
+  top: 5px;
+}
+
+.destination-customize-trip {
+  white-space: pre-wrap;
+  /* white-space: normal; */
+  word-wrap: break-word;
+  line-height: 1.5;
+}
+
 .destination-address-container {
   display: flex;
   flex-direction: row;
   width: 90dvw;
-}
-
-.location-icon {
-  height: 16px;
-  width: 16px;
-  vertical-align: middle;
-  position: relative;
-  bottom: 1px;
 }
 
 .nav-arrow {
