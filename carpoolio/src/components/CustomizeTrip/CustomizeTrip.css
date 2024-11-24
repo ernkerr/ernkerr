@@ -11,6 +11,21 @@
 .destination-container {
   display: flex;
   flex-direction: row;
+  background-color: var(--glass-background);
+  border-radius: var(--border-radius-btn);
+  overflow: "hidden";
+  margin-top: var(--margin-small);
+  /* width: 90dvw; */
+}
+
+.address-directions-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.destination-address-container {
+  display: flex;
+  flex-direction: row;
   width: 90dvw;
 }
 

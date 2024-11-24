@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-import { useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import hexRgb from "hex-rgb";
-import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api"; // Assuming you use this package
-
+import { GoogleMap, Marker } from "@react-google-maps/api"; // Assuming you use this package
 import DateSelector from "@components/DateSelector/DateSelector.jsx";
 import TripBackground from "@components/TripBackground.jsx";
 import RenderCar from "../RenderCar/RenderCar.jsx";
@@ -12,7 +10,7 @@ import "./CustomizeTrip.css";
 import { TripContext } from "@components/TripContext";
 import navArrow from "../../assets/img/navarrow.png";
 import locationIcon from "../../assets/img/location-icon.png";
-
+import locationPin from "../../assets/img/location-pin.png";
 import Destination from "../Destination/Destination.jsx";
 import TripName from "../TripName.jsx";
 
@@ -26,9 +24,26 @@ export default function CustomizeTrip({
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
 
-  const googleMapsApiKey = import.meta.env.VITE_GMAPS_API_KEY;
-  const center = { lat: 37.7749, lng: -122.4194 }; // Example coordinates (San Francisco)
-  const markerPosition = { lat: 37.7749, lng: -122.4194 };
+  const center = destinationInfo?.location || { lat: 37.7749, lng: -122.4194 }; // use provided location, fallback to San Francisco
+  const mapRef = useRef(null); // Reference to the map instance
+  // const markerRef = useRef(null); // Reference to the marker instance
+
+  // useEffect(() => {
+  //   if (mapRef.current && center) {
+  //     // remove the old marker if it exists
+  //     if (mapRef.current) {
+  //       markerRef.current.setMap(null);
+  //       markerRef.current = null;
+  //     }
+
+  //     // create a new advanced marker element
+  //     markerRef.current = new window.google.maps.marker.AdvancedMarkerElement({
+  //       position: center,
+  //       map: mapRef.current,
+  //       title: "destination", // title on hover
+  //     });
+  //   }
+  // }, [center]); // run effect when the location changes
 
   const handlePreviewToggle = () => {
     setIsPreviewingTrip((prev) => !prev);
@@ -62,29 +77,204 @@ export default function CustomizeTrip({
     }));
   };
 
+  const customMapStyle = [
+    {
+      featureType: "administrative",
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#6195a0",
+        },
+      ],
+    },
+    {
+      featureType: "landscape",
+      elementType: "all",
+      stylers: [
+        {
+          color: "#f2f2f2",
+        },
+      ],
+    },
+    {
+      featureType: "landscape",
+      elementType: "geometry.fill",
+      stylers: [
+        {
+          color: "#ffffff",
+        },
+      ],
+    },
+    {
+      featureType: "poi",
+      elementType: "all",
+      stylers: [
+        {
+          visibility: "off",
+        },
+      ],
+    },
+    {
+      featureType: "poi.park",
+      elementType: "geometry.fill",
+      stylers: [
+        {
+          color: "#e6f3d6",
+        },
+        {
+          visibility: "on",
+        },
+      ],
+    },
+    {
+      featureType: "road",
+      elementType: "all",
+      stylers: [
+        {
+          saturation: -100,
+        },
+        {
+          lightness: 45,
+        },
+        {
+          visibility: "simplified",
+        },
+      ],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "all",
+      stylers: [
+        {
+          visibility: "simplified",
+        },
+      ],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "geometry.fill",
+      stylers: [
+        {
+          color: "#f4d2c5",
+        },
+        {
+          visibility: "simplified",
+        },
+      ],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "labels.text",
+      stylers: [
+        {
+          color: "#4e4e4e",
+        },
+      ],
+    },
+    {
+      featureType: "road.arterial",
+      elementType: "geometry.fill",
+      stylers: [
+        {
+          color: "#f4f4f4",
+        },
+      ],
+    },
+    {
+      featureType: "road.arterial",
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#787878",
+        },
+      ],
+    },
+    {
+      featureType: "road.arterial",
+      elementType: "labels.icon",
+      stylers: [
+        {
+          visibility: "off",
+        },
+      ],
+    },
+    {
+      featureType: "transit",
+      elementType: "all",
+      stylers: [
+        {
+          visibility: "off",
+        },
+      ],
+    },
+    {
+      featureType: "water",
+      elementType: "all",
+      stylers: [
+        {
+          color: "#eaf6f8",
+        },
+        {
+          visibility: "on",
+        },
+      ],
+    },
+    {
+      featureType: "water",
+      elementType: "geometry.fill",
+      stylers: [
+        {
+          color: "#eaf6f8",
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="customize-trip-container">
       <div className="details-container">
         <TripName isPreviewingTrip={isPreviewingTrip} />
-        {/* load gmaps api with the key from the env var  */}
-        {/* <LoadScript googleMapsApiKey={googleMapsApiKey}> */}
         {/* make a map */}
-        {/* <GoogleMap
-            mapContainerStyle={{ width: "100%", height: "400px" }}
-            center={center}
-            zoom={12}
-          >
-            <Marker position={markerPosition} />
-          </GoogleMap>
-        </LoadScript> */}
 
         <div className="destination-container">
-          <img
-            className="location-icon"
-            src={locationIcon}
-            alt="Location Icon"
-          />
-          <Destination isPreviewingTrip={isPreviewingTrip} />
+          {isAddress && (
+            <GoogleMap
+              mapContainerStyle={{
+                width: "35%",
+                height: "100px",
+                margin: "10px",
+                borderRadius: "10px",
+              }}
+              center={center}
+              zoom={12}
+              onLoad={(map) => (mapRef.current = map)} // save map instance when loaded
+              options={{ styles: customMapStyle }}
+            >
+              <Marker
+                position={center}
+                title="destination"
+                icon={{
+                  url: locationPin, // Use your custom location icon
+                  scaledSize: new google.maps.Size(40, 40), // Adjust the size while maintaining the aspect ratio
+                }}
+              />
+            </GoogleMap>
+          )}
+        </div>
+        <div className="address-directions-container">
+          <div className="address-container">
+            {isAddress && (
+              <img
+                className="location-icon"
+                src={locationIcon}
+                alt="Location Icon"
+              />
+            )}
+            <Destination
+              isPreviewingTrip={isPreviewingTrip}
+              isCustomizeTripPage={true}
+            />
+          </div>
           {isAddress && (
             <button className="get-directions" onClick={handleGetDirections}>
               <img
