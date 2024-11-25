@@ -47,6 +47,8 @@ export default function CustomizeTrip({
 
   const handlePreviewToggle = () => {
     setIsPreviewingTrip((prev) => !prev);
+    console.log("center: ", center);
+    console.log("locationInfo: ", destinationInfo);
   };
 
   // handle get directions
@@ -236,7 +238,7 @@ export default function CustomizeTrip({
         <TripName isPreviewingTrip={isPreviewingTrip} />
         {/* make a map */}
 
-        <div className="destination-container">
+        <div className={isAddress ? "destination-container" : ""}>
           {isAddress && (
             <GoogleMap
               mapContainerStyle={{
@@ -262,7 +264,7 @@ export default function CustomizeTrip({
           )}
 
           <div className="address-directions-container">
-            <div className="address-container">
+            <div className={isAddress ? "address-container" : ""}>
               {isAddress ? (
                 <>
                   <img
@@ -270,6 +272,11 @@ export default function CustomizeTrip({
                     src={locationIcon}
                     alt="Location Icon"
                   />
+                  {/* <Destination
+                    isPreviewingTrip={isPreviewingTrip}
+                    isCustomizeTripPage={true}
+                  /> */}
+
                   <p className="destination-customize-trip">
                     {formData?.destination}
                   </p>
@@ -282,14 +289,30 @@ export default function CustomizeTrip({
               )}
             </div>
             {isAddress && (
-              <button className="get-directions" onClick={handleGetDirections}>
-                <img
-                  className="nav-arrow"
-                  src={navArrow}
-                  alt="Navigational Arrow"
-                />
-                Get Directions
-              </button>
+              <>
+                <button
+                  className="get-directions"
+                  onClick={handleGetDirections}
+                >
+                  <img
+                    className="nav-arrow"
+                    src={navArrow}
+                    alt="Navigational Arrow"
+                  />
+                  Get Directions
+                </button>
+                <button
+                  className="get-directions"
+                  onClick={handleGetDirections}
+                >
+                  {/* <img
+                    className="nav-arrow"
+                    src={navArrow}
+                    alt="Navigational Arrow"
+                  /> */}
+                  Edit destination
+                </button>
+              </>
             )}
           </div>
         </div>

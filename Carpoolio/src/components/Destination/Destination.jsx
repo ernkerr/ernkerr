@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useContext, forwardRef } from "react";
 import Autocomplete from "react-google-autocomplete";
 import { TripContext } from "@components/TripContext";
-
 import "./Destination.css";
 
 const Destination = forwardRef(
@@ -96,7 +95,6 @@ const Destination = forwardRef(
     return (
       <>
         <Autocomplete
-          // apiKey={"AIzaSyAjYJexrKl - byyNcP9kEwmsi3OzPHcEtng"}
           apiKey={import.meta.env.VITE_GMAPS_API_KEY} //needs to be passed directly to the component as a prop
           onPlaceSelected={handleSelectedLocation}
           options={{
@@ -108,9 +106,21 @@ const Destination = forwardRef(
           onChange={handleInputChange}
           onKeyDown={onKeyDown}
           placeholder={destination ? destination : "Choose your destination"}
-          // className="destination"
           className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
-          id="destination"
+          // className={`${
+          //   isPreviewingTrip
+          //     ? "destination-customize-trip"
+          //     : !destination
+          //     ? "form-response"
+          //     : isCustomizeTripPage
+          //     ? "destination-customize-trip"
+          //     : "form-response"
+          // }`}
+          // if previewing the trip, apply the disabled class
+          // if the destination is not set, apply the form-response class
+          // if the destination is set & on customize trip page: destination-customize-trip
+          // if the destination is set & not on customize trip page: form-response
+
           style={{
             background: isPreviewingTrip
               ? formData?.tripBackground?.scrim || "transparent"

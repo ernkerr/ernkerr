@@ -35,3 +35,37 @@
   background-color: rgba(52, 114, 63, 0.5);
   color: rgba(52, 114, 63, 0.15);
 }
+
+.destination-customize-trip {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.5;
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  /* padding: var(--padding-form-response); */
+  border: none;
+  background: none;
+  margin-top: var(--margin-form-response);
+  /* text-align: center; */
+  cursor: default;
+  padding: none;
+  border: none;
+}
+
+/* .form-response {
+  color: var(--white);
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: var(--padding-form-response); */
+/* border: var(--glass-border); */
+/* border-radius: var(--border-radius-btn); */
+/* background: var(--glass-background); */
+/* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); */
+/* backdrop-filter: blur(7.6px); for desktop */
+/* -webkit-backdrop-filter: blur(7.6px); */
+/* width: 90dvw; */
+/* margin-top: var(--margin-form-response);
+  text-align: center;
+} */

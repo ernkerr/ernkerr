@@ -11,7 +11,9 @@
 .destination-container {
   display: flex;
   flex-direction: row;
-  background-color: var(--glass-background);
+  white-space: normal;
+  overflow: visible;
+
   border-radius: var(--border-radius-btn);
   /* overflow: "hidden"; */
   margin-top: var(--margin-small);
@@ -22,6 +24,8 @@
 .address-directions-container {
   display: flex;
   flex-direction: column;
+  white-space: normal;
+  width: auto;
 }
 
 .address-container {
@@ -40,15 +44,18 @@
 
 .destination-customize-trip {
   white-space: pre-wrap;
-  /* white-space: normal; */
   word-wrap: break-word;
   line-height: 1.5;
+  display: block;
+  max-width: 100%;
 }
 
 .destination-address-container {
   display: flex;
   flex-direction: row;
   width: 90dvw;
+  background: none;
+  border: none;
 }
 
 .nav-arrow {
