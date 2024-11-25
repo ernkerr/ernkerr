@@ -4,14 +4,10 @@ import { TripContext } from "@components/TripContext";
 import "./Destination.css";
 
 const Destination = forwardRef(
-  (
-    { isPreviewingTrip, onDestinationUpdate, onKeyDown, isCustomizeTripPage },
-    ref
-  ) => {
+  ({ isPreviewingTrip, onDestinationUpdate, onKeyDown }, ref) => {
     const { formData, setFormData } = useContext(TripContext);
     const [destination, setDestination] = useState(formData?.destination || "");
     const [location, setLocation] = useState(null);
-    // const [isManualEntry, setIsManualEntry] = useState(false);
 
     const autocompleteRef = useRef(null); // create an internal ref for the Autocomplete component
 

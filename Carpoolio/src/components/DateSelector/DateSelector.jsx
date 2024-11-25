@@ -59,9 +59,8 @@ export default function DateSelector({ isPreviewingTrip }) {
         >
           Set a Date
         </button>
-      ) : (
-        // </div>
-        // show calendar icon and trip date if trip date exists or if  in previewing mode
+      ) : null}
+      {tripDateExists && (
         <div className="calendar-icon-container">
           <button
             style={{
@@ -137,7 +136,6 @@ export default function DateSelector({ isPreviewingTrip }) {
           </div>
         </>
       )}
-
       {!isPreviewingTrip && tripDateExists && !tripTimeExists ? (
         <button
           className="form-response"
@@ -148,7 +146,6 @@ export default function DateSelector({ isPreviewingTrip }) {
           Set a Time
         </button>
       ) : null}
-
       {isTimeSelectorVisible && !isPreviewingTrip && (
         <>
           <div className="modal">

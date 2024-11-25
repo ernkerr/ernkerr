@@ -23,32 +23,19 @@ export default function CustomizeTrip({
   const { formData, setFormData } = useContext(TripContext); // Access TripContext here
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
+  const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
 
-  const center = destinationInfo?.location || { lat: 37.7749, lng: -122.4194 }; // use provided location, fallback to San Francisco
+  const center = destinationInfo?.destination || {
+    lat: 37.7749,
+    lng: -122.4194,
+  }; // use provided location, fallback to San Francisco
   const mapRef = useRef(null); // Reference to the map instance
-  // const markerRef = useRef(null); // Reference to the marker instance
-
-  // useEffect(() => {
-  //   if (mapRef.current && center) {
-  //     // remove the old marker if it exists
-  //     if (mapRef.current) {
-  //       markerRef.current.setMap(null);
-  //       markerRef.current = null;
-  //     }
-
-  //     // create a new advanced marker element
-  //     markerRef.current = new window.google.maps.marker.AdvancedMarkerElement({
-  //       position: center,
-  //       map: mapRef.current,
-  //       title: "destination", // title on hover
-  //     });
-  //   }
-  // }, [center]); // run effect when the location changes
 
   const handlePreviewToggle = () => {
     setIsPreviewingTrip((prev) => !prev);
     console.log("center: ", center);
     console.log("locationInfo: ", destinationInfo);
+    console.log("location", location);
   };
 
   // handle get directions
@@ -59,6 +46,10 @@ export default function CustomizeTrip({
     const destination = encodeURIComponent(formData?.destination || "");
     const url = `http://maps.apple.com/?q=${destination}`;
     window.open(url, "_blank");
+  };
+
+  const handleShowStyleOptions = () => {
+    setIsShowingStyleOptions((prevState) => !prevState);
   };
 
   // styling
@@ -272,11 +263,6 @@ export default function CustomizeTrip({
                     src={locationIcon}
                     alt="Location Icon"
                   />
-                  {/* <Destination
-                    isPreviewingTrip={isPreviewingTrip}
-                    isCustomizeTripPage={true}
-                  /> */}
-
                   <p className="destination-customize-trip">
                     {formData?.destination}
                   </p>
@@ -284,7 +270,7 @@ export default function CustomizeTrip({
               ) : (
                 <Destination
                   isPreviewingTrip={isPreviewingTrip}
-                  isCustomizeTripPage={true}
+                  // isCustomizeTripPage={true}
                 />
               )}
             </div>
@@ -305,11 +291,6 @@ export default function CustomizeTrip({
                   className="get-directions"
                   onClick={handleGetDirections}
                 >
-                  {/* <img
-                    className="nav-arrow"
-                    src={navArrow}
-                    alt="Navigational Arrow"
-                  /> */}
                   Edit destination
                 </button>
               </>
@@ -323,41 +304,47 @@ export default function CustomizeTrip({
 
         <Description isPreviewingTrip={isPreviewingTrip} />
 
-        <button
-          className="preview-btn"
-          style={{
-            background:
-              formData?.tripBackground?.scrim || formData?.transparentGlowColor,
-            border: ` 1px solid ${formData?.glowColor}`,
-            boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-          }}
-          onClick={handlePreviewToggle}
-        >
-          {isPreviewingTrip ? "Edit Trip" : "Preview Trip"}
-        </button>
-
-        {!isPreviewingTrip && (
-          <>
-            <TripBackground />
-            {/* set the glow color  */}
-            <button
-              className="customize-trip-btns"
-              style={{
-                background: formData?.tripBackground?.scrim || "transparent",
-              }}
-            >
-              <label htmlFor="glowColor">Change Glow Color </label>
-              <input
-                className="glowColor"
-                type="color"
-                id="glowColor"
-                name="glowColor"
-                value={formData?.glowColor || " #34bd34"}
-                onChange={handleGlowColorChange} // update the glow color on change
-              />
-            </button>
-          </>
-        )}
+        <>
+          {!isPreviewingTrip && (
+            <>
+              <button
+                className="preview-btn"
+                style={{
+                  background:
+                    formData?.tripBackground?.scrim ||
+                    formData?.transparentGlowColor,
+                  border: ` 1px solid ${formData?.glowColor}`,
+                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                }}
+                onClick={handleShowStyleOptions}
+              >
+                {isShowingStyleOptions ? "Close" : "Style Options"}
+              </button>
+              {isShowingStyleOptions && (
+                <>
+                  <TripBackground />
+                  <button
+                    className="customize-trip-btns"
+                    style={{
+                      background:
+                        formData?.tripBackground?.scrim || "transparent",
+                    }}
+                  >
+                    <label htmlFor="glowColor">Change Glow Color </label>
+                    <input
+                      className="glowColor"
+                      type="color"
+                      id="glowColor"
+                      name="glowColor"
+                      value={formData?.glowColor || " #34bd34"}
+                      onChange={handleGlowColorChange} // update the glow color on change
+                    />
+                  </button>
+                </>
+              )}
+            </>
+          )}
+        </>
       </div>
       <div className="car-container">
         {formData?.cars?.map((car, index) => {
@@ -383,6 +370,18 @@ export default function CustomizeTrip({
           }
         })}
       </div>
+      <button
+        className="preview-btn"
+        style={{
+          background:
+            formData?.tripBackground?.scrim || formData?.transparentGlowColor,
+          border: ` 1px solid ${formData?.glowColor}`,
+          boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+        }}
+        onClick={handlePreviewToggle}
+      >
+        {isPreviewingTrip ? "Edit Trip" : "Preview Trip"}
+      </button>
 
       {/* <button
         onClick={handleAddNewCar}

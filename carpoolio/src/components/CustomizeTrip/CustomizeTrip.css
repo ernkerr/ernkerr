@@ -13,6 +13,7 @@
   flex-direction: row;
   white-space: normal;
   overflow: visible;
+  background: var(--glass-background);
 
   border-radius: var(--border-radius-btn);
   /* overflow: "hidden"; */
@@ -75,6 +76,12 @@
   border: none;
   border-radius: var(--border-radius-btn);
 }
+
+/* preview-and-style-btn-container {
+  display: flex;
+  flex-direction: row;
+  background-color: green;
+} */
 
 .preview-btn {
   color: var(--white);
