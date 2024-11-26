@@ -28,10 +28,12 @@ export default function DestinationMap({ address }) {
         return location; // { lat: <latitude>, lng: <longitude> }
       } else {
         console.error("Error with Geocoding API:", response.data.status);
+        setIsAddress(false); // Invalid address
         return null;
       }
     } catch (error) {
       console.error("Failed to fetch latitude and longitude:", error);
+      setIsAddress(false);
       return null;
     }
   };

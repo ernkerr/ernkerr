@@ -8,7 +8,6 @@ const Destination = forwardRef(
     const { formData, setFormData } = useContext(TripContext);
     const [destination, setDestination] = useState(formData?.destination || "");
     const [location, setLocation] = useState(null);
-
     const autocompleteRef = useRef(null); // create an internal ref for the Autocomplete component
 
     // Combine internal ref (autocompleteRef) with forwarded ref
@@ -48,6 +47,9 @@ const Destination = forwardRef(
             lat: selectedLocation.lat(),
             lng: selectedLocation.lng(),
           });
+        } else {
+          setLocation(null); // Reset location if no geometry
+          console.log("Location: ", location);
         }
       }
     };
