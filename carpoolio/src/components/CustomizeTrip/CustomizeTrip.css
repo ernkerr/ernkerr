@@ -49,6 +49,7 @@
   line-height: 1.5;
   display: block;
   max-width: 100%;
+  text-align: left;
 }
 
 .destination-address-container {
@@ -346,7 +347,7 @@
   }
 }
 
-.new-car-modal {
+.customize-trip-modal {
   width: 100dvw;
   height: 100dvh;
   top: 0;
@@ -360,6 +361,25 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.customize-trip-modal-content {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#edit-dest-btn {
+  font-size: var(--font-size-medium);
+  text-align: center;
+}
+
+#done-btn {
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .customize-trip-btn-container {

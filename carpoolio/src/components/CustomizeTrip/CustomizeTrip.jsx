@@ -24,19 +24,19 @@ export default function CustomizeTrip({
   isAdmin,
 }) {
   const { formData, setFormData } = useContext(TripContext); // access TripContext here
-
+  const [destinationModal, setDestinationModal] = useState(false);
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
 
-  const mapRef = useRef(null); // Reference to the map instance
-
   const handlePreviewToggle = () => {
     setIsPreviewingTrip((prev) => !prev);
-    console.log("center: ", center);
-    console.log("locationInfo: ", destinationInfo);
-    console.log("location", location);
+  };
+
+  const handleDestinationModal = () => {
+    setDestinationModal((prev) => !prev);
+    console.log("destination modal state changed");
   };
 
   // handle get directions
@@ -94,9 +94,42 @@ export default function CustomizeTrip({
                     src={locationIcon}
                     alt="Location Icon"
                   />
-                  <p className="destination-customize-trip">
+                  <button
+                    onClick={handleDestinationModal}
+                    className="destination-customize-trip"
+                  >
                     {formData?.destination}
-                  </p>
+                  </button>
+                  {destinationModal && (
+                    <div
+                      className="customize-trip-modal"
+                      style={{
+                        backgroundImage: `url(${
+                          formData?.tripBackground?.path || bluegoo
+                        })`,
+                        backgroundPosition: "center",
+                      }}
+                    >
+                      <div className="customize-trip-modal-content">
+                        <p id="edit-dest-btn">edit your destination: </p>
+                        <Destination />
+                      </div>
+                      <button
+                        className="primary-btn"
+                        id="done-btn"
+                        style={{
+                          background:
+                            formData?.tripBackground?.scrim ||
+                            formData?.transparentGlowColor,
+                          border: ` 1px solid ${formData?.glowColor}`,
+                          boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                        }}
+                        onClick={handleDestinationModal}
+                      >
+                        done
+                      </button>
+                    </div>
+                  )}
                 </>
               ) : (
                 <Destination
@@ -117,12 +150,6 @@ export default function CustomizeTrip({
                     alt="Navigational Arrow"
                   />
                   Get Directions
-                </button>
-                <button
-                  className="get-directions"
-                  onClick={handleGetDirections}
-                >
-                  Edit destination
                 </button>
               </>
             )}
@@ -211,7 +238,7 @@ export default function CustomizeTrip({
       {isNewCarVisible && (
         <>
           <div
-            className="new-car-modal"
+            className="customize-trip-modal"
             style={{
               backgroundImage: `url(${
                 formData?.tripBackground?.path || bluegoo
