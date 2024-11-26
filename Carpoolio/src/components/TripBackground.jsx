@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { TripContext } from "@/components/TripContext";
+import "@/components/CustomizeTrip/CustomizeTrip.css";
 
 import none from "../assets/gifs/none.png";
 import clouds from "../assets/gifs/cloud.gif";
@@ -93,7 +94,7 @@ export default function TripBackground({}) {
     <>
       <button
         style={{
-          background: formData?.tripBackground?.scrim || "transparent",
+          background: formData?.tripBackground?.scrim || "",
         }}
         className="style-btns"
         onClick={toggleBackgrounds}

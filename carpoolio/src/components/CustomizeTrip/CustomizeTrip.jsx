@@ -21,7 +21,7 @@ export default function CustomizeTrip({
   isPreviewingTrip,
   // setIsPreviewingTrip,
   // destinationInfo,
-  isAdmin,
+  // isAdmin,
 }) {
   const { formData, setFormData } = useContext(TripContext); // access TripContext here
   const [destinationModal, setDestinationModal] = useState(false);
@@ -29,7 +29,6 @@ export default function CustomizeTrip({
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
-  // const [autoAddCar, setAutoAddCar] = useState(false);
 
   const handleDestinationModal = () => {
     setDestinationModal((prev) => !prev);
@@ -37,8 +36,8 @@ export default function CustomizeTrip({
   };
 
   // handle get directions
-  const isAddress = formData?.destination && formData.destination.includes(","); // Check if destination has a comma
   // check if the destination resembles an address by looking for a comma
+  const isAddress = formData?.destination && formData.destination.includes(","); // Check if destination has a comma
 
   const handleGetDirections = () => {
     const destination = encodeURIComponent(formData?.destination || "");
@@ -46,11 +45,12 @@ export default function CustomizeTrip({
     window.open(url, "_blank");
   };
 
+  // styling
   const handleShowStyleOptions = () => {
     setIsShowingStyleOptions((prevState) => !prevState);
   };
 
-  // styling
+  // change glow color
   const handleGlowColorChange = (event) => {
     const newGlowColor = event.target.value;
     const { red: r, green: g, blue: b } = hexRgb(newGlowColor);
@@ -68,10 +68,12 @@ export default function CustomizeTrip({
     }));
   };
 
+  // toggle visibility of NewCar component
   const toggleNewCar = () => {
-    setIsNewCarVisible((prev) => !prev); // Toggle visibility
+    setIsNewCarVisible((prev) => !prev); // toggle visibility
   };
 
+  // stle for dynamic glow
   const glowStyle = {
     background:
       formData?.tripBackground?.scrim || formData?.transparentGlowColor,
@@ -79,14 +81,19 @@ export default function CustomizeTrip({
     boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
   };
 
+  // style for modal
+  const modalStyle = {
+    backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
+    backgroundPosition: "center",
+  };
+
   return (
     <div className="customize-trip-container">
-      <div className="details-container">
+      <>
         <TripName isPreviewingTrip={isPreviewingTrip} />
-        {/* make a map */}
 
         <div className={isAddress ? "destination-container" : ""}>
-          {/* // map  */}
+          {/* make a map */}
           <DestinationMap address={formData?.destination} />
 
           <div className="address-directions-container">
@@ -100,22 +107,14 @@ export default function CustomizeTrip({
                   />
                   <button
                     onClick={handleDestinationModal}
-                    className="destination-customize-trip"
+                    className="destination-modal-btn"
                   >
                     {formData?.destination}
                   </button>
                   {destinationModal && (
-                    <div
-                      className="customize-trip-modal"
-                      style={{
-                        backgroundImage: `url(${
-                          formData?.tripBackground?.path || bluegoo
-                        })`,
-                        backgroundPosition: "center",
-                      }}
-                    >
+                    <div className="customize-trip-modal" style={modalStyle}>
                       <div className="customize-trip-modal-content">
-                        <p id="edit-dest-btn">edit your destination: </p>
+                        <p id="edit-destination">edit your destination: </p>
                         <Destination />
                       </div>
                       <button
@@ -157,7 +156,7 @@ export default function CustomizeTrip({
 
         <Description isPreviewingTrip={isPreviewingTrip} />
 
-        <>
+        <div>
           {isPreviewingTrip && (
             <button
               onClick={toggleNewCar}
@@ -181,12 +180,14 @@ export default function CustomizeTrip({
                 {isShowingStyleOptions && (
                   <>
                     <TripBackground />
+
                     <button
                       className="style-btns"
-                      style={{
-                        background:
-                          formData?.tripBackground?.scrim || "transparent",
-                      }}
+                      id="glow-color-picker"
+                      // style={{
+                      //   background:
+                      //     formData?.tripBackground?.scrim || "transparent",
+                      // }}
                     >
                       <label htmlFor="glowColor">Change Glow Color </label>
                       <input
@@ -203,8 +204,8 @@ export default function CustomizeTrip({
               </>
             )}
           </>
-        </>
-      </div>
+        </div>
+      </>
 
       {/* Render NewCar component conditionally */}
       {isNewCarVisible && (
@@ -218,9 +219,10 @@ export default function CustomizeTrip({
               backgroundPosition: "center",
             }}
           >
-            <NewCar autoAddCar={true} setAutoAddCar={setAutoAddCar} />
+            <NewCar />
             <button
-              className="customize-trip-btn"
+              className="next-modal-btn"
+              style={glowStyle}
               onClick={() => {
                 setIsNewCarVisible(false); // close new car modal when done
               }}
@@ -230,6 +232,7 @@ export default function CustomizeTrip({
           </div>
         </>
       )}
+
       <div className="car-container">
         {formData?.cars?.map((car, index) => {
           if (index === activeCarIndex && isCustomizingCar) {
