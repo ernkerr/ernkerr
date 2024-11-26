@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext, useRef } from "react";
 import hexRgb from "hex-rgb";
-import { GoogleMap, Marker } from "@react-google-maps/api"; // Assuming you use this package
 import DateSelector from "@components/DateSelector/DateSelector.jsx";
 import TripBackground from "@components/TripBackground.jsx";
 import RenderCar from "../RenderCar/RenderCar.jsx";
@@ -10,11 +9,13 @@ import "./CustomizeTrip.css";
 import { TripContext } from "@components/TripContext";
 import navArrow from "../../assets/img/navarrow.png";
 import locationIcon from "../../assets/img/location-icon.png";
-import locationPin from "../../assets/img/location-pin.png";
+
 import Destination from "../Destination/Destination.jsx";
 import TripName from "../TripName.jsx";
 import NewCar from "../NewCar/NewCar.jsx";
 import bluegoo from "../../assets/gifs/bluegoo.gif";
+
+import DestinationMap from "../Destination/DestinationMap.jsx";
 
 export default function CustomizeTrip({
   isPreviewingTrip,
@@ -22,16 +23,13 @@ export default function CustomizeTrip({
   destinationInfo,
   isAdmin,
 }) {
-  const { formData, setFormData } = useContext(TripContext); // Access TripContext here
+  const { formData, setFormData } = useContext(TripContext); // access TripContext here
+
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
 
-  const center = destinationInfo?.destination || {
-    lat: 37.7749,
-    lng: -122.4194,
-  }; // use provided location, fallback to San Francisco
   const mapRef = useRef(null); // Reference to the map instance
 
   const handlePreviewToggle = () => {
@@ -73,159 +71,6 @@ export default function CustomizeTrip({
     }));
   };
 
-  const customMapStyle = [
-    {
-      featureType: "administrative",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#6195a0",
-        },
-      ],
-    },
-    {
-      featureType: "landscape",
-      elementType: "all",
-      stylers: [
-        {
-          color: "#f2f2f2",
-        },
-      ],
-    },
-    {
-      featureType: "landscape",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#ffffff",
-        },
-      ],
-    },
-    {
-      featureType: "poi",
-      elementType: "all",
-      stylers: [
-        {
-          visibility: "off",
-        },
-      ],
-    },
-    {
-      featureType: "poi.park",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#e6f3d6",
-        },
-        {
-          visibility: "on",
-        },
-      ],
-    },
-    {
-      featureType: "road",
-      elementType: "all",
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          lightness: 45,
-        },
-        {
-          visibility: "simplified",
-        },
-      ],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "all",
-      stylers: [
-        {
-          visibility: "simplified",
-        },
-      ],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#f4d2c5",
-        },
-        {
-          visibility: "simplified",
-        },
-      ],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "labels.text",
-      stylers: [
-        {
-          color: "#4e4e4e",
-        },
-      ],
-    },
-    {
-      featureType: "road.arterial",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#f4f4f4",
-        },
-      ],
-    },
-    {
-      featureType: "road.arterial",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#787878",
-        },
-      ],
-    },
-    {
-      featureType: "road.arterial",
-      elementType: "labels.icon",
-      stylers: [
-        {
-          visibility: "off",
-        },
-      ],
-    },
-    {
-      featureType: "transit",
-      elementType: "all",
-      stylers: [
-        {
-          visibility: "off",
-        },
-      ],
-    },
-    {
-      featureType: "water",
-      elementType: "all",
-      stylers: [
-        {
-          color: "#eaf6f8",
-        },
-        {
-          visibility: "on",
-        },
-      ],
-    },
-    {
-      featureType: "water",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#eaf6f8",
-        },
-      ],
-    },
-  ];
-
   const toggleNewCar = () => {
     setIsNewCarVisible((prev) => !prev); // Toggle visibility
   };
@@ -237,29 +82,8 @@ export default function CustomizeTrip({
         {/* make a map */}
 
         <div className={isAddress ? "destination-container" : ""}>
-          {isAddress && (
-            <GoogleMap
-              mapContainerStyle={{
-                width: "45%",
-                height: "100px",
-                margin: "15px",
-                borderRadius: "10px",
-              }}
-              center={center}
-              zoom={12}
-              onLoad={(map) => (mapRef.current = map)} // save map instance when loaded
-              options={{ styles: customMapStyle }}
-            >
-              <Marker
-                position={center}
-                title="destination"
-                icon={{
-                  url: locationPin, // Use your custom location icon
-                  scaledSize: new google.maps.Size(40, 40), // Adjust the size while maintaining the aspect ratio
-                }}
-              />
-            </GoogleMap>
-          )}
+          {/* // map  */}
+          <DestinationMap address={formData?.destination} />
 
           <div className="address-directions-container">
             <div className={isAddress ? "address-container" : ""}>

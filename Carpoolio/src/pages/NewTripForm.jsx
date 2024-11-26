@@ -1,16 +1,13 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
-import bluegoo from "../assets/gifs/bluegoo.gif";
-import "../components/NewTripForm/NewTripForm.css";
-
-import GetTripDate from "../components/NewTripForm/GetTripDate";
-import axios from "axios";
 import { TripContext } from "@/components/TripContext";
-
+import axios from "axios";
 import ProgressBar from "../components/ProgressBar";
 import NewEvent from "@components/NewEvent/NewEvent.jsx";
 import NewCar from "@components/NewCar/NewCar.jsx";
+import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
+import bluegoo from "../assets/gifs/bluegoo.gif";
+import "../components/NewTripForm/NewTripForm.css";
 
 export default function NewTripForm() {
   const navigate = useNavigate();
@@ -31,7 +28,12 @@ export default function NewTripForm() {
     switch (page) {
       case 0:
         // return <GetTripName />;
-        return <NewEvent onNext={handleNext} />;
+        return (
+          <NewEvent
+            onNext={handleNext}
+            onDestinationUpdate={handleDestinationUpdate}
+          />
+        );
       case 1:
         return <NewCar onNext={handleNext} />;
       case 2:
@@ -42,8 +44,8 @@ export default function NewTripForm() {
             destinationInfo={destination} // pass address and lat/lng
           />
         );
-      case 3:
-        return <TripPage />;
+      // case 3:
+      //   return <TripPage />; On Next navigate to trip link
     }
   };
 

@@ -103,20 +103,6 @@ const Destination = forwardRef(
           onKeyDown={onKeyDown}
           placeholder={destination ? destination : "Choose your destination"}
           className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
-          // className={`${
-          //   isPreviewingTrip
-          //     ? "destination-customize-trip"
-          //     : !destination
-          //     ? "form-response"
-          //     : isCustomizeTripPage
-          //     ? "destination-customize-trip"
-          //     : "form-response"
-          // }`}
-          // if previewing the trip, apply the disabled class
-          // if the destination is not set, apply the form-response class
-          // if the destination is set & on customize trip page: destination-customize-trip
-          // if the destination is set & not on customize trip page: form-response
-
           style={{
             background: isPreviewingTrip
               ? formData?.tripBackground?.scrim || "transparent"
