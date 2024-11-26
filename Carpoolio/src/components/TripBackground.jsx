@@ -95,7 +95,7 @@ export default function TripBackground({}) {
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
         }}
-        className="customize-trip-btns"
+        className="style-btns"
         onClick={toggleBackgrounds}
       >
         Change Background

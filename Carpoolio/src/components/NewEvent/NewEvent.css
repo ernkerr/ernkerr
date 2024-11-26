@@ -82,24 +82,6 @@
   transform: translateX(-50%);
 }
 
-.primary-btn {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-btn);
-  padding: var(--padding-primary-btn);
-  border-radius: var(--border-radius-btn);
-
-  height: var(--btn-height);
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  margin-bottom: var(--margin-btn);
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
 .secondary-btn {
   color: var(--main-green);
   font-family: var(--main-font);

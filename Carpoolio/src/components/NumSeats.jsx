@@ -23,7 +23,7 @@ export default function NumSeats({ onUpdate, activeCarIndex }) {
 
   return (
     <>
-      <p className="form-question">number of avaliable seats: {numSeats}</p>
+      <p className="form-question">number of available seats: {numSeats}</p>
 
       <input
         type="range"

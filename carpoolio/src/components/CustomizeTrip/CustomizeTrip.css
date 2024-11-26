@@ -5,6 +5,8 @@
   min-height: 100%;
   margin-left: var(--margin-medium);
   width: 95dvw;
+  padding-left: 2.5dvw;
+  padding-right: 2.5dvw;
   overflow-x: hidden;
 }
 
@@ -14,12 +16,11 @@
   white-space: normal;
   overflow: visible;
   background: var(--glass-background);
-
+  border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-  /* overflow: "hidden"; */
   margin-top: var(--margin-small);
-  /* width: 90dvw; */
-  max-width: 90dvw;
+
+  width: 92dvw;
 }
 
 .address-directions-container {
@@ -69,13 +70,15 @@
   bottom: 1px;
 }
 
-.get-directions {
-  color: white;
+.get-directions-btn {
+  color: var(--white);
   font-family: var(--main-font);
-  font-size: 14px;
+  font-size: var(--font-size-extra-small);
+  padding: var(--padding-customize-trip);
   background: var(--glass-background);
   border: none;
   border-radius: var(--border-radius-btn);
+  margin: var(--margin-small);
 }
 
 /* preview-and-style-btn-container {
@@ -114,7 +117,7 @@
   border-radius: 5px;
   border: 1.5px solid rgba(255, 255, 255, 0.867);
   height: 1dvh;
-  min-height: 20px; /* Ensure a minimum thumb height */
+  min-height: 20px;
   background-color: rgba(255, 255, 255, 0);
 }
 
@@ -123,18 +126,17 @@
 }
 
 .car-container::-webkit-scrollbar-track {
-  background: none; /* Transparent track */
-  border-radius: 5px; /* Rounded corners for the track */
+  background: none;
+  border-radius: 5px;
 }
 
 .render-car-container {
   min-height: 40dvh;
-  /* margin-bottom: 10px; */
 }
 
 /* background & glow color  */
 
-.customize-trip-btns {
+.style-btns {
   width: 80%;
   color: white;
   cursor: pointer;
@@ -298,6 +300,120 @@
   margin-left: var(--margin-left-xlarge);
 }
 
+.customize-trip-modal {
+  width: 100dvw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 3;
+  background-color: var(--dark);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.customize-trip-modal-content {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#edit-dest-btn {
+  font-size: var(--font-size-medium);
+  text-align: center;
+}
+
+.customize-trip-btn-container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: space-evenly;
+  max-width: 90dvw;
+}
+
+.customize-trip-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-btn);
+  padding: var(--padding-secondary-btn);
+  border-radius: var(--border-radius-btn);
+  /* margin-top: var(--margin-medium); */
+  margin-bottom: var(--margin-btn);
+  margin-left: var(--margin-medium);
+  height: var(--btn-height);
+  width: 50%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.style-options-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  border-radius: var(--border-radius-btn);
+  height: var(--btn-height);
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.add-car-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  border-radius: var(--border-radius-btn);
+  height: var(--btn-height);
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: var(--margin-small);
+}
+
+#done-btn {
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#preview-btn {
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-btn);
+  margin-bottom: var(--margin-btn);
+  margin-left: var(--margin-medium);
+  height: var(--btn-height);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+}
+
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+
 @media (max-width: 768px) {
   .customize-trip-container {
     flex-direction: column;
@@ -345,63 +461,4 @@
   #delete-car-btn {
     margin-top: var(--margin-small);
   }
-}
-
-.customize-trip-modal {
-  width: 100dvw;
-  height: 100dvh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-  z-index: 3;
-  background-color: var(--dark);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-.customize-trip-modal-content {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#edit-dest-btn {
-  font-size: var(--font-size-medium);
-  text-align: center;
-}
-
-#done-btn {
-  position: fixed;
-  bottom: 5px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.customize-trip-btn-container {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  justify-content: space-evenly;
-  max-width: 90dvw;
-}
-
-.preview-btn {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-bold);
-  /* letter-spacing: var(--letter-spacing-btn); */
-  padding: var(--padding-secondary-btn);
-  border-radius: var(--border-radius-btn);
-  /* width: 50%;
-  position: relative;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%); */
-  margin-top: var(--margin-medium);
 }

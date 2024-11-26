@@ -22,12 +22,11 @@ export default function NewTripForm() {
   // onboarding:
   // step 1: NewEvent
   // step 2: NewCar
-  // step 3: Share
+  // step 3: Customize Trip
 
   const conditionalComponent = () => {
     switch (page) {
       case 0:
-        // return <GetTripName />;
         return (
           <NewEvent
             onNext={handleNext}
@@ -54,13 +53,9 @@ export default function NewTripForm() {
     setCurrentStep(currentStep - 1);
   }
 
-  function handlePreview() {
-    setIsPreviewingTrip(true);
-  }
-
-  function handleEdit() {
-    setIsPreviewingTrip(false);
-  }
+  const handlePreviewToggle = () => {
+    setIsPreviewingTrip((prev) => !prev);
+  };
 
   const handleDestinationUpdate = (data) => {
     console.log("Destination updated: ", data);
@@ -165,33 +160,19 @@ export default function NewTripForm() {
             </button>
           )}
 
-          {/* on next, save to backend  */}
-          {page > 2 &&
-            (isPreviewingTrip ? (
-              <button
-                style={{
-                  background: formData?.tripBackground?.scrim || "transparent",
-                  border: ` 2px solid ${formData?.glowColor}`,
-                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-                }}
-                className="glow-button"
-                onClick={handleEdit}
-              >
-                edit
-              </button>
-            ) : (
-              <button
-                style={{
-                  background: formData?.tripBackground?.scrim || "transparent",
-                  border: ` 2px solid ${formData?.glowColor}`,
-                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-                }}
-                className="customize-trip-glow-btns"
-                onClick={handlePreview}
-              >
-                preview
-              </button>
-            ))}
+          {page > 1 && (
+            <button
+              className="preview-btn"
+              style={{
+                background: "none",
+                border: ` 1px solid ${formData?.glowColor}`,
+                boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+              }}
+              onClick={handlePreviewToggle}
+            >
+              {isPreviewingTrip ? "Edit" : "Preview"}
+            </button>
+          )}
         </div>
       </div>
     </>

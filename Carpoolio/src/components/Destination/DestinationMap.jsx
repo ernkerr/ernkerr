@@ -27,12 +27,12 @@ export default function DestinationMap({ address }) {
         console.log("location set: ", location);
         return location; // { lat: <latitude>, lng: <longitude> }
       } else {
-        console.error("Error with Geocoding API:", response.data.status);
         setIsAddress(false); // Invalid address
         return null;
       }
     } catch (error) {
       console.error("Failed to fetch latitude and longitude:", error);
+      console.error("Error with Geocoding API:", response.data.status);
       setIsAddress(false);
       return null;
     }
@@ -210,7 +210,7 @@ export default function DestinationMap({ address }) {
           mapContainerStyle={{
             width: "45%",
             height: "100px",
-            margin: "15px",
+            margin: "10px",
             borderRadius: "10px",
           }}
           center={center}
