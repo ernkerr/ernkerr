@@ -348,13 +348,20 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
             className="primary-btn"
             id="save-car-btn"
             onClick={handleSaveCar}
+            // style={{
+            //   background:
+            //     formData?.tripBackground?.scrim ||
+            //     formData?.transparentGlowColor,
+            //   border: ` 1px solid ${formData?.glowColor}`,
+            //   // boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+            //   // Zindex: "2",
+            // }}
             style={{
               background:
                 formData?.tripBackground?.scrim ||
                 formData?.transparentGlowColor,
-              border: ` 1px solid ${formData?.glowColor}`,
-              // boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-              // Zindex: "2",
+              border: ` 2px solid ${formData?.glowColor}`,
+              boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
             }}
           >
             done

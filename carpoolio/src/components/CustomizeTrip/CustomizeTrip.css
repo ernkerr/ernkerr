@@ -385,8 +385,8 @@
 .customize-trip-btn-container {
   display: flex;
   flex-direction: row;
-
-  justify-content: space-between;
+  gap: 5px;
+  justify-content: space-evenly;
   max-width: 90dvw;
 }
 

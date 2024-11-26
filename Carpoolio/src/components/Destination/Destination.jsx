@@ -49,8 +49,6 @@ const Destination = forwardRef(
             lng: selectedLocation.lng(),
           });
         }
-        // else try address
-        // else
       }
     };
 
@@ -70,12 +68,12 @@ const Destination = forwardRef(
         ...prevFormData,
         destination: value,
       }));
-
-      // if onDestinationUpdate prop is defined, pass updated values as an object
-      if (onDestinationUpdate) {
-        onDestinationUpdate({ value, location: location || null });
-      }
     };
+
+    // if onDestinationUpdate prop is defined, pass updated values as an object
+    //   if (onDestinationUpdate) {
+    //     onDestinationUpdate({ value, location: location || null });
+    //   }
 
     // update the input field value based on state changes
     useEffect(() => {
@@ -106,8 +104,8 @@ const Destination = forwardRef(
           style={{
             background: isPreviewingTrip
               ? formData?.tripBackground?.scrim || "transparent"
-              : undefined, // Default to the original background when not previewing
-            pointerEvents: isPreviewingTrip ? "none" : "auto", // Prevent interaction in preview mode
+              : undefined, // default to the original background when not previewing
+            pointerEvents: isPreviewingTrip ? "none" : "auto", // prevent interaction in preview mode
           }}
         />
       </>

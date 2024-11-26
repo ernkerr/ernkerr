@@ -29,6 +29,7 @@ export default function CustomizeTrip({
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
+  const [autoAddCar, setAutoAddCar] = useState(false);
 
   const handlePreviewToggle = () => {
     setIsPreviewingTrip((prev) => !prev);
@@ -132,10 +133,7 @@ export default function CustomizeTrip({
                   )}
                 </>
               ) : (
-                <Destination
-                  isPreviewingTrip={isPreviewingTrip}
-                  // isCustomizeTripPage={true}
-                />
+                <Destination isPreviewingTrip={isPreviewingTrip} />
               )}
             </div>
             {isAddress && (
@@ -246,7 +244,7 @@ export default function CustomizeTrip({
               backgroundPosition: "center",
             }}
           >
-            <NewCar />
+            <NewCar autoAddCar={true} setAutoAddCar={setAutoAddCar} />
             <button
               onClick={() => {
                 setIsNewCarVisible(false); // close new car modal when done

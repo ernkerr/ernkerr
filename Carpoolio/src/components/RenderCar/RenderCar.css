@@ -9,11 +9,11 @@
   flex-direction: column;
 }
 
-/* .carName-and-edit-container {
+.carName-and-edit-container {
   display: flex;
-  align-items: center; 
+  align-items: center;
   flex-direction: row;
-} */
+}
 
 .carName {
   color: var(--white);
@@ -28,7 +28,7 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   /* backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px); for desktop */
-  position: absolute;
+  position: relative;
   left: 50dvw;
   transform: translateX(-50%);
   text-align: center;
@@ -170,10 +170,10 @@
   font-family: var(--main-font);
 }
 
-.customize-car-btn-container {
+/* .customize-car-btn-container {
   display: flex;
   flex-direction: row;
-}
+} */
 
 .customize-car-btn {
   color: white;

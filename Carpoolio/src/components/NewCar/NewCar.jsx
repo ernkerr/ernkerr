@@ -5,7 +5,7 @@ import RenderCar from "../RenderCar/RenderCar";
 import NumSeats from "@components/NumSeats.jsx";
 import "./NewCar.css";
 
-export default function NewCar({ onNext }) {
+export default function NewCar({ onNext, autoAddCar, setAutoAddCar }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isAddingCar, setIsAddingCar] = useState("");
   const [driverName, setDriverName] = useState("");
@@ -17,10 +17,25 @@ export default function NewCar({ onNext }) {
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+  // auto select add a new car after add a new ar btn is pressed on other pages (CustomizeTrip or TripPage)
+
+  // infinite loop fix!
+  // trying to avoid having to click the add new car btn again
+  // useEffect(() => {
+  //   if (autoAddCar && !newCarCreated) {
+  //     handleYes(); // trigger "add a new car" logic when autoAddCar is true
+  //   }
+
+  //   // if (newCarCreated) {
+  //   //   setAutoAddCar(false); // Reset autoAddCar to avoid repeated execution
+  //   // }
+  // }, [autoAddCar, newCarCreated]);
+
   // progressive disclosure logic
   const handleYes = () => {
     if (!newCarCreated) {
       // only proceed if no car has been created yet
+      // don't delete or it WILL break
       setIsAddingCar(true);
       handleAddNewCar();
     }

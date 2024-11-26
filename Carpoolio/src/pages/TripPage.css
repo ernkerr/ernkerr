@@ -79,7 +79,7 @@
 .editBtn svg {
   height: 17px;
   fill: white;
-  z-index: 3;
+  z-index: 2;
   transition: all 0.2s;
   transform-origin: bottom;
 }

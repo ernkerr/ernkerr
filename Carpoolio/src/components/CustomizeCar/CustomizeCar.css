@@ -23,7 +23,7 @@ body.active-modal {
 .customize-car-container {
   margin-left: var(--margin-medium);
   width: 92dvw;
-  background-color: rgba(118, 118, 226, 0.47);
+  /* background-color: rgba(118, 118, 226, 0.47); */
 }
 
 .customize-car-btn-container {
