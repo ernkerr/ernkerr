@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CustomizeTrip from "@components/CustomizeTrip/CustomizeTrip";
-import bluegoo from "../assets/bluegoo.gif";
+import bluegoo from "../assets/gifs/bluegoo.gif";
 import { TripContext } from "@components/TripContext";
 import InviteBtn from "@components/InviteBtn.jsx";
 import NewTripButton from "@components/NewTripButton/NewTripButton.jsx";

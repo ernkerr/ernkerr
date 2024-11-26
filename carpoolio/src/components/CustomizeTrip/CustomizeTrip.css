@@ -361,3 +361,48 @@
     margin-top: var(--margin-small);
   }
 }
+
+.new-car-modal {
+  width: 100dvw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 3;
+  background-color: var(--dark);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* .full-screen-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100dvh;
+  width: 100dvw;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: auto;
+  overflow-x: hidden;
+} */
+
+.modal-new-car {
+  background: none;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* margin-left: var(--margin-medium); */
+  padding: var(--padding-cal);
+  background-color: var(--dark);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+}

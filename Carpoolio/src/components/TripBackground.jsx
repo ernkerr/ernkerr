@@ -3,7 +3,7 @@ import { TripContext } from "@/components/TripContext";
 
 import none from "../assets/gifs/none.png";
 import clouds from "../assets/gifs/cloud.gif";
-import bluegoo from "../assets/bluegoo.gif";
+import bluegoo from "../assets/gifs/bluegoo.gif";
 // import color from "../assets/color.gif";
 import crackingthecode from "../assets/gifs/crackingthecode.gif";
 import marble from "../assets/gifs/marble.gif";

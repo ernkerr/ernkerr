@@ -13,6 +13,8 @@ import locationIcon from "../../assets/img/location-icon.png";
 import locationPin from "../../assets/img/location-pin.png";
 import Destination from "../Destination/Destination.jsx";
 import TripName from "../TripName.jsx";
+import NewCar from "../NewCar/NewCar.jsx";
+import bluegoo from "../../assets/gifs/bluegoo.gif";
 
 export default function CustomizeTrip({
   isPreviewingTrip,
@@ -24,6 +26,7 @@ export default function CustomizeTrip({
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
+  const [isNewCarVisible, setIsNewCarVisible] = useState(false);
 
   const center = destinationInfo?.destination || {
     lat: 37.7749,
@@ -223,6 +226,10 @@ export default function CustomizeTrip({
     },
   ];
 
+  const toggleNewCar = () => {
+    setIsNewCarVisible((prev) => !prev); // Toggle visibility
+  };
+
   return (
     <div className="customize-trip-container">
       <div className="details-container">
@@ -346,6 +353,57 @@ export default function CustomizeTrip({
           )}
         </>
       </div>
+
+      <button
+        className="preview-btn"
+        style={{
+          background:
+            formData?.tripBackground?.scrim || formData?.transparentGlowColor,
+          border: ` 1px solid ${formData?.glowColor}`,
+          boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+        }}
+        onClick={handlePreviewToggle}
+      >
+        {isPreviewingTrip ? "Edit Trip" : "Preview Trip"}
+      </button>
+
+      <button
+        onClick={toggleNewCar}
+        className="preview-btn"
+        style={{
+          background:
+            formData?.tripBackground?.scrim || formData.transparentGlowColor,
+          border: ` 2px solid ${formData.glowColor}`,
+          boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+        }}
+      >
+        + Add Car
+      </button>
+
+      {/* Render NewCar component conditionally */}
+      {isNewCarVisible && (
+        <>
+          <div
+            className="new-car-modal"
+            style={{
+              backgroundImage: `url(${
+                formData?.tripBackground?.path || bluegoo
+              })`,
+              backgroundPosition: "center",
+            }}
+          >
+            <NewCar />
+            <button
+              onClick={() => {
+                setIsNewCarVisible(false); // Close NewCar component after finishing
+              }}
+              className="primary-btn"
+            >
+              Next
+            </button>
+          </div>
+        </>
+      )}
       <div className="car-container">
         {formData?.cars?.map((car, index) => {
           if (index === activeCarIndex && isCustomizingCar) {
@@ -370,31 +428,6 @@ export default function CustomizeTrip({
           }
         })}
       </div>
-      <button
-        className="preview-btn"
-        style={{
-          background:
-            formData?.tripBackground?.scrim || formData?.transparentGlowColor,
-          border: ` 1px solid ${formData?.glowColor}`,
-          boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-        }}
-        onClick={handlePreviewToggle}
-      >
-        {isPreviewingTrip ? "Edit Trip" : "Preview Trip"}
-      </button>
-
-      {/* <button
-        onClick={handleAddNewCar}
-        className="new-car-btn"
-        style={{
-          background:
-            formData?.tripBackground?.scrim || formData.transparentGlowColor,
-          border: ` 2px solid ${formData.glowColor}`,
-          boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-        }}
-      >
-        + Add Car
-      </button> */}
     </div>
   );
 }

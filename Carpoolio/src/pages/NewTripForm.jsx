@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
-import bluegoo from "../assets/bluegoo.gif";
+import bluegoo from "../assets/gifs/bluegoo.gif";
 import "../components/NewTripForm/NewTripForm.css";
 
 import GetTripDate from "../components/NewTripForm/GetTripDate";

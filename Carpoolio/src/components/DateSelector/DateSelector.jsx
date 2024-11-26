@@ -60,6 +60,7 @@ export default function DateSelector({ isPreviewingTrip }) {
           Set a Date
         </button>
       ) : null}
+
       {tripDateExists && (
         <div className="calendar-icon-container">
           <button
