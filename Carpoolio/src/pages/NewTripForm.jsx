@@ -42,6 +42,8 @@ export default function NewTripForm() {
             destinationInfo={destination} // pass address and lat/lng
           />
         );
+      case 3:
+        return <TripPage />;
     }
   };
 

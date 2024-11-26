@@ -312,73 +312,76 @@ export default function CustomizeTrip({
         <Description isPreviewingTrip={isPreviewingTrip} />
 
         <>
-          {!isPreviewingTrip && (
-            <>
-              <button
-                className="preview-btn"
-                style={{
-                  background:
-                    formData?.tripBackground?.scrim ||
-                    formData?.transparentGlowColor,
-                  border: ` 1px solid ${formData?.glowColor}`,
-                  boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-                }}
-                onClick={handleShowStyleOptions}
-              >
-                {isShowingStyleOptions ? "Close" : "Style Options"}
-              </button>
-              {isShowingStyleOptions && (
-                <>
-                  <TripBackground />
-                  <button
-                    className="customize-trip-btns"
-                    style={{
-                      background:
-                        formData?.tripBackground?.scrim || "transparent",
-                    }}
-                  >
-                    <label htmlFor="glowColor">Change Glow Color </label>
-                    <input
-                      className="glowColor"
-                      type="color"
-                      id="glowColor"
-                      name="glowColor"
-                      value={formData?.glowColor || " #34bd34"}
-                      onChange={handleGlowColorChange} // update the glow color on change
-                    />
-                  </button>
-                </>
-              )}
-            </>
-          )}
+          <div className="customize-trip-btn-container">
+            <button
+              onClick={toggleNewCar}
+              className="preview-btn"
+              style={{
+                background:
+                  formData?.tripBackground?.scrim ||
+                  formData.transparentGlowColor,
+                border: ` 2px solid ${formData.glowColor}`,
+                boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+              }}
+            >
+              + Add Car
+            </button>
+
+            {!isPreviewingTrip && (
+              <>
+                <button
+                  className="preview-btn"
+                  style={{
+                    background:
+                      formData?.tripBackground?.scrim ||
+                      formData?.transparentGlowColor,
+                    border: ` 1px solid ${formData?.glowColor}`,
+                    boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                  }}
+                  onClick={handleShowStyleOptions}
+                >
+                  {isShowingStyleOptions ? "Close" : "Style Options"}
+                </button>
+                {isShowingStyleOptions && (
+                  <>
+                    <TripBackground />
+                    <button
+                      className="customize-trip-btns"
+                      style={{
+                        background:
+                          formData?.tripBackground?.scrim || "transparent",
+                      }}
+                    >
+                      <label htmlFor="glowColor">Change Glow Color </label>
+                      <input
+                        className="glowColor"
+                        type="color"
+                        id="glowColor"
+                        name="glowColor"
+                        value={formData?.glowColor || " #34bd34"}
+                        onChange={handleGlowColorChange} // update the glow color on change
+                      />
+                    </button>
+                  </>
+                )}
+              </>
+            )}
+            <button
+              className="preview-btn"
+              style={{
+                background:
+                  formData?.tripBackground?.scrim ||
+                  formData?.transparentGlowColor,
+                border: ` 1px solid ${formData?.glowColor}`,
+                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+              }}
+              onClick={handlePreviewToggle}
+            >
+              {isPreviewingTrip ? "Edit Trip" : "Preview Trip"}
+            </button>
+          </div>
         </>
       </div>
-
-      <button
-        className="preview-btn"
-        style={{
-          background:
-            formData?.tripBackground?.scrim || formData?.transparentGlowColor,
-          border: ` 1px solid ${formData?.glowColor}`,
-          boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-        }}
-        onClick={handlePreviewToggle}
-      >
-        {isPreviewingTrip ? "Edit Trip" : "Preview Trip"}
-      </button>
-
-      <button
-        onClick={toggleNewCar}
-        className="preview-btn"
-        style={{
-          background:
-            formData?.tripBackground?.scrim || formData.transparentGlowColor,
-          border: ` 2px solid ${formData.glowColor}`,
-          boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-        }}
-      >
-        + Add Car
-      </button>
 
       {/* Render NewCar component conditionally */}
       {isNewCarVisible && (
@@ -395,7 +398,7 @@ export default function CustomizeTrip({
             <NewCar />
             <button
               onClick={() => {
-                setIsNewCarVisible(false); // Close NewCar component after finishing
+                setIsNewCarVisible(false); // close new car modal when done
               }}
               className="primary-btn"
             >
