@@ -33,9 +33,9 @@ const TripName = forwardRef(
           }`}
           style={{
             background: isPreviewingTrip
-              ? formData?.tripBackground?.scrim || "transparent"
-              : undefined, // default to the original background when not previewing
-            // margin: isPreviewingTrip ? "0" : undefined, // set margin to 0 if previewing
+              ? "transparent"
+              : formData?.tripBackground?.scrim || undefined,
+            pointerEvents: isPreviewingTrip ? "none" : "auto",
           }}
           id="trip-name"
           ref={ref}

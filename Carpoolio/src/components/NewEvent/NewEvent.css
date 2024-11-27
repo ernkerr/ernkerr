@@ -1,4 +1,4 @@
-.form-question-container {
+.new-event-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -7,15 +7,14 @@
   width: 95dvw;
 }
 
-.form-question {
+/* .form-question {
   font-family: var(--main-font);
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-btn);
-  /* margin-top: var(--margin-form-field); */
   margin-bottom: 0;
   text-align: center;
-}
+} */
 
 .form-response {
   color: var(--white);

@@ -13,7 +13,7 @@ export default function Description({ isPreviewingTrip }) {
 
   return (
     <>
-      {!isPreviewingTrip || formData.tripDescription ? (
+      {!isPreviewingTrip || formData?.tripDescription ? (
         <textarea
           className="form-response"
           id="description-textarea"
@@ -21,14 +21,12 @@ export default function Description({ isPreviewingTrip }) {
           value={formData.tripDescription || ""}
           onChange={handleInput}
           disabled={isPreviewingTrip}
-          // style={{
-          //   height: "4dvh",
-          //   background: formData?.tripBackground?.scrim || "transparent",
-          //   border: isPreviewingTrip
-          //     ? "2px solid transparent"
-          //     : "2px solid rgba(255, 255, 255, 0.182)",
-          //   borderRadius: isPreviewingTrip ? "0" : "5px",
-          // }}
+          style={{
+            background: isPreviewingTrip
+              ? "transparent"
+              : formData?.tripBackground?.scrim || undefined,
+            pointerEvents: isPreviewingTrip ? "none" : "auto",
+          }}
         ></textarea>
       ) : null}
     </>

@@ -94,7 +94,10 @@ export default function TripBackground({}) {
     <>
       <button
         style={{
-          background: formData?.tripBackground?.scrim || "",
+          background: isPreviewingTrip
+            ? "transparent"
+            : formData?.tripBackground?.scrim || undefined,
+          pointerEvents: isPreviewingTrip ? "none" : "auto",
         }}
         className="style-btns"
         onClick={toggleBackgrounds}

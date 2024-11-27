@@ -133,7 +133,10 @@ export default function DepartureDetails({ isPreviewingTrip, activeCarIndex }) {
 
               <button
                 style={{
-                  background: formData?.tripBackground?.scrim || "transparent",
+                  background: isPreviewingTrip
+                    ? "transparent"
+                    : formData?.tripBackground?.scrim || undefined,
+                  pointerEvents: isPreviewingTrip ? "none" : "auto",
                 }}
                 className="calendar-button"
                 onClick={() => {

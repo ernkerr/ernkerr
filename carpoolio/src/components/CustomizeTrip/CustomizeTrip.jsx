@@ -75,7 +75,7 @@ export default function CustomizeTrip({ isAdmin }) {
     background:
       formData?.tripBackground?.scrim || formData?.transparentGlowColor,
     border: ` 2px solid ${formData?.glowColor}`,
-    boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+    boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
   };
 
   // style for modal
@@ -185,10 +185,12 @@ export default function CustomizeTrip({ isAdmin }) {
                     <button
                       className="style-btns"
                       id="glow-color-picker"
-                      // style={{
-                      //   background:
-                      //     formData?.tripBackground?.scrim || "transparent",
-                      // }}
+                      style={{
+                        background: isPreviewingTrip
+                          ? "transparent"
+                          : formData?.tripBackground?.scrim || undefined,
+                        pointerEvents: isPreviewingTrip ? "none" : "auto",
+                      }}
                     >
                       <label htmlFor="glowColor">Change Glow Color </label>
                       <input

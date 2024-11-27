@@ -158,6 +158,9 @@ export default function NewCar({ onNext, autoAddCar, setAutoAddCar }) {
         <button
           onClick={handleYes}
           className={`glass-button ${isAddingCar === true ? "selected" : ""}`} // assign selected class based on isAddingCar state
+          style={{
+            background: formData?.tripBackground?.scrim || "transparent",
+          }}
         >
           + add a car
         </button>

@@ -11,16 +11,20 @@ export default function BottomNav({
 }) {
   const { formData, setFormData } = useContext(TripContext);
 
+  // style for dynamic glow
+  const glowStyle = {
+    background:
+      formData?.tripBackground?.scrim || formData?.transparentGlowColor,
+    border: ` 2px solid ${formData?.glowColor}`,
+    boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+  };
+
   return (
     <>
       {isAdmin && (
         <button
           className={isPreviewingTrip ? "edit-btn" : "preview-btn"}
-          style={{
-            background: formData?.transparentGlowColor || "transparent",
-            border: ` 1px solid ${formData?.glowColor}`,
-            boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-          }}
+          style={glowStyle}
           onClick={togglePreview}
         >
           {isPreviewingTrip ? (

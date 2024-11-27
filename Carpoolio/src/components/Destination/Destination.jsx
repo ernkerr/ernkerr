@@ -10,8 +10,8 @@ const Destination = forwardRef(
     const [location, setLocation] = useState(null);
     const autocompleteRef = useRef(null); // create an internal ref for the Autocomplete component
 
-    // Combine internal ref (autocompleteRef) with forwarded ref
-    // one ref needed for
+    // combine internal ref (autocompleteRef) with forwarded ref
+    // one ref needed for ? understand this better
     useEffect(() => {
       if (ref) {
         // if ref is a function, call it with the DOM node ?
@@ -72,11 +72,6 @@ const Destination = forwardRef(
       }));
     };
 
-    // if onDestinationUpdate prop is defined, pass updated values as an object
-    //   if (onDestinationUpdate) {
-    //     onDestinationUpdate({ value, location: location || null });
-    //   }
-
     // update the input field value based on state changes
     useEffect(() => {
       // If the autocompleteRef is available, manually set its value from state
@@ -105,9 +100,9 @@ const Destination = forwardRef(
           className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
           style={{
             background: isPreviewingTrip
-              ? formData?.tripBackground?.scrim || "transparent"
-              : undefined, // default to the original background when not previewing
-            pointerEvents: isPreviewingTrip ? "none" : "auto", // prevent interaction in preview mode
+              ? "transparent"
+              : formData?.tripBackground?.scrim || undefined,
+            pointerEvents: isPreviewingTrip ? "none" : "auto",
           }}
         />
       </>

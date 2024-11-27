@@ -34,7 +34,7 @@
   left: 0;
   width: 120px;
   height: 60px;
-  z-index: 4;
+  z-index: 3;
 }
 
 .edit-btn::before {
