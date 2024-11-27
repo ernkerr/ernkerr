@@ -48,24 +48,6 @@
   align-self: flex-start;
 }
 
-.preview-btn {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-btn);
-  padding: var(--padding-secondary-btn);
-  border-radius: var(--border-radius-btn);
-  /* margin-top: var(--margin-medium); */
-  margin-bottom: var(--margin-btn);
-  margin-left: var(--margin-medium);
-  height: var(--btn-height);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 4;
-}
-
 /* progress bar  */
 
 .progress-container {

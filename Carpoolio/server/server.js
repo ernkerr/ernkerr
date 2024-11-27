@@ -138,6 +138,30 @@ app.post("/api/saveFormData", (req, res) => {
   res.json(formData);
 });
 
+// GET route to retrieve a trip by its tripId
+app.get("/api/trip/:tripId", async (req, res) => {
+  const { tripId } = req.params;
+  console.log("Fetching trip without adminId:", tripId);
+
+  try {
+    console.log("Received tripId type:", typeof tripId, "Value:", tripId);
+
+    const trip = await prisma.trip.findUnique({
+      where: { tripId }, // Ensure tripId is the correct format (int if necessary)
+      include: { cars: true }, // Include related cars if needed
+    });
+
+    if (trip) {
+      res.json(trip); // Send the trip data as JSON
+    } else {
+      res.status(404).json({ error: "Trip not found" });
+    }
+  } catch (error) {
+    console.error("Error retrieving trip:", error);
+    res.status(500).json({ error: "Failed to retrieve trip" });
+  }
+});
+
 app.get("/api/trip/:tripId/:adminId", async (req, res) => {
   const { tripId, adminId } = req.params;
 
@@ -163,57 +187,11 @@ app.get("/api/trip/:tripId/:adminId", async (req, res) => {
   }
 });
 
-// // to create a new car
-// app.post("/api/trip/:tripId/car", async (req, res) => {
-//   const { tripId } = req.params;
-//   const car = req.body;
-
-//   const existingTrip = await prisma.trip.findUnique({ where: { tripId } });
-//   if (!existingTrip) {
-//     return res.status(404).json({ error: "Trip not found" });
-//   }
-
-//   try {
-//     const newCar = await prisma.car.create({
-//       data: {
-//         carName: car.carName,
-//         carColor: car.carColor,
-//         numSeats: car.numSeats,
-//         seatDistribution: car.seatDistribution,
-//         seatNames: car.seatNames,
-//         tripId,
-//       },
-//     });
-//     res.status(201).json(newCar); // Return the created car object
-//   } catch (error) {
-//     console.error("Error creating car:", error);
-//     res.status(500).json({ error: "Failed to create car" });
-//   }
-// });
-
-// // to update a car that already exists in the backend
-// app.put("/api/trip/:tripId/car/:carId");
-
-// GET route to retrieve a trip by its tripId
-app.get("/api/trip/:tripId", async (req, res) => {
-  const { tripId } = req.params;
-
-  try {
-    const trip = await prisma.trip.findUnique({
-      where: { tripId }, // Ensure tripId is the correct format (int if necessary)
-      include: { cars: true }, // Include related cars if needed
-    });
-
-    if (trip) {
-      res.json(trip); // Send the trip data as JSON
-    } else {
-      res.status(404).json({ error: "Trip not found" });
-    }
-  } catch (error) {
-    console.error("Error retrieving trip:", error);
-    res.status(500).json({ error: "Failed to retrieve trip" });
-  }
-});
+//
+//
+//
+//
+//
 
 app.listen(PORT, () => {
   console.log("Server started on port 8080");

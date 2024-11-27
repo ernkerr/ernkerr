@@ -13,31 +13,42 @@ import "./TripPage.css";
 export default function TripPage() {
   const { formData, setFormData } = useContext(TripContext);
   const { tripId, adminId } = useParams(); // Extract tripId and adminId from route parameters
+  const isAdmin = !!adminId; // if adminId exists in the url, useParams() assigns a str to adminId (truthy),
+  // otherwise if adminId is absent in the url, adminId will be undefined (falsy)
+
   const [tripDetails, setTripDetails] = useState(null);
   const [error, setError] = useState(null);
-  const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
-  const isAdmin = !!adminId;
+  // const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   // fetch trip details
   const getTripDetails = async () => {
+    // construct the url based on the presence of adminId
+
+    const url = isAdmin
+      ? `${API_BASE_URL}/api/trip/${tripId}/${adminId}`
+      : `${API_BASE_URL}/api/trip/${tripId}`;
+
     try {
-      const url = adminId
-        ? `${API_BASE_URL}/api/trip/${tripId}/${adminId}`
-        : `${API_BASE_URL}/api/trip/${tripId}`;
+      console.log("Requesting trip details...");
+      console.log("Trip ID:", tripId);
+      console.log("Admin ID:", adminId || "No Admin ID provided");
+      console.log("Constructed URL:", url);
 
-      const response = await fetch(url);
+      // use axios to make the GET request
+      const response = await axios.get(url);
 
-      if (!response.ok) {
-        throw new Error("Network response error");
+      if (response.status === 200) {
+        console.log("Trip details fetched successfully:", response.data);
+        setTripDetails(response.data); // store the fetched data in state
+        setFormData(response.data); // populate formData with fetched trip data
+      } else {
+        console.error(`Unexpected response status: ${response.status}`);
       }
-
-      const data = await response.json();
-      setTripDetails(data); // store the fetched data in state
-      setFormData(data); // populate formData with fetched trip data
     } catch (err) {
-      setError(err.message); // store error in state if fetching fails
+      console.error("Error fetching trip details:", err);
+      setError(err.message); // set the error state
     }
   };
 
@@ -56,35 +67,6 @@ export default function TripPage() {
     return <div>Loading...</div>;
   }
 
-  const handleEdit = () => setIsPreviewingTrip(false);
-
-  const handleSave = async (e) => {
-    e.preventDefault();
-    setIsPreviewingTrip(true);
-    try {
-      // check if tripId from the route exists (indicating an existing trip)
-      if (tripId) {
-        // update existing trip using PUT request if tripId exists
-        const response = await axios.put(
-          `http://localhost:8080/api/trip/${tripId}`,
-          formData // send the updated formData object
-        );
-
-        if (response.status === 200) {
-          console.log("Trip updated:", response.data);
-          setFormData((prevFormData) => ({
-            ...prevFormData,
-            ...response.data,
-          }));
-        } else {
-          console.log("Failed to update trip");
-        }
-      }
-    } catch (error) {
-      console.error("Error saving trip:", error);
-    }
-  };
-
   return (
     <>
       <div
@@ -95,7 +77,7 @@ export default function TripPage() {
           backgroundPosition: "center",
         }}
       >
-        <CustomizeTrip isPreviewingTrip={isPreviewingTrip} isAdmin={isAdmin} />
+        <CustomizeTrip isAdmin={isAdmin} />
 
         <div
           className="bottom-nav-bar"
@@ -107,7 +89,7 @@ export default function TripPage() {
         >
           <InviteBtn tripId={tripId} />
 
-          {isAdmin ? (
+          {/* {isAdmin ? (
             isPreviewingTrip ? (
               <button
                 className="editBtn"
@@ -146,7 +128,7 @@ export default function TripPage() {
             >
               + New Trip
             </NewTripButton>
-          )}
+          )} */}
         </div>
       </div>
       {/* </div> */}

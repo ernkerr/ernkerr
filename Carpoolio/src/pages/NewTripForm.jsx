@@ -13,7 +13,6 @@ export default function NewTripForm() {
   const navigate = useNavigate();
   const { formData, setFormData } = useContext(TripContext);
   const [page, setPage] = useState(0);
-  const [isPreviewingTrip, setIsPreviewingTrip] = useState(false); // New state for CustomizeTrip
   const [currentStep, setCurrentStep] = useState(1);
   const [destination, setDestination] = useState(null);
 
@@ -38,8 +37,6 @@ export default function NewTripForm() {
       case 2:
         return (
           <CustomizeTrip
-            isPreviewingTrip={isPreviewingTrip}
-            setIsPreviewingTrip={setIsPreviewingTrip}
             destinationInfo={destination} // pass address and lat/lng
           />
         );
@@ -53,10 +50,6 @@ export default function NewTripForm() {
     setCurrentStep(currentStep - 1);
   }
 
-  const handlePreviewToggle = () => {
-    setIsPreviewingTrip((prev) => !prev);
-  };
-
   const handleDestinationUpdate = (data) => {
     console.log("Destination updated: ", data);
     setDestination(data); // save the address and lat/lng
@@ -67,7 +60,6 @@ export default function NewTripForm() {
     e.preventDefault();
     try {
       if (formData.tripId) {
-        console.log(formData.tripId);
         const response = await axios.put(
           `${API_BASE_URL}/api/trip/${formData.tripId}`,
           formData
@@ -75,8 +67,15 @@ export default function NewTripForm() {
 
         if (response.status === 200) {
           console.log("Trip updated:", response.data);
-          setPage(page + 1);
-          setCurrentStep(currentStep + 1);
+
+          if (page >= 2) {
+            // console.log("tripId: ", formData.tripId);
+            // console.log("adminId: ", formData.adminId);
+            navigate(`/trip/${formData?.tripId}/${formData?.adminId}`); // navigate to the trip page using tripId and adminId
+          } else {
+            setPage(page + 1);
+            setCurrentStep(currentStep + 1);
+          }
         } else {
           console.log("Failed to update trip");
         }
@@ -97,11 +96,8 @@ export default function NewTripForm() {
             tripId,
             adminId,
           }));
-
           setPage(page + 1);
           setCurrentStep(currentStep + 1);
-          // navigate(`/trip/${tripId}/${adminId}`); // navigate to the trip page using tripId and adminId
-          // if page = 3 where you can edit/share, navigate to ^
         } else {
           console.log("Failed to create trip");
         }
@@ -121,7 +117,7 @@ export default function NewTripForm() {
         }}
       >
         <div className="onboarding-header">
-          {page !== 0 && page !== 3 && (
+          {page !== 0 && (
             <button className="back-btn" onClick={handleBack}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -157,20 +153,6 @@ export default function NewTripForm() {
               onClick={handleNext}
             >
               Next
-            </button>
-          )}
-
-          {page > 1 && (
-            <button
-              className="preview-btn"
-              style={{
-                background: "none",
-                border: ` 1px solid ${formData?.glowColor}`,
-                boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-              }}
-              onClick={handlePreviewToggle}
-            >
-              {isPreviewingTrip ? "Edit" : "Preview"}
             </button>
           )}
         </div>
