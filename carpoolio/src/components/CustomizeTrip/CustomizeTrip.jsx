@@ -180,7 +180,7 @@ export default function CustomizeTrip({ isAdmin }) {
                 </button>
                 {isShowingStyleOptions && (
                   <>
-                    <TripBackground />
+                    <TripBackground isPreviewingTrip={isPreviewingTrip} />
 
                     <button
                       className="style-btns"

@@ -9,6 +9,7 @@ export default function NewCar({ onNext, autoAddCar, setAutoAddCar }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isAddingCar, setIsAddingCar] = useState("");
   const [driverName, setDriverName] = useState("");
+  const [driverNameError, setDriverNameError] = useState(false); // state for error message
 
   const [isNumSeatsSet, setIsNumSeatsSet] = useState("");
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);

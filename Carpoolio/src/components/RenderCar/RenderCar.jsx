@@ -11,10 +11,6 @@ export default function RenderCar({
   setActiveCarIndex,
 }) {
   const { formData, setFormData } = useContext(TripContext);
-  // const car = formData?.cars?.[carIndex];
-
-  // departure details
-  const [isShowingOptions, setIsShowingOptions] = useState(false);
 
   const handleSeatClick = (row, carIndex, seatIndex, event) => {
     const newCars = [...formData.cars]; // create a copy of cars array
@@ -29,9 +25,14 @@ export default function RenderCar({
     setActiveCarIndex(carIndex);
   };
 
-  const handleMoreOptions = () => {
-    setIsShowingOptions((prevState) => !prevState);
-  };
+  const funnyFallbacks = ["Otto", "Ghost Rider", ""]; // make array
+
+  const randomFallback = // randomly choose
+    //.floor = round down
+    funnyFallbacks[Math.floor(Math.random() * funnyFallbacks.length)];
+  // Math.random() function generates a random # between 0 (inclusive) and 1 (exclusive)
+  // .length property gives the total # of items in the array
+  // by multiplying ^ & ^ you get a random num that falls within the range of valid indices in the array
 
   return (
     <>
@@ -39,11 +40,13 @@ export default function RenderCar({
         <div className="car-details-container">
           <div className="carName-and-edit-container">
             <button className="carName">
-              {car?.carName || `${car?.seatNames.row1[0]}'s car`}
+              {car?.carName ||
+                `${car?.seatNames.row1[0] || randomFallback}'s car`}{" "}
+              {/* keeping my bugs fresh & funky */}
             </button>
 
             <button
-              className="editBtn"
+              className="edit-btn"
               id="edit-car-btn"
               style={{
                 background: formData?.transparentGlowColor || "transparent",
@@ -65,41 +68,14 @@ export default function RenderCar({
           </div>
 
           {/* <CarDetails activeCarIndex={carIndex} /> */}
-          {/* <button
-            className={`secondary-btn ${isShowingOptions ? "active" : ""}`}
-            id="car-details-btn"
-            onClick={handleMoreOptions}
-          >
-            Departure details +{" "}
-          </button>
-          {isShowingOptions && (
-            <>
-              <p className="form-question">Add Departure Details</p>
-            </>
-          )} */}
 
           {/* if departure details is pressed, show date, time, leaving from, etc. (modal?) */}
-
-          {/* <button
-            className="secondary-btn"
-            onClick={handleCustomizeCar}
-            // style={{
-            //   background: formData?.tripBackground?.scrim || "transparent",
-            //   border: ` 2px solid ${formData?.glowColor}`,
-            //   boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-            // }}
-          >
-            Customize
-          </button> */}
         </div>
 
         {/* end car details container  */}
 
         <div className="render-car-container">
-          <DefaultCar
-            carColor={car?.carColor || "#216191"}
-            // style={{ width: "100%", height: "auto" }}
-          />
+          <DefaultCar carColor={car?.carColor || "#216191"} />
           <div className="render-seat-container">
             <div className="render-seat-row">
               {Array.from({ length: car?.seatDistribution.row1 }).map(

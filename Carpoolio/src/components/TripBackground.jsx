@@ -78,7 +78,7 @@ const backgrounds = [
   // { name: "color", path: color },
 ];
 
-export default function TripBackground({}) {
+export default function TripBackground({ isPreviewingTrip }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isShowingBackgrounds, setIsShowingBackgrounds] = useState(false);
 
