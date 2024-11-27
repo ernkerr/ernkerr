@@ -1,3 +1,62 @@
+/* edit &  preview btn */
+.preview-btn {
+  cursor: pointer;
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-btn);
+  /* padding: var(--padding-secondary-btn); */
+  border-radius: var(--border-radius-btn);
+  /* margin-top: var(--margin-medium); */
+  margin-bottom: var(--margin-btn);
+  margin-left: var(--margin-medium);
+  height: var(--btn-height);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  width: 120px;
+  height: 60px;
+}
+
+.edit-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-secondary-btn);
+  border-radius: var(--border-radius-btn);
+  margin-bottom: var(--margin-btn);
+  margin-left: var(--margin-medium);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 120px;
+  height: 60px;
+  z-index: 4;
+}
+
+.edit-btn::before {
+  content: "";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  z-index: 1;
+  transform: scale(0);
+
+  border-radius: 50%;
+  filter: blur(10px);
+}
+
+.edit-btn svg {
+  height: 17px;
+  fill: white;
+  z-index: 2;
+  transition: all 0.2s;
+  transform-origin: bottom;
+}
+
 /* From Uiverse.io by MuhammadHasann */
 .star-button {
   color: var(--white);

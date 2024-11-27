@@ -55,22 +55,21 @@ export default function NewTripForm() {
     setDestination(data); // save the address and lat/lng
   };
 
-  // hitting next creates a trip in the backend
+  // hitting next updates or creates trip in the backend
   const handleNext = async (e) => {
     e.preventDefault();
     try {
       if (formData.tripId) {
+        // update the existing trip
         const response = await axios.put(
           `${API_BASE_URL}/api/trip/${formData.tripId}`,
           formData
-        ); // update the existing trip
+        );
 
         if (response.status === 200) {
           console.log("Trip updated:", response.data);
 
           if (page >= 2) {
-            // console.log("tripId: ", formData.tripId);
-            // console.log("adminId: ", formData.adminId);
             navigate(`/trip/${formData?.tripId}/${formData?.adminId}`); // navigate to the trip page using tripId and adminId
           } else {
             setPage(page + 1);

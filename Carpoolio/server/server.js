@@ -171,7 +171,7 @@ app.get("/api/trip/:tripId/:adminId", async (req, res) => {
       include: { cars: true },
     });
 
-    // Validate if adminId matches
+    // validate if adminId matches
     if (!trip || trip.adminId !== adminId) {
       return res
         .status(404)

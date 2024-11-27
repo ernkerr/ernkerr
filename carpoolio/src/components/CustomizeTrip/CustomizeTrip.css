@@ -256,93 +256,8 @@
   margin-bottom: var(--margin-btn);
 }
 
-/* edit vs preview btn */
-.preview-btn {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-btn);
-  padding: var(--padding-secondary-btn);
-  border-radius: var(--border-radius-btn);
-  /* margin-top: var(--margin-medium); */
-  margin-bottom: var(--margin-btn);
-  margin-left: var(--margin-medium);
-  height: var(--btn-height);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 4;
-  width: 25%;
-}
-
-.editBtn {
-  width: 120px;
-  height: 60px;
-  cursor: pointer;
-  border-radius: var(--border-radius-btn);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin-bottom: var(--margin-large);
-  margin-left: var(--margin-left-medium);
-  overflow: hidden;
-}
-
-.editBtn::before {
-  content: "";
-  width: 200%;
-  height: 200%;
-  position: absolute;
-  z-index: 1;
-  transform: scale(0);
-
-  border-radius: 50%;
-  filter: blur(10px);
-}
-.editBtn:hover::before {
-  transform: scale(1);
-}
-/* .editBtn:hover {
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.336);
-} */
-
-.editBtn svg {
-  height: 17px;
-  fill: white;
-  z-index: 2;
-  transition: all 0.2s;
-  transform-origin: bottom;
-}
-.editBtn:hover svg {
-  transform: rotate(-15deg) translateX(5px);
-}
-.editBtn::after {
-  content: "";
-  width: 55px;
-  height: 1.5px;
-  position: absolute;
-  bottom: 19px;
-  left: -5px;
-  background-color: white;
-  border-radius: 2px;
-  z-index: 2;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-out;
-}
-.editBtn:hover::after {
-  transform: scaleX(1);
-  left: 0px;
-  transform-origin: right;
-}
-
 /*    */
-
+/*    */
 /* car container and scroll bar  */
 .car-container {
   display: flex;
@@ -467,3 +382,34 @@
     margin-top: var(--margin-small);
   }
 }
+
+/* .editBtn:hover::before {
+  transform: scale(1);
+} */
+/* .editBtn:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.336);
+} */
+/* .editBtn:hover svg {
+  transform: rotate(-15deg) translateX(5px);
+} */
+/* .editBtn::after {
+  content: "";
+  width: 55px;
+  height: 1.5px;
+  position: absolute;
+  bottom: 19px;
+  left: -5px;
+  background-color: white;
+  border-radius: 2px;
+  z-index: 2;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-out;
+}
+.editBtn:hover::after {
+  transform: scaleX(1);
+  left: 0px;
+  transform-origin: right;
+} */
+
+/*    */
