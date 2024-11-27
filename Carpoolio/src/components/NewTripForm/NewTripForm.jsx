@@ -2,12 +2,12 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TripContext } from "@/components/TripContext";
 import axios from "axios";
-import ProgressBar from "../components/ProgressBar";
+import ProgressBar from "../ProgressBar";
 import NewEvent from "@components/NewEvent/NewEvent.jsx";
 import NewCar from "@components/NewCar/NewCar.jsx";
-import CustomizeTrip from "../components/CustomizeTrip/CustomizeTrip";
-import bluegoo from "../assets/gifs/bluegoo.gif";
-import "../components/NewTripForm/NewTripForm.css";
+import CustomizeTrip from "@components/CustomizeTrip/CustomizeTrip";
+import bluegoo from "../../assets/gifs/bluegoo.gif";
+import "./NewTripForm.css";
 
 export default function NewTripForm() {
   const navigate = useNavigate();
@@ -40,8 +40,6 @@ export default function NewTripForm() {
             destinationInfo={destination} // pass address and lat/lng
           />
         );
-      // case 3:
-      //   return <TripPage />; On Next navigate to trip link
     }
   };
 

@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext, useRef } from "react";
 
 import { TripContext } from "@components/TripContext";
-import InviteBtn from "@components/InviteBtn.jsx";
+import InviteBtn from "./InviteBtn.jsx";
 import "./BottomNav.css";
 
 export default function BottomNav({
@@ -10,7 +10,6 @@ export default function BottomNav({
   togglePreview,
 }) {
   const { formData, setFormData } = useContext(TripContext);
-  //   const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
 
   return (
     <>

@@ -1,12 +1,11 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { TripContextProvider } from "@components/TripContext"; // Adjust path if needed
 
 import HomePage from "./pages/HomePage.jsx";
-import NewTripPage from "./pages/NewTripPage.jsx";
 import TripPage from "./pages/TripPage.jsx";
-import NewTripForm from "./pages/NewTripForm.jsx";
+import NewTripForm from "@components/NewTripForm/NewTripForm.jsx";
 import "./index.css";
-import { TripContextProvider } from "@components/TripContext"; // Adjust path if needed
 
 const router = createBrowserRouter([
   {

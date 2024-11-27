@@ -2,7 +2,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TripContext } from "@components/TripContext";
-import "./InviteBtn.css";
 
 export default function InviteBtn({ tripId }) {
   const navigate = useNavigate();
