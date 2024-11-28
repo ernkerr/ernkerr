@@ -119,7 +119,8 @@
   background: var(--glass-background);
   border: none;
   border-radius: var(--border-radius-btn);
-  margin: var(--margin-medium);
+  width: 90%;
+  margin-top: 10px;
 }
 
 /* add car btn */
@@ -178,7 +179,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 200px;

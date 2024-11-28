@@ -67,55 +67,57 @@ export default function DateSelector({ isPreviewingTrip }) {
       ) : null}
 
       {tripDateExists && (
-        <div className="calendar-icon-container">
-          <button
-            style={{
-              background: isPreviewingTrip
-                ? "transparent"
-                : formData?.tripBackground?.scrim || undefined,
-              pointerEvents: isPreviewingTrip ? "none" : "auto",
-            }}
-            className={`date-icon ${isPreviewingTrip ? "disabled" : ""}`}
-            onClick={toggleCalendar}
-            disabled={isPreviewingTrip}
-          >
-            <div className="month">
-              {/* extract month for calendar icon display */}
-              {new Date(formData.tripDate).toLocaleDateString("en-US", {
-                month: "short",
-              })}
-            </div>
-            <div className="day">{new Date(formData.tripDate).getDate()}</div>
-          </button>
-          <div className="date-text-container">
+        <div>
+          <div className="calendar-icon-container">
             <button
               style={{
                 background: isPreviewingTrip
                   ? "transparent"
-                  : formData?.tripBackground?.scrim || undefined,
+                  : formData?.tripBackground?.scrim || "transparent",
                 pointerEvents: isPreviewingTrip ? "none" : "auto",
               }}
-              className={`date-text ${isPreviewingTrip ? "disabled" : ""}`}
+              className={`date-icon ${isPreviewingTrip ? "disabled" : ""}`}
               onClick={toggleCalendar}
               disabled={isPreviewingTrip}
             >
-              {formData.tripDate}
+              <div className="month">
+                {/* extract month for calendar icon display */}
+                {new Date(formData.tripDate).toLocaleDateString("en-US", {
+                  month: "short",
+                })}
+              </div>
+              <div className="day">{new Date(formData.tripDate).getDate()}</div>
             </button>
-            {tripTimeExists && (
+            <div className="date-text-container">
               <button
                 style={{
                   background: isPreviewingTrip
                     ? "transparent"
-                    : formData?.tripBackground?.scrim || undefined,
+                    : formData?.tripBackground?.scrim || "transparent",
                   pointerEvents: isPreviewingTrip ? "none" : "auto",
                 }}
-                className="time-text"
-                onClick={toggleTimeSelector}
+                className={`date-text ${isPreviewingTrip ? "disabled" : ""}`}
+                onClick={toggleCalendar}
+                disabled={isPreviewingTrip}
               >
-                <img src={clockIcon} alt="Departure Time Icon" />
-                {formData.tripTime}
+                {formData.tripDate}
               </button>
-            )}
+              {tripTimeExists && (
+                <button
+                  style={{
+                    background: isPreviewingTrip
+                      ? "transparent"
+                      : formData?.tripBackground?.scrim || "transparent",
+                    pointerEvents: isPreviewingTrip ? "none" : "auto",
+                  }}
+                  className="time-text"
+                  onClick={toggleTimeSelector}
+                >
+                  <img src={clockIcon} alt="Departure Time Icon" />
+                  {formData.tripTime}
+                </button>
+              )}
+            </div>
           </div>
         </div>
       )}
@@ -149,7 +151,7 @@ export default function DateSelector({ isPreviewingTrip }) {
       )}
       {!isPreviewingTrip && tripDateExists && !tripTimeExists ? (
         <button
-          className="form-response"
+          className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
           style={{
             background: isPreviewingTrip
               ? "transparent"

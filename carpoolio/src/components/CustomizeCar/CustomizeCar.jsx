@@ -17,6 +17,11 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   const [isShowingOptions, setIsShowingOptions] = useState(false);
   const [customizeCarBtn, setCustomizeCarBtn] = useState(false);
 
+  const [isDeletingCar, setIsDeletingCar] = useState(false);
+  const [carToDelete, setCarToDelete] = useState(null);
+
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const changeCarName = (event) => {
     const newCarName = event.target.value;
 
@@ -104,11 +109,14 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   // Save or update car details
   const handleSaveCar = () => setIsCustomizingCar(false);
 
+  // delete car in the backend
+
   const handleDeleteCar = () => {
     setFormData((prevData) => {
       const updatedCars = prevData.cars.filter(
         (_, index) => index !== activeCarIndex
       );
+
       return {
         ...prevData,
         cars: updatedCars,
@@ -116,7 +124,11 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
     });
   };
 
-  // TODO: add some logic for deleting car only if they have adminId
+  const handleDeleteCarModal = () => {
+    setIsDeletingCar(true);
+  };
+
+  // TODO: add css / car deletion in the backend
 
   const handleMoreOptions = () => {
     setIsShowingOptions((prevState) => !prevState);
@@ -131,22 +143,30 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
       <div className="modal">
         <div className="overlay">
           <div className="customize-car-container">
-            {/* <div className="modal-content-car"> */}
-            {/* <div className="car-and-details-container"> */}
             <div className="customize-car-btn-container">
-              {/* <button
-                  className="secondary-btn"
-                  id="delete-car-btn"
-                  onClick={handleDeleteCar}
-                  style={{
-                    background:
-                      formData?.tripBackground?.scrim || "transparent",
-                    border: ` 2px solid ${formData.glowColor}`,
-                    // boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-                  }}
-                >
-                  Delete car
-                </button> */}
+              {isDeletingCar && (
+                <div className="confirmation-modal">
+                  {/* todo: css */}
+                  <div className="modal-btn">
+                    <button onClick={handleDeleteCar}>Delete</button>
+                    <button onClick={() => setIsDeletingCar(false)}>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+              <button
+                className="secondary-btn"
+                id="delete-car-btn"
+                onClick={handleDeleteCar}
+                style={{
+                  background: formData?.tripBackground?.scrim || "transparent",
+                  border: ` 2px solid ${formData.glowColor}`,
+                  // boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
+                }}
+              >
+                Delete car
+              </button>
 
               <button
                 className={`glass-button ${customizeCarBtn ? "selected" : ""}`}

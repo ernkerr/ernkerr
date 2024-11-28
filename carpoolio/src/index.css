@@ -113,6 +113,7 @@ body {
   --margin-medium: 25px; */
 
   --margin-top: 5dvh;
+
   --margin-progressbar: 5dvh;
   --margin-form-field: 4dvh;
   --margin-form-response: 2dvh;
@@ -138,6 +139,7 @@ body {
   --btn-height: 48px;
 
   /* width */
+  --btn-width: 60dvw;
 
   /* titles */
 
@@ -152,7 +154,7 @@ body {
 
   --glass-background-light: rgba(255, 255, 255, 0.25);
 
-  --glass-background-light: rgba(255, 255, 255, 0.75);
+  --glass-background-extra-light: rgba(255, 255, 255, 0.75);
   /* --grey: rgb(112, 112, 112); */
 
   --dark: rgba(12, 12, 12, 0.4);

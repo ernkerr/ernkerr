@@ -78,7 +78,11 @@ export default function DepartureDetails({ isPreviewingTrip, activeCarIndex }) {
               onClick={toggleCalendar}
               disabled={isPreviewingTrip}
             >
-              {/* <img className="icon" src={calendarIcon} alt="Calendar Time Icon" /> */}
+              <img
+                className="icon"
+                src={calendarIcon}
+                alt="Calendar Time Icon"
+              />
               {formData?.cars?.[activeCarIndex]?.departureDate}
             </button>
           </>

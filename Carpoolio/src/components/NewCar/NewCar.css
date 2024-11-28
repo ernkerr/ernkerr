@@ -1,10 +1,16 @@
-.glass-buttons-container {
+.form-question {
+  font-size: var(--font-size-small);
+  justify-content: center;
+  text-align: center;
+}
+
+/* .glass-buttons-container {
   display: flex;
   gap: 5%;
   width: 100%;
   justify-content: center;
   margin-top: var(--margin-form-response);
-}
+} */
 
 .glass-button {
   color: var(--white);
@@ -17,8 +23,9 @@
   cursor: pointer;
   /* backdrop-filter: blur(7.6px); ( for desktop )*/
   /* -webkit-backdrop-filter: blur(7.6px); */
-  width: 75%;
+  width: var(--btn-width);
   height: var(--btn-height);
+  margin-top: var(--margin-medium);
   align-items: center;
 }
 
@@ -29,11 +36,9 @@
 
 .glass-button.selected {
   color: var(--white);
-  background: var(--glass-background-light);
+  background: var(--glass-background);
   border-color: var(--main-green);
   box-shadow: var(--green-glow);
-
-  /* -webkit-backdrop-filter: blur(7.6px); */
 }
 
 #car-details-btn {
@@ -69,7 +74,7 @@
   box-shadow: var(--green-glow);
 
   /* margin-top: var(); */
-  margin-top: var(--margin-form-field);
+  /* margin-top: var(--margin-form-field); */
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */

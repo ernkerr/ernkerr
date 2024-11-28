@@ -154,13 +154,13 @@ export default function NewCar({ onNext, autoAddCar, setAutoAddCar }) {
   };
 
   return (
-    <div className="form-question-container">
-      <div className="glass-buttons-container">
+    <>
+      <>
         <button
           onClick={handleYes}
           className={`glass-button ${isAddingCar === true ? "selected" : ""}`} // assign selected class based on isAddingCar state
           style={{
-            background: formData?.tripBackground?.scrim || "transparent",
+            background: formData?.tripBackground?.scrim || undefined,
           }}
         >
           + add a car
@@ -169,7 +169,7 @@ export default function NewCar({ onNext, autoAddCar, setAutoAddCar }) {
         <button onClick={onNext} className="tertiary-btn">
           Skip
         </button>
-      </div>
+      </>
 
       {isAddingCar && (
         <>
@@ -212,10 +212,9 @@ export default function NewCar({ onNext, autoAddCar, setAutoAddCar }) {
           )}
 
           {/* if customize car btn is pressed show carName, color, etc. (modal?) */}
-          {/* edit car modal : build? */}
         </>
       )}
-    </div>
+    </>
   );
 }
 
