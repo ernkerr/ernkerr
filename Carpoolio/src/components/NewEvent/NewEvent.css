@@ -85,7 +85,6 @@
   color: var(--main-green);
   font-family: var(--main-font);
   font-size: var(--font-size-small);
-  /* padding: var(--padding-secondary-btn); */
   border: 1px solid var(--main-green);
   border-radius: var(--border-radius-btn);
   margin-top: var(--margin-btn);

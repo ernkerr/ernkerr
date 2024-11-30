@@ -8,6 +8,7 @@ import "./CustomizeCar.css";
 import "../RenderCar/RenderCar.css";
 import CarNotes from "../CarNotes.jsx";
 import DepartureDetails from "../DepartureDetails/DepartureDetails.jsx";
+import DeleteModal from "../DeleteModal/DeleteModal.jsx";
 
 export default function CustomizeCar({
   activeCarIndex,
@@ -22,7 +23,6 @@ export default function CustomizeCar({
   const [customizeCarBtn, setCustomizeCarBtn] = useState(false);
 
   const [isDeletingCar, setIsDeletingCar] = useState(false);
-  const [carToDelete, setCarToDelete] = useState(null);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -164,15 +164,25 @@ export default function CustomizeCar({
             <div className="customize-car-btn-container">
               {isDeletingCar && (
                 <div className="confirmation-modal">
+                  <DeleteModal
+                    onCancel={() => setIsDeletingCar(false)}
+                    onDelete={() => handleDeleteCar(car.carId)}
+                  />
                   {/* todo: css */}
-                  <div className="modal-btn">
-                    <button onClick={() => handleDeleteCar(car.carId)}>
-                      Delete
-                    </button>
-                    <button onClick={() => setIsDeletingCar(false)}>
+                  {/* <div className="modal-btn-container">
+                    <button
+                      className="modal-secondary-btn"
+                      onClick={() => setIsDeletingCar(false)}
+                    >
                       Cancel
                     </button>
-                  </div>
+                    <button
+                      className="modal-primary-btn"
+                      onClick={() => handleDeleteCar(car.carId)}
+                    >
+                      Delete
+                    </button>
+                  </div> */}
                 </div>
               )}
               <button
@@ -181,7 +191,7 @@ export default function CustomizeCar({
                 onClick={handleDeleteCarModal}
                 style={{
                   background: formData?.tripBackground?.scrim || "transparent",
-                  border: ` 2px solid ${formData.glowColor}`,
+                  border: ` 1px solid ${formData.glowColor}`,
                   // boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
                 }}
               >
@@ -189,7 +199,7 @@ export default function CustomizeCar({
               </button>
 
               <button
-                className={`glass-button ${customizeCarBtn ? "selected" : ""}`}
+                className={`glass-btn ${customizeCarBtn ? "selected" : ""}`}
                 id="car-details-btn"
                 onClick={handleCustomizeCar}
               >
@@ -226,9 +236,8 @@ export default function CustomizeCar({
               )}
 
               <button
-                className={`glass-button ${isShowingOptions ? "selected" : ""}`}
+                className={`glass-btn ${isShowingOptions ? "selected" : ""}`}
                 id="car-details-btn"
-                // id="departure-details-btn"
                 onClick={handleMoreOptions}
               >
                 Edit departure details +
@@ -388,14 +397,6 @@ export default function CustomizeCar({
             className="primary-btn"
             id="save-car-btn"
             onClick={handleSaveCar}
-            // style={{
-            //   background:
-            //     formData?.tripBackground?.scrim ||
-            //     formData?.transparentGlowColor,
-            //   border: ` 1px solid ${formData?.glowColor}`,
-            //   // boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-            //   // Zindex: "2",
-            // }}
             style={{
               background:
                 formData?.tripBackground?.scrim ||

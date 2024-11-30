@@ -113,7 +113,7 @@ export default function NewCar({ onNext }) {
         // handle Seat Distribution
         const seatDistribution = computeSeatDistribution(numSeats);
         updatedCars[activeCarIndex].seatDistribution = seatDistribution;
-        console.log("Updated seat distrubution:", seatDistribution);
+        // console.log("Updated seat distrubution:", seatDistribution);
       }
       return { ...prevData, cars: updatedCars, numSeats };
     });
@@ -150,7 +150,7 @@ export default function NewCar({ onNext }) {
       <>
         <button
           onClick={handleYes}
-          className={`glass-button ${isAddingCar === true ? "selected" : ""}`} // assign selected class based on isAddingCar state
+          className={`glass-btn ${isAddingCar === true ? "selected" : ""}`} // assign selected class based on isAddingCar state
           style={{
             background: formData?.tripBackground?.scrim || undefined,
           }}

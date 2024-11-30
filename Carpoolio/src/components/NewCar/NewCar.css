@@ -12,7 +12,7 @@
   margin-top: var(--margin-form-response);
 } */
 
-.glass-button {
+.glass-btn {
   color: var(--white);
   font: var(--main-font);
   font-size: var(--font-size-small);
@@ -27,14 +27,17 @@
   height: var(--btn-height);
   margin-top: var(--margin-medium);
   align-items: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.glass-button:hover {
+.glass-btn:hover {
   background: var(--glass-background);
   color: var(--white);
 }
 
-.glass-button.selected {
+.glass-btn.selected {
   color: var(--white);
   background: var(--glass-background);
   border-color: var(--main-green);
@@ -49,16 +52,11 @@
   transform: translateX(-50%);
 }
 
-/* For browser compatibility
-@supports not (backdrop-filter: blur(8px)) {
-  .glass-button {
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  .glass-button.selected {
-    background: rgba(255, 255, 255, 0.35);
-  }
-} */
+#driverName {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 .numSeatsSlider {
   -webkit-appearance: none; /* Override default CSS styles */

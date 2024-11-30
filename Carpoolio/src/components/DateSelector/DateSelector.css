@@ -84,12 +84,9 @@ date-time-container {
   color: white;
   font-family: var(--main-font);
   font-size: var(--font-size-medium);
-  /* font-weight: var(--font-weight-bold); */
-  /* padding: 5px; */
   border: none;
   margin-bottom: var(--margin-small);
   cursor: pointer;
-  /* margin-left: 5px; */
 }
 
 .time-text {
@@ -106,7 +103,7 @@ date-time-container {
 }
 
 .time-text img {
-  margin-right: 5px; /* space between text and icon */
+  margin-right: 5px;
   width: 16px;
   height: 16px;
 }
@@ -118,13 +115,7 @@ date-time-container {
   pointer-events: none; /* Optional: disables all interaction */
 }
 
-/* #set-date-btn {
-  text-align: left;
-} */
-
 #set-time-btn {
-  /* text-align: left; */
-  /* margin-top: var(--margin-btn); */
   color: var(--placeholder);
 }
 
@@ -153,8 +144,6 @@ body.active-modal {
 
 .overlay {
   background: rgba(255, 255, 255, 0.15);
-  /* 
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
 }
@@ -164,15 +153,10 @@ body.active-modal {
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-
   background-color: var(--glass-background);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  /* backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px); */
-
   padding: 14px 28px;
   border-radius: var(--border-radius-btn);
-  /* max-width: 600px; */
   min-width: 300px;
 }
 
@@ -195,3 +179,6 @@ body.active-modal {
   margin-top: var(--margin-medium);
   box-sizing: border-box;
 }
+
+/* backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px); */
