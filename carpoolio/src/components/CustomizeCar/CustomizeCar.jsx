@@ -9,7 +9,11 @@ import "../RenderCar/RenderCar.css";
 import CarNotes from "../CarNotes.jsx";
 import DepartureDetails from "../DepartureDetails/DepartureDetails.jsx";
 
-export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
+export default function CustomizeCar({
+  activeCarIndex,
+  setIsCustomizingCar,
+  setIsAddingCar,
+}) {
   const { formData, setFormData } = useContext(TripContext);
   const car = formData?.cars?.[activeCarIndex];
 
@@ -111,17 +115,31 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
 
   // delete car in the backend
 
-  const handleDeleteCar = () => {
-    setFormData((prevData) => {
-      const updatedCars = prevData.cars.filter(
-        (_, index) => index !== activeCarIndex
-      );
+  const handleDeleteCar = async (carId) => {
+    console.log("Deleting car with ID:", carId);
+    try {
+      const response = await axios.delete(`${API_BASE_URL}/api/car/${carId}`);
 
-      return {
-        ...prevData,
-        cars: updatedCars,
-      };
-    });
+      // if car deletion is a sucess
+      if (response.status === 200) {
+        console.log(`Car with ID ${carId} deleted successfully`);
+        setIsCustomizingCar(false);
+        setIsAddingCar(false);
+        setFormData((prevData) => {
+          const updatedCars = prevData.cars.filter(
+            (_, index) => index !== activeCarIndex
+          );
+
+          return {
+            ...prevData,
+            cars: updatedCars,
+          };
+        });
+      }
+    } catch (error) {
+      console.error("Error deleting car:", error.message);
+      console.error("Full error:", error);
+    }
   };
 
   const handleDeleteCarModal = () => {
@@ -148,7 +166,9 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
                 <div className="confirmation-modal">
                   {/* todo: css */}
                   <div className="modal-btn">
-                    <button onClick={handleDeleteCar}>Delete</button>
+                    <button onClick={() => handleDeleteCar(car.carId)}>
+                      Delete
+                    </button>
                     <button onClick={() => setIsDeletingCar(false)}>
                       Cancel
                     </button>
@@ -158,7 +178,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
               <button
                 className="secondary-btn"
                 id="delete-car-btn"
-                onClick={handleDeleteCar}
+                onClick={handleDeleteCarModal}
                 style={{
                   background: formData?.tripBackground?.scrim || "transparent",
                   border: ` 2px solid ${formData.glowColor}`,

@@ -5,11 +5,10 @@ import RenderCar from "../RenderCar/RenderCar";
 import NumSeats from "@components/NumSeats.jsx";
 import "./NewCar.css";
 
-export default function NewCar({ onNext, autoAddCar, setAutoAddCar }) {
+export default function NewCar({ onNext }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isAddingCar, setIsAddingCar] = useState("");
   const [driverName, setDriverName] = useState("");
-  const [driverNameError, setDriverNameError] = useState(false); // state for error message
 
   const [isNumSeatsSet, setIsNumSeatsSet] = useState("");
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
@@ -18,27 +17,20 @@ export default function NewCar({ onNext, autoAddCar, setAutoAddCar }) {
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-  // auto select add a new car after add a new ar btn is pressed on other pages (CustomizeTrip or TripPage)
-
-  // infinite loop fix!
-  // trying to avoid having to click the add new car btn again
-  // useEffect(() => {
-  //   if (autoAddCar && !newCarCreated) {
-  //     handleYes(); // trigger "add a new car" logic when autoAddCar is true
-  //   }
-
-  //   // if (newCarCreated) {
-  //   //   setAutoAddCar(false); // Reset autoAddCar to avoid repeated execution
-  //   // }
-  // }, [autoAddCar, newCarCreated]);
+  // TODO: auto select add a new car after add a new ar btn is pressed on other pages (CustomizeTrip or TripPage)
 
   // progressive disclosure logic
   const handleYes = () => {
+    if (isAddingCar) {
+      // don't add another car if one is already being added
+      console.log("A car is already being added. Please wait.");
+      return; // exit
+    }
+
     if (!newCarCreated) {
       // only proceed if no car has been created yet
-      // don't delete or it WILL break
       setIsAddingCar(true);
-      handleAddNewCar();
+      handleAddNewCar(driverName); // pass driverName as argument
     }
   };
 
@@ -199,6 +191,7 @@ export default function NewCar({ onNext, autoAddCar, setAutoAddCar }) {
                 <CustomizeCar
                   activeCarIndex={activeCarIndex}
                   setIsCustomizingCar={setIsCustomizingCar}
+                  setIsAddingCar={setIsAddingCar}
                 />
               ) : (
                 <RenderCar

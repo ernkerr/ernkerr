@@ -225,3 +225,18 @@ app.post("/api/car", async (req, res) => {
     res.status(500).json({ error: "An error occurred while saving the car" });
   }
 });
+
+// handle car deletion
+app.delete("/api/car/:carId", async (req, res) => {
+  const { carId } = req.params;
+
+  try {
+    await prisma.car.delete({
+      where: { carId },
+    });
+    res.status(200).json({ message: "car deleted sucessfully" });
+  } catch (error) {
+    console.error("Error deleting car: ", error);
+        res.status(500).json({ error: "Failed to delete car" });
+  }
+});
