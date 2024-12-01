@@ -19,6 +19,7 @@ const corsOptions = {
     "http://192.168.0.28:5173",
     "http://192.168.0.30:5173",
     "http://127.0.2.2:5173",
+    "http://192.168.86.143:5173",
   ], // frontend url (change to domain later)
 };
 app.use(cors(corsOptions));
@@ -193,10 +194,6 @@ app.get("/api/trip/:tripId/:adminId", async (req, res) => {
 //
 //
 
-app.listen(PORT, () => {
-  console.log("Server started on port 8080");
-});
-
 //
 //
 //
@@ -237,6 +234,15 @@ app.delete("/api/car/:carId", async (req, res) => {
     res.status(200).json({ message: "car deleted sucessfully" });
   } catch (error) {
     console.error("Error deleting car: ", error);
-        res.status(500).json({ error: "Failed to delete car" });
+    res.status(500).json({ error: "Failed to delete car" });
   }
+});
+
+app.listen(PORT, () => {
+  console.log("Server started on port 8080");
+});
+
+// Catch-all route for React (placed last)
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });

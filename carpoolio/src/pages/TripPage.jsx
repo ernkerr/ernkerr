@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CustomizeTrip from "@components/CustomizeTrip/CustomizeTrip";
@@ -68,6 +69,31 @@ export default function TripPage() {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {tripDetails.tripName || "carpoolio - plan your next trip!"}
+        </title>
+        <meta
+          name="description"
+          content={tripDetails.description || "Join your next adventure!"}
+        />
+        <meta
+          property="og:title"
+          content={tripDetails.title || "Carpoolio - Plan Your Trip"}
+        />
+        <meta
+          property="og:description"
+          content={tripDetails.description || "Plan your carpool with ease."}
+        />
+        <meta
+          property="og:image"
+          content={tripDetails.image || "/default-preview.jpg"}
+        />
+        <meta
+          property="og:url"
+          content={`${window.location.origin}/trip/${tripDetails.id}`}
+        />
+      </Helmet>
       <div
         className="full-screen-wrapper"
         style={{
