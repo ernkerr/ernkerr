@@ -23,6 +23,8 @@ export default function NewTripForm() {
   // step 2: NewCar
   // step 3: Customize Trip
 
+  // TODO: change step 3 to share: new modal with how you'd like to share your trip
+
   const conditionalComponent = () => {
     switch (page) {
       case 0:
@@ -34,12 +36,12 @@ export default function NewTripForm() {
         );
       case 1:
         return <NewCar onNext={handleNext} />;
-      case 2:
-        return (
-          <CustomizeTrip
-            destinationInfo={destination} // pass address and lat/lng
-          />
-        );
+      // case 2:
+      //   return (
+      //     <CustomizeTrip
+      //       destinationInfo={destination} // pass address and lat/lng
+      //     />
+      //   );
     }
   };
 
@@ -67,7 +69,7 @@ export default function NewTripForm() {
         if (response.status === 200) {
           console.log("Trip updated:", response.data);
 
-          if (page >= 2) {
+          if (page >= 1) {
             navigate(`/trip/${formData?.tripId}/${formData?.adminId}`); // navigate to the trip page using tripId and adminId
           } else {
             setPage(page + 1);

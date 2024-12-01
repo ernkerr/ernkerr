@@ -1,5 +1,5 @@
 export default function ProgressBar({ currentStep }) {
-  const steps = ["Create Event", "Car Details", "Customize Event"];
+  const steps = ["Create Event", "Car Details", "Share"];
   const progress = (currentStep / steps.length) * 100;
   return (
     <div className="progress-container">

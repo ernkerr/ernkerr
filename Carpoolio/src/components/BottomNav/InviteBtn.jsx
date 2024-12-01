@@ -2,16 +2,26 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TripContext } from "@components/TripContext";
+import InviteModal from "../InviteModal/InviteModal";
 
 export default function InviteBtn({ tripId }) {
   const navigate = useNavigate();
   const { formData } = useContext(TripContext);
+  const [isShowingModal, setIsShowingModal] = useState(true);
+
   const handleInvite = () => {
-    navigate(`/trip/${tripId}`);
+    // navigate(`/trip/${tripId}`);
+    setIsShowingModal(true);
   };
 
   return (
     <>
+      {isShowingModal && (
+        <div>
+          <InviteModal onClose={() => setIsShowingModal(false)} />
+        </div>
+      )}
+
       <button
         className="star-button"
         onClick={handleInvite}

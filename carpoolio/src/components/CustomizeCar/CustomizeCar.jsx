@@ -168,21 +168,6 @@ export default function CustomizeCar({
                     onCancel={() => setIsDeletingCar(false)}
                     onDelete={() => handleDeleteCar(car.carId)}
                   />
-                  {/* todo: css */}
-                  {/* <div className="modal-btn-container">
-                    <button
-                      className="modal-secondary-btn"
-                      onClick={() => setIsDeletingCar(false)}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      className="modal-primary-btn"
-                      onClick={() => handleDeleteCar(car.carId)}
-                    >
-                      Delete
-                    </button>
-                  </div> */}
                 </div>
               )}
               <button
