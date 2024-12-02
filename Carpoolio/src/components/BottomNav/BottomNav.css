@@ -8,7 +8,7 @@
   background: var(--glass-background);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-  margin-bottom: var(--margin-btn);
+  margin-bottom: 120px;
   margin-left: var(--margin-medium);
   height: var(--btn-height);
   position: absolute;
@@ -27,11 +27,11 @@
   background: var(--glass-background);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-  margin-bottom: var(--margin-btn);
-  margin-right: 20px;
+  margin-bottom: 120px;
+  margin-left: 20px;
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
   width: 80px;
   height: 60px;
 }
@@ -88,7 +88,7 @@
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
 
-  margin-bottom: var(--margin-btn);
+  margin-bottom: 40px;
 
   height: var(--btn-height);
   /* padding: 12px 25px; */

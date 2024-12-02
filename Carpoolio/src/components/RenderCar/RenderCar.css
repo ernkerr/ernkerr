@@ -15,25 +15,25 @@
   align-items: center;
   flex-direction: row;
   height: 40px;
+  gap: 45dvw;
 }
 
 .carName {
   color: var(--white);
   font-family: var(--main-font);
   font-size: var(--font-size-medium);
-  /* padding: var(--padding-primary-btn); */
-  /* border: 1px solid var(--main-green); */
   border: none;
   background: none;
-  /* border-radius: var(--border-radius-btn);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
-  /* backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px); for desktop */
   position: relative;
   left: 50dvw;
   transform: translateX(-50%);
   text-align: center;
+}
+
+#edit-car-btn {
+  position: relative;
+  /* width: 60px; */
+  margin: 0;
 }
 
 .departure-date-time-container {
@@ -63,24 +63,11 @@
   background: none;
 }
 
-#edit-car-btn {
-  position: relative;
-  margin-left: auto;
-  margin-top: 8dvh;
-  margin-right: 8%;
-  width: 60px;
-}
-
 .render-car-container {
-  /* height: 64dvh; */
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   position: relative;
-  /* background: rgba(122, 231, 98, 0.128); */
-  /* margin-left: 50%; */
-  /* margin-bottom: 10%; */
-  /* overflow: hidden; */
 }
 
 .render-car-container svg {

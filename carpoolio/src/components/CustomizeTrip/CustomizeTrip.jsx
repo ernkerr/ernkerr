@@ -93,28 +93,32 @@ export default function CustomizeTrip({ isAdmin }) {
   };
 
   // sync changes in backend
-  useEffect(() => {
-    const updateTripDetails = async () => {
-      // validate to make sure tripId exists
-      try {
-        const response = await axios.put(
-          `${API_BASE_URL}/api/trip/${formData.tripId}`, // update the trip in the backend
-          formData
-        );
-        if (response.status === 200) {
-          console.log("trip update sucess! yes! ", response.data);
+  useEffect(
+    () => {
+      const updateTripDetails = async () => {
+        // validate to make sure tripId exists
+        try {
+          const response = await axios.put(
+            `${API_BASE_URL}/api/trip/${formData.tripId}`, // update the trip in the backend
+            formData
+          );
+          if (response.status === 200) {
+            console.log("trip update sucess! yes! ", response.data);
+          }
+        } catch (error) {
+          console.error("houston, we have an error: ", error);
         }
-      } catch (error) {
-        console.error("houston, we have an error: ", error);
-      }
-    };
+      };
 
-    const debounceTimer = setTimeout(() => {
-      updateTripDetails(); // call after the debounce time
-    }, 1000); // debounce to prevent excessive API calls
+      const debounceTimer = setTimeout(() => {
+        updateTripDetails(); // call after the debounce time
+      }, 1000); // debounce to prevent excessive API calls
 
-    return () => clearTimeout(debounceTimer);
-  }, [formData]);
+      return () => clearTimeout(debounceTimer);
+    },
+    [formData],
+    [formData.cars]
+  );
 
   return (
     <div className="customize-trip-container">

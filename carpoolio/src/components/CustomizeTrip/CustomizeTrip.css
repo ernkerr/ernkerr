@@ -135,7 +135,7 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: var(--margin-form-response);
+  /* margin-top: var(--margin-form-response); */
 }
 
 /* style options */
