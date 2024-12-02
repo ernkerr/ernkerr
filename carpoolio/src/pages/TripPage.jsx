@@ -63,39 +63,13 @@ export default function TripPage() {
   }
 
   // check if tripDetails have loaded, or show a loading state
-  // TODO: add loading animation
+  // TODO: add fun loading animation
   if (!tripDetails) {
     return <div>Loading...</div>;
   }
 
   return (
     <>
-      {/* <Helmet>
-        <title>
-          {tripDetails.tripName || "carpoolio - plan your next trip!"}
-        </title>
-        <meta
-          name="description"
-          content={tripDetails.description || "Join your next adventure!"}
-        />
-        <meta
-          property="og:title"
-          content={tripDetails.title || "Carpoolio - Plan Your Trip"}
-        />
-        <meta
-          property="og:description"
-          content={tripDetails.description || "Plan your carpool with ease."}
-        />
-        <meta
-          property="og:image"
-          content={tripDetails.image || "/default-preview.jpg"}
-        />
-        <meta
-          property="og:url"
-          content={`${window.location.origin}/trip/${tripDetails.id}`}
-        />
-      </Helmet> */}
-      {/* these didn't go through */}
       <div
         className="full-screen-wrapper"
         style={{
@@ -105,8 +79,6 @@ export default function TripPage() {
         }}
       >
         <CustomizeTrip isAdmin={isAdmin} />
-
-        <BottomNav />
 
         {/* <NewTripButton
               className="new-trip-btn"

@@ -3,20 +3,19 @@
   cursor: pointer;
   color: var(--white);
   font-family: var(--main-font);
-  font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-tiny);
   letter-spacing: var(--letter-spacing-btn);
-  /* padding: var(--padding-secondary-btn); */
+  background: var(--glass-background);
+  border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-  /* margin-top: var(--margin-medium); */
   margin-bottom: var(--margin-btn);
   margin-left: var(--margin-medium);
   height: var(--btn-height);
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 3;
-  width: 120px;
+  z-index: 2;
+  width: 80px;
   height: 60px;
 }
 
@@ -25,49 +24,59 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--padding-secondary-btn);
+  background: var(--glass-background);
+  border: var(--glass-border);
   border-radius: var(--border-radius-btn);
   margin-bottom: var(--margin-btn);
-  margin-left: var(--margin-medium);
+  margin-left: 20px;
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 120px;
+  width: 80px;
   height: 60px;
 }
 
-.edit-btn::before {
-  content: "";
-  width: 200%;
-  height: 200%;
-  position: absolute;
-  z-index: 1;
-  transform: scale(0);
-
-  border-radius: 50%;
-  filter: blur(10px);
+.edit-btn svg {
+  height: 18px;
+  fill: rgb(218, 222, 221, 0.9);
+  z-index: 2;
+  margin-bottom: 8px;
 }
 
-.edit-btn svg {
-  height: 17px;
-  fill: white;
-  z-index: 2;
-  transition: all 0.2s;
-  transform-origin: bottom;
+.icon-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.icon-text {
+  color: var(--white);
+  font-family: var(--main-font);
+  margin: 0;
+}
+
+.save-icon {
+  opacity: 0.8;
+  height: 20px;
+  width: 19px;
+  margin-bottom: 8px;
 }
 
 .invite-icon {
   height: 20px;
   width: 20px;
-  margin-bottom: 3px;
+  margin-bottom: 8px;
 }
+
 .invite-icon-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-/* From Uiverse.io by MuhammadHasann */
+
 .star-button {
   color: var(--white);
   font-family: var(--main-font);
@@ -80,15 +89,15 @@
   border-radius: var(--border-radius-btn);
 
   margin-bottom: var(--margin-btn);
-  margin-left: var(--margin-left-large);
+  margin-right: 20px;
   height: var(--btn-height);
   /* padding: 12px 25px; */
   position: absolute;
   bottom: 0;
-  left: 0;
+  right: 0;
 
   cursor: pointer;
-  width: 100px;
+  width: 80px;
   height: 60px;
 }
 
