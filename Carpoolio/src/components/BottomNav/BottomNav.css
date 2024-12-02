@@ -225,3 +225,8 @@
 .fil0 {
   fill: #fffdef;
 }
+
+.bottom-drawer {
+  height: 40dvh;
+  background-color: var(--glass-background) !important;
+}

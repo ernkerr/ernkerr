@@ -9,6 +9,7 @@ import InviteBtn from "@components/BottomNav/InviteBtn.jsx";
 import "@components/NewTripForm/NewTripForm.css";
 import "@components/CustomizeTrip/CustomizeTrip.css";
 import "./TripPage.css";
+import BottomNav from "../components/BottomNav/BottomNav";
 
 export default function TripPage() {
   const { formData, setFormData } = useContext(TripContext);
@@ -69,7 +70,7 @@ export default function TripPage() {
 
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>
           {tripDetails.tripName || "carpoolio - plan your next trip!"}
         </title>
@@ -93,7 +94,8 @@ export default function TripPage() {
           property="og:url"
           content={`${window.location.origin}/trip/${tripDetails.id}`}
         />
-      </Helmet>
+      </Helmet> */}
+      {/* these didn't go through */}
       <div
         className="full-screen-wrapper"
         style={{
@@ -104,17 +106,9 @@ export default function TripPage() {
       >
         <CustomizeTrip isAdmin={isAdmin} />
 
-        <div
-          className="bottom-nav-bar"
-          style={
-            {
-              // background: formData?.glowColor || "transparent",
-            }
-          }
-        >
-          <InviteBtn tripId={tripId} />
+        <BottomNav />
 
-          {/* <NewTripButton
+        {/* <NewTripButton
               className="new-trip-btn"
               style={{
                 background: formData?.transparentGlowColor || "transparent",
@@ -124,7 +118,7 @@ export default function TripPage() {
             >
               + New Trip
             </NewTripButton> */}
-        </div>
+        {/* </div> */}
       </div>
     </>
   );

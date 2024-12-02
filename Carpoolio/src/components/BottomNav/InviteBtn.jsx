@@ -2,29 +2,34 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TripContext } from "@components/TripContext";
+import Drawer from "react-bottom-drawer";
 import InviteModal from "../InviteModal/InviteModal";
+import "./BottomNav.css";
 
-export default function InviteBtn({ tripId }) {
+export default function InviteBtn() {
   const navigate = useNavigate();
   const { formData } = useContext(TripContext);
-  const [isShowingModal, setIsShowingModal] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const handleInvite = () => {
-    // navigate(`/trip/${tripId}`);
-    setIsShowingModal(true);
-  };
+  // const handleInvite = () => {
+  //   // navigate(`/trip/${tripId}`);
+  //   setIsShowingModal(true);
+  // };
 
   return (
     <>
-      {isShowingModal && (
+      {/* <button onClick={() => setIsVisible(true)}>Invite</button> */}
+
+      {/* {isShowingModal && (
         <div>
           <InviteModal onClose={() => setIsShowingModal(false)} />
         </div>
-      )}
+      )} */}
 
       <button
         className="star-button"
-        onClick={handleInvite}
+        // onClick={handleInvite}
+        onClick={() => setIsVisible(true)} // show bottom drawer when clicked
         style={{
           background: formData?.tripBackground?.scrim || "transparent",
           border: ` 2px solid ${formData?.glowColor}`,
@@ -189,6 +194,16 @@ export default function InviteBtn({ tripId }) {
           </svg>
         </div>
       </button>
+
+      {/* bottom drawer for sharing functionality */}
+      <Drawer
+        isVisible={isVisible}
+        onClose={() => setIsVisible(false)}
+        duration={250}
+        className="bottom-drawer"
+      >
+        <p> Drawer here</p>
+      </Drawer>
     </>
   );
 }
