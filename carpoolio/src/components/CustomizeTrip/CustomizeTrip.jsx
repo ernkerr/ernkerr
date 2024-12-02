@@ -1,22 +1,26 @@
 import { useEffect, useState, useContext, useRef } from "react";
+import { TripContext } from "@components/TripContext";
 import hexRgb from "hex-rgb";
+import axios from "axios";
+
 import DateSelector from "@components/DateSelector/DateSelector.jsx";
 import TripBackground from "@components/TripBackground.jsx";
 import RenderCar from "../RenderCar/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import Description from "@components/Description/Description.jsx";
-import "./CustomizeTrip.css";
-import { TripContext } from "@components/TripContext";
-import navArrow from "../../assets/img/navarrow.png";
-import locationIcon from "../../assets/img/location-icon.png";
-
 import Destination from "../Destination/Destination.jsx";
 import TripName from "../TripName.jsx";
 import NewCar from "../NewCar/NewCar.jsx";
-import bluegoo from "../../assets/gifs/bluegoo.gif";
 
 import DestinationMap from "../Destination/DestinationMap.jsx";
 import BottomNav from "../BottomNav/BottomNav.jsx";
+import navArrow from "../../assets/img/navarrow.png";
+import locationIcon from "../../assets/img/location-icon.png";
+
+import bluegoo from "../../assets/gifs/bluegoo.gif";
+import "./CustomizeTrip.css";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function CustomizeTrip({ isAdmin }) {
   const { formData, setFormData } = useContext(TripContext); // access TripContext here
@@ -88,6 +92,30 @@ export default function CustomizeTrip({ isAdmin }) {
     setIsPreviewingTrip((prev) => !prev);
   };
 
+  // sync changes in backend
+  useEffect(() => {
+    const updateTripDetails = async () => {
+      // validate to make sure tripId exists
+      try {
+        const response = await axios.put(
+          `${API_BASE_URL}/api/trip/${formData.tripId}`, // update the trip in the backend
+          formData
+        );
+        if (response.status === 200) {
+          console.log("trip update sucess! yes! ", response.data);
+        }
+      } catch (error) {
+        console.error("houston, we have an error: ", error);
+      }
+    };
+
+    const debounceTimer = setTimeout(() => {
+      updateTripDetails(); // call after the debounce time
+    }, 1000); // debounce to prevent excessive API calls
+
+    return () => clearTimeout(debounceTimer);
+  }, [formData]);
+
   return (
     <div className="customize-trip-container">
       <>
@@ -95,7 +123,7 @@ export default function CustomizeTrip({ isAdmin }) {
 
         <div className={isAddress ? "destination-container" : ""}>
           {/* make a map */}
-          <DestinationMap address={formData?.destination} />
+          {isAddress && <DestinationMap address={formData?.destination} />}
 
           <div className="address-directions-container">
             <div className={isAddress ? "address-container" : ""}>
