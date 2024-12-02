@@ -361,21 +361,6 @@ export default function CustomizeCar({
                 </div>
               </div>
             </div>
-            {/* <div className="customize-car-btn-container">
-              <button
-                className="customize-car-btn"
-                id="delete-car-btn"
-                onClick={handleDeleteCar}
-                style={{
-                  background: formData?.tripBackground?.scrim || "transparent",
-                  border: ` 2px solid ${formData.glowColor}`,
-                  boxShadow: `0 0 10px ${formData.glowColor}, 0 0 5px ${formData.glowColor}, 0 0 15px ${formData.lighterGlowColor}`,
-                }}
-              >
-                Delete
-              </button>
-            </div> */}
-            {/* </div> */}
           </div>
 
           <button
