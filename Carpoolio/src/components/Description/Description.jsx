@@ -15,7 +15,7 @@ export default function Description({ isPreviewingTrip }) {
     <>
       {!isPreviewingTrip || formData?.tripDescription ? (
         <textarea
-          className="form-response"
+          className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
           id="description-textarea"
           placeholder={formData?.tripDescription || "Add a description"}
           value={formData.tripDescription || ""}
