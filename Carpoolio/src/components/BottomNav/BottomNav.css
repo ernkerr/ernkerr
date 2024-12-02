@@ -56,14 +56,26 @@
   transform-origin: bottom;
 }
 
+.invite-icon {
+  height: 20px;
+  width: 20px;
+  margin-bottom: 3px;
+}
+.invite-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 /* From Uiverse.io by MuhammadHasann */
 .star-button {
   color: var(--white);
   font-family: var(--main-font);
-  font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-tiny);
+  /* font-weight: var(--font-weight-bold); */
   letter-spacing: var(--letter-spacing-btn);
   /* padding: var(--padding-secondary-btn); */
+  background: var(--glass-background);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
 
@@ -76,19 +88,9 @@
   left: 0;
 
   cursor: pointer;
-  width: 120px;
+  width: 100px;
   height: 60px;
 }
-
-/* @media (max-width: 768px) {
-  .star-button {
-    font-size: var(--font-size-extra-small);
-    width: 25dvw;
-    height: 48px;
-    margin-left: 37.5dvw;
-    margin-bottom: var(--margin-small);
-  }
-} */
 
 .star-1 {
   position: absolute;
@@ -159,7 +161,7 @@
 .star-button:hover {
   background: transparent;
   color: white;
-  box-shadow: 0 0 25px #fec1958c;
+  box-shadow: 0 0 25px #ffffff8c;
 }
 
 .star-button:hover .star-1 {

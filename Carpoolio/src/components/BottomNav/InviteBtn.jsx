@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { TripContext } from "@components/TripContext";
 import Drawer from "react-bottom-drawer";
 import InviteModal from "../InviteModal/InviteModal";
+import inviteIcon from "../../assets/img/invite-icon.png";
 import "./BottomNav.css";
 
 export default function InviteBtn() {
@@ -28,15 +29,16 @@ export default function InviteBtn() {
 
       <button
         className="star-button"
-        // onClick={handleInvite}
         onClick={() => setIsVisible(true)} // show bottom drawer when clicked
-        style={{
-          background: formData?.tripBackground?.scrim || "transparent",
-          border: ` 2px solid ${formData?.glowColor}`,
-          boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-        }}
       >
-        Invite
+        <div className="invite-icon-container">
+          <img
+            className="invite-icon"
+            src={inviteIcon}
+            alt="Invite Person Icon"
+          />
+          Invite
+        </div>
         <div className="star-1"></div>
         <div className="star-2"></div>
         <div className="star-3"></div>
