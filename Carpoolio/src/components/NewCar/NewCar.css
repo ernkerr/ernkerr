@@ -58,6 +58,17 @@
   transform: translateX(-50%);
 }
 
+.driver-name-input {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.driver-name-input.hidden {
+  visibility: hidden;
+}
+
 .numSeatsSlider {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;

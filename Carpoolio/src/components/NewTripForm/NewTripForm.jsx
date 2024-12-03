@@ -146,7 +146,8 @@ export default function NewTripForm() {
                   formData?.tripBackground?.scrim ||
                   formData?.transparentGlowColor,
                 border: ` 1px solid ${formData?.glowColor}`,
-                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                // boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+                boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
               }}
               className="primary-btn"
               onClick={handleNext}

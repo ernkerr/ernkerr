@@ -5,7 +5,7 @@ import RenderCar from "../RenderCar/RenderCar";
 import NumSeats from "@components/NumSeats.jsx";
 import "./NewCar.css";
 
-export default function NewCar({ onNext }) {
+export default function NewCar({ triggerHandleYes }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isAddingCar, setIsAddingCar] = useState("");
   const [driverName, setDriverName] = useState("");
@@ -19,12 +19,20 @@ export default function NewCar({ onNext }) {
 
   // TODO: auto select add a new car after add a new ar btn is pressed on other pages (CustomizeTrip or TripPage)
 
+  // trigger 'handleYes' when 'triggerHandleYes' becomes true in the parent container
+  useEffect(() => {
+    if (triggerHandleYes && !isAddingCar) {
+      // and if not already adding a car
+      handleYes(); // automatically trigger handleYes
+    }
+  }, [triggerHandleYes]);
+
   // progressive disclosure logic
   const handleYes = () => {
     if (isAddingCar) {
       // don't add another car if one is already being added
-      console.log("A car is already being added. Please wait.");
-      return; // exit
+      console.log("A car is already being added. Please wait."); // will this actually stop a car from being added?
+      return; // exit (the function-)
     }
 
     if (!newCarCreated) {
@@ -56,7 +64,7 @@ export default function NewCar({ onNext }) {
     };
 
     console.log("tripId: ", formData.tripId);
-    console.log("Attempting to add new car with data:", newCar); // Log input data
+    console.log("trying really hard to add new car with data:", newCar); // log input data
 
     try {
       const response = await fetch(`${API_BASE_URL}/api/car`, {
@@ -150,24 +158,32 @@ export default function NewCar({ onNext }) {
       <>
         <button
           onClick={handleYes}
-          className={`glass-btn ${isAddingCar === true ? "selected" : ""}`} // assign selected class based on isAddingCar state
+          className={`glow-btn add-car-btn ${
+            isAddingCar === true ? "selected" : ""
+          }`} // assign selected class based on isAddingCar state
           style={{
-            background: formData?.tripBackground?.scrim || undefined,
+            background:
+              formData?.tripBackground?.scrim || formData?.transparentGlowColor,
+            border: ` 2px solid ${formData?.glowColor}`,
+            boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
           }}
         >
           + add a car
         </button>
 
-        <button onClick={onNext} className="tertiary-btn">
+        {/* is there a way to only show this when onboarding?  */}
+        {/* <button onClick={onNext} className="tertiary-btn">
           Skip
-        </button>
+        </button> */}
       </>
 
       {isAddingCar && (
         <>
           {/* get driver's name  */}
           <input
-            className="form-response"
+            className={`form-response driver-name-input ${
+              isAddingCar ? "selected" : ""
+            }`}
             key="driverName"
             id="driverName"
             type="text"

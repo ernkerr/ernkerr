@@ -142,8 +142,21 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+
   /* margin-top: var(--margin-form-response); */
 }
+
+.add-car-btn {
+  position: fixed; /* Center it on the screen */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.glow-btn.selected {
+  visibility: hidden;
+}
+/* hide the glow button when it's clicked'*/
 
 /* style options */
 .style-options-btn {

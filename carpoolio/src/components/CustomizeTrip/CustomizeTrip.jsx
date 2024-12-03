@@ -37,7 +37,8 @@ export default function CustomizeTrip({ isAdmin }) {
   };
 
   // handle get directions
-  // check if the destination resembles an address by looking for a comma
+  // check if the destination resembles an address (some form of truth?) by looking for a comma
+  // not the best way to do this
   const isAddress = formData?.destination && formData.destination.includes(","); // Check if destination has a comma
 
   const handleGetDirections = () => {
@@ -69,7 +70,11 @@ export default function CustomizeTrip({ isAdmin }) {
     }));
   };
 
-  // toggle visibility of NewCar component
+  const togglePreview = () => {
+    setIsPreviewingTrip((prev) => !prev);
+  };
+
+  // toggle visibility of NewCar modal (open/close)
   const toggleNewCar = () => {
     setIsNewCarVisible((prev) => !prev); // toggle visibility
   };
@@ -79,17 +84,14 @@ export default function CustomizeTrip({ isAdmin }) {
     background:
       formData?.tripBackground?.scrim || formData?.transparentGlowColor,
     border: ` 2px solid ${formData?.glowColor}`,
-    boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+    // boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+    boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
   };
 
   // style for modal
   const modalStyle = {
     backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
     backgroundPosition: "center",
-  };
-
-  const togglePreview = () => {
-    setIsPreviewingTrip((prev) => !prev);
   };
 
   // sync changes in backend
@@ -119,6 +121,10 @@ export default function CustomizeTrip({ isAdmin }) {
     [formData],
     [formData.cars]
   );
+
+  const triggerHandleYes = () => {
+    console.log();
+  };
 
   return (
     <div className="customize-trip-container">
@@ -192,7 +198,7 @@ export default function CustomizeTrip({ isAdmin }) {
         <>
           {isPreviewingTrip && (
             <button
-              onClick={toggleNewCar}
+              onClick={toggleNewCar} // toggle the NewCar modal
               className="glow-btn"
               style={glowStyle}
             >
@@ -242,7 +248,7 @@ export default function CustomizeTrip({ isAdmin }) {
         </>
       </>
 
-      {/* Render NewCar component conditionally */}
+      {/* render NewCar component conditionally */}
       {isNewCarVisible && (
         <>
           <div
@@ -254,7 +260,8 @@ export default function CustomizeTrip({ isAdmin }) {
               backgroundPosition: "center",
             }}
           >
-            <NewCar />
+            {/* pass handler to NewCar */}
+            <NewCar triggerHandleYes={true} />
             <button
               className="next-modal-btn"
               style={glowStyle}
@@ -262,7 +269,7 @@ export default function CustomizeTrip({ isAdmin }) {
                 setIsNewCarVisible(false); // close new car modal when done
               }}
             >
-              Next
+              Close
             </button>
           </div>
         </>

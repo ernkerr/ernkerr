@@ -27,7 +27,7 @@ export default function RenderCar({
     setActiveCarIndex(carIndex);
   };
 
-  const funnyFallbacks = ["Otto", "Ghost Rider", ""]; // make array
+  const funnyFallbacks = ["Otto", "Ghost Rider", "Casper"]; // make array
 
   const randomFallback = // randomly choose
     //.floor = round down

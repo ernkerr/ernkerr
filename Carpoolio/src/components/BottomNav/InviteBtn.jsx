@@ -1,32 +1,25 @@
 /* From Uiverse.io by MuhammadHasann ( thanks I love it so much/appreciate your hard work ) */
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { TripContext } from "@components/TripContext";
 import Drawer from "react-bottom-drawer";
 import InviteModal from "../InviteModal/InviteModal";
 import inviteIcon from "../../assets/img/invite-icon.png";
+import messageIcon from "../../assets/img/message-icon.png";
+import emailIcon from "../../assets/img/email-icon.png";
+import copyLink from "../../assets/img/copy-link.png";
 import "./BottomNav.css";
 
 export default function InviteBtn() {
   const navigate = useNavigate();
   const { formData } = useContext(TripContext);
+  const { tripId } = useParams();
   const [isVisible, setIsVisible] = useState(false);
 
-  // const handleInvite = () => {
-  //   // navigate(`/trip/${tripId}`);
-  //   setIsShowingModal(true);
-  // };
+  const shareURL = `${window.location.origin}/trip/${tripId}`;
 
   return (
     <>
-      {/* <button onClick={() => setIsVisible(true)}>Invite</button> */}
-
-      {/* {isShowingModal && (
-        <div>
-          <InviteModal onClose={() => setIsShowingModal(false)} />
-        </div>
-      )} */}
-
       <button
         className="star-button"
         onClick={() => setIsVisible(true)} // show bottom drawer when clicked
@@ -204,7 +197,40 @@ export default function InviteBtn() {
         duration={250}
         className="bottom-drawer"
       >
-        <p> Drawer here</p>
+        <h3>share your trip!</h3>
+        {/* Share via SMS */}
+
+        <div className="share-icon-container">
+          <a
+            // href={`sms:?body=${encodeURIComponent(shareText + shareURL)}`}
+            href={`sms:?body=${encodeURIComponent(shareURL)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="share-text"
+          >
+            <img
+              className="share-icon"
+              src={messageIcon}
+              alt="Message Bubble Icon"
+            />
+            <p className="share-text">message</p>
+          </a>
+        </div>
+        <div className="share-icon-container">
+          <a
+            href={`mailto:?&body=${encodeURIComponent(shareURL)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="share-text"
+          >
+            <img
+              className="share-icon"
+              src={emailIcon}
+              alt="Message Bubble Icon"
+            />
+            <p className="share-text">message</p>
+          </a>
+        </div>
       </Drawer>
     </>
   );

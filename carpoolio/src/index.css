@@ -173,6 +173,9 @@ body {
     0 0 25px rgb(255, 0, 0);
 
   --main-green-o: hsla(120, 100%, 50%, 0.5);
+
+  --green-default: rgba(35, 179, 35, 0.802);
+  --green-glow-default: 0 0 5px #34bd34, 0 0 10px #34bd34, 0 0 15px #4bfe4b52;
 }
 
 /* delete */
@@ -196,3 +199,9 @@ body {
 /* 
   margin-left: var(--margin-medium);
   width: 95dvw; */
+
+/* Centering an element:
+To center an element within its parent, you can use 
+inset: 50% 50% and set transform: translate(-50%, -50%);  */
+
+/* inset: <top> <right> <bottom> <left>; where each value represents the distance from the corresponding edge of the parent container. */
