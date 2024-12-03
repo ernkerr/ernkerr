@@ -15,7 +15,7 @@
   align-items: center;
   flex-direction: row;
   height: 40px;
-  gap: 45dvw;
+  /* gap: 45dvw; */
 }
 
 .carName {
@@ -25,6 +25,7 @@
   border: none;
   background: none;
   position: relative;
+  width: 75%;
   left: 50dvw;
   transform: translateX(-50%);
   text-align: center;
@@ -32,8 +33,14 @@
 
 #edit-car-btn {
   position: relative;
-  /* width: 60px; */
-  margin: 0;
+  margin: 4dvw 2dvw 0 0;
+  height: 40px;
+  width: 50px;
+}
+
+.gear-icon {
+  height: 18px;
+  width: 18px;
 }
 
 .departure-date-time-container {
@@ -96,7 +103,7 @@
 }
 
 .seat-input {
-  background-color: #f0f0f0b0;
+  background-color: rgba(240, 240, 240, 0.65);
   border: var(--transparent-border);
   padding: 1px;
   cursor: pointer;
@@ -112,7 +119,7 @@
 }
 
 .seat-buttons {
-  background-color: #f0f0f0ac;
+  background-color: rgba(240, 240, 240, 0.675);
   border: var(--transparent-border);
   border-radius: 5px;
 }

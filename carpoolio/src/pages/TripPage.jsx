@@ -76,6 +76,7 @@ export default function TripPage() {
           backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          animationDuration: `${formData?.tripBackground?.speed || 10}s`,
         }}
       >
         <CustomizeTrip isAdmin={isAdmin} />

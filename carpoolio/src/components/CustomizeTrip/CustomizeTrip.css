@@ -1,14 +1,18 @@
 .customize-trip-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100vh;
   min-height: 100%;
-  margin-top: 2.5dvh;
   margin-left: var(--margin-medium);
   width: 95dvw;
   padding-left: 2.5dvw;
   padding-right: 2.5dvw;
   overflow-x: hidden;
+  /* overflow-y: auto; */
+}
+
+.trip-name-container {
+  margin-top: 3dvh;
 }
 
 /* destination */
@@ -91,7 +95,7 @@
   text-align: center;
 }
 
-#done-btn {
+.done-btn {
   position: fixed;
   bottom: 5px;
   left: 50%;
@@ -125,12 +129,15 @@
 
 /* add car btn */
 
-.add-car-btn {
+.glow-btn {
   color: var(--white);
   font-family: var(--main-font);
   font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  padding: var(--padding-form-response);
   border-radius: var(--border-radius-btn);
   height: var(--btn-height);
+  margin-bottom: var(--margin-medium);
   width: 50%;
   position: relative;
   left: 50%;
@@ -183,6 +190,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 200px;
+  min-height: 200px;
   width: 92dvw;
   position: relative;
   font-size: 14px;
@@ -260,15 +268,16 @@
 /*    */
 /*    */
 /* car container and scroll bar  */
-.car-container {
+/* .car-container {
+  background-color: green;
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 100dvw;
   gap: 1dvh;
   overflow-x: hidden;
-}
+} */
 
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   height: 10px;
   width: 12px;
   background-color: rgba(255, 255, 255, 0);
@@ -294,22 +303,22 @@
 .car-container::-webkit-scrollbar-track {
   background: none;
   border-radius: 5px;
-}
+} */
 
-.render-car-container {
+/* .render-car-container {
   min-height: 40dvh;
-}
+} */
 
 /* scrollbar  */
 
 .background-container::-webkit-scrollbar {
-  width: 10px; /* Set width of the scrollbar */
+  width: 10px;
 }
 
 .background-container::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0);
-  border-radius: 5px; /* Rounded corners for the thumb */
-  border: 1.5px solid #ffffff; /* Border around the thumb */
+  border-radius: 5px;
+  border: 1.5px solid #ffffff;
 }
 
 .background-container::-webkit-scrollbar-thumb:hover {
@@ -317,8 +326,8 @@
 }
 
 .background-container::-webkit-scrollbar-track {
-  background: none; /* Transparent track */
-  border-radius: 5px; /* Rounded corners for the track */
+  background: none;
+  border-radius: 5px;
 }
 
 /*    */
@@ -336,24 +345,16 @@
 /*    */
 
 @media (max-width: 768px) {
-  .customize-trip-container {
-    flex-direction: column;
-    height: 100dvh; /* Ensure it takes full height for scrolling */
-    overflow-y: auto;
-  }
-
-  .details-container {
+  /* .details-container {
     margin-top: 3dvh;
     width: 100dvw;
-    /* padding-bottom: 20px; Add bottom padding if needed */
-  }
+  } */
 
-  .car-container {
+  /* .car-container {
     width: 100dvw;
     margin-bottom: 56px;
-    /* overflow: hidden; */
     gap: 5dvh;
-  }
+  } */
 
   /* .new-car-btn {
     font-size: var(--font-size-extra-small);
@@ -363,25 +364,25 @@
     margin-bottom: var(--margin-small);
   } */
 
-  .customize-trip-btns {
+  /* .customize-trip-btns {
     width: 90dvw;
     font-size: var(--font-size-small);
     margin-left: var(--margin-left-small);
     align-items: center;
-  }
+  } */
 
-  .customize-car-btn {
+  /* .customize-car-btn {
     color: white;
     font-family: var(--main-font);
     font-size: var(--font-size-small);
     padding: 10px 10px 10px 10px;
     border-radius: var(--border-radius-button);
     margin-top: var(--margin-small);
-  }
+  } */
 
-  #delete-car-btn {
+  /* #delete-car-btn {
     margin-top: var(--margin-small);
-  }
+  } */
 }
 
 /* .editBtn:hover::before {

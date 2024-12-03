@@ -123,8 +123,9 @@ export default function CustomizeTrip({ isAdmin }) {
   return (
     <div className="customize-trip-container">
       <>
-        <TripName isPreviewingTrip={isPreviewingTrip} />
-
+        <div className="trip-name-container">
+          <TripName isPreviewingTrip={isPreviewingTrip} />
+        </div>
         <div className={isAddress ? "destination-container" : ""}>
           {/* make a map */}
           {isAddress && <DestinationMap address={formData?.destination} />}
@@ -151,8 +152,7 @@ export default function CustomizeTrip({ isAdmin }) {
                         <Destination />
                       </div>
                       <button
-                        className="customize-trip-btn"
-                        id="done-btn"
+                        className="next-modal-btn "
                         style={glowStyle}
                         onClick={handleDestinationModal}
                       >
@@ -189,14 +189,14 @@ export default function CustomizeTrip({ isAdmin }) {
 
         <Description isPreviewingTrip={isPreviewingTrip} />
 
-        <div>
+        <>
           {isPreviewingTrip && (
             <button
               onClick={toggleNewCar}
-              className="add-car-btn"
+              className="glow-btn"
               style={glowStyle}
             >
-              + Add Car
+              + add a car
             </button>
           )}
 
@@ -204,7 +204,7 @@ export default function CustomizeTrip({ isAdmin }) {
             {!isPreviewingTrip && (
               <>
                 <button
-                  className="style-options-btn"
+                  className="glow-btn"
                   style={glowStyle}
                   onClick={handleShowStyleOptions}
                 >
@@ -239,7 +239,7 @@ export default function CustomizeTrip({ isAdmin }) {
               </>
             )}
           </>
-        </div>
+        </>
       </>
 
       {/* Render NewCar component conditionally */}
@@ -268,7 +268,8 @@ export default function CustomizeTrip({ isAdmin }) {
         </>
       )}
 
-      <div className="car-container">
+      <div>
+        {/* <div className="car-container"> */}
         {formData?.cars?.map((car, index) => {
           if (index === activeCarIndex && isCustomizingCar) {
             return (
