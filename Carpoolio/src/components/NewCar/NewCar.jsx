@@ -153,6 +153,8 @@ export default function NewCar({ triggerHandleYes }) {
     return distribution;
   };
 
+  // eventually turn this into a form? (add a car btn, driverName, etc.)
+
   return (
     <>
       <>
@@ -180,10 +182,9 @@ export default function NewCar({ triggerHandleYes }) {
       {isAddingCar && (
         <>
           {/* get driver's name  */}
+          {/* add margin-top?  */}
           <input
-            className={`form-response driver-name-input ${
-              isAddingCar ? "selected" : ""
-            }`}
+            className="form-response"
             key="driverName"
             id="driverName"
             type="text"

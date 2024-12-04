@@ -1,6 +1,6 @@
 import "./Header.css";
 import CarpoolioSpinner from "../CarpoolioSpinner/CarpoolioSpinner";
-import logo from "/Users/ern/Documents/ernkerr/Carpoolio/public/logo.png";
+import logo from "../../assets/img/logo.png";
 
 export default function Header() {
   return (

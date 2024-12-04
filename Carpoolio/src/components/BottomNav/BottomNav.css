@@ -110,6 +110,26 @@
   margin: 0;
 }
 
+.invisible-btn {
+  z-index: 2;
+  opacity: 0;
+  margin-bottom: 40px;
+
+  height: var(--btn-height);
+  /* padding: 12px 25px; */
+
+  margin-left: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  cursor: pointer;
+  width: 80px;
+  height: 60px;
+}
+
+/* to not messs up the star animation */
+
 .star-button {
   color: var(--white);
   font-family: var(--main-font);
