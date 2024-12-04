@@ -20,6 +20,8 @@ const corsOptions = {
     "http://192.168.0.30:5173",
     "http://127.0.2.2:5173",
     "http://192.168.86.143:5173",
+    "http://172.16.0.2:5173",
+    "http://192.168.0.33:5173",
   ], // frontend url (change to domain later)
 };
 app.use(cors(corsOptions));

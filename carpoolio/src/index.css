@@ -175,7 +175,8 @@ body {
   --main-green-o: hsla(120, 100%, 50%, 0.5);
 
   --green-default: rgba(35, 179, 35, 0.802);
-  --green-glow-default: 0 0 5px #34bd34, 0 0 10px #34bd34, 0 0 15px #4bfe4b52;
+  --green-glow-default: inset 0 0 5px #34bd34, 0 0 10px #34bd34,
+    0 0 15px #4bfe4b52;
 }
 
 /* delete */

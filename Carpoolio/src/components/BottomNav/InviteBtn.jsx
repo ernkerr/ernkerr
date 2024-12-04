@@ -202,39 +202,67 @@ export default function InviteBtn() {
         duration={250}
         className="bottom-drawer"
       >
-        <h3>share your trip!</h3>
-        {/* Share via SMS */}
+        <p className="bottom-drawer-title">Share your trip!</p>
+        <div className="share-icon-container-row">
+          {/* share via SMS */}
+          <div className="share-icon-container" id="share-sms">
+            <a
+              // href={`sms:?body=${encodeURIComponent(shareText + shareURL)}`}
+              href={`sms:?body=${encodeURIComponent(shareURL)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="share-text"
+            >
+              <img
+                className="share-icon"
+                src={messageIcon}
+                alt="Message Bubble Icon"
+              />
+              <p className="share-text">Message</p>
+            </a>
+          </div>
 
-        <div className="share-icon-container">
-          <a
-            // href={`sms:?body=${encodeURIComponent(shareText + shareURL)}`}
-            href={`sms:?body=${encodeURIComponent(shareURL)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="share-text"
-          >
-            <img
-              className="share-icon"
-              src={messageIcon}
-              alt="Message Bubble Icon"
-            />
-            <p className="share-text">message</p>
-          </a>
-        </div>
-        <div className="share-icon-container">
-          <a
-            href={`mailto:?&body=${encodeURIComponent(shareURL)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="share-text"
-          >
-            <img
-              className="share-icon"
-              src={emailIcon}
-              alt="Message Bubble Icon"
-            />
-            <p className="share-text">message</p>
-          </a>
+          {/* share via email */}
+          <div className="share-icon-container" id="share-email">
+            <a
+              href={`mailto:?body=${encodeURIComponent(shareURL)}`}
+              className="share-text"
+            >
+              <img
+                className="email-icon"
+                src={emailIcon}
+                alt="Email Message Bubble Icon"
+              />
+              <p className="share-text">Email</p>
+            </a>
+          </div>
+
+          {/* copy link */}
+          <div className="share-icon-container" id="copy-link">
+            <a
+              onClick={() => {
+                // this won't work until carpoolio is running on https
+                navigator.clipboard
+                  .writeText(shareURL)
+                  .then(() => {
+                    alert("Link copied to clipboard!");
+                  })
+                  .catch((err) => {
+                    console.error("Failed to copy link: ", err);
+                    alert("Failed to copy the link. Please try again.");
+                  });
+              }}
+            >
+              <img
+                className="copy-link-icon"
+                src={copyLink}
+                alt="Email Message Bubble Icon"
+              />
+              <p className="share-text">Copy Link</p>
+            </a>
+          </div>
+
+          {/* share-icon-row */}
         </div>
       </Drawer>
     </>
