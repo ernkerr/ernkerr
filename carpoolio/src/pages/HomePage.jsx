@@ -1,12 +1,21 @@
 import Header from "../components/Header/Header.jsx";
 import NewTripButton from "../components/NewTripButton/NewTripButton.jsx";
 import MovingCar from "../components/MovingCar/MovingCar.jsx";
+
+import logo from "../assets/img/logo.png";
 import "./HomePage.css";
 
 function HomePage() {
   return (
     <div className="home-page">
       <Header />
+
+      <h1 className="font-face">carpoolio </h1>
+      <h4 id="destination-message">
+        because it's not <em>just</em> about the destination
+      </h4>
+
+      <h4 id="carpooling-message"> organized carpooling for your next trip </h4>
       <NewTripButton className="new-trip">Try It Out</NewTripButton>
       <MovingCar />
     </div>

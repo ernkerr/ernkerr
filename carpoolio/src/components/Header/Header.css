@@ -1,4 +1,27 @@
-/* Splitting the CSS Code into  component-specific files*/
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+.carpoolio {
+  font-family: "LicensePlate", sans-serif;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 200;
+  font-display: auto;
+}
+
+/* Splitting the CSS Code into  component-specific files
 header {
   text-align: center;
   margin: 1rem 0;
@@ -38,4 +61,4 @@ header h1:hover {
   font-style: italic;
   font-weight: 200;
   font-display: auto;
-}
+} */

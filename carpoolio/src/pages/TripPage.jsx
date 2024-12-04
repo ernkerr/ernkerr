@@ -10,6 +10,7 @@ import "@components/NewTripForm/NewTripForm.css";
 import "@components/CustomizeTrip/CustomizeTrip.css";
 import "./TripPage.css";
 import BottomNav from "../components/BottomNav/BottomNav";
+import Header from "../components/Header/Header";
 
 export default function TripPage() {
   const { formData, setFormData } = useContext(TripContext);
@@ -79,6 +80,7 @@ export default function TripPage() {
           animationDuration: `${formData?.tripBackground?.speed || 10}s`,
         }}
       >
+        <Header />
         <CustomizeTrip isAdmin={isAdmin} />
 
         {/* <NewTripButton
