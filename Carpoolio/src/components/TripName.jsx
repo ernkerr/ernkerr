@@ -1,12 +1,15 @@
 import { useContext, useState, forwardRef } from "react";
 import { TripContext } from "@components/TripContext";
+import { formResponseStyle, formResponseFocusStyle } from "@styles/styles";
 
 const TripName = forwardRef(
   ({ isPreviewingTrip, onTripNameUpdate, onKeyDown }, ref) => {
     const { formData, setFormData } = useContext(TripContext);
     const [error, setError] = useState("");
+    const [isFocused, setIsFocused] = useState(false);
 
     const handleBlur = () => {
+      setIsFocused(false); // remove focus style
       if (!formData.tripName) {
         setError("Trip name is required");
       } else {
@@ -25,18 +28,20 @@ const TripName = forwardRef(
       }
     };
 
+    const handleFocus = () => {
+      setIsFocused(true);
+    };
+
+    const dynamicStyles = {
+      ...formResponseStyle({ formData, isPreviewingTrip }),
+      ...(isFocused && formResponseFocusStyle(formData)), // add focus styles dynamically
+    };
+
     return (
       <>
         <input
-          className={`form-response ${error ? "error" : ""} ${
-            isPreviewingTrip ? "disabled" : ""
-          }`}
-          style={{
-            background: isPreviewingTrip
-              ? "transparent"
-              : formData?.tripBackground?.scrim || undefined,
-            pointerEvents: isPreviewingTrip ? "none" : "auto",
-          }}
+          className={`form-response ${error ? "error" : ""} `}
+          style={dynamicStyles} // apply dynamic styles
           id="trip-name"
           ref={ref}
           type="text"
@@ -47,6 +52,7 @@ const TripName = forwardRef(
           onChange={handleChange}
           onKeyDown={onKeyDown}
           onBlur={handleBlur} // trigger validation when input loses focus
+          onFocus={handleFocus} // enable focus state (set glow color)
         />
         {error && <p className="error-message">{error}</p>}
       </>

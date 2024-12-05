@@ -10,6 +10,7 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "src"),
       "@components": path.resolve(__dirname, "src/components"),
+      "@styles": path.resolve(__dirname, "src/styles"), // add a new alias to create a shortcut to @styles folder
     },
   },
 });

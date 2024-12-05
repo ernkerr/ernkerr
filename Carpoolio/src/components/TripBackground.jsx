@@ -45,7 +45,7 @@ const backgrounds = [
     path: silverliquid,
     scrim: "rgba(130, 130, 130, 0.6)",
   },
-  { name: "marble", path: marble, scrim: "rgba(0, 0, 0, 0.90)" },
+  { name: "marble", path: marble, scrim: "rgba(0, 0, 0, 0.5)" },
   { name: "purple", path: purple },
 
   { name: "8bit city", path: city8bit, scrim: "rgba(98, 128, 249, 0.822)" },

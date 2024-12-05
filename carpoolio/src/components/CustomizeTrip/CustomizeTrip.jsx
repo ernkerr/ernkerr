@@ -2,7 +2,6 @@ import { useEffect, useState, useContext, useRef } from "react";
 import { TripContext } from "@components/TripContext";
 import hexRgb from "hex-rgb";
 import axios from "axios";
-
 import DateSelector from "@components/DateSelector/DateSelector.jsx";
 import TripBackground from "@components/TripBackground.jsx";
 import RenderCar from "../RenderCar/RenderCar.jsx";
@@ -11,14 +10,12 @@ import Description from "@components/Description/Description.jsx";
 import Destination from "../Destination/Destination.jsx";
 import TripName from "../TripName.jsx";
 import NewCar from "../NewCar/NewCar.jsx";
-
 import DestinationMap from "../Destination/DestinationMap.jsx";
 import BottomNav from "../BottomNav/BottomNav.jsx";
 import navArrow from "../../assets/img/navarrow.png";
 import locationIcon from "../../assets/img/location-icon.png";
-
 import bluegoo from "../../assets/gifs/bluegoo.gif";
-import { formResponseStyle } from "@styles/styles";
+import { formResponseStyle, glowBtn } from "@styles/styles";
 import "./CustomizeTrip.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -138,7 +135,7 @@ export default function CustomizeTrip({ isAdmin }) {
                       </div>
                       <button
                         className="next-modal-btn "
-                        style={glowStyle}
+                        style={glowBtn(formData)}
                         onClick={handleDestinationModal}
                       >
                         done
@@ -201,7 +198,7 @@ export default function CustomizeTrip({ isAdmin }) {
             <NewCar triggerHandleYes={true} />
             <button
               className="next-modal-btn"
-              style={glowStyle}
+              style={glowBtn(formData)}
               onClick={() => {
                 setIsNewCarVisible(false); // close new car modal when done
               }}

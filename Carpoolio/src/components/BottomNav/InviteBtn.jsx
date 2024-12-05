@@ -2,8 +2,9 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { TripContext } from "@components/TripContext";
+import { glowBtn } from "@styles/styles";
 import Drawer from "react-bottom-drawer";
-import InviteModal from "../InviteModal/InviteModal";
+
 import inviteIcon from "../../assets/img/invite-icon.png";
 import messageIcon from "../../assets/img/message-icon.png";
 import emailIcon from "../../assets/img/email-icon.png";
@@ -25,7 +26,8 @@ export default function InviteBtn() {
           btn
         </button>
         <button
-          className="star-button"
+          className="invite-btn"
+          style={glowBtn(formData)}
           onClick={() => setIsVisible(true)} // show bottom drawer when clicked
         >
           <div className="invite-icon-container">
@@ -36,7 +38,7 @@ export default function InviteBtn() {
             />
             Invite
           </div>
-          <div className="star-1"></div>
+          {/* <div className="star-1"></div>
           <div className="star-2"></div>
           <div className="star-3"></div>
           <div className="star-4"></div>
@@ -191,7 +193,7 @@ export default function InviteBtn() {
                 />
               </g>
             </svg>
-          </div>
+          </div> */}
         </button>
       </>
 

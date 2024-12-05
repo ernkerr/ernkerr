@@ -1,10 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@200");
 @import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100");
-
 @import url("https://fonts.googleapis.com/css2?family=Gruppo:wght@400");
+
+.form-response {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: 10px 0px 10px 10px;
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
+  background: var(--glass-background);
+  width: 90dvw;
+  margin-top: var(--margin-form-response);
+  text-align: center;
+  cursor: pointer;
+}
+
+.form-response::placeholder {
+  color: var(--placeholder);
+}
+
+.form-response:focus {
+  border: 1px solid var(--main-green);
+  outline: none; /* Removes the focus outline */
+  box-shadow: var(--green-glow);
+}
+
+.form-response.error {
+  border: 1px solid var(--red);
+  box-shadow: var(--red-glow);
+}
+
+.form-response.error:focus {
+  box-shadow: var(--red-glow);
+}
+
+.form-response.disabled {
+  cursor: default;
+  /* padding: none; */
+  border: none;
+  /* margin: 0; */
+}
 
 /* html {
   font-family: "Quicksand", sans-serif;
@@ -67,9 +105,9 @@ body {
 
   /* font size */
 
-  --f-xs: ;
+  --font-small: 18px;
 
-  --font-size-tiny: 12px;
+  --font-size-tiny: 14px;
   --font-size-extra-small: 16px;
   --font-size-small: 18px;
   --font-size-medium: 24px;
