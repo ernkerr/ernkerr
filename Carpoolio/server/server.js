@@ -11,7 +11,10 @@ console.log("Database URL:", process.env.POSTGRES_PRISMA_URL); // Debug
 const app = express(); // create an app instance
 app.use(express.json()); // middleware to parse data
 const prisma = new PrismaClient();
-const PORT = 8080;
+module.exports = prisma;
+
+// const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 const corsOptions = {
   origin: [
@@ -25,6 +28,11 @@ const corsOptions = {
   ], // frontend url (change to domain later)
 };
 app.use(cors(corsOptions));
+
+if (!process.env.POSTGRES_PRISMA_URL) {
+  console.error("DATABASE_URL not set in environment variables!");
+  process.exit(1);
+}
 
 // app.get("/api", (req, res) => {
 //   console.log("Received a request on /api");
