@@ -130,8 +130,7 @@ body.active-modal {
   font-size: 18px;
 }
 
-.modal,
-.overlay {
+.modal {
   width: 100dvw;
   height: 100dvh;
   top: 0;
@@ -140,10 +139,13 @@ body.active-modal {
   bottom: 0;
   position: fixed;
   z-index: 3;
+  background-color: var(--v-dark);
+  /* backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px); */
 }
 
 .overlay {
-  background: rgba(255, 255, 255, 0.15);
+  /* background-color: var(--v-dark); */
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
 }
@@ -153,7 +155,7 @@ body.active-modal {
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background-color: var(--glass-background);
+  background: var(--glass-background);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   padding: 14px 28px;
   border-radius: var(--border-radius-btn);

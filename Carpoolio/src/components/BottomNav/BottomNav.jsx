@@ -26,6 +26,7 @@ export default function BottomNav({
       {isAdmin && (
         <button
           className={isPreviewingTrip ? "edit-btn" : "preview-btn"}
+          style={isPreviewingTrip ? undefined : glowStyle}
           // style={glowStyle}
           onClick={togglePreview}
         >

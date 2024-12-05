@@ -68,6 +68,8 @@
   -webkit-backdrop-filter: blur(7.6px);
 }
 
+/* filter: blur(7.6px); Fallback blur */
+
 #trip-name {
   font-size: var(--font-size-large);
   text-align: center;

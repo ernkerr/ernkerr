@@ -67,6 +67,8 @@ body {
 
   /* font size */
 
+  --f-xs: ;
+
   --font-size-tiny: 12px;
   --font-size-extra-small: 16px;
   --font-size-small: 18px;
@@ -108,6 +110,8 @@ body {
 
   --m-small: 15px;
   --m-medium: 25px;
+
+  --m-top: 2dvh;
 
   /* --margin-small: 15px;
   --margin-medium: 25px; */
@@ -158,6 +162,7 @@ body {
   /* --grey: rgb(112, 112, 112); */
 
   --dark: rgba(12, 12, 12, 0.4);
+  --v-dark: rgba(12, 12, 12, 0.7);
   --transparent: rgba(2, 1, 1, 0.182);
   --transparent-border: 2px solid rgba(255, 255, 255, 0.182);
   --yellow-glow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00;

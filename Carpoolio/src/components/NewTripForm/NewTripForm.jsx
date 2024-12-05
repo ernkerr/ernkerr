@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TripContext } from "@/components/TripContext";
 import axios from "axios";
+import Header from "../Header/Header";
 import ProgressBar from "../ProgressBar";
 import NewEvent from "@components/NewEvent/NewEvent.jsx";
 import NewCar from "@components/NewCar/NewCar.jsx";
@@ -115,6 +116,7 @@ export default function NewTripForm() {
           backgroundPosition: "center",
         }}
       >
+        <Header />
         <div className="onboarding-header">
           {page !== 0 && (
             <button className="back-btn" onClick={handleBack}>

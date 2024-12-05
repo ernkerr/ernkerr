@@ -80,6 +80,8 @@
 .bottom-drawer {
   height: 220px;
   background-color: var(--glass-background) !important;
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
 
 .bottom-drawer-title {

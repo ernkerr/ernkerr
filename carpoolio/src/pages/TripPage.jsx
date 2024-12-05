@@ -8,9 +8,10 @@ import { TripContext } from "@components/TripContext";
 import InviteBtn from "@components/BottomNav/InviteBtn.jsx";
 import "@components/NewTripForm/NewTripForm.css";
 import "@components/CustomizeTrip/CustomizeTrip.css";
-import "./TripPage.css";
+
 import BottomNav from "../components/BottomNav/BottomNav";
 import Header from "../components/Header/Header";
+import "./TripPage.css";
 
 export default function TripPage() {
   const { formData, setFormData } = useContext(TripContext);
@@ -20,7 +21,6 @@ export default function TripPage() {
 
   const [tripDetails, setTripDetails] = useState(null);
   const [error, setError] = useState(null);
-  // const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -64,9 +64,8 @@ export default function TripPage() {
   }
 
   // check if tripDetails have loaded, or show a loading state
-  // TODO: add fun loading animation
   if (!tripDetails) {
-    return <div>Loading...</div>;
+    return <div className="loader"></div>;
   }
 
   return (
@@ -82,7 +81,6 @@ export default function TripPage() {
       >
         <Header />
         <CustomizeTrip isAdmin={isAdmin} />
-
         {/* <NewTripButton
               className="new-trip-btn"
               style={{

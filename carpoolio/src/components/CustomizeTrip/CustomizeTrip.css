@@ -12,7 +12,7 @@
 }
 
 .trip-name-container {
-  margin-top: 3dvh;
+  margin-top: var(--m-top);
 }
 
 /* destination */
