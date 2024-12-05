@@ -221,6 +221,9 @@ body {
   --green-default: rgba(35, 179, 35, 0.802);
   --green-glow-default: inset 0 0 5px #34bd34, 0 0 10px #34bd34,
     0 0 15px #4bfe4b52;
+
+  --orange: rgba(183, 111, 39, 0.732);
+  --pink: rgba(232, 56, 138, 0.8);
 }
 
 /* delete */
