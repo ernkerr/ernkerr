@@ -18,6 +18,7 @@ import navArrow from "../../assets/img/navarrow.png";
 import locationIcon from "../../assets/img/location-icon.png";
 
 import bluegoo from "../../assets/gifs/bluegoo.gif";
+import { formResponseStyle } from "@styles/styles";
 import "./CustomizeTrip.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -27,7 +28,6 @@ export default function CustomizeTrip({ isAdmin }) {
   const [destinationModal, setDestinationModal] = useState(false);
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
-  const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
 
@@ -39,35 +39,13 @@ export default function CustomizeTrip({ isAdmin }) {
   // handle get directions
   // check if the destination resembles an address (some form of truth?) by looking for a comma
   // not the best way to do this
+  // BUG IT IS BUG
   const isAddress = formData?.destination && formData.destination.includes(","); // Check if destination has a comma
 
   const handleGetDirections = () => {
     const destination = encodeURIComponent(formData?.destination || "");
     const url = `http://maps.apple.com/?q=${destination}`;
     window.open(url, "_blank");
-  };
-
-  // styling
-  const handleShowStyleOptions = () => {
-    setIsShowingStyleOptions((prevState) => !prevState);
-  };
-
-  // change glow color
-  const handleGlowColorChange = (event) => {
-    const newGlowColor = event.target.value;
-    const { red: r, green: g, blue: b } = hexRgb(newGlowColor);
-    const lighterGlowColor = `rgb(${Math.min(r + 10, 255)}, ${Math.min(
-      g + 10,
-      255
-    )}, ${Math.min(b + 10, 255)})`;
-    const transparentGlowColor = `rgba(${r}, ${g}, ${b}, 0.6)`;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      glowColor: newGlowColor,
-      lighterGlowColor: lighterGlowColor,
-      transparentGlowColor: transparentGlowColor,
-    }));
   };
 
   const togglePreview = () => {
@@ -84,7 +62,6 @@ export default function CustomizeTrip({ isAdmin }) {
     background:
       formData?.tripBackground?.scrim || formData?.transparentGlowColor,
     border: ` 2px solid ${formData?.glowColor}`,
-    // boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
     boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
   };
 
@@ -122,17 +99,19 @@ export default function CustomizeTrip({ isAdmin }) {
     [formData.cars]
   );
 
-  const triggerHandleYes = () => {
-    console.log();
-  };
+  // const triggerHandleYes = () => {
+  //   console.log();
+  // };
 
   return (
     <div className="customize-trip-container">
       <>
-        <div className="trip-name-container">
-          <TripName isPreviewingTrip={isPreviewingTrip} />
-        </div>
-        <div className={isAddress ? "destination-container" : ""}>
+        <TripName isPreviewingTrip={isPreviewingTrip} />
+
+        <div
+          className={isAddress ? "destination-container" : ""}
+          style={formResponseStyle({ formData, isPreviewingTrip })}
+        >
           {/* make a map */}
           {isAddress && <DestinationMap address={formData?.destination} />}
 
@@ -189,63 +168,21 @@ export default function CustomizeTrip({ isAdmin }) {
           </div>
         </div>
 
-        <div className="date-selector">
-          <DateSelector isPreviewingTrip={isPreviewingTrip} />
-        </div>
+        {/* <div
+          className="form-response"
+          style={formResponseStyle({ formData, isPreviewingTrip })}
+        > */}
+        <DateSelector isPreviewingTrip={isPreviewingTrip} />
+        {/* </div> */}
 
         <Description isPreviewingTrip={isPreviewingTrip} />
 
-        <>
-          {isPreviewingTrip && (
-            <button
-              onClick={toggleNewCar} // toggle the NewCar modal
-              className="glow-btn"
-              style={glowStyle}
-            >
-              + add a car
-            </button>
-          )}
-
-          <>
-            {!isPreviewingTrip && (
-              <>
-                <button
-                  className="glow-btn"
-                  style={glowStyle}
-                  onClick={handleShowStyleOptions}
-                >
-                  {isShowingStyleOptions ? "Close" : "Style Options"}
-                </button>
-                {isShowingStyleOptions && (
-                  <>
-                    <TripBackground isPreviewingTrip={isPreviewingTrip} />
-
-                    <button
-                      className="style-btns"
-                      id="glow-color-picker"
-                      style={{
-                        background: isPreviewingTrip
-                          ? "transparent"
-                          : formData?.tripBackground?.scrim || undefined,
-                        pointerEvents: isPreviewingTrip ? "none" : "auto",
-                      }}
-                    >
-                      <label htmlFor="glowColor">Change Glow Color </label>
-                      <input
-                        className="glowColor"
-                        type="color"
-                        id="glowColor"
-                        name="glowColor"
-                        value={formData?.glowColor || " #34bd34"}
-                        onChange={handleGlowColorChange} // update the glow color on change
-                      />
-                    </button>
-                  </>
-                )}
-              </>
-            )}
-          </>
-        </>
+        <BottomNav
+          isAdmin={isAdmin}
+          isPreviewingTrip={isPreviewingTrip}
+          togglePreview={togglePreview}
+          toggleNewCar={toggleNewCar}
+        />
       </>
 
       {/* render NewCar component conditionally */}
@@ -300,11 +237,11 @@ export default function CustomizeTrip({ isAdmin }) {
           }
         })}
       </div>
-      <BottomNav
+      {/* <BottomNav
         isAdmin={isAdmin}
         isPreviewingTrip={isPreviewingTrip}
         togglePreview={togglePreview}
-      />
+      /> */}
     </div>
   );
 }

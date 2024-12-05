@@ -8,10 +8,10 @@
   padding-left: 2.5dvw;
   padding-right: 2.5dvw;
   overflow-x: hidden;
-  /* overflow-y: auto; */
 }
 
-.trip-name-container {
+#trip-name {
+  font-size: var(--font-size-large);
   margin-top: var(--m-top);
 }
 
@@ -128,23 +128,6 @@
 }
 
 /* add car btn */
-
-.glow-btn {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-bold);
-  padding: var(--padding-form-response);
-  border-radius: var(--border-radius-btn);
-  height: var(--btn-height);
-  margin-bottom: var(--margin-medium);
-  width: 50%;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-
-  margin-top: var(--margin-form-response);
-}
 
 .add-car-btn {
   position: fixed; /* Center it on the screen */

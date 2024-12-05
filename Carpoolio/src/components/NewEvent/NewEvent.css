@@ -16,49 +16,6 @@
   text-align: center;
 } */
 
-.form-response {
-  color: var(--white);
-  cursor: pointer;
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  padding: var(--padding-form-response);
-  border: var(--glass-border);
-  border-radius: var(--border-radius-btn);
-  background: var(--glass-background);
-  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); */
-  /* backdrop-filter: blur(7.6px); for desktop */
-  /* -webkit-backdrop-filter: blur(7.6px); */
-  width: 90dvw;
-  margin-top: var(--margin-form-response);
-  text-align: center;
-}
-
-.form-response::placeholder {
-  color: var(--placeholder);
-}
-
-.form-response:focus {
-  border: 1px solid var(--main-green);
-  outline: none; /* Removes the focus outline */
-  box-shadow: var(--green-glow);
-}
-
-.form-response.error {
-  border: 1px solid var(--red);
-  box-shadow: var(--red-glow);
-}
-
-.form-response.error:focus {
-  box-shadow: var(--red-glow);
-}
-
-.form-response.disabled {
-  cursor: default;
-  padding: none;
-  border: none;
-  margin: 0;
-}
-
 /* transform: offsets the button by half of its own width, centering it horizontally */
 
 .glass-effect {
@@ -66,13 +23,6 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-}
-
-/* filter: blur(7.6px); Fallback blur */
-
-#trip-name {
-  font-size: var(--font-size-large);
-  text-align: center;
 }
 
 #more-options-btn {

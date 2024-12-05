@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { TripContext } from "@components/TripContext";
+import { formResponseStyle } from "@styles/styles";
 import { DayPicker } from "react-day-picker";
 import { TimeSelector } from "../TimeSelector/TimeSelector";
 import clockIcon from "../../assets/img/Clock.png";
@@ -53,12 +54,7 @@ export default function DateSelector({ isPreviewingTrip }) {
       {!isPreviewingTrip && !tripDateExists ? (
         <button
           className="form-response"
-          style={{
-            background: isPreviewingTrip
-              ? "transparent"
-              : formData?.tripBackground?.scrim || undefined,
-            pointerEvents: isPreviewingTrip ? "none" : "auto",
-          }}
+          style={formResponseStyle({ formData, isPreviewingTrip })}
           onClick={toggleCalendar}
           disabled={isPreviewingTrip}
         >
@@ -67,15 +63,12 @@ export default function DateSelector({ isPreviewingTrip }) {
       ) : null}
 
       {tripDateExists && (
-        <div>
+        <div
+          className="form-response"
+          style={formResponseStyle({ formData, isPreviewingTrip })}
+        >
           <div className="calendar-icon-container">
             <button
-              style={{
-                background: isPreviewingTrip
-                  ? "transparent"
-                  : formData?.tripBackground?.scrim || "transparent",
-                pointerEvents: isPreviewingTrip ? "none" : "auto",
-              }}
               className={`date-icon ${isPreviewingTrip ? "disabled" : ""}`}
               onClick={toggleCalendar}
               disabled={isPreviewingTrip}
@@ -90,12 +83,6 @@ export default function DateSelector({ isPreviewingTrip }) {
             </button>
             <div className="date-text-container">
               <button
-                style={{
-                  background: isPreviewingTrip
-                    ? "transparent"
-                    : formData?.tripBackground?.scrim || "transparent",
-                  pointerEvents: isPreviewingTrip ? "none" : "auto",
-                }}
                 className={`date-text ${isPreviewingTrip ? "disabled" : ""}`}
                 onClick={toggleCalendar}
                 disabled={isPreviewingTrip}
@@ -103,16 +90,7 @@ export default function DateSelector({ isPreviewingTrip }) {
                 {formData.tripDate}
               </button>
               {tripTimeExists && (
-                <button
-                  style={{
-                    background: isPreviewingTrip
-                      ? "transparent"
-                      : formData?.tripBackground?.scrim || "transparent",
-                    pointerEvents: isPreviewingTrip ? "none" : "auto",
-                  }}
-                  className="time-text"
-                  onClick={toggleTimeSelector}
-                >
+                <button className="time-text" onClick={toggleTimeSelector}>
                   <img src={clockIcon} alt="Departure Time Icon" />
                   {formData.tripTime}
                 </button>

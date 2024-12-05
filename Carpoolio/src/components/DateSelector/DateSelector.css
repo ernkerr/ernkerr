@@ -27,7 +27,7 @@ date-time-container {
 
 .calendar-icon-container {
   display: flex;
-  margin-top: var(--margin-form-response);
+  /* border-radius: var(--border-radius-btn); */
   align-items: center;
 }
 
@@ -43,6 +43,7 @@ date-time-container {
   text-align: center;
   border: none;
   border-radius: var(--border-radius-btn);
+  background: none;
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -81,21 +82,25 @@ date-time-container {
 }
 
 .date-text {
-  color: white;
+  color: var(--white);
   font-family: var(--main-font);
   font-size: var(--font-size-medium);
+  padding: 0;
   border: none;
+  /* margin-left: 3px; */
   margin-bottom: var(--margin-small);
+  background: none;
   cursor: pointer;
 }
 
 .time-text {
+  color: var(--white);
   font-family: var(--main-font);
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-bold);
   border: none;
-  color: white;
-  margin-left: 5px;
+  background: none;
+  /* margin-left: 3px; */
   cursor: pointer;
   display: flex;
   align-items: center;
