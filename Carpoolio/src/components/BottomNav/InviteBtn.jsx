@@ -21,23 +21,23 @@ export default function InviteBtn() {
 
   return (
     <>
-      <>
-        <button className="invisible-btn" onClick={() => setIsVisible(true)}>
-          btn
-        </button>
-        <button
-          className="star-button"
-          onClick={() => setIsVisible(true)} // show bottom drawer when clicked
-        >
-          <div className="invite-icon-container">
-            <img
-              className="invite-icon"
-              src={inviteIcon}
-              alt="Invite Person Icon"
-            />
-            Invite
-          </div>
-          <div className="star-1"></div>
+      <button className="invisible-btn" onClick={() => setIsVisible(true)}>
+        btn
+      </button>
+      <button
+        className="star-button"
+        style={glowBtn(formData)}
+        onClick={() => setIsVisible(true)} // show bottom drawer when clicked
+      >
+        <div className="invite-icon-container">
+          <img
+            className="invite-icon"
+            src={inviteIcon}
+            alt="Invite Person Icon"
+          />
+          Invite
+        </div>
+        {/* <div className="star-1"></div>
           <div className="star-2"></div>
           <div className="star-3"></div>
           <div className="star-4"></div>
@@ -192,9 +192,8 @@ export default function InviteBtn() {
                 />
               </g>
             </svg>
-          </div>
-        </button>
-      </>
+          </div> */}
+      </button>
 
       {/* bottom drawer for sharing functionality */}
       <Drawer

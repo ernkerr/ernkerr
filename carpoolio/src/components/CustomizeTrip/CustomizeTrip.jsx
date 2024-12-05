@@ -231,6 +231,7 @@ export default function CustomizeTrip({ isAdmin }) {
                 {isShowingStyleOptions && (
                   <>
                     <TripBackground isPreviewingTrip={isPreviewingTrip} />
+
                     <TripOverlay />
                     <button
                       className="style-btns"

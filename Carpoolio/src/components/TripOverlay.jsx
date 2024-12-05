@@ -22,11 +22,15 @@ export default function TripOverlay({ isPreviewingTrip }) {
   };
 
   function handleOverlays(overlay) {
-    setFormData({ ...formData, tripOverlay: overlay });
+    if (overlay.name === "none") {
+      setFormData({ ...formData, tripOverlay: null }); // clear the overlay
+    } else {
+      setFormData({ ...formData, tripOverlay: overlay });
+    }
   }
 
   const overlays = [
-    { name: "none", path: none },
+    { name: "none", path: null },
     { name: "snow", path: snow },
     // { name: "sparkles", path: sparkles },
     { name: "late", path: late },
@@ -58,15 +62,49 @@ export default function TripOverlay({ isPreviewingTrip }) {
               className="background-option"
               onClick={() => handleOverlays(overlay)}
             >
-              <img
-                src={overlay.path}
-                alt={overlay.name}
-                className="background-image"
-              />
-              <span>{overlay.name}</span>
+              {overlay.name === "none" ? (
+                <div
+                  className="background-option"
+                  style={{
+                    width: "50px",
+                    height: "50px",
+                    borderRadius: "50%",
+                    background: "rgba(0, 0, 0, 0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: "1px solid rgba(255, 255, 255, 0.5)",
+                    cursor: "pointer",
+                  }}
+                >
+                  None
+                </div>
+              ) : (
+                <>
+                  <img
+                    src={overlay.path}
+                    alt={overlay.name}
+                    className="background-image"
+                  />
+                  <span>{overlay.name}</span>
+                </>
+              )}
             </div>
           ))}
         </div>
+      )}
+
+      {/* Conditionally render the overlay */}
+      {formData?.tripOverlay && (
+        <div
+          className="overlay-wrapper"
+          style={{
+            backgroundImage: `url(${formData.tripOverlay.path})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            animationDuration: `${formData?.tripOverlay?.speed || 10}s`,
+          }}
+        />
       )}
     </>
   );

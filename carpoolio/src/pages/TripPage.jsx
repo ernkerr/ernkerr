@@ -83,7 +83,7 @@ export default function TripPage() {
         <div
           classsName="full-screen-wrapper"
           style={{
-            backgroundImage: `url(${formData?.tripOverlay?.path || snow})`,
+            backgroundImage: `url(${formData?.tripOverlay?.path || null})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             zIndex: 1,
