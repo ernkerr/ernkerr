@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CustomizeTrip from "@components/CustomizeTrip/CustomizeTrip";
 import bluegoo from "../assets/gifs/bluegoo.gif";
+import snow from "../assets/gifs/snow.gif";
 import { TripContext } from "@components/TripContext";
 import InviteBtn from "@components/BottomNav/InviteBtn.jsx";
 import "@components/NewTripForm/NewTripForm.css";
@@ -79,9 +80,18 @@ export default function TripPage() {
           animationDuration: `${formData?.tripBackground?.speed || 10}s`,
         }}
       >
-        <Header />
-        <CustomizeTrip isAdmin={isAdmin} />
-        {/* <NewTripButton
+        <div
+          classsName="full-screen-wrapper"
+          style={{
+            backgroundImage: `url(${formData?.tripOverlay?.path || snow})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            zIndex: 1,
+          }}
+        >
+          <Header />
+          <CustomizeTrip isAdmin={isAdmin} />
+          {/* <NewTripButton
               className="new-trip-btn"
               style={{
                 background: formData?.transparentGlowColor || "transparent",
@@ -91,7 +101,8 @@ export default function TripPage() {
             >
               + New Trip
             </NewTripButton> */}
-        {/* </div> */}
+          {/* </div> */}
+        </div>
       </div>
     </>
   );

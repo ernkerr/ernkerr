@@ -5,6 +5,7 @@ import axios from "axios";
 
 import DateSelector from "@components/DateSelector/DateSelector.jsx";
 import TripBackground from "@components/TripBackground.jsx";
+import TripOverlay from "../TripOverlay.jsx";
 import RenderCar from "../RenderCar/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import Description from "@components/Description/Description.jsx";
@@ -230,7 +231,7 @@ export default function CustomizeTrip({ isAdmin }) {
                 {isShowingStyleOptions && (
                   <>
                     <TripBackground isPreviewingTrip={isPreviewingTrip} />
-
+                    <TripOverlay />
                     <button
                       className="style-btns"
                       id="glow-color-picker"

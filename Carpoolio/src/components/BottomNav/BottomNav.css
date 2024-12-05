@@ -17,6 +17,8 @@
   z-index: 2;
   width: 80px;
   height: 60px;
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
 
 .edit-btn {
@@ -35,6 +37,8 @@
   z-index: 2;
   width: 80px;
   height: 60px;
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
 
 .edit-btn svg {
@@ -50,8 +54,6 @@
   align-items: center;
   text-align: center;
   margin-bottom: 0;
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
 }
 
 .icon-text {
@@ -178,8 +180,6 @@
   width: 80px;
   height: 60px;
 }
-
-/* to not messs up the star animation */
 
 .star-button {
   color: var(--white);

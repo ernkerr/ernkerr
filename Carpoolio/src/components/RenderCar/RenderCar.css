@@ -36,6 +36,8 @@
   margin: 4dvw 2dvw 0 0;
   height: 40px;
   width: 50px;
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
 
 .gear-icon {
