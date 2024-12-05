@@ -1,51 +1,19 @@
 /* edit &  preview btn */
-.btn-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 90dvw;
-  margin-top: var(--margin-form-response);
-}
-
-.invite-btn {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-extra-small);
-  font-weight: var(--font-weight-bold);
-  /* letter-spacing: var(--letter-spacing-btn); */
-  background: var(--glass-background);
-  border: var(--glass-border);
-  border-radius: var(--border-radius-btn);
-  cursor: pointer;
-  width: 80px;
-  height: 60px;
-}
-
-.glow-btn {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-bold);
-  padding: var(--padding-form-response);
-  border-radius: var(--border-radius-btn);
-  height: var(--btn-height);
-  width: 50%;
-  height: 60px;
-}
-
-.save-btn {
+.preview-btn {
   cursor: pointer;
   color: var(--white);
   font-family: var(--main-font);
-  font-size: var(--font-size-extra-small);
+  font-size: var(--font-size-tiny);
   letter-spacing: var(--letter-spacing-btn);
   background: var(--glass-background);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-  /* margin-bottom: 120px; */
-  /* margin-left: var(--margin-medium); */
-  /* height: var(--btn-height); */
+  margin-bottom: 120px;
+  margin-left: var(--margin-medium);
+  height: var(--btn-height);
+  position: absolute;
+  bottom: 0;
+  left: 0;
   z-index: 2;
   width: 80px;
   height: 60px;
@@ -53,14 +21,17 @@
 
 .edit-btn {
   cursor: pointer;
-  font-size: var(--font-size-extra-small);
-  letter-spacing: var(--letter-spacing-btn);
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--glass-background);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
+  margin-bottom: 120px;
+  margin-left: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   z-index: 2;
   width: 80px;
   height: 60px;
@@ -79,6 +50,8 @@
   align-items: center;
   text-align: center;
   margin-bottom: 0;
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
 
 .icon-text {
@@ -206,6 +179,8 @@
   height: 60px;
 }
 
+/* to not messs up the star animation */
+
 .star-button {
   color: var(--white);
   font-family: var(--main-font);
@@ -222,10 +197,10 @@
   height: var(--btn-height);
   /* padding: 12px 25px; */
 
-  /* margin-left: 20px;
+  margin-left: 20px;
   position: absolute;
   bottom: 0;
-  left: 0; */
+  left: 0;
 
   cursor: pointer;
   width: 80px;

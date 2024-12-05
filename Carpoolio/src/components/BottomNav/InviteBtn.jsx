@@ -26,8 +26,7 @@ export default function InviteBtn() {
           btn
         </button>
         <button
-          className="invite-btn"
-          style={glowBtn(formData)}
+          className="star-button"
           onClick={() => setIsVisible(true)} // show bottom drawer when clicked
         >
           <div className="invite-icon-container">
@@ -38,7 +37,7 @@ export default function InviteBtn() {
             />
             Invite
           </div>
-          {/* <div className="star-1"></div>
+          <div className="star-1"></div>
           <div className="star-2"></div>
           <div className="star-3"></div>
           <div className="star-4"></div>
@@ -193,7 +192,7 @@ export default function InviteBtn() {
                 />
               </g>
             </svg>
-          </div> */}
+          </div>
         </button>
       </>
 

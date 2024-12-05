@@ -2,6 +2,7 @@ import { useEffect, useState, useContext, useRef } from "react";
 import { TripContext } from "@components/TripContext";
 import hexRgb from "hex-rgb";
 import axios from "axios";
+
 import DateSelector from "@components/DateSelector/DateSelector.jsx";
 import TripBackground from "@components/TripBackground.jsx";
 import RenderCar from "../RenderCar/RenderCar.jsx";
@@ -10,10 +11,12 @@ import Description from "@components/Description/Description.jsx";
 import Destination from "../Destination/Destination.jsx";
 import TripName from "../TripName.jsx";
 import NewCar from "../NewCar/NewCar.jsx";
+
 import DestinationMap from "../Destination/DestinationMap.jsx";
 import BottomNav from "../BottomNav/BottomNav.jsx";
 import navArrow from "../../assets/img/navarrow.png";
 import locationIcon from "../../assets/img/location-icon.png";
+
 import bluegoo from "../../assets/gifs/bluegoo.gif";
 import { formResponseStyle, glowBtn } from "@styles/styles";
 import "./CustomizeTrip.css";
@@ -25,6 +28,7 @@ export default function CustomizeTrip({ isAdmin }) {
   const [destinationModal, setDestinationModal] = useState(false);
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
+  const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
 
@@ -43,6 +47,29 @@ export default function CustomizeTrip({ isAdmin }) {
     const destination = encodeURIComponent(formData?.destination || "");
     const url = `http://maps.apple.com/?q=${destination}`;
     window.open(url, "_blank");
+  };
+
+  // styling
+  const handleShowStyleOptions = () => {
+    setIsShowingStyleOptions((prevState) => !prevState);
+  };
+
+  // change glow color
+  const handleGlowColorChange = (event) => {
+    const newGlowColor = event.target.value;
+    const { red: r, green: g, blue: b } = hexRgb(newGlowColor);
+    const lighterGlowColor = `rgb(${Math.min(r + 10, 255)}, ${Math.min(
+      g + 10,
+      255
+    )}, ${Math.min(b + 10, 255)})`;
+    const transparentGlowColor = `rgba(${r}, ${g}, ${b}, 0.6)`;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      glowColor: newGlowColor,
+      lighterGlowColor: lighterGlowColor,
+      transparentGlowColor: transparentGlowColor,
+    }));
   };
 
   const togglePreview = () => {
@@ -135,7 +162,7 @@ export default function CustomizeTrip({ isAdmin }) {
                       </div>
                       <button
                         className="next-modal-btn "
-                        style={glowBtn(formData)}
+                        style={glowStyle}
                         onClick={handleDestinationModal}
                       >
                         done
@@ -165,21 +192,71 @@ export default function CustomizeTrip({ isAdmin }) {
           </div>
         </div>
 
-        {/* <div
-          className="form-response"
+        <div
+          className="date-selector"
+          // style={formResponseStyle({ formData, isPreviewingTrip })}
+        >
+          {/* <div
+          className={isAddress ? "destination-container" : ""}
           style={formResponseStyle({ formData, isPreviewingTrip })}
-        > */}
-        <DateSelector isPreviewingTrip={isPreviewingTrip} />
-        {/* </div> */}
+        ></div> */}
+          <DateSelector isPreviewingTrip={isPreviewingTrip} />
+        </div>
 
         <Description isPreviewingTrip={isPreviewingTrip} />
 
-        <BottomNav
-          isAdmin={isAdmin}
-          isPreviewingTrip={isPreviewingTrip}
-          togglePreview={togglePreview}
-          toggleNewCar={toggleNewCar}
-        />
+        <>
+          {isPreviewingTrip && (
+            <button
+              onClick={toggleNewCar} // toggle the NewCar modal
+              className="glow-btn"
+              // style={glowStyle}
+              style={glowBtn(formData)}
+            >
+              + add a car
+            </button>
+          )}
+
+          <>
+            {!isPreviewingTrip && (
+              <>
+                <button
+                  className="glow-btn"
+                  style={glowBtn(formData)}
+                  onClick={handleShowStyleOptions}
+                >
+                  {isShowingStyleOptions ? "Close" : "Style Options"}
+                </button>
+                {isShowingStyleOptions && (
+                  <>
+                    <TripBackground isPreviewingTrip={isPreviewingTrip} />
+
+                    <button
+                      className="style-btns"
+                      id="glow-color-picker"
+                      style={{
+                        background: isPreviewingTrip
+                          ? "transparent"
+                          : formData?.tripBackground?.scrim || undefined,
+                        pointerEvents: isPreviewingTrip ? "none" : "auto",
+                      }}
+                    >
+                      <label htmlFor="glowColor">Change Glow Color </label>
+                      <input
+                        className="glowColor"
+                        type="color"
+                        id="glowColor"
+                        name="glowColor"
+                        value={formData?.glowColor || " #34bd34"}
+                        onChange={handleGlowColorChange} // update the glow color on change
+                      />
+                    </button>
+                  </>
+                )}
+              </>
+            )}
+          </>
+        </>
       </>
 
       {/* render NewCar component conditionally */}
@@ -198,7 +275,7 @@ export default function CustomizeTrip({ isAdmin }) {
             <NewCar triggerHandleYes={true} />
             <button
               className="next-modal-btn"
-              style={glowBtn(formData)}
+              style={glowStyle}
               onClick={() => {
                 setIsNewCarVisible(false); // close new car modal when done
               }}
@@ -234,11 +311,11 @@ export default function CustomizeTrip({ isAdmin }) {
           }
         })}
       </div>
-      {/* <BottomNav
+      <BottomNav
         isAdmin={isAdmin}
         isPreviewingTrip={isPreviewingTrip}
         togglePreview={togglePreview}
-      /> */}
+      />
     </div>
   );
 }

@@ -1,18 +1,25 @@
 .customize-trip-container {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  height: 100vh;
   min-height: 100%;
   margin-left: var(--margin-medium);
   width: 95dvw;
   padding-left: 2.5dvw;
   padding-right: 2.5dvw;
   overflow-x: hidden;
+  /* overflow-y: auto; */
+}
+
+.trip-name-container {
+  margin-top: 3dvh;
 }
 
 #trip-name {
-  font-size: var(--font-size-large);
-  margin-top: var(--m-top);
+  margin-top: var(--m-top) !important;
+  font-size: var(--font-size-medium);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
 
 /* destination */
@@ -129,17 +136,30 @@
 
 /* add car btn */
 
-.add-car-btn {
-  position: fixed; /* Center it on the screen */
-  top: 50%;
+.glow-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  padding: var(--padding-form-response);
+  border-radius: var(--border-radius-btn);
+  height: var(--btn-height);
+  margin-bottom: var(--margin-medium);
+  width: 50%;
+  position: relative;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  /* margin-top: var(--margin-form-response); */
 }
 
 .glow-btn.selected {
   visibility: hidden;
 }
 /* hide the glow button when it's clicked'*/
+
+#adding-car {
+  margin-top: 8dvh;
+}
 
 /* style options */
 .style-options-btn {
@@ -170,6 +190,8 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
 
 /* background */

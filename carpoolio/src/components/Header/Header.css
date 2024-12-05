@@ -7,10 +7,10 @@ header {
 
 .logo {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  height: 40px;
-  width: 40px;
+  top: 5px;
+  left: 5px;
+  height: 25px;
+  width: 25px;
   z-index: 10;
   /* margin-top: var(--m-top); */
 }

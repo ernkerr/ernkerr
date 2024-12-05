@@ -179,9 +179,9 @@
   border-radius: var(--border-radius-button);
 }
 
-#delete-car-btn {
+/* #delete-car-btn {
   position: relative;
-}
+} */
 
 @media (max-width: 768px) {
   .render-car-container svg {
