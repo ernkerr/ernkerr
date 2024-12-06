@@ -1,7 +1,6 @@
 const express = require("express"); // import express
 const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
-const { Await } = require("react-router-dom");
 
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
