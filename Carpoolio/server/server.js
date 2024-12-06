@@ -253,6 +253,6 @@ app.listen(PORT, () => {
 // app.use(express.static(path.join(__dirname, "../dist")));
 
 // Catch-all route for React (placed last)
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+// });
