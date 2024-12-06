@@ -1,17 +1,14 @@
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import CustomizeTrip from "@components/CustomizeTrip/CustomizeTrip";
-import bluegoo from "../assets/gifs/bluegoo.gif";
-import snow from "../assets/gifs/snow.gif";
+
 import { TripContext } from "@components/TripContext";
-import InviteBtn from "@components/BottomNav/InviteBtn.jsx";
+import CustomizeTrip from "@components/CustomizeTrip/CustomizeTrip";
+
+import Header from "../components/Header/Header";
+import bluegoo from "../assets/gifs/bluegoo.gif";
 import "@components/NewTripForm/NewTripForm.css";
 import "@components/CustomizeTrip/CustomizeTrip.css";
-
-import BottomNav from "../components/BottomNav/BottomNav";
-import Header from "../components/Header/Header";
 import "./TripPage.css";
 
 export default function TripPage() {
@@ -24,6 +21,11 @@ export default function TripPage() {
   const [error, setError] = useState(null);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+  // Log API_BASE_URL for debugging
+  useEffect(() => {
+    console.log("API_BASE_URL is:", API_BASE_URL);
+  }, [API_BASE_URL]);
 
   // fetch trip details
   const getTripDetails = async () => {
@@ -41,6 +43,8 @@ export default function TripPage() {
 
       // use axios to make the GET request
       const response = await axios.get(url);
+      // Log full response for debugging
+      console.log("Full Response:", response);
 
       if (response.status === 200) {
         console.log("Trip details fetched successfully:", response.data);
@@ -66,6 +70,8 @@ export default function TripPage() {
 
   // check if tripDetails have loaded, or show a loading state
   if (!tripDetails) {
+    console.log("Trip details are still loading...");
+
     return <div className="loader"></div>;
   }
 

@@ -5,9 +5,8 @@ const { PrismaClient } = require("@prisma/client");
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
-console.log("Database URL:", process.env.POSTGRES_PRISMA_URL); // Debug
-
 if (!process.env.POSTGRES_PRISMA_URL) {
+  console.log("Database URL:", process.env.POSTGRES_PRISMA_URL); // Debug
   console.error("DATABASE_URL not set in environment variables!");
   process.exit(1);
 }
@@ -17,6 +16,9 @@ const prisma = new PrismaClient();
 
 // const PORT = 8080;
 const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 const corsOptions = {
   origin: [
@@ -246,7 +248,7 @@ app.delete("/api/car/:carId", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Server started on port 8080");
+  console.log("Server started on port: ", PORT);
 });
 
 // Serve static files from the 'dist' folder after building
