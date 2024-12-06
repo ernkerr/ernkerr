@@ -3,7 +3,7 @@ import { TripContext } from "@components/TripContext";
 import { formResponseStyle } from "@styles/styles";
 import { DayPicker } from "react-day-picker";
 import { TimeSelector } from "../TimeSelector/TimeSelector";
-import clockIcon from "../../assets/img/Clock.png";
+import clockIcon from "../../assets/img/clock.png";
 import "./Calendar.css";
 import "./DateSelector.css";
 

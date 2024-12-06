@@ -3,7 +3,7 @@ import { DayPicker } from "react-day-picker";
 import { TripContext } from "@components/TripContext";
 import { TimeSelector } from "@components/TimeSelector/TimeSelector.jsx";
 import CarNotes from "../CarNotes.jsx";
-import clockIcon from "../../assets/img/Clock.png";
+import clockIcon from "../../assets/img/clock.png";
 import calendarIcon from "../../assets/img/Calendar.png";
 import "@components/DateSelector/DateSelector.css";
 import "@components/DateSelector/Calendar.css";
