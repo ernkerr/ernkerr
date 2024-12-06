@@ -250,7 +250,7 @@ app.listen(PORT, () => {
 });
 
 // Serve static files from the 'dist' folder after building
-app.use(express.static(path.join(__dirname, "../dist")));
+// app.use(express.static(path.join(__dirname, "../dist")));
 
 // Catch-all route for React (placed last)
 app.get("*", (req, res) => {
