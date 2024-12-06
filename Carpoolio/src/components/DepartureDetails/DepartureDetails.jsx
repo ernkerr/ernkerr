@@ -4,7 +4,7 @@ import { TripContext } from "@components/TripContext";
 import { TimeSelector } from "@components/TimeSelector/TimeSelector.jsx";
 import CarNotes from "../CarNotes.jsx";
 import clockIcon from "../../assets/img/clock.png";
-import calendarIcon from "../../assets/img/Calendar.png";
+import calendarIcon from "../../assets/img/calendar.png";
 import "@components/DateSelector/DateSelector.css";
 import "@components/DateSelector/Calendar.css";
 import "./DepartureDetails.css";
