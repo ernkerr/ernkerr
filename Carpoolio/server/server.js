@@ -14,11 +14,21 @@ const app = express(); // create an app instance
 app.use(express.json()); // middleware to parse data
 const prisma = new PrismaClient();
 
-// const PORT = 8080;
+console.log("Starting server setup...");
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app
+  .listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  })
+  .on("error", (err) => {
+    if (err.code === "EADDRINUSE") {
+      console.error(`Port ${PORT} is already in use.`);
+    } else {
+      console.error(err);
+    }
+  });
+
+console.log("Server setup complete.");
 
 const corsOptions = {
   origin: [
@@ -247,9 +257,9 @@ app.delete("/api/car/:carId", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log("Server started on port: ", PORT);
-});
+// app.listen(PORT, () => {
+//   console.log("Server started on port: ", PORT);
+// });
 
 // Serve static files from the 'dist' folder after building
 // app.use(express.static(path.join(__dirname, "../dist")));

@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { TripContext } from "@components/TripContext";
 import { glowBtn } from "@styles/styles";
-import Drawer from "react-bottom-drawer";
+// import Drawer from "react-bottom-drawer";
 
 import inviteIcon from "../../assets/img/invite-icon.png";
 import messageIcon from "../../assets/img/message-icon.png";
@@ -196,7 +196,7 @@ export default function InviteBtn() {
       </button>
 
       {/* bottom drawer for sharing functionality */}
-      <Drawer
+      <button
         isVisible={isVisible}
         onClose={() => setIsVisible(false)}
         duration={250}
@@ -264,7 +264,7 @@ export default function InviteBtn() {
 
           {/* share-icon-row */}
         </div>
-      </Drawer>
+      </button>
     </>
   );
 }
