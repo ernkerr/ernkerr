@@ -6,6 +6,16 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // build: {
+  //   outDir: "dist",
+  // },
+
+  build: {
+    outDir: "dist", // set the build output directory
+    rollupOptions: {
+      input: path.resolve(__dirname, "index.html"), // set the input path to index.html
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

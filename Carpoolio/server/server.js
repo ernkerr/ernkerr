@@ -8,10 +8,13 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 console.log("Database URL:", process.env.POSTGRES_PRISMA_URL); // Debug
 
+if (!process.env.POSTGRES_PRISMA_URL) {
+  console.error("DATABASE_URL not set in environment variables!");
+  process.exit(1);
+}
 const app = express(); // create an app instance
 app.use(express.json()); // middleware to parse data
 const prisma = new PrismaClient();
-module.exports = prisma;
 
 // const PORT = 8080;
 const PORT = process.env.PORT || 8080;
@@ -28,11 +31,6 @@ const corsOptions = {
   ], // frontend url (change to domain later)
 };
 app.use(cors(corsOptions));
-
-if (!process.env.POSTGRES_PRISMA_URL) {
-  console.error("DATABASE_URL not set in environment variables!");
-  process.exit(1);
-}
 
 // app.get("/api", (req, res) => {
 //   console.log("Received a request on /api");
@@ -251,6 +249,9 @@ app.delete("/api/car/:carId", async (req, res) => {
 app.listen(PORT, () => {
   console.log("Server started on port 8080");
 });
+
+// Serve static files from the 'dist' folder after building
+app.use(express.static(path.join(__dirname, "../dist")));
 
 // Catch-all route for React (placed last)
 app.get("*", (req, res) => {
