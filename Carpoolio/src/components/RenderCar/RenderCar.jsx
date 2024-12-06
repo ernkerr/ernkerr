@@ -1,10 +1,11 @@
 import DefaultCar from "../CustomizeCar/DefaultCar";
-import "./RenderCar.css";
+
 import { useState, useContext } from "react";
 import { TripContext } from "@components/TripContext";
 // import CarNotes from "../CarNotes";
-import clockIcon from "../../assets/img/Clock.png";
+import clockIcon from "../../assets/img/clock.png";
 import gearIcon from "../../assets/img/gear-icon.png";
+import "./RenderCar.css";
 
 export default function RenderCar({
   car,

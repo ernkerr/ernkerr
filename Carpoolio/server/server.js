@@ -14,6 +14,9 @@ const app = express(); // create an app instance
 app.use(express.json()); // middleware to parse data
 const prisma = new PrismaClient();
 
+//
+//
+// server debugging
 console.log("Starting server setup...");
 const PORT = process.env.PORT || 8080;
 app
@@ -30,16 +33,11 @@ app
 
 console.log("Server setup complete.");
 
+// front end debugging
+const allowedOrigins = ["https://carpoolio-d0sw7eu8r-erns-projects.vercel.app"]; // change to domain later
+
 const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "http://192.168.0.28:5173",
-    "http://192.168.0.30:5173",
-    "http://127.0.2.2:5173",
-    "http://192.168.86.143:5173",
-    "http://172.16.0.2:5173",
-    "http://192.168.0.33:5173",
-  ], // frontend url (change to domain later)
+  origin: allowedOrigins, // frontend url
 };
 app.use(cors(corsOptions));
 
