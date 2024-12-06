@@ -33,11 +33,9 @@ app
 
 console.log("Server setup complete.");
 
-// front end debugging
-const allowedOrigins = ["https://carpoolio-d0sw7eu8r-erns-projects.vercel.app"]; // change to domain later
-
 const corsOptions = {
-  origin: allowedOrigins, // frontend url
+  origin: "https://carpoolio.vercel.app", // frontend url, change to domain later
+  methods: ["GET", "POST", "PUT", "DELETE"],
 };
 app.use(cors(corsOptions));
 
