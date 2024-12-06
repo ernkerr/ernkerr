@@ -2,12 +2,15 @@
   "build": {
     "command": "npm install && npm run build"
   },
-
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/"
     }
   ],
-  "framework": "vite"
+  "framework": "vite",
+  "env": {
+    "NODE_ENV": "development"
+  }
 }
