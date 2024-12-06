@@ -23,7 +23,8 @@
     "react-google-autocomplete": "^2.7.3",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.26.2",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "vite": "^6.0.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.5.0",
