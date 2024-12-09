@@ -1,5 +1,10 @@
 import { useContext, useState, useEffect } from "react";
 import { TripContext } from "@components/TripContext";
+import {
+  formResponseStyle,
+  formResponseFocusStyle,
+  glowBtn,
+} from "@styles/styles";
 import CustomizeCar from "../CustomizeCar/CustomizeCar";
 import RenderCar from "../RenderCar/RenderCar";
 import NumSeats from "@components/NumSeats.jsx";
@@ -157,27 +162,20 @@ export default function NewCar({ triggerHandleYes }) {
 
   return (
     <>
-      <>
-        <button
-          onClick={handleYes}
-          className={`glow-btn add-car-btn ${
-            isAddingCar === true ? "selected" : ""
-          }`} // assign selected class based on isAddingCar state
-          style={{
-            background:
-              formData?.tripBackground?.scrim || formData?.transparentGlowColor,
-            border: ` 2px solid ${formData?.glowColor}`,
-            boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-          }}
-        >
-          + add a car
-        </button>
+      <button
+        onClick={handleYes}
+        className={`glow-btn add-car-btn ${
+          isAddingCar === true ? "selected" : ""
+        }`} // assign selected class based on isAddingCar state
+        style={glowBtn(formData)}
+      >
+        + add a car
+      </button>
 
-        {/* is there a way to only show this when onboarding?  */}
-        {/* <button onClick={onNext} className="tertiary-btn">
+      {/* is there a way to only show this when onboarding?  */}
+      {/* <button onClick={onNext} className="tertiary-btn">
           Skip
         </button> */}
-      </>
 
       {isAddingCar && (
         <>

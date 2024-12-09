@@ -145,10 +145,10 @@
   border-radius: var(--border-radius-btn);
   height: var(--btn-height);
   margin-bottom: var(--margin-medium);
-  width: 50%;
+  /* width: 50%;
   position: relative;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
   /* margin-top: var(--margin-form-response); */
 }
 

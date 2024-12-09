@@ -4,6 +4,12 @@
   text-align: center;
 }
 
+.add-car-btn {
+  position: relative;
+  width: 50%;
+  margin-top: var(--margin-form-response);
+}
+
 /* .glass-buttons-container {
   display: flex;
   gap: 5%;
@@ -21,8 +27,6 @@
   border-radius: var(--border-radius-btn);
   background: var(--glass-background);
   cursor: pointer;
-  /* backdrop-filter: blur(7.6px); ( for desktop )*/
-  /* -webkit-backdrop-filter: blur(7.6px); */
   width: var(--btn-width);
   height: var(--btn-height);
   margin-top: var(--margin-medium);
@@ -52,11 +56,11 @@
   transform: translateX(-50%);
 }
 
-#driverName {
+/* #driverName {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-}
+} */
 
 .driver-name-input {
   position: fixed;
