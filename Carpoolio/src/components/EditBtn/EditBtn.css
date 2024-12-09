@@ -181,31 +181,24 @@
   height: 60px;
 }
 
-.star-button {
+/* .star-button {
   color: var(--white);
   font-family: var(--main-font);
   font-size: var(--font-size-tiny);
-  /* font-weight: var(--font-weight-bold); */
   letter-spacing: var(--letter-spacing-btn);
-  /* padding: var(--padding-secondary-btn); */
   background: var(--glass-background);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-
   margin-bottom: 40px;
-
   height: var(--btn-height);
-  /* padding: 12px 25px; */
-
   margin-left: 20px;
   position: absolute;
   bottom: 0;
   left: 0;
-
   cursor: pointer;
   width: 80px;
   height: 60px;
-}
+} */
 
 .star-1 {
   position: absolute;

@@ -2,24 +2,16 @@ import { useEffect, useState, useContext, useRef } from "react";
 
 import { TripContext } from "@components/TripContext";
 import { glowBtn } from "@styles/styles";
-import InviteBtn from "./InviteBtn.jsx";
 import floppyDisk from "../../assets/img/floppy-disk.png";
-import "./BottomNav.css";
+import "./EditBtn.css";
 
-export default function BottomNav({
-  isAdmin,
-  isPreviewingTrip,
-  togglePreview,
-}) {
+export default function EditBtn({ isAdmin, isPreviewingTrip, togglePreview }) {
   const { formData, setFormData } = useContext(TripContext);
 
-  // style for dynamic glow
-  const glowStyle = {
-    background: formData?.transparentGlowColor,
-    border: ` 2px solid ${formData?.glowColor}`,
-    // boxShadow: `0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-    boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-  };
+  // if is not previewing trip:
+  // bottom nav bar should have background, overlay, and glow color
+
+  // if is previewing trip:
 
   return (
     <>
@@ -50,8 +42,6 @@ export default function BottomNav({
       )}
 
       {/* if not admin add a create a new trip btn (!)  */}
-
-      <InviteBtn />
     </>
   );
 }
