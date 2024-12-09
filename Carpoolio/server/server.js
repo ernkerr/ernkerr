@@ -34,7 +34,7 @@ app
 console.log("Server setup complete.");
 
 const corsOptions = {
-  origin: "https://carpoolio.vercel.app", // frontend url, change to domain later
+  origin: ["https://carpoolio.vercel.app", "http://localhost:5173"], // frontend url, change to domain later
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 app.use(cors(corsOptions));
