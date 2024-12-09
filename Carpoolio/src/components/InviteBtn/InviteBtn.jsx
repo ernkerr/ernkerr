@@ -9,7 +9,7 @@ import inviteIcon from "../../assets/img/invite-icon.png";
 import messageIcon from "../../assets/img/message-icon.png";
 import emailIcon from "../../assets/img/email-icon.png";
 import copyLink from "../../assets/img/copy-link.png";
-import "./BottomNav.css";
+import "./InviteBtn.css";
 
 export default function InviteBtn() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function InviteBtn() {
         btn
       </button> */}
       <button
-        className="star-button"
+        className="invite-btn"
         style={glowBtn(formData)}
         onClick={() => setIsVisible(true)} // show modal when clicked
       >
@@ -35,7 +35,7 @@ export default function InviteBtn() {
             src={inviteIcon}
             alt="Invite Person Icon"
           />
-          Invite
+          Share Trip
         </div>
         {/* <div className="star-1"></div>
           <div className="star-2"></div>
@@ -201,7 +201,6 @@ export default function InviteBtn() {
         <div className="modal">
           <div className="customize-trip-modal-content">
             <button
-              // isVisible={isVisible}
               onClick={() => setIsVisible(false)}
               className="close-modal-btn"
             >
