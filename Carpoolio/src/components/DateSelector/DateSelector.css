@@ -144,9 +144,9 @@ body.active-modal {
   bottom: 0;
   position: fixed;
   z-index: 3;
-  background-color: var(--v-dark);
-  /* backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px); */
+  background-color: var(--dark);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
 
 .overlay {
