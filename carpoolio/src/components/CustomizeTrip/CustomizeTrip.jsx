@@ -21,6 +21,7 @@ import locationIcon from "../../assets/img/location-icon.png";
 import bluegoo from "../../assets/gifs/bluegoo.gif";
 import { formResponseStyle, glowBtn } from "@styles/styles";
 import "./CustomizeTrip.css";
+import MoreBtn from "../MoreBtn/MoreBtn.jsx";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -131,6 +132,13 @@ export default function CustomizeTrip({ isAdmin }) {
   return (
     <div className="customize-trip-container">
       <>
+        {/* {!isPreviewingTrip && <p>Edit Event</p>} */}
+        <MoreBtn
+          isAdmin={isAdmin}
+          isPreviewingTrip={isPreviewingTrip}
+          togglePreview={togglePreview}
+        />
+
         <TripName isPreviewingTrip={isPreviewingTrip} />
 
         <div
@@ -210,8 +218,7 @@ export default function CustomizeTrip({ isAdmin }) {
           {isPreviewingTrip && (
             <button
               onClick={toggleNewCar} // toggle the NewCar modal
-              className="glow-btn"
-              // style={glowStyle}
+              className="glow-btn add-car-btn"
               style={glowBtn(formData)}
             >
               + add a car
