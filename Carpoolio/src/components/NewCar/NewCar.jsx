@@ -19,6 +19,7 @@ export default function NewCar({ triggerHandleYes }) {
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(0);
   const [newCarCreated, setNewCarCreated] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -160,6 +161,19 @@ export default function NewCar({ triggerHandleYes }) {
 
   // eventually turn this into a form? (add a car btn, driverName, etc.)
 
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
+  const dynamicStyles = {
+    ...formResponseStyle({ formData }),
+    ...(isFocused && formResponseFocusStyle(formData)), // add focus styles dynamically
+  };
+
   return (
     <>
       <button
@@ -189,6 +203,9 @@ export default function NewCar({ triggerHandleYes }) {
             placeholder="who's drivin?"
             value={driverName}
             onChange={changeDriverName}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            style={dynamicStyles}
           />
 
           {/* if driver name is set, show num seats slider  */}
