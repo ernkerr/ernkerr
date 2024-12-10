@@ -26,7 +26,7 @@
 export const glowBtn = (formData) => ({
   background: formData?.transparentGlowColor,
   border: `2px solid ${formData?.glowColor}`,
-  boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
+  boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}`,
   // if there is a scrim, add a blur behind the background
   ...(formData?.tripBackground?.scrim && {
     backdropFilter: "blur(7.6px)",

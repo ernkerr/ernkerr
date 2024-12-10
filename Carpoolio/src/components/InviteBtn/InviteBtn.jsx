@@ -41,17 +41,6 @@ export default function InviteBtn({ isVisible, setIsVisible }) {
         Share
       </button>
 
-      {/* <button
-        className="invite-btn"
-        onClick={handleShowModal} 
-      >
-        <img
-          className="invite-icon"
-          src={inviteIcon}
-          alt="Invite Person Icon"
-        />
-        Share
-      </button> */}
       {isVisible && (
         <div className="modal">
           <div className="customize-trip-modal-content">

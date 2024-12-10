@@ -69,11 +69,10 @@
   margin-bottom: 8px;
 }
 
-.invite-icon {
+/* .invite-icon {
   height: 20px;
   width: 20px;
-  margin-bottom: 8px;
-}
+} */
 
 .invite-icon-container {
   display: flex;
