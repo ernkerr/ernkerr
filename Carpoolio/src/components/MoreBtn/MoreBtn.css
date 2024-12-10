@@ -1,12 +1,67 @@
 .more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: 90px;
+  padding: none;
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-btn);
   position: absolute;
   top: 10px;
   right: 10px;
   height: 44px;
   width: 44px;
-  z-index: 10;
+  z-index: 3;
+}
+.more-icon {
+  height: 8px;
+  width: 25px;
 }
 
+.side-bar-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  /* top: 55px; */
+  right: 0;
+  height: 100%;
+  width: 50%;
+  /* border: var(--glass-border); */
+  border-radius: var(--border-radius-btn);
+
+  background-color: var(--glass-background);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  z-index: 2;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 55px;
+  width: 100%;
+}
+
+/* #option-1 {
+  position: absolute;
+  top: 55px;
+  right: 0;
+} */
+.option-btn {
+  color: white;
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: var(--glass-border);
+
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
 /* button guidelines for mobile: 
 
 font-size: 16px;
@@ -15,7 +70,71 @@ width: 44px;
 
 at least 8-10px between btns  */
 
-.option-container {
+/*------ arrow animation ------*/
+.arrow-container {
+  --color: var(--white);
+  border: var(--glass-border);
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 44px;
+  width: 44px;
+  z-index: 3;
+}
+
+.arrow-container .chevron-right {
+  position: absolute;
+  animation: keyframes-return 0.5s;
+}
+
+.arrow-container .chevron-down {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill 0.5s;
+}
+
+.arrow-container input:checked ~ .chevron-right {
+  display: none;
+}
+
+.arrow-container input:checked ~ .chevron-down {
+  display: block;
+}
+.arrow-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+@keyframes keyframes-fill {
+  0% {
+    transform: rotate(-90deg) scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotate(0deg) scale(1.2);
+  }
+}
+
+@keyframes keyframes-return {
+  0% {
+    transform: rotate(90deg) scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotate(0deg) scale(1.2);
+  }
 }

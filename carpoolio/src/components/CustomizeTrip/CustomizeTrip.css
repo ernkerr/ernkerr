@@ -102,6 +102,15 @@
   text-align: center;
 }
 
+#add-car-btn {
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+}
+
 .done-btn {
   position: fixed;
   bottom: 5px;

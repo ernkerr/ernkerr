@@ -225,7 +225,8 @@ export default function CustomizeTrip({ isAdmin }) {
           {isPreviewingTrip && (
             <button
               onClick={toggleNewCar} // toggle the NewCar modal
-              className="glow-btn add-car-btn"
+              className="glow-btn"
+              id="add-car-btn"
               style={glowBtn(formData)}
             >
               + add a car
