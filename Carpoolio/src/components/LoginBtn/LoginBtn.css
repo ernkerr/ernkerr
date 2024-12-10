@@ -1,4 +1,4 @@
-.more-btn {
+.login-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -14,8 +14,3 @@ height: 44px;
 width: 44px;
 
 at least 8-10px between btns  */
-
-.option-container {
-  display: flex;
-  flex-direction: column;
-}

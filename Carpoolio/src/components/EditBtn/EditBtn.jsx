@@ -17,7 +17,7 @@ export default function EditBtn({ isAdmin, isPreviewingTrip, togglePreview }) {
     <>
       {isAdmin && (
         <button
-          className={isPreviewingTrip ? "edit-btn" : "preview-btn"}
+          className={isPreviewingTrip ? "edit-btn" : "save-btn"}
           style={glowBtn(formData)}
           onClick={togglePreview}
         >
