@@ -14,7 +14,6 @@ import TripName from "../TripName.jsx";
 import NewCar from "../NewCar/NewCar.jsx";
 
 import DestinationMap from "../Destination/DestinationMap.jsx";
-import BottomNav from "../BottomNav/BottomNav.jsx";
 import navArrow from "../../assets/img/navarrow.png";
 import locationIcon from "../../assets/img/location-icon.png";
 
@@ -22,6 +21,7 @@ import bluegoo from "../../assets/gifs/bluegoo.gif";
 import { formResponseStyle, glowBtn } from "@styles/styles";
 import "./CustomizeTrip.css";
 import MoreBtn from "../MoreBtn/MoreBtn.jsx";
+import InviteBtn from "../InviteBtn/InviteBtn.jsx";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -33,6 +33,7 @@ export default function CustomizeTrip({ isAdmin }) {
   const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
+  const [isInviteModalVisible, setIsInviteModalVisible] = useState(false); // state for invite btn modal
 
   const handleDestinationModal = () => {
     setDestinationModal((prev) => !prev);
@@ -133,10 +134,16 @@ export default function CustomizeTrip({ isAdmin }) {
     <div className="customize-trip-container">
       <>
         {/* {!isPreviewingTrip && <p>Edit Event</p>} */}
+        <InviteBtn
+          isVisible={isInviteModalVisible}
+          setIsVisible={setIsInviteModalVisible}
+        />
         <MoreBtn
           isAdmin={isAdmin}
           isPreviewingTrip={isPreviewingTrip}
           togglePreview={togglePreview}
+          isInviteModalVisible={isInviteModalVisible}
+          setIsInviteModalVisible={setIsInviteModalVisible}
         />
 
         <TripName isPreviewingTrip={isPreviewingTrip} />
@@ -320,11 +327,6 @@ export default function CustomizeTrip({ isAdmin }) {
           }
         })}
       </div>
-      <BottomNav
-        isAdmin={isAdmin}
-        isPreviewingTrip={isPreviewingTrip}
-        togglePreview={togglePreview}
-      />
     </div>
   );
 }

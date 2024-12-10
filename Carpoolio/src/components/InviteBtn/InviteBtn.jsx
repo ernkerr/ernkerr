@@ -11,199 +11,51 @@ import emailIcon from "../../assets/img/email-icon.png";
 import copyLink from "../../assets/img/copy-link.png";
 import "./InviteBtn.css";
 
-export default function InviteBtn() {
+export default function InviteBtn({ isVisible, setIsVisible }) {
   const navigate = useNavigate();
   const { formData } = useContext(TripContext);
   const { tripId } = useParams();
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
+
+  const closeModal = () => setIsVisible(false);
 
   const shareURL = `${window.location.origin}/trip/${tripId}`;
 
+  const handleShowModal = () => {
+    setIsVisible(true);
+  };
+
   return (
     <>
-      {/* <button className="invisible-btn" onClick={() => setIsVisible(true)}>
-        btn
-      </button> */}
       <button
         className="invite-btn"
-        style={glowBtn(formData)}
-        onClick={() => setIsVisible(true)} // show modal when clicked
+        onClick={handleShowModal} // show modal when clicked
       >
-        <div className="invite-icon-container">
-          <img
-            className="invite-icon"
-            src={inviteIcon}
-            alt="Invite Person Icon"
-          />
-          Share Trip
-        </div>
-        {/* <div className="star-1"></div>
-          <div className="star-2"></div>
-          <div className="star-3"></div>
-          <div className="star-4"></div>
-          <div className="star-5"></div>
-          <div className="star-6"></div>
-          <div className="star-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlSpace="preserve"
-              version="1.1"
-              style={{
-                shapeRendering: "geometricPrecision",
-                textRendering: "geometricPrecision",
-                imageRendering: "optimizeQuality",
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-              }}
-              viewBox="0 0 784.11 815.53"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-            >
-              <defs />
-              <g id="Layer_x0020_1">
-                <metadata id="CorelCorpID_0Corel-Layer" />
-                <path
-                  className="fil0"
-                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div className="star-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlSpace="preserve"
-              version="1.1"
-              style={{
-                shapeRendering: "geometricPrecision",
-                textRendering: "geometricPrecision",
-                imageRendering: "optimizeQuality",
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-              }}
-              viewBox="0 0 784.11 815.53"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-            >
-              <defs />
-              <g id="Layer_x0020_1">
-                <metadata id="CorelCorpID_0Corel-Layer" />
-                <path
-                  className="fil0"
-                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div className="star-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlSpace="preserve"
-              version="1.1"
-              style={{
-                shapeRendering: "geometricPrecision",
-                textRendering: "geometricPrecision",
-                imageRendering: "optimizeQuality",
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-              }}
-              viewBox="0 0 784.11 815.53"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-            >
-              <defs />
-              <g id="Layer_x0020_1">
-                <metadata id="CorelCorpID_0Corel-Layer" />
-                <path
-                  className="fil0"
-                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div className="star-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlSpace="preserve"
-              version="1.1"
-              style={{
-                shapeRendering: "geometricPrecision",
-                textRendering: "geometricPrecision",
-                imageRendering: "optimizeQuality",
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-              }}
-              viewBox="0 0 784.11 815.53"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-            >
-              <defs />
-              <g id="Layer_x0020_1">
-                <metadata id="CorelCorpID_0Corel-Layer" />
-                <path
-                  className="fil0"
-                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div className="star-5">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlSpace="preserve"
-              version="1.1"
-              style={{
-                shapeRendering: "geometricPrecision",
-                textRendering: "geometricPrecision",
-                imageRendering: "optimizeQuality",
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-              }}
-              viewBox="0 0 784.11 815.53"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-            >
-              <defs />
-              <g id="Layer_x0020_1">
-                <metadata id="CorelCorpID_0Corel-Layer" />
-                <path
-                  className="fil0"
-                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div className="star-6">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlSpace="preserve"
-              version="1.1"
-              style={{
-                shapeRendering: "geometricPrecision",
-                textRendering: "geometricPrecision",
-                imageRendering: "optimizeQuality",
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-              }}
-              viewBox="0 0 784.11 815.53"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-            >
-              <defs />
-              <g id="Layer_x0020_1">
-                <metadata id="CorelCorpID_0Corel-Layer" />
-                <path
-                  className="fil0"
-                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                />
-              </g>
-            </svg>
-          </div> */}
+        <svg
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+          class="invite-icon"
+        >
+          <path d="M307 34.8c-11.5 5.1-19 16.6-19 29.2v64H176C78.8 128 0 206.8 0 304C0 417.3 81.5 467.9 100.2 478.1c2.5 1.4 5.3 1.9 8.1 1.9c10.9 0 19.7-8.9 19.7-19.7c0-7.5-4.3-14.4-9.8-19.5C108.8 431.9 96 414.4 96 384c0-53 43-96 96-96h96v64c0 12.6 7.4 24.1 19 29.2s25 3 34.4-5.4l160-144c6.7-6.1 10.6-14.7 10.6-23.8s-3.8-17.7-10.6-23.8l-160-144c-9.4-8.5-22.9-10.6-34.4-5.4z"></path>
+        </svg>
+        Share
       </button>
 
-      {/* bottom drawer for sharing functionality */}
-
+      {/* <button
+        className="invite-btn"
+        onClick={handleShowModal} 
+      >
+        <img
+          className="invite-icon"
+          src={inviteIcon}
+          alt="Invite Person Icon"
+        />
+        Share
+      </button> */}
       {isVisible && (
         <div className="modal">
           <div className="customize-trip-modal-content">
-            <button
-              onClick={() => setIsVisible(false)}
-              className="close-modal-btn"
-            >
+            <button onClick={closeModal} className="close-modal-btn">
               X
             </button>
             <p className="bottom-drawer-title">Share your trip!</p>
