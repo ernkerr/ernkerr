@@ -3,25 +3,49 @@
   cursor: pointer;
   color: var(--white);
   font-family: var(--main-font);
-  font-size: var(--font-size-tiny);
+  font-size: var(--font-size-small);
   letter-spacing: var(--letter-spacing-btn);
+  padding: var(--padding-form-response);
   background: var(--glass-background);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-  /* margin-bottom: 120px;
-  margin-left: var(--margin-medium); */
+  margin-bottom: var(--margin-form-response);
   height: var(--btn-height);
-  /* position: absolute;
-  bottom: 0;
-  left: 0; */
-  z-index: 2;
-  width: 80px;
-  height: 60px;
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
 }
 
-.edit-btn {
+.save-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* .glow-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  padding: var(--padding-form-response);
+  border-radius: var(--border-radius-btn);
+  height: var(--btn-height);
+  margin-bottom: var(--margin-medium); */
+
+#add-car-btn {
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+}
+
+/* .edit-btn {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -29,17 +53,11 @@
   background: var(--glass-background);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-  /* margin-bottom: 120px;
-  margin-left: 20px; */
-  /* position: absolute;
-  bottom: 0;
-  left: 0; */
-  z-index: 2;
   width: 80px;
-  height: 60px;
+  height: var(--btn-height);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-}
+} */
 
 .edit-btn svg {
   height: 18px;
@@ -50,7 +68,7 @@
 
 .icon-text-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   text-align: center;
   margin-bottom: 0;

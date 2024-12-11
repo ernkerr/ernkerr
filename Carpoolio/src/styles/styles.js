@@ -34,6 +34,18 @@ export const glowBtn = (formData) => ({
   }),
 });
 
+export const glowBorder = (formData) => ({
+  border: `2px solid ${formData?.glowColor}`,
+  boxShadow: `inset 0 0 5px ${formData?.glowColor},
+              0 0 12px ${formData?.glowColor},
+              inset 0 0 15px ${formData?.glowColor}`,
+  borderRadius: "50%", // Ensure it retains its circular shape
+  ...(formData?.tripBackground?.scrim && {
+    backdropFilter: "blur(7.6px)",
+    WebkitBackdropFilter: "blur(7.6px)",
+  }),
+});
+
 // import { glowBtn } from "@styles/styles";
 
 // function Button({ formData, onClick }) {

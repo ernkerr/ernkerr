@@ -22,6 +22,7 @@ import { formResponseStyle, glowBtn } from "@styles/styles";
 import "./CustomizeTrip.css";
 import MoreBtn from "../MoreBtn/MoreBtn.jsx";
 import InviteBtn from "../InviteBtn/InviteBtn.jsx";
+import EditBtn from "../EditBtn/EditBtn.jsx";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -208,10 +209,7 @@ export default function CustomizeTrip({ isAdmin }) {
           </div>
         </div>
 
-        <div
-          className="date-selector"
-          // style={formResponseStyle({ formData, isPreviewingTrip })}
-        >
+        <div className="date-selector">
           {/* <div
           className={isAddress ? "destination-container" : ""}
           style={formResponseStyle({ formData, isPreviewingTrip })}
@@ -236,40 +234,34 @@ export default function CustomizeTrip({ isAdmin }) {
           <>
             {!isPreviewingTrip && (
               <>
-                <button
-                  className="glow-btn"
-                  style={glowBtn(formData)}
-                  onClick={handleShowStyleOptions}
-                >
-                  {isShowingStyleOptions ? "Close" : "Style Options"}
-                </button>
-                {isShowingStyleOptions && (
-                  <>
-                    <TripBackground isPreviewingTrip={isPreviewingTrip} />
+                <EditBtn
+                  isAdmin={isAdmin}
+                  isPreviewingTrip={isPreviewingTrip}
+                  togglePreview={togglePreview}
+                />
+                <TripBackground isPreviewingTrip={isPreviewingTrip} />
 
-                    <TripOverlay />
-                    <button
-                      className="style-btns"
-                      id="glow-color-picker"
-                      style={{
-                        background: isPreviewingTrip
-                          ? "transparent"
-                          : formData?.tripBackground?.scrim || undefined,
-                        pointerEvents: isPreviewingTrip ? "none" : "auto",
-                      }}
-                    >
-                      <label htmlFor="glowColor">Change Glow Color </label>
-                      <input
-                        className="glowColor"
-                        type="color"
-                        id="glowColor"
-                        name="glowColor"
-                        value={formData?.glowColor || " #34bd34"}
-                        onChange={handleGlowColorChange} // update the glow color on change
-                      />
-                    </button>
-                  </>
-                )}
+                <TripOverlay />
+                <button
+                  className="style-btns"
+                  id="glow-color-picker"
+                  style={{
+                    background: isPreviewingTrip
+                      ? "transparent"
+                      : formData?.tripBackground?.scrim || undefined,
+                    pointerEvents: isPreviewingTrip ? "none" : "auto",
+                  }}
+                >
+                  <label htmlFor="glowColor">Change Glow Color </label>
+                  <input
+                    className="glowColor"
+                    type="color"
+                    id="glowColor"
+                    name="glowColor"
+                    value={formData?.glowColor || " #34bd34"}
+                    onChange={handleGlowColorChange} // update the glow color on change
+                  />
+                </button>
               </>
             )}
           </>

@@ -1,10 +1,8 @@
 import { useEffect, useState, useContext, useRef } from "react";
 import { TripContext } from "@components/TripContext";
-import { formResponseStyle, glowBtn } from "@styles/styles";
-
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { formResponseStyle, glowBtn, glowBorder } from "@styles/styles";
+import { Twirl as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
-// import "react-sidebar-pro/dist/styles.css"; // Import default styles
 
 import "./MoreBtn.css";
 import threeDots from "../../assets/img/three-dots.png";
@@ -24,43 +22,30 @@ export default function MoreBtn({
   setIsInviteModalVisible,
 }) {
   const { formData, setFormData } = useContext(TripContext);
-  const [isShowingMore, setIsShowingMore] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
-  const toggleMore = () => {
-    setIsShowingMore((prev) => !prev);
-  };
-
-  const handleClose = () => {
+  const handleEditTrip = () => {
     setIsShowingMore(false);
+    togglePreview();
   };
 
   return (
     <>
-      {/* <button onClick={toggleMore} className="more-btn"> */}
-      {/* <img className="more-icon" src={threeDots} alt="More options" /> */}
-      {/* </button> */}
+      <div className="hamburger-container">
+        <Hamburger
+          toggled={isOpen}
+          toggle={setOpen}
+          size={25}
+          distance="md"
+          direction="left"
+          rounded
+          label="Show menu"
+        />
+      </div>
 
-      <label className="arrow-container">
-        <input type="checkbox" checked={isShowingMore} onChange={toggleMore} />
-        <svg
-          className="chevron-right"
-          xmlns="http://www.w3.org/2000/svg"
-          height="1em"
-          viewBox="0 0 320 512"
-        >
-          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path>
-        </svg>
-        <svg
-          className="chevron-down"
-          xmlns="http://www.w3.org/2000/svg"
-          height="1em"
-          viewBox="0 0 512 512"
-        >
-          <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
-        </svg>
-      </label>
+      {/* style={glowBorder(formData)} */}
 
-      {isShowingMore && (
+      {isOpen && (
         <>
           <div className="side-bar-container">
             <div className="option-container">
@@ -71,23 +56,14 @@ export default function MoreBtn({
               >
                 Share Trip
               </button>
-              <button className="option-btn">Edit Trip</button>
-              <EditBtn
-                isAdmin={isAdmin}
-                isPreviewingTrip={isPreviewingTrip}
-                togglePreview={togglePreview}
-              />
-
-              {/* <InviteBtn
-                isVisible={isInviteModalVisible}
-                setIsVisible={setIsInviteModalVisible}
-              /> */}
+              <button className="option-btn" onClick={handleEditTrip}>
+                Edit Trip
+              </button>
 
               <button className="option-btn">New Trip</button>
               <button className="option-btn">FAQ</button>
             </div>
           </div>
-          {/* <button onClick={handleClose}>Close</button> */}
         </>
       )}
     </>

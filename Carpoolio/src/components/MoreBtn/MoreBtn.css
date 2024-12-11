@@ -1,3 +1,10 @@
+.hamburger-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+}
+
 .more-btn {
   display: flex;
   justify-content: center;
@@ -46,11 +53,6 @@
   width: 100%;
 }
 
-/* #option-1 {
-  position: absolute;
-  top: 55px;
-  right: 0;
-} */
 .option-btn {
   color: white;
   font-family: var(--main-font);
@@ -69,72 +71,3 @@ height: 44px;
 width: 44px;
 
 at least 8-10px between btns  */
-
-/*------ arrow animation ------*/
-.arrow-container {
-  --color: var(--white);
-  border: var(--glass-border);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  font-size: var(--size);
-  user-select: none;
-  fill: var(--color);
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  height: 44px;
-  width: 44px;
-  z-index: 3;
-}
-
-.arrow-container .chevron-right {
-  position: absolute;
-  animation: keyframes-return 0.5s;
-}
-
-.arrow-container .chevron-down {
-  position: absolute;
-  display: none;
-  animation: keyframes-fill 0.5s;
-}
-
-.arrow-container input:checked ~ .chevron-right {
-  display: none;
-}
-
-.arrow-container input:checked ~ .chevron-down {
-  display: block;
-}
-.arrow-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-@keyframes keyframes-fill {
-  0% {
-    transform: rotate(-90deg) scale(0);
-    opacity: 0;
-  }
-
-  50% {
-    transform: rotate(0deg) scale(1.2);
-  }
-}
-
-@keyframes keyframes-return {
-  0% {
-    transform: rotate(90deg) scale(0);
-    opacity: 0;
-  }
-
-  50% {
-    transform: rotate(0deg) scale(1.2);
-  }
-}

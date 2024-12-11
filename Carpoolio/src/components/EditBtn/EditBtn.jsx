@@ -18,6 +18,7 @@ export default function EditBtn({ isAdmin, isPreviewingTrip, togglePreview }) {
       {isAdmin && (
         <button
           className={isPreviewingTrip ? "edit-btn" : "save-btn"}
+          // className="glow-btn"
           style={glowBtn(formData)}
           onClick={togglePreview}
         >
@@ -29,7 +30,7 @@ export default function EditBtn({ isAdmin, isPreviewingTrip, togglePreview }) {
               <p className="icon-text">Edit trip</p>
             </div>
           ) : (
-            <div className="icon-text-container">
+            <div className="save-btn-container">
               <img
                 className="save-icon"
                 src={floppyDisk}
