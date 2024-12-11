@@ -25,7 +25,7 @@ export default function MoreBtn({
   const [isOpen, setOpen] = useState(false);
 
   const handleEditTrip = () => {
-    setIsShowingMore(false);
+    setOpen(false);
     togglePreview();
   };
 

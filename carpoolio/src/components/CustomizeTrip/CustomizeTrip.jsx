@@ -127,10 +127,6 @@ export default function CustomizeTrip({ isAdmin }) {
     [formData.cars]
   );
 
-  // const triggerHandleYes = () => {
-  //   console.log();
-  // };
-
   return (
     <div className="customize-trip-container">
       <>

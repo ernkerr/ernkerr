@@ -105,6 +105,7 @@
 #add-car-btn {
   width: 50%;
   position: relative;
+  top: 2%;
   left: 50%;
   transform: translateX(-50%);
   backdrop-filter: blur(7.6px);
@@ -154,11 +155,6 @@
   border-radius: var(--border-radius-btn);
   height: var(--btn-height);
   margin-bottom: var(--margin-medium);
-  /* width: 50%;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%); */
-  /* margin-top: var(--margin-form-response); */
 }
 
 .glow-btn.selected {

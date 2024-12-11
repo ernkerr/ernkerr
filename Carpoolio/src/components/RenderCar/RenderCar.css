@@ -31,13 +31,33 @@
   text-align: center;
 }
 
-#edit-car-btn {
-  position: relative;
-  margin: 4dvw 2dvw 0 0;
-  height: 40px;
-  width: 50px;
+/* .edit-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-background);
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
+} */
+
+#edit-car-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-background);
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+
+  position: relative;
+  margin: 4dvw 2dvw 0 50px;
+  height: 40px;
+  width: 50px;
 }
 
 .gear-icon {

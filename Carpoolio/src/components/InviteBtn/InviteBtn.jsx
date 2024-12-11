@@ -29,8 +29,7 @@ export default function InviteBtn({ isVisible, setIsVisible }) {
     <>
       <button
         className="invite-btn"
-        id="make-invisible-for-now"
-        style={glowBtn(formData)}
+        // style={glowBtn(formData)}
         onClick={handleShowModal} // show modal when clicked
       >
         <svg

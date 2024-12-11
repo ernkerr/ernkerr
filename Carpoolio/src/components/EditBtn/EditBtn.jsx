@@ -8,11 +8,6 @@ import "./EditBtn.css";
 export default function EditBtn({ isAdmin, isPreviewingTrip, togglePreview }) {
   const { formData, setFormData } = useContext(TripContext);
 
-  // if is not previewing trip:
-  // bottom nav bar should have background, overlay, and glow color
-
-  // if is previewing trip:
-
   return (
     <>
       {isAdmin && (
