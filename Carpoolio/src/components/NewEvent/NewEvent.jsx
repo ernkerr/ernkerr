@@ -6,7 +6,7 @@ import DateSelector from "@components/DateSelector/DateSelector";
 import Description from "@components/Description/Description.jsx";
 import "./NewEvent.css";
 
-export default function NewEvent({ onNext, onDestinationUpdate }) {
+export default function NewEvent({ onNext }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isDestinationSet, setIsDestinationSet] = useState(false); // state to track if destination is set
   const [isTripNameSet, setIsTripNameSet] = useState(false);

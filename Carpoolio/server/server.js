@@ -99,6 +99,7 @@ app.put("/api/trip/:tripId", async (req, res) => {
 
   try {
     console.log("Received trip update data for tripId:", tripId, tripData);
+    console.log("Received destination data:", tripData.destination);
 
     const updatedTrip = await prisma.trip.update({
       where: { tripId },

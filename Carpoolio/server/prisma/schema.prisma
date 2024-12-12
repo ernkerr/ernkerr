@@ -28,7 +28,7 @@ model Trip {
   tripDate             String?
   tripBackground       Json? // To store more complex background data
   departureTime        String?
-  destination          String?
+  destination          Json?
   tripDescription      String?
   // underglowColor       String?
   glowColor            String? @default("#34bd34")
@@ -65,4 +65,6 @@ model Car {
 
 
 // npx prisma migrate dev 
-// cmd will update the schema 
+// cmd will update the schema
+// run it from carpoolio (root dir) 
+// npx prisma migrate dev --name update-destination --schema=./server/prisma/schema.prisma

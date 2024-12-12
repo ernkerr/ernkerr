@@ -3,52 +3,66 @@ import { GoogleMap, Marker } from "@react-google-maps/api";
 import locationPin from "../../assets/img/location-pin.png";
 import axios from "axios";
 
-export default function DestinationMap({ address }) {
+export default function DestinationMap({ destination }) {
   const [center, setCenter] = useState(null);
   const [isAddress, setIsAddress] = useState(false);
   const mapRef = useRef(null);
 
-  // geocode function to fetch coordinates for the address
+  // check if lat / lng exist in destination object
+  const fetchLatLngFromLocation = (location) => {
+    if (location && location.lat && location.lng) {
+      return { lat: location.lat, lng: location.lng }; // Return coordinates if present
+    } else {
+      return null; // Return null if no valid location
+    }
+  };
+
+  // function to retrieve lat/lng from address using Geocoding API
   const fetchLatLngFromAddress = async (address) => {
     try {
-      //   const API_KEY = import.meta.env.VITE_GMAPS_API_KEY;
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json`,
+        "https://maps.googleapis.com/maps/api/geocode/json",
         {
           params: {
             address,
-            key: import.meta.env.VITE_GMAPS_API_KEY,
+            key: import.meta.env.VITE_GMAPS_API_KEY, // import gmaps api key
           },
         }
       );
+
       if (response.data.status === "OK") {
         const location = response.data.results[0].geometry.location;
-        setIsAddress(true);
-        console.log("location set: ", location);
-        return location; // { lat: <latitude>, lng: <longitude> }
+        return location; // { lat, lng }
       } else {
-        setIsAddress(false); // Invalid address
+        console.error("Geocoding failed:", response.data.status);
         return null;
       }
     } catch (error) {
       console.error("Failed to fetch latitude and longitude:", error);
-      console.error("Error with Geocoding API:", response.data.status);
-      setIsAddress(false);
       return null;
     }
   };
 
   useEffect(() => {
     const fetchCoordinates = async () => {
-      const location = await fetchLatLngFromAddress(address);
+      let location = fetchLatLngFromLocation(destination?.location);
+
+      if (!location && destination?.address) {
+        location = await fetchLatLngFromAddress(destination?.address);
+      }
+
       if (location) {
         setCenter(location); // set the center of the map
+        setIsAddress(true); // valid address or location
+      } else {
+        setIsAddress(false); // no valid address or location
       }
     };
-    if (address) {
+
+    if (destination) {
       fetchCoordinates();
     }
-  }, [address]);
+  }, [destination]);
 
   const customMapStyle = [
     {

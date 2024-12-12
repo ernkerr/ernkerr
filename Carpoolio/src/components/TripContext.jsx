@@ -8,6 +8,7 @@ export function TripContextProvider({ children }) {
   const [formData, setFormData] = useState({
     tripName: "", // str
     destination: "", // str
+    location: {}, // lat / lng
     tripDate: "", //"Monday, November 4" str
     tripTime: "", // TODO: add to schema
     tripDescription: "", //str

@@ -6,8 +6,11 @@ import "./Destination.css";
 const Destination = forwardRef(
   ({ isPreviewingTrip, onDestinationUpdate, onKeyDown }, ref) => {
     const { formData, setFormData } = useContext(TripContext);
-    const [destination, setDestination] = useState(formData?.destination || "");
-    const [location, setLocation] = useState(null);
+    const [placeSelected, setPlaceSelected] = useState(false);
+    const [destination, setDestination] = useState(
+      formData?.destination || { name: "", address: "", location: null }
+    );
+    // const [location, setLocation] = useState(null);
     const autocompleteRef = useRef(null); // create an internal ref for the Autocomplete component
 
     // combine internal ref (autocompleteRef) with forwarded ref
@@ -26,41 +29,51 @@ const Destination = forwardRef(
 
     // handle the location selection from the autocomplete
     const handleSelectedLocation = (place) => {
+      console.log("Place selected:", place);
+      setPlaceSelected(true); // mark that a place has been selected
+
       if (!isPreviewingTrip) {
-        const selectedPlaceName = place.name || ""; // check place name
-        const selectedAddress = place.formatted_address || ""; // check if the place has a formatted address
-        const selectedLocation = place.geometry?.location;
+        // if in editing mode
+        const tripDestination = {
+          name: place?.name || "", // place name
+          address: place?.formatted_address || "", // formatted address
+          location: place?.geometry?.location
+            ? {
+                lat: place?.geometry?.location.lat(),
+                lng: place?.geometry?.location.lng(),
+              }
+            : null, // latitude and longitude
+        };
 
-        const tripDestination =
-          selectedAddress && selectedPlaceName
-            ? selectedAddress.includes(selectedPlaceName)
-              ? selectedAddress
-              : `${selectedPlaceName}, ${selectedAddress}`
-            : selectedPlaceName; // if no address, just use place name
+        console.log("Formatted destination object:", tripDestination);
 
-        setDestination(tripDestination);
-        updateFormData(tripDestination);
+        console.log("Selected Place Name:", tripDestination.name);
+        console.log("Selected Address:", tripDestination.address);
+        console.log("Selected Location:", tripDestination.location);
 
-        // location data for map
-        if (selectedLocation) {
-          setLocation({
-            lat: selectedLocation.lat(),
-            lng: selectedLocation.lng(),
-          });
-        } else {
-          setLocation(null); // Reset location if no geometry
-          console.log("Location: ", location);
-        }
+        setDestination(tripDestination); // update UI input field
+        updateFormData(tripDestination); // update backend with object
       }
     };
 
     // handle manual input changes
     const handleInputChange = (event) => {
       if (!isPreviewingTrip) {
-        const newDestination = event.target.value;
+        const newInput = event.target.value;
+        setPlaceSelected(false); // if typing is detected, set placeSelected to false
 
-        setDestination(newDestination);
-        updateFormData(newDestination);
+        if (!placeSelected) {
+          const manualDestination = {
+            name: newInput,
+            address: "",
+            location: null, // if manually typed, reset location lat/lng to null
+          };
+
+          console.log("Manual input:", manualDestination);
+
+          setDestination(manualDestination);
+          // updateFormData(manualDestination);
+        }
       }
     };
 
@@ -70,18 +83,22 @@ const Destination = forwardRef(
         ...prevFormData,
         destination: value,
       }));
+
+      if (onDestinationUpdate) {
+        onDestinationUpdate(value);
+      }
     };
 
     // update the input field value based on state changes
-    useEffect(() => {
-      // If the autocompleteRef is available, manually set its value from state
-      if (
-        autocompleteRef.current &&
-        autocompleteRef.current.value !== destination
-      ) {
-        autocompleteRef.current.value = destination;
-      }
-    }, [destination]); // Update the input value when the destination changes
+    // useEffect(() => {
+    //   // If the autocompleteRef is available, manually set its value from state
+    //   if (
+    //     autocompleteRef.current &&
+    //     autocompleteRef.current.value !== destination.name
+    //   ) {
+    //     autocompleteRef.current.value = destination.name;
+    //   }
+    // }, [destination]); // Update the input value when the destination changes
 
     return (
       <>
@@ -92,11 +109,13 @@ const Destination = forwardRef(
             types: ["geocode", "establishment"], // establishment to search for businesses, museums, etc.
             fields: ["name", "formatted_address", "geometry"],
           }}
-          ref={autocompleteRef}
-          value={destination}
+          // ref={autocompleteRef}
+          value={destination.name}
           onChange={handleInputChange}
           onKeyDown={onKeyDown}
-          placeholder={destination ? destination : "Choose your destination"}
+          placeholder={
+            destination.name ? destination.name : "Choose your destination"
+          }
           className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
           style={{
             background: isPreviewingTrip

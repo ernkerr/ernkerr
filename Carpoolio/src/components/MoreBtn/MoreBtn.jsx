@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { TripContext } from "@components/TripContext";
 import { formResponseStyle, glowBtn, glowBorder } from "@styles/styles";
 import { Twirl as Hamburger } from "hamburger-react";
@@ -21,7 +22,10 @@ export default function MoreBtn({
   isInviteModalVisible,
   setIsInviteModalVisible,
 }) {
+  const navigate = useNavigate();
+
   const { formData, setFormData } = useContext(TripContext);
+
   const [isOpen, setOpen] = useState(false);
 
   const handleEditTrip = () => {
@@ -60,7 +64,10 @@ export default function MoreBtn({
                 Edit Trip
               </button>
 
-              <button className="option-btn">New Trip</button>
+              <button className="option-btn" onClick={() => navigate("/")}>
+                New Trip
+              </button>
+
               <button className="option-btn">FAQ</button>
             </div>
           </div>

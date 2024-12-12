@@ -31,9 +31,8 @@ export default function CustomizeTrip({ isAdmin }) {
   const [destinationModal, setDestinationModal] = useState(false);
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
-  const [isShowingStyleOptions, setIsShowingStyleOptions] = useState(false);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
-  const [isPreviewingTrip, setIsPreviewingTrip] = useState(true);
+  const [isPreviewingTrip, setIsPreviewingTrip] = useState(false);
   const [isInviteModalVisible, setIsInviteModalVisible] = useState(false); // state for invite btn modal
 
   const handleDestinationModal = () => {
@@ -45,17 +44,16 @@ export default function CustomizeTrip({ isAdmin }) {
   // check if the destination resembles an address (some form of truth?) by looking for a comma
   // not the best way to do this
   // BUG IT IS BUG
-  const isAddress = formData?.destination && formData.destination.includes(","); // Check if destination has a comma
+  // const isAddress = formData?.destination && formData.destination.includes(","); // Check if destination has a comma
+
+  const isAddress = formData?.destination?.location != null;
 
   const handleGetDirections = () => {
-    const destination = encodeURIComponent(formData?.destination || "");
+    const destination = encodeURIComponent(
+      formData?.destination?.address || ""
+    );
     const url = `http://maps.apple.com/?q=${destination}`;
     window.open(url, "_blank");
-  };
-
-  // styling
-  const handleShowStyleOptions = () => {
-    setIsShowingStyleOptions((prevState) => !prevState);
   };
 
   // change glow color
@@ -103,8 +101,16 @@ export default function CustomizeTrip({ isAdmin }) {
   useEffect(
     () => {
       const updateTripDetails = async () => {
-        // validate to make sure tripId exists
         try {
+          console.log(
+            "trying to update trip destination: ",
+            formData.destination
+          );
+          console.log(
+            "Sending the following data to update the trip:",
+            formData
+          ); // Log the entire formData
+
           const response = await axios.put(
             `${API_BASE_URL}/api/trip/${formData.tripId}`, // update the trip in the backend
             formData
@@ -114,8 +120,23 @@ export default function CustomizeTrip({ isAdmin }) {
           }
         } catch (error) {
           console.error("houston, we have an error: ", error);
+          if (error.response) {
+            console.error("Error response from server:", error.response);
+            console.error("Error status code:", error.response.status);
+            console.error("Error details:", error.response.data);
+            // Log the full error response for debugging
+            console.error("Server error details: ", error.response);
+          } else {
+            console.error("Network or other error: ", error);
+          }
         }
       };
+
+      console.log("Axios configuration:", {
+        baseURL: API_BASE_URL,
+        url: `${API_BASE_URL}/api/trip/${formData.tripId}`,
+        data: formData,
+      });
 
       const debounceTimer = setTimeout(() => {
         updateTripDetails(); // call after the debounce time
@@ -150,7 +171,7 @@ export default function CustomizeTrip({ isAdmin }) {
           style={formResponseStyle({ formData, isPreviewingTrip })}
         >
           {/* make a map */}
-          {isAddress && <DestinationMap address={formData?.destination} />}
+          {isAddress && <DestinationMap destination={formData?.destination} />}
 
           <div className="address-directions-container">
             <div className={isAddress ? "address-container" : ""}>
@@ -165,7 +186,7 @@ export default function CustomizeTrip({ isAdmin }) {
                     onClick={handleDestinationModal}
                     className="destination-modal-btn"
                   >
-                    {formData?.destination}
+                    {formData?.destination?.name}
                   </button>
                   {destinationModal && (
                     <div className="customize-trip-modal" style={modalStyle}>
