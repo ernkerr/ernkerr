@@ -198,7 +198,7 @@ export default function CustomizeTrip({ isAdmin }) {
                   />
                   <button
                     onClick={handleEditDestination}
-                    className="destination-modal-btn"
+                    className="destination-btn"
                   >
                     {formData?.destination?.name}
                   </button>

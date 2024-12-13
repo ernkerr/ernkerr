@@ -168,10 +168,18 @@ body.active-modal {
 }
 
 .close-modal-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-medium);
   position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 7px;
+  top: 6px;
+  right: 0;
+  /* padding: 10px; */
+  height: 40px;
+  width: 40px;
+  border: var(--glass-border);
+  background: none;
+  border-radius: var(--border-radius-btn);
 }
 
 .calendar-button {

@@ -85,12 +85,12 @@
   text-align: center;
 }
 
-.bottom-drawer {
+/* .bottom-drawer {
   height: 220px;
   background-color: var(--glass-background) !important;
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-}
+} */
 
 .bottom-drawer-title {
   font-size: var(--font-size-large);
@@ -105,6 +105,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  gap: 20px;
 }
 
 .share-icon-container {
@@ -135,10 +136,10 @@
 
 #copy-link {
   background-color: rgba(15, 15, 18, 0.718);
-  border: 2px rgba(34, 34, 42, 0.718);
+  border: 2px rgba(15, 15, 18, 0.718);
   border-radius: var(--border-radius-btn);
-  box-shadow: inset 0 0 5px rgba(34, 34, 42, 0.718),
-    0 0 10px rgba(34, 34, 42, 0.718), 0 0 15px rgba(34, 34, 42, 0.718);
+  box-shadow: inset 0 0 5px rgba(15, 15, 18, 0.818),
+    0 0 10px rgba(15, 15, 18, 0.818), 0 0 15px rgba(15, 15, 18, 0.918);
 }
 
 .share-icon {

@@ -1,9 +1,9 @@
 .pac-container {
   font-family: var(--main-font);
   font-size: var(--font-size-small);
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--dark);
   border: var(--glass-border);
-  border-radius: 5px;
+  border-radius: var(--border-radius-btn);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
@@ -13,6 +13,7 @@
   color: white;
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius-btn);
 }
 
 .pac-matched {
@@ -21,7 +22,7 @@
 }
 
 .pac-item {
-  color: rgb(173, 173, 173);
+  color: rgb(215, 215, 215);
   border-top: 1px solid rgba(173, 173, 173, 0.3);
   font-size: var(--font-size-small);
   padding: 10px;
