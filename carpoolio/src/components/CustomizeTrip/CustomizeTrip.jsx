@@ -28,25 +28,39 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function CustomizeTrip({ isAdmin }) {
   const { formData, setFormData } = useContext(TripContext); // access TripContext here
-  const [destinationModal, setDestinationModal] = useState(false);
+  const [isAddress, setIsAddress] = useState(
+    formData?.destination?.location != null
+  ); // set initial state based on initial destination
+  //
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
   const [isPreviewingTrip, setIsPreviewingTrip] = useState(false);
   const [isInviteModalVisible, setIsInviteModalVisible] = useState(false); // state for invite btn modal
 
-  const handleDestinationModal = () => {
-    setDestinationModal((prev) => !prev);
-    console.log("destination modal state changed");
+  // useEffect(() => {
+  //   console.log("isAddress: ", isAddress);
+  // }, [isAddress]);
+
+  useEffect(() => {
+    // once address changes setIsAddress based on the new value of destination;
+    setIsAddress(formData?.destination?.location != null);
+    // console.log("is address? ", isAddress);
+    // if (!isAddress) {
+    //   console.log({ el: selectDestinationInputRef.current });
+    //   selectDestinationInputRef.current?.focus();
+    // }
+    console.log(
+      "destination location changed: ",
+      formData?.destination?.location
+    );
+  }, [formData.destination?.location]); // when destination is changed, check to see it lat/lng is avaliable
+
+  const handleEditDestination = () => {
+    setIsAddress(false); // remove map, location, icon, etc.
   };
 
-  // handle get directions
-  // check if the destination resembles an address (some form of truth?) by looking for a comma
-  // not the best way to do this
-  // BUG IT IS BUG
-  // const isAddress = formData?.destination && formData.destination.includes(","); // Check if destination has a comma
-
-  const isAddress = formData?.destination?.location != null;
+  // const selectDestinationInputRef = useRef();
 
   const handleGetDirections = () => {
     const destination = encodeURIComponent(
@@ -92,10 +106,10 @@ export default function CustomizeTrip({ isAdmin }) {
   };
 
   // style for modal
-  const modalStyle = {
-    backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
-    backgroundPosition: "center",
-  };
+  // const modalStyle = {
+  //   backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
+  //   backgroundPosition: "center",
+  // };
 
   // sync changes in backend
   useEffect(
@@ -183,12 +197,12 @@ export default function CustomizeTrip({ isAdmin }) {
                     alt="Location Icon"
                   />
                   <button
-                    onClick={handleDestinationModal}
+                    onClick={handleEditDestination}
                     className="destination-modal-btn"
                   >
                     {formData?.destination?.name}
                   </button>
-                  {destinationModal && (
+                  {/* {destinationModal && (
                     <div className="customize-trip-modal" style={modalStyle}>
                       <div className="customize-trip-modal-content">
                         <p id="edit-destination">edit your destination: </p>
@@ -202,7 +216,7 @@ export default function CustomizeTrip({ isAdmin }) {
                         done
                       </button>
                     </div>
-                  )}
+                  )} */}
                 </>
               ) : (
                 <Destination isPreviewingTrip={isPreviewingTrip} />
@@ -312,7 +326,7 @@ export default function CustomizeTrip({ isAdmin }) {
         </>
       )}
 
-      <div>
+      <>
         {/* <div className="car-container"> */}
         {formData?.cars?.map((car, index) => {
           if (index === activeCarIndex && isCustomizingCar) {
@@ -336,7 +350,7 @@ export default function CustomizeTrip({ isAdmin }) {
             );
           }
         })}
-      </div>
+      </>
     </div>
   );
 }

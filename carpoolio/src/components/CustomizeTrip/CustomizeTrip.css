@@ -32,7 +32,7 @@
   background: var(--glass-background);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
-  /* margin-top: var(--margin-form-response); */
+  margin-top: var(--margin-form-response);
   width: 92dvw;
 }
 

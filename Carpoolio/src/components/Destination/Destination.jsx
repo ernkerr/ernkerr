@@ -10,22 +10,20 @@ const Destination = forwardRef(
     const [destination, setDestination] = useState(
       formData?.destination || { name: "", address: "", location: null }
     );
-    // const [location, setLocation] = useState(null);
-    const autocompleteRef = useRef(null); // create an internal ref for the Autocomplete component
 
     // combine internal ref (autocompleteRef) with forwarded ref
     // one ref needed for ? understand this better
-    useEffect(() => {
-      if (ref) {
-        // if ref is a function, call it with the DOM node ?
-        if (typeof ref === "function") {
-          ref(autocompleteRef.current);
-        } else {
-          // Otherwise, assign the current element to ref
-          ref.current = autocompleteRef.current;
-        }
-      }
-    }, [ref]);
+    // useEffect(() => {
+    //   if (ref) {
+    //     // if ref is a function, call it with the DOM node ?
+    //     if (typeof ref === "function") {
+    //       ref(autocompleteRef.current);
+    //     } else {
+    //       // Otherwise, assign the current element to ref
+    //       ref.current = autocompleteRef.current;
+    //     }
+    //   }
+    // }, [ref]);
 
     // handle the location selection from the autocomplete
     const handleSelectedLocation = (place) => {
@@ -101,30 +99,28 @@ const Destination = forwardRef(
     // }, [destination]); // Update the input value when the destination changes
 
     return (
-      <>
-        <Autocomplete
-          apiKey={import.meta.env.VITE_GMAPS_API_KEY} //needs to be passed directly to the component as a prop
-          onPlaceSelected={handleSelectedLocation}
-          options={{
-            types: ["geocode", "establishment"], // establishment to search for businesses, museums, etc.
-            fields: ["name", "formatted_address", "geometry"],
-          }}
-          // ref={autocompleteRef}
-          value={destination.name}
-          onChange={handleInputChange}
-          onKeyDown={onKeyDown}
-          placeholder={
-            destination.name ? destination.name : "Choose your destination"
-          }
-          className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
-          style={{
-            background: isPreviewingTrip
-              ? "transparent"
-              : formData?.tripBackground?.scrim || undefined,
-            pointerEvents: isPreviewingTrip ? "none" : "auto",
-          }}
-        />
-      </>
+      <Autocomplete
+        apiKey={import.meta.env.VITE_GMAPS_API_KEY} //needs to be passed directly to the component as a prop
+        onPlaceSelected={handleSelectedLocation}
+        options={{
+          types: ["geocode", "establishment"], // establishment to search for businesses, museums, etc.
+          fields: ["name", "formatted_address", "geometry"],
+        }}
+        // ref={autocompleteRef}
+        value={destination.name}
+        onChange={handleInputChange}
+        onKeyDown={onKeyDown}
+        placeholder={
+          destination.name ? destination.name : "Choose your destination"
+        }
+        className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
+        style={{
+          background: isPreviewingTrip
+            ? "transparent"
+            : formData?.tripBackground?.scrim || undefined,
+          pointerEvents: isPreviewingTrip ? "none" : "auto",
+        }}
+      />
     );
   }
 );

@@ -18,8 +18,8 @@ date-time-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: var(--margin-small);
-  padding: 0;
+  /* margin-left: var(--margin-small); */
+  /* padding: 0; */
 
   /* margin-bottom: var(--margin-medium);
   margin-top: var(--margin-form-response); */
