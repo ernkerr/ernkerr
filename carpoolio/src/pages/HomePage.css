@@ -54,8 +54,9 @@
 }
 
 .new-trip {
+  color: var(--white);
   text-decoration: none;
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
   border: none;
   color: black;
   padding: 15px 25px;
