@@ -153,6 +153,7 @@
   padding: var(--padding-form-response);
   border-radius: var(--border-radius-btn);
   height: var(--btn-height);
+
   margin-bottom: var(--margin-medium);
 }
 
@@ -171,7 +172,6 @@
   font-family: var(--main-font);
   font-size: var(--font-size-small);
   border-radius: var(--border-radius-btn);
-  height: var(--btn-height);
   width: 50%;
   position: relative;
   left: 50%;

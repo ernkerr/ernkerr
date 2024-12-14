@@ -1,33 +1,33 @@
-body{
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 .road {
-    position: relative;
-    width: 100vw;
-    height: 200px;
-    /* margin-top: 50vh; */
-    overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 200px;
+  /* margin-top: 50vh; */
+  overflow: hidden;
 }
 
-.car{
-    position: absolute;
-    width: 400px;
-    height: 200px;
-    background-image: url('../../assets/MovingCar.png');
-    background-size: contain;
-    background-repeat: no-repeat; 
-    animation: drive 10s linear infinite;
+.car {
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  background-image: url("../../assets/img/MovingCar.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: drive 10s linear infinite;
 }
 
-@keyframes drive{
-    0% {
-        left: -100px;
-    }
-    100%{
-        left:100%
-    }
+@keyframes drive {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 100%;
+  }
 }

@@ -46,11 +46,15 @@
   background: none;
   border: none;
   align-self: flex-start;
+  margin-left: 10px;
+  margin-top: var(--margin-medium);
 }
 
 /* progress bar  */
 
 .progress-container {
+  margin-top: 10px;
+
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
