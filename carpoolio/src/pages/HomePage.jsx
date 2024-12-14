@@ -1,12 +1,14 @@
 import Header from "../components/Header/Header.jsx";
 import NewTripButton from "../components/NewTripButton/NewTripButton.jsx";
 import MovingCar from "../components/MovingCar/MovingCar.jsx";
+import { TripContext } from "@components/TripContext";
 import { glowBtn } from "@styles/styles";
 
 import logo from "../assets/img/logo.png";
 import "./HomePage.css";
 
 function HomePage() {
+  const { formData } = useContext(TripContext);
   return (
     <div className="home-page">
       <Header />
