@@ -1,4 +1,3 @@
-/* From Uiverse.io by MuhammadHasann ( thanks I love it so much/appreciate your hard work ) */
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { TripContext } from "@components/TripContext";

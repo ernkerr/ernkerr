@@ -3,6 +3,7 @@ import NewTripButton from "../components/NewTripButton/NewTripButton.jsx";
 import MovingCar from "../components/MovingCar/MovingCar.jsx";
 import { TripContext } from "../components/TripContext.jsx";
 import { glowBtn } from "@styles/styles";
+import { useContext } from "react";
 
 import logo from "../assets/img/logo.png";
 import "./HomePage.css";
