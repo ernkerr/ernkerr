@@ -1,6 +1,7 @@
 import Header from "../components/Header/Header.jsx";
 import NewTripButton from "../components/NewTripButton/NewTripButton.jsx";
 import MovingCar from "../components/MovingCar/MovingCar.jsx";
+import { glowBtn } from "@styles/styles";
 
 import logo from "../assets/img/logo.png";
 import "./HomePage.css";
@@ -16,7 +17,9 @@ function HomePage() {
       </h4>
 
       <h4 id="carpooling-message"> organized carpooling for your next trip </h4>
-      <NewTripButton className="new-trip">Try It Out</NewTripButton>
+      <NewTripButton className="new-trip" style={glowBtn(formData)}>
+        Try It Out
+      </NewTripButton>
       <MovingCar />
     </div>
   );

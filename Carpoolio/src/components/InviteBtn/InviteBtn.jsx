@@ -69,8 +69,13 @@ export default function InviteBtn({ isVisible, setIsVisible }) {
 
               {/* share via email */}
               <div className="share-icon-container" id="share-email">
+                {/* "Ready to go? Pick your spot and join the ride" "Your spot is
+                waiting—don’t miss out!" "You’ve been invited—reserve your spot
+                now" */}
                 <a
-                  href={`mailto:?body=${encodeURIComponent(shareURL)}`}
+                  href={`mailto:?subject=You%27ve%20beenbeen%20invited%E2%80%93reserve%20your%20spot%20now!&body=${encodeURIComponent(
+                    shareURL
+                  )}`}
                   className="share-text"
                 >
                   <img
