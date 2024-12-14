@@ -172,10 +172,10 @@ export default function CustomizeCar({
                 </div>
               )}
               <button
-                className="secondary-btn"
+                className=""
                 id="delete-car-btn"
                 onClick={handleDeleteCarModal}
-                style={formResponseStyle({ formData })}
+                style={glowBtn(formData)}
               >
                 Delete car
               </button>
@@ -364,13 +364,7 @@ export default function CustomizeCar({
             className="primary-btn"
             id="save-car-btn"
             onClick={handleSaveCar}
-            style={{
-              background:
-                formData?.tripBackground?.scrim ||
-                formData?.transparentGlowColor,
-              border: ` 2px solid ${formData?.glowColor}`,
-              boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-            }}
+            style={glowBtn(formData)}
           >
             done
           </button>

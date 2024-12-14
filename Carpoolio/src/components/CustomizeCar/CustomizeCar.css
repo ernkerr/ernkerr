@@ -88,4 +88,21 @@ body.active-modal {
   margin-left: auto;
   margin-right: var(--margin-medium);
   /* width: 60px; */
+
+  color: var(--white);
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: 10px;
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
+  background: var(--glass-background);
+  margin-top: var(--margin-small);
+
+  /* width: 70%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); */
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
