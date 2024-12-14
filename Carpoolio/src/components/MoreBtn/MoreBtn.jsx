@@ -53,7 +53,7 @@ export default function MoreBtn({
         <>
           <div className="side-bar-container">
             <div className="option-container">
-              <button className="option-btn">Login</button>
+              {/* <button className="option-btn">Login</button> */}
               <button
                 className="option-btn"
                 onClick={() => setIsInviteModalVisible(true)}
@@ -68,7 +68,7 @@ export default function MoreBtn({
                 New Trip
               </button>
 
-              <button className="option-btn">FAQ</button>
+              {/* <button className="option-btn">FAQ</button> */}
             </div>
           </div>
         </>
