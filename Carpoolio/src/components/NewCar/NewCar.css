@@ -17,7 +17,7 @@
   justify-content: center;
   margin-top: var(--margin-form-response);
 } */
-
+/* 
 .glass-btn {
   color: var(--white);
   font: var(--main-font);
@@ -46,7 +46,7 @@
   background: var(--glass-background);
   border-color: var(--main-green);
   box-shadow: var(--green-glow);
-}
+} */
 
 #car-details-btn {
   margin-top: var(--margin-form-response);
@@ -56,11 +56,10 @@
   transform: translateX(-50%);
 }
 
-/* #driverName {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-} */
+#driverName {
+  position: absolute;
+  top: 90px;
+}
 
 .driver-name-input {
   position: fixed;

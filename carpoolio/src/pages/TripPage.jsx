@@ -10,6 +10,7 @@ import bluegoo from "../assets/gifs/bluegoo.gif";
 import "@components/NewTripForm/NewTripForm.css";
 import "@components/CustomizeTrip/CustomizeTrip.css";
 import "./TripPage.css";
+import Loader from "../components/Loader/Loader";
 
 export default function TripPage() {
   const { formData, setFormData } = useContext(TripContext);
@@ -72,7 +73,7 @@ export default function TripPage() {
   if (!tripDetails) {
     console.log("Trip details are still loading...");
 
-    return <div className="loader"></div>;
+    return <Loader />;
   }
 
   return (

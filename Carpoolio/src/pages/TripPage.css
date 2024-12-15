@@ -21,7 +21,7 @@
 }
 
 /* loader */
-.loader {
+/* .loader {
   width: 150px;
   height: 150px;
   background: linear-gradient(-45deg, #11ff0068 0%, #00dbde 100%);
@@ -29,7 +29,6 @@
   position: absolute;
   top: 50dvh;
   left: 30dvw;
-  /* transform: translate(-50%, -50%); */
 }
 
 .loader::before {
@@ -55,7 +54,7 @@
   100% {
     transform: rotate(-45deg);
   }
-}
+} */
 
 /* .saveBtn {
   color: white;
