@@ -13,7 +13,7 @@
   overflow: auto;
   overflow-x: hidden;
 }
-
+/* 
 .onboarding-header {
   display: flex;
   justify-content: space-between;
@@ -21,7 +21,7 @@
   position: relative;
   margin-top: var(--margin-progressbar);
   width: 100%;
-}
+} */
 
 .primary-btn {
   color: var(--white);
@@ -45,16 +45,21 @@
   color: var(--placeholder);
   background: none;
   border: none;
+  position: fixed;
+  bottom: 0;
+  left: 20px;
   align-self: flex-start;
-  margin-left: 10px;
-  margin-top: var(--margin-medium);
+  margin-bottom: var(--margin-btn);
+  /* margin-left: 10px; */
+  /* margin-top: var(--margin-medium); */
 }
 
 /* progress bar  */
 
 .progress-container {
-  margin-top: 10px;
+  margin-top: var(--margin-medium);
   position: absolute;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 65%;

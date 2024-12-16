@@ -36,14 +36,14 @@
   height: var(--btn-height);
   margin-bottom: var(--margin-medium); */
 
-#add-car-btn {
+/* #add-car-btn {
   width: 50%;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-}
+} */
 
 .edit-btn svg {
   height: 18px;

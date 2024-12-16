@@ -117,7 +117,7 @@ export default function NewTripForm() {
         }}
       >
         <Header />
-        <div className="onboarding-header">
+        <>
           {page !== 0 && (
             <button className="back-btn" onClick={handleBack}>
               <svg
@@ -135,7 +135,7 @@ export default function NewTripForm() {
             </button>
           )}
           <ProgressBar currentStep={currentStep} />
-        </div>
+        </>
 
         {conditionalComponent()}
         {/* back button  */}

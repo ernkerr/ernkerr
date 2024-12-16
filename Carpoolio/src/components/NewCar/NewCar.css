@@ -7,7 +7,7 @@
 .add-car-btn {
   position: relative;
   width: 50%;
-  margin-top: var(--margin-form-response);
+  margin-top: 80px;
 }
 
 /* .glass-buttons-container {
@@ -17,7 +17,7 @@
   justify-content: center;
   margin-top: var(--margin-form-response);
 } */
-/* 
+
 .glass-btn {
   color: var(--white);
   font: var(--main-font);
@@ -46,7 +46,7 @@
   background: var(--glass-background);
   border-color: var(--main-green);
   box-shadow: var(--green-glow);
-} */
+}
 
 #car-details-btn {
   margin-top: var(--margin-form-response);

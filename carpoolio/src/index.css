@@ -96,7 +96,7 @@ body {
 }
 
 #root {
-  height: 100vh;
+  height: 100dvh;
   color: rgb(255, 255, 255);
   --main-font: "Gruppo", sans-serif;
   /* --main-cursor: pointer; */
