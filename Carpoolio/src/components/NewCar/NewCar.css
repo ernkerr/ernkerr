@@ -59,6 +59,8 @@
 #driverName {
   position: absolute;
   top: 90px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .driver-name-input {
@@ -75,13 +77,13 @@
 .numSeatsSlider {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
-  width: 95%;
+  margin-left: 4%;
+  width: 90%;
   height: 5px;
   border: var(--glass-border);
   border-radius: 20px;
   background: linear-gradient(90deg, var(--main-green), rgba(0, 255, 0, 0.8));
   outline: none;
-  /* -webkit-transition: 0.2s; 0.2 seconds transition on hover */
   transition: opacity 0.2s;
   box-shadow: var(--green-glow);
 
@@ -93,7 +95,7 @@
 .numSeatsSlider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  background: rgb(35, 179, 35);
+  background: rgb(35, 205, 35);
   width: 20px; /* Set a specific slider handle width */
   height: 20px; /* Slider handle height */
   border: 5px var(--glass-border);

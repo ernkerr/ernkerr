@@ -41,19 +41,19 @@ import blue from "../assets/gifs/blue.gif";
 import wavy from "../assets/gifs/circles.gif";
 import palms from "../assets/gifs/palms.gif";
 import pinkwaves from "../assets/gifs/pinkwaves.gif";
-import silverliquid from "../assets/gifs/silverliquid.gif";
+// import silverliquid from "../assets/gifs/silverliquid.gif";
 import warped from "../assets/gifs/warped.gif";
 
 // import boardin from "../assets/gifs/boardin.gif";
 // import extremeBunnies from "../assets/gifs/extremeBunnies.gif";
 import snowboardin from "../assets/gifs/snowboardin.gif";
-import boarder from "../assets/gifs/boarder.gif";
+// import boarder from "../assets/gifs/boarder.gif";
 import binary from "../assets/gifs/binary.gif";
 import sunset from "../assets/gifs/sunset.gif";
 import slowRoller from "../assets/gifs/slowRoller.gif";
 import isWavy from "../assets/gifs/isWavy.gif";
 import underwater from "../assets/gifs/underwater.gif";
-import waterfall from "../assets/gifs/waterfall.gif";
+// import waterfall from "../assets/gifs/waterfall.gif";
 import green from "../assets/gifs/green.gif";
 import blueWater from "../assets/gifs/blueWater.gif";
 import darkWave from "../assets/gifs/darkWave.gif";
@@ -66,28 +66,37 @@ import snowy from "../assets/gifs/snowy.gif";
 import justDrive from "../assets/gifs/justDrive.gif";
 // import  from "../assets/gifs/.gif";
 
+import snowTree from "../assets/gifs/snowTree.gif";
+import pond from "../assets/gifs/pond.gif";
+import shootingStar from "../assets/gifs/shootingStar.gif";
+import waterfall from "../assets/gifs/waterfall.gif";
+import orangeTrees from "../assets/gifs/orangeTrees.gif";
+
+import mountain from "../assets/gifs/mountain.gif";
+
 const backgrounds = [
   { name: "blue goo", path: bluegoo },
   { name: "isWavy", path: isWavy, scrim: null },
   { name: "just drive", path: justDrive, scrim: "rgba(0, 0, 0, 0.25)" },
-
-  { name: "snowy", path: snowy, scrim: "rgba(107, 110, 111, 0.45)" },
-
   {
     name: "pinkHighway",
     path: pinkHighway,
     scrim: "rgba(178, 112, 144, 0.4)",
   },
 
-  { name: "starz", path: starz, scrim: "rgba(0, 0, 0, 0.10)" },
+  { name: "mountain", path: mountain, scrim: "rgba(56, 83, 148, 0.20)" },
+  { name: "snow", path: snowTree, scrim: "rgba(56, 83, 148, 0.20)" },
+  { name: "snowy", path: snowy, scrim: "rgba(107, 110, 111, 0.45)" },
 
+  { name: "starz", path: starz, scrim: "rgba(0, 0, 0, 0.10)" },
+  { name: "shooting star", path: shootingStar, scrim: "rgba(0, 0, 0, 0.10)" },
   // { name: "", path: , scrim: "rgba(0, 0, 0, 0.50)" },
   // { name: "", path: , scrim: "rgba(0, 0, 0, 0.50)" },
   // { name: "", path: , scrim: "rgba(0, 0, 0, 0.50)" },
 
   // batting order
   { name: "marble", path: marble, scrim: "rgba(0, 0, 0, 0.10)" },
-  { name: "black hole", path: wavy },
+
   //
   //
 
@@ -96,15 +105,18 @@ const backgrounds = [
   //
   //
   // nature
+  { name: "pond", path: pond, scrim: "rgba(65, 110, 42, 0.70)" },
   { name: "cloudy", path: cloudy, scrim: "rgba(0, 0, 0, 0.10)" },
+  { name: "waterfall", path: waterfall, scrim: "rgba(32, 42, 41, 0.35)" },
+
   { name: "underwater", path: underwater, scrim: null },
-  { name: "slow roller", path: slowRoller, scrim: "rgba(0, 0, 0, 0.50)" },
+  { name: "slow roller", path: slowRoller, scrim: "rgba(0, 0, 0, 0.10)" },
   { name: "palms", path: palms },
   { name: "sunset", path: sunset, scrim: null },
   { name: "poolside", path: blueWater, scrim: null },
 
   { name: "heatwave", path: heatwave, scrim: "rgba(145, 40, 10, 0.1)" },
-
+  { name: "orangeTrees", path: orangeTrees, scrim: "rgba(206, 102, 0, 0.20)" },
   { name: "pink .wav", path: pinkwaves },
   { name: "a sunset", path: orangesunset },
 
@@ -117,12 +129,12 @@ const backgrounds = [
     path: snowboardin,
     scrim: "rgba(163, 215, 237, 0.70)",
   },
-  { name: "boarder", path: boarder, scrim: "rgba(0, 0, 0, 0.10)" },
-  {
-    name: "silver liquid",
-    path: silverliquid,
-    scrim: "rgba(110, 114, 114, 0.6)",
-  },
+  // { name: "boarder", path: boarder, scrim: "rgba(0, 0, 0, 0.10)" },
+  // {
+  //   name: "silver liquid",
+  //   path: silverliquid,
+  //   scrim: "rgba(110, 114, 114, 0.6)",
+  // },
   { name: "blue", path: blue, scrim: "rgba(26, 24, 93, 0.822)" },
   { name: "drive fast", path: drivefast },
   { name: "8bit city", path: city8bit, scrim: "rgba(98, 128, 249, 0.822)" },
@@ -134,7 +146,8 @@ const backgrounds = [
     scrim: "rgba(0,0,0,0.9)",
   },
   { name: "green", path: green, scrim: "rgba(0, 0, 0, 0.50)" },
-  { name: "darkWave", path: darkWave, scrim: "rgba(0, 0, 0, 0.50)" },
+  // { name: "darkWave", path: darkWave, scrim: "rgba(0, 0, 0, 0.50)" },
+  { name: "black hole", path: wavy },
   { name: "none", path: none },
 ];
 

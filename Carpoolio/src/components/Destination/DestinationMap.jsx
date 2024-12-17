@@ -222,8 +222,8 @@ export default function DestinationMap({ destination }) {
       {isAddress && (
         <GoogleMap
           mapContainerStyle={{
-            width: "45%",
-            height: "100px",
+            width: "40%",
+            height: "90px",
             margin: "10px",
             borderRadius: "10px",
           }}
