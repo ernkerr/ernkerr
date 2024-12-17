@@ -23,10 +23,23 @@
 //   );
 // }
 
+// primary btn
 export const glowBtn = (formData) => ({
   background: formData?.transparentGlowColor,
   border: `2px solid ${formData?.glowColor}`,
   boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}`,
+  // if there is a scrim, add a blur behind the background
+  ...(formData?.tripBackground?.scrim && {
+    backdropFilter: "blur(7.6px)",
+    WebkitBackdropFilter: "blur(7.6px)",
+  }),
+});
+
+// secondary btn
+export const secondaryBtn = (formData) => ({
+  color: `${formData?.glowColor}`,
+  border: `1px solid ${formData?.glowColor}`,
+  // boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.glowColor}`,
   // if there is a scrim, add a blur behind the background
   ...(formData?.tripBackground?.scrim && {
     backdropFilter: "blur(7.6px)",
@@ -39,7 +52,7 @@ export const glowBorder = (formData) => ({
   boxShadow: `inset 0 0 5px ${formData?.glowColor},
               0 0 12px ${formData?.glowColor},
               inset 0 0 15px ${formData?.glowColor}`,
-  borderRadius: "50%", // Ensure it retains its circular shape
+
   ...(formData?.tripBackground?.scrim && {
     backdropFilter: "blur(7.6px)",
     WebkitBackdropFilter: "blur(7.6px)",

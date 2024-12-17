@@ -65,7 +65,7 @@ export default function NewEvent({ onNext }) {
       {(isDestinationSet || formData?.destination) && (
         <>
           <button
-            className={`secondary-btn ${isShowingOptions ? "active" : ""}`}
+            className={`more-options-btn ${isShowingOptions ? "active" : ""}`}
             id="more-options-btn"
             onClick={handleMoreOptions}
           >

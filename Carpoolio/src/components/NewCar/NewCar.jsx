@@ -10,6 +10,8 @@ import RenderCar from "../RenderCar/RenderCar";
 import NumSeats from "@components/NumSeats.jsx";
 import "./NewCar.css";
 
+import DeleteCarBtn from "../DeleteCarBtn/DeleteCar";
+
 export default function NewCar({ triggerHandleYes }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isAddingCar, setIsAddingCar] = useState("");
@@ -23,9 +25,9 @@ export default function NewCar({ triggerHandleYes }) {
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-  // TODO: auto select add a new car after add a new ar btn is pressed on other pages (CustomizeTrip or TripPage)
-
+  // auto select add a new car after add a new ar btn is pressed on other pages (CustomizeTrip or TripPage)
   // trigger 'handleYes' when 'triggerHandleYes' becomes true in the parent container
+  // I think this might be contributing to a bug
   useEffect(() => {
     if (triggerHandleYes && !isAddingCar) {
       // and if not already adding a car
@@ -174,6 +176,10 @@ export default function NewCar({ triggerHandleYes }) {
     ...(isFocused && formResponseFocusStyle(formData)), // add focus styles dynamically
   };
 
+  const handleDeleteCar = () => {
+    setIsAddingCar(false);
+  };
+
   return (
     <>
       <button
@@ -186,15 +192,9 @@ export default function NewCar({ triggerHandleYes }) {
         + add a car
       </button>
 
-      {/* is there a way to only show this when onboarding?  */}
-      {/* <button onClick={onNext} className="tertiary-btn">
-          Skip
-        </button> */}
-
       {isAddingCar && (
         <>
           {/* get driver's name  */}
-          {/* add margin-top?  */}
           <input
             className="form-response"
             key="driverName"
@@ -223,7 +223,6 @@ export default function NewCar({ triggerHandleYes }) {
                 <CustomizeCar
                   activeCarIndex={activeCarIndex}
                   setIsCustomizingCar={setIsCustomizingCar}
-                  setIsAddingCar={setIsAddingCar}
                 />
               ) : (
                 <RenderCar
@@ -236,7 +235,12 @@ export default function NewCar({ triggerHandleYes }) {
             </>
           )}
 
-          {/* if customize car btn is pressed show carName, color, etc. (modal?) */}
+          <DeleteCarBtn
+            carId={formData.cars[activeCarIndex]?.carId}
+            onDelete={handleDeleteCar}
+          >
+            Cancel
+          </DeleteCarBtn>
         </>
       )}
     </>

@@ -4,6 +4,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100");
 @import url("https://fonts.googleapis.com/css2?family=Gruppo:wght@400");
 
+.primary-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+
+  letter-spacing: var(--letter-spacing-btn);
+  padding: 10px 20px 10px 20px;
+  border-radius: var(--border-radius-btn);
+
+  height: var(--btn-height);
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  margin-bottom: var(--margin-btn);
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.secondary-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+
+  background: var(--glass-background);
+  padding: 10px;
+  border-radius: var(--border-radius-btn);
+
+  height: var(--btn-height);
+}
+
+.tertiary-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  background: none;
+  border: none;
+  position: fixed;
+  left: 5%;
+  bottom: 0;
+  margin-bottom: var(--margin-btn);
+  height: var(--btn-height);
+}
+
 .form-response {
   color: var(--white);
   font-family: var(--main-font);
@@ -124,7 +168,7 @@ body {
   --letter-spacing-title: 0.09em;
 
   /* padding */
-  --padding-primary-btn: 10px 20px 10px 20px;
+  /* --padding-primary-btn: 10px 20px 10px 20px; */
   --padding-secondary-btn: 10px 10px 10px 10px;
   --padding-form-response: 10px 0px 10px 10px;
 

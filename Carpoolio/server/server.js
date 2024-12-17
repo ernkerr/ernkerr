@@ -39,16 +39,11 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// app.get("/api", (req, res) => {
-//   console.log("Received a request on /api");
-//   res.send("Hello from the backend!");
-// });
-
 // create a new trip in the backend
 app.post("/api/trip", async (req, res) => {
   try {
     const tripData = req.body; // full formData object from the client
-    console.log("received formData from client:", tripData); // Log the incoming data
+    console.log("received formData from client:", tripData); // log the incoming data
 
     // create a new trip record in the db
     const newTrip = await prisma.trip.create({
@@ -115,7 +110,7 @@ app.put("/api/trip/:tripId", async (req, res) => {
         transparentGlowColor: tripData.transparentGlowColor,
         cars: {
           upsert: tripData.cars.map((car) => ({
-            where: { carId: car.carId }, // Use unique identifiers like `carId`
+            where: { carId: car.carId }, // use unique identifiers like `carId`
             update: {
               carName: car.carName,
               carColor: car.carColor,
@@ -155,6 +150,9 @@ app.post("/api/saveFormData", (req, res) => {
   res.json(formData);
 });
 
+//
+//
+//
 // GET route to retrieve a trip by its tripId
 app.get("/api/trip/:tripId", async (req, res) => {
   const { tripId } = req.params;
@@ -179,6 +177,7 @@ app.get("/api/trip/:tripId", async (req, res) => {
   }
 });
 
+// GET route to retrieve a trip by it's tripId and adminId
 app.get("/api/trip/:tripId/:adminId", async (req, res) => {
   const { tripId, adminId } = req.params;
 

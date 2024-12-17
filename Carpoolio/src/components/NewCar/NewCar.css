@@ -10,12 +10,14 @@
   margin-top: 80px;
 }
 
-/* .glass-buttons-container {
-  display: flex;
-  gap: 5%;
-  width: 100%;
-  justify-content: center;
-  margin-top: var(--margin-form-response);
+/* .back-btn {
+  color: var(--placeholder);
+  background: none;
+  border: none;
+  position: fixed;
+  bottom: 2px;
+  left: 10px;
+  margin-bottom: var(--margin-btn);
 } */
 
 .glass-btn {

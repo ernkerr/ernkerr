@@ -98,11 +98,12 @@ body.active-modal {
   border-radius: var(--border-radius-btn);
   background: var(--glass-background);
   margin-top: var(--margin-small);
+}
 
-  /* width: 70%;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%); */
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
+#customize-car-delete-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+
+  z-index: 2;
 }

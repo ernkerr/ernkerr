@@ -22,7 +22,7 @@
   margin-top: var(--margin-progressbar);
   width: 100%;
 } */
-
+/* 
 .primary-btn {
   color: var(--white);
   font-family: var(--main-font);
@@ -39,20 +39,27 @@
   margin-bottom: var(--margin-btn);
   transform: translateX(-50%);
   z-index: 2;
-}
+} */
 
-.back-btn {
+.cancel-btn {
   color: var(--placeholder);
   background: none;
   border: none;
   position: fixed;
-  bottom: 0;
-  left: 20px;
-  align-self: flex-start;
+  bottom: 2px;
+  left: 10px;
   margin-bottom: var(--margin-btn);
-  /* margin-left: 10px; */
-  /* margin-top: var(--margin-medium); */
 }
+
+/* .back-btn {
+  color: var(--placeholder);
+  background: none;
+  border: none;
+  position: fixed;
+  bottom: 2px;
+  left: 10px;
+  margin-bottom: var(--margin-btn);
+} */
 
 /* progress bar  */
 
@@ -60,7 +67,7 @@
   margin-top: var(--margin-medium);
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 55%;
   transform: translateX(-50%);
   width: 65%;
   justify-content: center;

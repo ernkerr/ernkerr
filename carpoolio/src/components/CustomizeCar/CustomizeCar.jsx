@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, act } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { TripContext } from "@components/TripContext";
 import { formResponseStyle, glowBtn } from "@styles/styles";
 import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
@@ -9,23 +9,16 @@ import "./CustomizeCar.css";
 import "../RenderCar/RenderCar.css";
 import CarNotes from "../CarNotes.jsx";
 import DepartureDetails from "../DepartureDetails/DepartureDetails.jsx";
-import DeleteModal from "../DeleteModal/DeleteModal.jsx";
+// import DeleteModal from "../DeleteModal/DeleteModal.jsx";
+import DeleteCarBtn from "../DeleteCarBtn/DeleteCar.jsx";
 
-export default function CustomizeCar({
-  activeCarIndex,
-  setIsCustomizingCar,
-  setIsAddingCar,
-}) {
+export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
   const { formData, setFormData } = useContext(TripContext);
   const car = formData?.cars?.[activeCarIndex];
 
   // departure details
   const [isShowingOptions, setIsShowingOptions] = useState(false);
   const [customizeCarBtn, setCustomizeCarBtn] = useState(false);
-
-  const [isDeletingCar, setIsDeletingCar] = useState(false);
-
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const changeCarName = (event) => {
     const newCarName = event.target.value;
@@ -96,7 +89,7 @@ export default function CustomizeCar({
   };
 
   // handle seat click allow users to edit names
-  // TODO: allow users to clear name with a button?
+  // TODO: allow users to clear name with a button in customize trip?
   const handleSeatClick = (row, seatIndex, event) => {
     const newSeatNames = { ...car.seatNames };
     newSeatNames[row][seatIndex] = event.target.value; // update the name on the clicked seat
@@ -114,40 +107,9 @@ export default function CustomizeCar({
   // Save or update car details
   const handleSaveCar = () => setIsCustomizingCar(false);
 
-  // delete car in the backend
-
-  const handleDeleteCar = async (carId) => {
-    console.log("Deleting car with ID:", carId);
-    try {
-      const response = await axios.delete(`${API_BASE_URL}/api/car/${carId}`);
-
-      // if car deletion is a sucess
-      if (response.status === 200) {
-        console.log(`Car with ID ${carId} deleted successfully`);
-        setIsCustomizingCar(false);
-        setIsAddingCar(false);
-        setFormData((prevData) => {
-          const updatedCars = prevData.cars.filter(
-            (_, index) => index !== activeCarIndex
-          );
-
-          return {
-            ...prevData,
-            cars: updatedCars,
-          };
-        });
-      }
-    } catch (error) {
-      console.error("Error deleting car:", error.message);
-      console.error("Full error:", error);
-    }
+  const handleDeleteCar = () => {
+    setIsCustomizingCar(false);
   };
-
-  const handleDeleteCarModal = () => {
-    setIsDeletingCar(true);
-  };
-
-  // TODO: add css / car deletion in the backend
 
   const handleMoreOptions = () => {
     setIsShowingOptions((prevState) => !prevState);
@@ -163,23 +125,6 @@ export default function CustomizeCar({
         <div className="overlay">
           <div className="customize-car-container">
             <div className="customize-car-btn-container">
-              {isDeletingCar && (
-                <div className="confirmation-modal">
-                  <DeleteModal
-                    onCancel={() => setIsDeletingCar(false)}
-                    onDelete={() => handleDeleteCar(car.carId)}
-                  />
-                </div>
-              )}
-              <button
-                className=""
-                id="delete-car-btn"
-                onClick={handleDeleteCarModal}
-                style={glowBtn(formData)}
-              >
-                Delete car
-              </button>
-
               <button
                 className={`glass-btn ${customizeCarBtn ? "selected" : ""}`}
                 id="car-details-btn"
@@ -359,6 +304,14 @@ export default function CustomizeCar({
               </div>
             </div>
           </div>
+          <DeleteCarBtn
+            carId={car?.carId}
+            onDelete={handleDeleteCar}
+            className="secondary-btn"
+            id="customize-car-delete-btn"
+          >
+            Delete Car
+          </DeleteCarBtn>
 
           <button
             className="primary-btn"
@@ -366,7 +319,7 @@ export default function CustomizeCar({
             onClick={handleSaveCar}
             style={glowBtn(formData)}
           >
-            done
+            Save
           </button>
         </div>
       </div>

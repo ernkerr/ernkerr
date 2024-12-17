@@ -33,7 +33,7 @@
   transform: translateX(-50%);
 }
 
-.secondary-btn {
+.more-options-btn {
   color: var(--main-green);
   font-family: var(--main-font);
   font-size: var(--font-size-small);
@@ -47,19 +47,6 @@
   height: var(--btn-height);
 }
 
-.secondary-btn.active {
+.more-options-btn.active {
   box-shadow: var(--green-glow);
-}
-
-.tertiary-btn {
-  color: var(--white);
-  font-family: var(--main-font);
-  font-size: var(--font-size-small);
-  background: none;
-  border: none;
-  position: fixed;
-  left: 5%;
-  bottom: 0;
-  margin-bottom: var(--margin-btn);
-  height: var(--btn-height);
 }

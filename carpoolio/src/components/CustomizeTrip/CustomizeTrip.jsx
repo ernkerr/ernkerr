@@ -146,11 +146,11 @@ export default function CustomizeTrip({ isAdmin }) {
         }
       };
 
-      console.log("Axios configuration:", {
-        baseURL: API_BASE_URL,
-        url: `${API_BASE_URL}/api/trip/${formData.tripId}`,
-        data: formData,
-      });
+      // console.log("Axios configuration:", {
+      //   baseURL: API_BASE_URL,
+      //   url: `${API_BASE_URL}/api/trip/${formData.tripId}`,
+      //   data: formData,
+      // });
 
       const debounceTimer = setTimeout(() => {
         updateTripDetails(); // call after the debounce time
@@ -320,7 +320,7 @@ export default function CustomizeTrip({ isAdmin }) {
                 setIsNewCarVisible(false); // close new car modal when done
               }}
             >
-              Close
+              Save
             </button>
           </div>
         </>
