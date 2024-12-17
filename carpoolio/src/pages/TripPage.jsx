@@ -98,17 +98,6 @@ export default function TripPage() {
         >
           <Header />
           <CustomizeTrip isAdmin={isAdmin} />
-          {/* <NewTripButton
-              className="new-trip-btn"
-              style={{
-                background: formData?.transparentGlowColor || "transparent",
-                border: `2px solid ${formData?.glowColor}`,
-                boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-              }}
-            >
-              + New Trip
-            </NewTripButton> */}
-          {/* </div> */}
         </div>
       </div>
     </>

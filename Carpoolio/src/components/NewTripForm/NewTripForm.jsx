@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TripContext } from "@/components/TripContext";
+import { glowBtn } from "@styles/styles";
 import axios from "axios";
 import Header from "../Header/Header";
 import ProgressBar from "../ProgressBar";
@@ -22,9 +23,6 @@ export default function NewTripForm() {
   // onboarding:
   // step 1: NewEvent
   // step 2: NewCar
-  // step 3: Customize Trip
-
-  // TODO: change step 3 to share: new modal with how you'd like to share your trip
 
   const conditionalComponent = () => {
     switch (page) {
@@ -37,12 +35,6 @@ export default function NewTripForm() {
         );
       case 1:
         return <NewCar onNext={handleNext} />;
-      // case 2:
-      //   return (
-      //     <CustomizeTrip
-      //       destinationInfo={destination} // pass address and lat/lng
-      //     />
-      //   );
     }
   };
 
@@ -143,14 +135,7 @@ export default function NewTripForm() {
           {/* next btn */}
           {page <= 2 && (
             <button
-              style={{
-                background:
-                  formData?.tripBackground?.scrim ||
-                  formData?.transparentGlowColor,
-                border: ` 1px solid ${formData?.glowColor}`,
-                // boxShadow: `0 0 10px ${formData?.glowColor}, 0 0 5px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-                boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
-              }}
+              style={glowBtn(formData)}
               className="primary-btn"
               onClick={handleNext}
             >

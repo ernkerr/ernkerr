@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 12dvh;
+  margin-top: var(--margin-form-response);
   margin-left: var(--margin-medium);
   width: 95dvw;
 }

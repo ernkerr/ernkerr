@@ -1,10 +1,13 @@
-.date-selector-new-event {
+/* .date-selector-new-event {
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
   margin-left: var(--margin-small);
   margin-bottom: var(--margin-medium);
   margin-top: var(--margin-form-response);
+} */
+
+#set-a-date {
+  width: 93dvw;
 }
 
 date-time-container {
@@ -18,16 +21,10 @@ date-time-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* margin-left: var(--margin-small); */
-  /* padding: 0; */
-
-  /* margin-bottom: var(--margin-medium);
-  margin-top: var(--margin-form-response); */
 }
 
 .calendar-icon-container {
   display: flex;
-  /* border-radius: var(--border-radius-btn); */
   align-items: center;
 }
 
@@ -87,10 +84,16 @@ date-time-container {
   font-size: var(--font-size-medium);
   padding: 0;
   border: none;
-  /* margin-left: 3px; */
-  margin-bottom: var(--margin-small);
+  margin-left: 10px;
   background: none;
   cursor: pointer;
+  text-align: left;
+}
+
+.container-row {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
 }
 
 .time-text {
@@ -100,7 +103,7 @@ date-time-container {
   font-weight: var(--font-weight-bold);
   border: none;
   background: none;
-  /* margin-left: 3px; */
+  margin-left: 7px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -122,7 +125,33 @@ date-time-container {
 
 #set-time-btn {
   color: var(--placeholder);
+  width: 93dvw;
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
 }
+
+#trip-date-container {
+  padding: 10px 0 10px 10px;
+}
+
+#cal-btn {
+  width: auto;
+  margin: 0;
+  margin-left: 10px;
+}
+
+/* .get-directions-btn {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-extra-small);
+  padding: var(--padding-customize-trip);
+  background: var(--glass-background);
+  border: none;
+  border-radius: var(--border-radius-btn);
+  min-width: 140px;
+  width: 90%;
+  margin-top: 10px;
+} */
 
 body.active-modal {
   overflow-y: hidden;
@@ -144,7 +173,6 @@ body.active-modal {
   bottom: 0;
   position: fixed;
   z-index: 3;
-  background-color: var(--dark);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
 }

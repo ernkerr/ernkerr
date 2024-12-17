@@ -6,7 +6,6 @@ import { glowBtn } from "@styles/styles";
 import { useContext } from "react";
 
 import logo from "../assets/img/logo.png";
-import Loader from "../components/Loader/Loader.jsx";
 import "./HomePage.css";
 
 function HomePage() {

@@ -4,6 +4,7 @@ import { formResponseStyle } from "@styles/styles";
 import { DayPicker } from "react-day-picker";
 import { TimeSelector } from "../TimeSelector/TimeSelector";
 import clockIcon from "../../assets/img/clock.png";
+import calendarIcon from "../../assets/img/calendar.png";
 import "./Calendar.css";
 import "./DateSelector.css";
 
@@ -54,6 +55,7 @@ export default function DateSelector({ isPreviewingTrip }) {
       {!isPreviewingTrip && !tripDateExists ? (
         <button
           className="form-response"
+          id="set-a-date"
           style={formResponseStyle({ formData, isPreviewingTrip })}
           onClick={toggleCalendar}
           disabled={isPreviewingTrip}
@@ -65,6 +67,7 @@ export default function DateSelector({ isPreviewingTrip }) {
       {tripDateExists && (
         <div
           className="form-response"
+          id="trip-date-container"
           style={formResponseStyle({ formData, isPreviewingTrip })}
         >
           <div className="calendar-icon-container">
@@ -89,16 +92,29 @@ export default function DateSelector({ isPreviewingTrip }) {
               >
                 {formData.tripDate}
               </button>
-              {tripTimeExists && (
-                <button className="time-text" onClick={toggleTimeSelector}>
-                  <img src={clockIcon} alt="Departure Time Icon" />
-                  {formData.tripTime}
+              <div className="container-row">
+                {tripTimeExists && (
+                  <button className="time-text" onClick={toggleTimeSelector}>
+                    <img src={clockIcon} alt="Departure Time Icon" />
+                    {formData.tripTime}
+                  </button>
+                )}
+                {/* add to calendar btn */}
+                <button className="get-directions-btn" id="cal-btn">
+                  <img
+                    className="icon"
+                    src={calendarIcon}
+                    alt="Calendar Icon"
+                  />
+                  Add to Calendar
                 </button>
-              )}
+              </div>
             </div>
           </div>
         </div>
       )}
+
+      {/* add to calendar instead of putting time there */}
 
       {/* open modal if calendar is visible */}
       {isCalendarVisible && (

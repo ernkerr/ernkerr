@@ -134,7 +134,7 @@
   color: var(--white);
   font-family: var(--main-font);
   font-size: var(--font-size-extra-small);
-  padding: var(--padding-customize-trip);
+  padding: 7px;
   background: var(--glass-background);
   border: none;
   border-radius: var(--border-radius-btn);

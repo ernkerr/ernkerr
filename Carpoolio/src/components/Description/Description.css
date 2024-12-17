@@ -1,20 +1,12 @@
 #description-textarea {
   color: var(--white);
   cursor: pointer;
-  /* font-family: var(--main-font);
-  font-size: var(--font-size-small); */
-  /* padding: var(--padding-text-area); */
-  /* margin-top: var(--margin-medium); */
-
-  /* margin-left: var(--margin-small); */
-  /* 
-  box-sizing: border-box; */
   margin-bottom: var(--margin-form-response);
   resize: none;
   overflow-y: hidden;
   height: 20px;
   min-height: 20px;
-  text-align: left;
+  /* text-align: left; */
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
 }
