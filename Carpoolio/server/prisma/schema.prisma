@@ -68,3 +68,4 @@ model Car {
 // cmd will update the schema
 // run it from carpoolio (root dir) 
 // npx prisma migrate dev --name update-destination --schema=./server/prisma/schema.prisma
+// npx prisma generate --schema=./server/prisma/schema.prisma

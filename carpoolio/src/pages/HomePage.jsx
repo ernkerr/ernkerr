@@ -15,12 +15,13 @@ function HomePage() {
       <Header />
 
       <h1 className="font-face">carpoolio </h1>
+      <h4 id="carpooling-message"> organized carpooling for your next trip </h4>
       <h4 id="destination-message">
         because it's not <em>just</em> about the destination
       </h4>
 
       <h4 id="carpooling-message"> organized carpooling for your next trip </h4>
-      <NewTripButton className="new-trip" style={glowBtn(formData)}>
+      <NewTripButton className="font-face" style={glowBtn(formData)}>
         Try It Out
       </NewTripButton>
       <MovingCar />
