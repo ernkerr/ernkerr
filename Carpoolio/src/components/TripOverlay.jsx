@@ -28,6 +28,12 @@ import rain2 from "../assets/gifs/snow2.gif";
 
 // make sure this is saving to formData (!)
 
+import snow3 from "../assets/gifs/snow3.gif";
+import lights from "../assets/gifs/lights.gif";
+import firework from "../assets/gifs/firework.gif";
+import clouds1 from "../assets/gifs/clouds1.gif";
+import clouds3 from "../assets/gifs/clouds3.gif";
+
 export default function TripOverlay({ isPreviewingTrip }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isShowingOverlays, setIsShowingOverlays] = useState(false);
@@ -66,7 +72,8 @@ export default function TripOverlay({ isPreviewingTrip }) {
     // { name: "lightning", path: lightning },
     // { name: "snowflakes", path: snowflakes },
 
-    // { name: "", path:  },
+    { name: "snow3", path: snow3 },
+    { name: "firework", path: firework },
   ];
 
   return (
