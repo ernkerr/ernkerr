@@ -34,6 +34,9 @@ export const glowBtn = (formData) => ({
     WebkitBackdropFilter: "blur(7.6px)",
   }),
 });
+//
+// import { glowBtn } from "@styles/styles";
+// style={glowBtn(formData)}
 
 // secondary btn
 export const secondaryBtn = (formData) => ({
@@ -54,6 +57,7 @@ export const tertiaryBtn = (formData) => ({
   WebkitBackdropFilter: "blur(7.6px)",
 });
 
+// misc not in use yet
 export const glowBorder = (formData) => ({
   border: `2px solid ${formData?.glowColor}`,
   boxShadow: `inset 0 0 5px ${formData?.glowColor},
@@ -65,16 +69,6 @@ export const glowBorder = (formData) => ({
     WebkitBackdropFilter: "blur(7.6px)",
   }),
 });
-
-// import { glowBtn } from "@styles/styles";
-
-// function Button({ formData, onClick }) {
-//   return (
-//     <button style={glowBtn(formData)} onClick={onClick}>
-//       Glow Button
-//     </button>
-//   );
-// }
 
 //
 //
@@ -102,6 +96,9 @@ export const formResponseStyle = ({ formData, isPreviewingTrip }) => ({
 // import { formResponseStyle } from "@styles/styles";
 // style={formResponseStyle({ formData, isPreviewingTrip })} // apply dynamic styles
 
+// if you want isPreviewingTrip to always be true
+// style={formResponseStyle({ formData, isPreviewingTrip: true })}
+
 export const formResponseFocusStyle = (formData) => ({
   border: `1px solid ${formData?.glowColor || "var(--main-green)"}`, // Default to green if no glowColor
   outline: "none",
@@ -110,9 +107,23 @@ export const formResponseFocusStyle = (formData) => ({
 
 // import { formResponseFocusStyle } from "@styles/styles";
 // const [isFocused, setIsFocused] = useState(false);
-//
-//
-//
+
+// const handleFocus = () => {
+//   setIsFocused(true);
+// };
+
+// const handleBlur = () => {
+//   setIsFocused(false);
+// };
+
+// const dynamicStyles = {
+//   ...formResponseStyle({ formData }),
+//   ...(isFocused && formResponseFocusStyle(formData)), // add focus styles dynamically
+// };
+// onBlur = { handleBlur };
+// onFocus = { handleFocus };
+// style = { dynamicStyles };
+
 //
 //
 //

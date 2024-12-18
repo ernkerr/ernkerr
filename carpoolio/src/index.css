@@ -20,7 +20,7 @@
   bottom: 0;
   margin-bottom: var(--margin-btn);
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 5;
 }
 
 .secondary-btn {
@@ -33,7 +33,7 @@
   border-radius: var(--border-radius-btn);
 
   height: var(--btn-height);
-  z-index: 2;
+  z-index: 5;
 }
 
 .tertiary-btn {
@@ -47,6 +47,15 @@
   border-radius: var(--border-radius-btn);
 
   height: var(--btn-height);
+}
+
+.icon {
+  height: 14px;
+  width: 14px;
+  margin-right: 4px;
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
 }
 
 .form-response {
@@ -64,7 +73,7 @@
 }
 
 .form-response::placeholder {
-  color: var(--placeholder);
+  color: var(--white);
 }
 
 .form-response:focus {
@@ -226,7 +235,7 @@ body {
   --btn-height: 48px;
 
   /* width */
-  --btn-width: 60dvw;
+  /* --btn-width: 60dvw; */
 
   /* titles */
 

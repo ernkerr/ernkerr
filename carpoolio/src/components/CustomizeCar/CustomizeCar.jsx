@@ -1,16 +1,19 @@
-import { useState, useEffect, useContext, act } from "react";
+import { useState, useEffect, useContext } from "react";
 // import axios from "axios";
 import { TripContext } from "@components/TripContext";
-import { formResponseStyle, glowBtn, secondaryBtn } from "@styles/styles";
+import {
+  formResponseStyle,
+  formResponseFocusStyle,
+  glowBtn,
+  secondaryBtn,
+} from "@styles/styles";
 import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
 
-import "./CustomizeCar.css";
-
-import "../RenderCar/RenderCar.css";
-import CarNotes from "../CarNotes.jsx";
+// import CarNotes from "../CarNotes.jsx";
 import DepartureDetails from "../DepartureDetails/DepartureDetails.jsx";
-// import DeleteModal from "../DeleteModal/DeleteModal.jsx";
 import DeleteCarBtn from "../DeleteCarBtn/DeleteCar.jsx";
+import "../RenderCar/RenderCar.css";
+import "./CustomizeCar.css";
 
 export default function CustomizeCar({
   activeCarIndex,
@@ -24,6 +27,28 @@ export default function CustomizeCar({
   const [isShowingOptions, setIsShowingOptions] = useState(false);
   const [customizeCarBtn, setCustomizeCarBtn] = useState(false);
 
+  // styling
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => setIsFocused(true);
+
+  const handleBlur = () => setIsFocused(false);
+
+  // determine whether to apply focus styles based on state
+  // good for one or two nested elements, refactor before adding new features
+  const dynamicStyles = {
+    ...formResponseStyle({ formData, isPreviewingTrip: false }),
+    ...(isFocused && formResponseFocusStyle(formData)), // add focus styles dynamically
+  };
+
+  // determine whether to apply focused styles or not based on prop (isFocused)
+  // is a bool not a str (!)
+  const getDynamicStyles = (isFocused) => ({
+    ...formResponseStyle({ formData, isPreviewingTrip: false }),
+    ...(isFocused && formResponseFocusStyle(formData)), // if isFocused apply focus styles
+  });
+
+  // customize car
   const changeCarName = (event) => {
     const newCarName = event.target.value;
 
@@ -40,6 +65,7 @@ export default function CustomizeCar({
     });
   };
 
+  // change the color of the car
   const changeCarColor = (event) => {
     const newCarColor = event.target.value;
     setFormData((prevData) => {
@@ -61,7 +87,6 @@ export default function CustomizeCar({
     if (newSeats[row] < 3) {
       newSeats[row]++; // add one seat to the row
       console.log("Car data:", car);
-      console.log("Current numSeats:", car?.numSeats);
     }
 
     setFormData((prevData) => {
@@ -108,7 +133,7 @@ export default function CustomizeCar({
     });
   };
 
-  // Save or update car details
+  // save or update car details
   const handleSaveCar = () => setIsCustomizingCar(false);
 
   const handleDeleteCar = () => {
@@ -132,24 +157,26 @@ export default function CustomizeCar({
           <div className="customize-car-container">
             <div className="customize-car-btn-container">
               <button
-                className={`glass-btn ${customizeCarBtn ? "selected" : ""}`}
-                id="car-details-btn"
+                className="car-details-btn"
+                style={getDynamicStyles(customizeCarBtn)} // if customizeCarBtn is true (open), apply focus styles
                 onClick={handleCustomizeCar}
               >
-                Customize car +
+                Edit car +
               </button>
               {/* P2: add type of car, shape/color of seats, etc */}
               {customizeCarBtn && (
                 <>
                   <input
                     className="form-response"
-                    id="edit-carName"
                     key="carName"
                     type="text"
                     required
                     placeholder="Give your car a name?"
                     value={car?.carName || ""}
                     onChange={changeCarName}
+                    style={dynamicStyles} // different way of aplying focus styles using state, if more elements are added, this will need to change
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                   />
                   <div className="color-picker-container">
                     <label className="form-response" htmlFor="car-color">
@@ -169,8 +196,9 @@ export default function CustomizeCar({
               )}
 
               <button
-                className={`glass-btn ${isShowingOptions ? "selected" : ""}`}
-                id="car-details-btn"
+                // className={`glass-btn ${isShowingOptions ? "selected" : ""}`}
+                className="car-details-btn"
+                style={getDynamicStyles(isShowingOptions)} // if isShowingOptions, apply focus styles
                 onClick={handleMoreOptions}
               >
                 Edit departure details +
@@ -310,24 +338,24 @@ export default function CustomizeCar({
               </div>
             </div>
           </div>
-          <DeleteCarBtn
-            carId={car?.carId}
-            onDelete={handleDeleteCar}
-            style={secondaryBtn(formData)}
-            className="secondary-btn"
-            id="customize-car-delete-btn"
-          >
-            Delete Car
-          </DeleteCarBtn>
-
-          <button
-            className="primary-btn"
-            onClick={handleSaveCar}
-            style={glowBtn(formData)}
-          >
-            Save
-          </button>
         </div>
+        <DeleteCarBtn
+          carId={car?.carId}
+          onDelete={handleDeleteCar}
+          style={secondaryBtn(formData)}
+          className="secondary-btn"
+          id="customize-car-delete-btn"
+        >
+          Delete Car
+        </DeleteCarBtn>
+
+        <button
+          className="primary-btn"
+          onClick={handleSaveCar}
+          style={glowBtn(formData)}
+        >
+          Save
+        </button>
       </div>
     </>
   );

@@ -1,6 +1,6 @@
-body.active-modal {
+/* body.active-modal {
   overflow-y: hidden;
-}
+} */
 
 .modal,
 .overlay {
@@ -12,18 +12,19 @@ body.active-modal {
   bottom: 0;
   position: fixed;
   z-index: 5;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .overlay {
-  background: rgba(255, 255, 255, 0.18);
+  background: var(--dark);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
 }
 
 .customize-car-container {
-  margin-left: var(--margin-medium);
   width: 92dvw;
-  /* background-color: rgba(118, 118, 226, 0.47); */
+  margin-left: var(--margin-medium);
 }
 
 .customize-car-btn-container {
@@ -32,16 +33,70 @@ body.active-modal {
   margin-top: 10dvh;
 }
 
+.car-details-btn {
+  color: var(--white);
+  font: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: var(--padding-secondary-btn);
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
+  background: var(--glass-background);
+  cursor: pointer;
+  width: 60dvw;
+  height: var(--btn-height);
+  margin-top: var(--margin-medium);
+  margin-bottom: var(--margin-form-response);
+  align-items: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#car-details-btn {
+  margin-top: var(--margin-form-response);
+  margin-bottom: var(--margin-form-response);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.glass-btn {
+  color: var(--white);
+  font: var(--main-font);
+  font-size: var(--font-size-small);
+  padding: var(--padding-secondary-btn);
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
+  background: var(--glass-background);
+  cursor: pointer;
+  width: var(--btn-width);
+  height: var(--btn-height);
+  margin-top: var(--margin-medium);
+  align-items: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.glass-btn:hover {
+  background: var(--glass-background);
+  color: var(--white);
+}
+
+.glass-btn.selected {
+  color: var(--white);
+  background: var(--glass-background);
+}
+
 /* #edit-carName {
   cursor: pointer;
   font-size: var(--font-size-small);
   text-align: left;
   width: 90dvw;
 } */
-
-#edit-carName::placeholder {
+/* #edit-carName::placeholder {
   color: var(--white);
-}
+} */
 
 .color-picker-container {
   display: flex;
@@ -74,12 +129,10 @@ body.active-modal {
   bottom: 1px;
 }
 
-#delete-car-btn {
+/* #delete-car-btn {
   position: relative;
   margin-left: auto;
   margin-right: var(--margin-medium);
-  /* width: 60px; */
-
   color: var(--white);
   cursor: pointer;
   font-family: var(--main-font);
@@ -89,7 +142,7 @@ body.active-modal {
   border-radius: var(--border-radius-btn);
   background: var(--glass-background);
   margin-top: var(--margin-small);
-}
+} */
 
 #customize-car-delete-btn {
   position: fixed;
