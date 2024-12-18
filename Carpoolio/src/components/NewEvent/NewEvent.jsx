@@ -80,7 +80,7 @@ export default function NewEvent({ onNext }) {
             <DateSelector />
           </div>
           <Description />
-          <button className="tertiary-btn" onClick={onNext}>
+          <button className="tertiary-btn" id="skip-btn" onClick={onNext}>
             Skip
           </button>
         </>

@@ -1,7 +1,7 @@
 .pac-container {
   font-family: var(--main-font);
   font-size: var(--font-size-small);
-  background-color: var(--dark);
+  background-color: var(--v-dark);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -11,7 +11,7 @@
 
 .pac-item-query {
   color: white;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-extra-small);
   font-weight: var(--font-weight-bold);
   border-radius: var(--border-radius-btn);
 }

@@ -161,7 +161,7 @@ export default function CustomizeCar({
                 style={getDynamicStyles(customizeCarBtn)} // if customizeCarBtn is true (open), apply focus styles
                 onClick={handleCustomizeCar}
               >
-                Edit car +
+                Edit car
               </button>
               {/* P2: add type of car, shape/color of seats, etc */}
               {customizeCarBtn && (
@@ -180,7 +180,7 @@ export default function CustomizeCar({
                   />
                   <div className="color-picker-container">
                     <label className="form-response" htmlFor="car-color">
-                      Change car color?
+                      Edit car color
                     </label>
                     <input
                       className="car-color-picker"
@@ -201,7 +201,7 @@ export default function CustomizeCar({
                 style={getDynamicStyles(isShowingOptions)} // if isShowingOptions, apply focus styles
                 onClick={handleMoreOptions}
               >
-                Edit departure details +
+                Edit departure details
               </button>
 
               {/* if departure details is pressed, show date, time, leaving from, etc. (modal?) */}

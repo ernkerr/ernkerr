@@ -7,15 +7,6 @@
   width: 95dvw;
 }
 
-/* .form-question {
-  font-family: var(--main-font);
-  font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-normal);
-  letter-spacing: var(--letter-spacing-btn);
-  margin-bottom: 0;
-  text-align: center;
-} */
-
 /* transform: offsets the button by half of its own width, centering it horizontally */
 
 .glass-effect {
@@ -49,4 +40,11 @@
 
 .more-options-btn.active {
   box-shadow: var(--green-glow);
+}
+
+#skip-btn {
+  position: fixed;
+  left: 10%;
+  bottom: 0;
+  margin-bottom: var(--margin-btn);
 }
