@@ -25,25 +25,31 @@
   text-shadow: 0 0 10px #fbee3e, 0 0 20px #fbff84, 0 0 30px #eaff00;
 }
 
-.new-trip {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  text-decoration: none;
-}
-
-#destination-message {
+#heading {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 300;
   color: #fefeffd3;
 }
 
-#carpooling-message {
+#sub-heading {
   margin: 6rem 0 0 0;
   font-size: 1.25rem;
   font-weight: 300;
   color: #fefeffd3;
+}
+
+.call-to-action-btn {
+  color: var(--white);
+  font-family: "LicensePlate", sans-serif;
+  font-size: var(--font-size-large);
+  letter-spacing: -1px;
+  word-spacing: -5px;
+
+  padding: 15px 20px 10px 20px;
+  border-radius: var(--border-radius-btn);
+
+  margin-top: var(--margin-form-response);
 }
 
 .font-face {
