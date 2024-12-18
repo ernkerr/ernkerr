@@ -180,65 +180,54 @@ export default function CustomizeTrip({ isAdmin }) {
 
         <TripName isPreviewingTrip={isPreviewingTrip} />
 
-        <div
-          className={isAddress ? "destination-container" : ""}
-          style={formResponseStyle({ formData, isPreviewingTrip })}
-        >
-          {/* make a map */}
-          {isAddress && <DestinationMap destination={formData?.destination} />}
+        {isAddress && (
+          <div
+            className="destination-container"
+            style={formResponseStyle({ formData, isPreviewingTrip })}
+          >
+            {/* make a map */}
+            {isAddress && (
+              <DestinationMap destination={formData?.destination} />
+            )}
 
-          <div className="address-directions-container">
-            <div className={isAddress ? "address-container" : ""}>
-              {isAddress ? (
+            <div className="address-directions-container">
+              <div className={isAddress ? "address-container" : ""}>
+                {isAddress ? (
+                  <>
+                    <img
+                      className="location-icon"
+                      src={locationIcon}
+                      alt="Location Icon"
+                    />
+                    <button
+                      onClick={handleEditDestination}
+                      className="destination-btn"
+                    >
+                      {formData?.destination?.name}
+                    </button>
+                  </>
+                ) : (
+                  <Destination isPreviewingTrip={isPreviewingTrip} />
+                )}
+              </div>
+              {isAddress && (
                 <>
-                  <img
-                    className="location-icon"
-                    src={locationIcon}
-                    alt="Location Icon"
-                  />
                   <button
-                    onClick={handleEditDestination}
-                    className="destination-btn"
+                    className="get-directions-btn"
+                    onClick={handleGetDirections}
                   >
-                    {formData?.destination?.name}
+                    <img
+                      className="nav-arrow"
+                      src={navArrow}
+                      alt="Navigational Arrow"
+                    />
+                    Get Directions
                   </button>
-                  {/* {destinationModal && (
-                    <div className="customize-trip-modal" style={modalStyle}>
-                      <div className="customize-trip-modal-content">
-                        <p id="edit-destination">edit your destination: </p>
-                        <Destination />
-                      </div>
-                      <button
-                        className="next-modal-btn "
-                        style={glowStyle}
-                        onClick={handleDestinationModal}
-                      >
-                        done
-                      </button>
-                    </div>
-                  )} */}
                 </>
-              ) : (
-                <Destination isPreviewingTrip={isPreviewingTrip} />
               )}
             </div>
-            {isAddress && (
-              <>
-                <button
-                  className="get-directions-btn"
-                  onClick={handleGetDirections}
-                >
-                  <img
-                    className="nav-arrow"
-                    src={navArrow}
-                    alt="Navigational Arrow"
-                  />
-                  Get Directions
-                </button>
-              </>
-            )}
           </div>
-        </div>
+        )}
 
         <div className="date-selector">
           {/* <div
