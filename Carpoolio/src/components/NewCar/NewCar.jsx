@@ -13,7 +13,7 @@ import "./NewCar.css";
 
 import DeleteCarBtn from "../DeleteCarBtn/DeleteCar";
 
-export default function NewCar({ triggerHandleYes }) {
+export default function NewCar({ triggerHandleYes, onCloseNewCar }) {
   const { formData, setFormData } = useContext(TripContext);
   const [isAddingCar, setIsAddingCar] = useState("");
   const [driverName, setDriverName] = useState("");
@@ -179,6 +179,10 @@ export default function NewCar({ triggerHandleYes }) {
 
   const handleDeleteCar = () => {
     setIsAddingCar(false);
+    // call the callback function from CustomizeTrip to close the new ar ~modal~ and get back to customizing the trip
+    if (onCloseNewCar) {
+      onCloseNewCar();
+    }
   };
 
   return (
@@ -225,7 +229,10 @@ export default function NewCar({ triggerHandleYes }) {
                   <CustomizeCar
                     activeCarIndex={activeCarIndex}
                     setIsCustomizingCar={setIsCustomizingCar}
-                    onDeleteCar={handleDeleteCar}
+                    onDeleteCar={() => {
+                      handleDeleteCar();
+                      setIsCustomizingCar(false);
+                    }}
                   />
                 ) : (
                   <RenderCar

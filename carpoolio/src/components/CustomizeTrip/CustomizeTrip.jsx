@@ -287,7 +287,6 @@ export default function CustomizeTrip({ isAdmin }) {
           </>
         </>
       </>
-
       {/* render NewCar component conditionally */}
       {isNewCarVisible && (
         <>
@@ -301,7 +300,10 @@ export default function CustomizeTrip({ isAdmin }) {
             }}
           >
             {/* pass handler to NewCar */}
-            <NewCar triggerHandleYes={true} />
+            <NewCar
+              triggerHandleYes={true}
+              onCloseNewCar={() => setIsNewCarVisible(false)} // Pass callback
+            />
             <button
               className="primary-btn"
               style={glowStyle}
@@ -314,6 +316,10 @@ export default function CustomizeTrip({ isAdmin }) {
           </div>
         </>
       )}
+      {/* mildly unacceptable prop drilling but it works so here is some explanation to understand :/ */}
+      {/* to update setIsNewCarVisible in NewCar (to get back to customizing trip) when a car is deleted  */}
+      {/* we need to pass a callback function as a prop from CustomizeTrip->NewCar */}
+      {/* to use this in NewCar you just accept onCloseNewCar callback as a prop and call it when a car is deleted */}
 
       <>
         {/* <div className="car-container"> */}

@@ -4,6 +4,15 @@
   text-align: center;
 }
 
+/* .add-car-btn {
+  position: relative;
+  width: 50%;
+  margin-top: 80px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+} */
+
 .add-car-btn {
   position: relative;
   width: 50%;
