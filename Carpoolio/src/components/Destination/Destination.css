@@ -1,40 +1,52 @@
-.pac-container {
+.autocomplete-component {
+  color: var(--white);
   font-family: var(--main-font);
   font-size: var(--font-size-small);
+  padding: 10px 0px 10px 10px;
+  background: none;
+  border: none;
+  width: 90dvw;
+  text-align: center;
+}
+
+.pac-container {
+  font-family: var(--main-font);
+  /* font-size: var(--font-size-small); */
   background-color: var(--v-dark);
   border: var(--glass-border);
-  border-radius: var(--border-radius-btn);
+  border-radius: 10px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
+  backdrop-filter: blur(8.6px);
+  -webkit-backdrop-filter: blur(8.6px);
+}
+
+.pac-item {
+  color: rgb(197, 197, 197);
+  border-top: 1px solid rgba(173, 173, 173, 0.3);
+  font-size: 14px;
+  padding: 10px 0px 5px 5px;
+  border-radius: var(--border-radius-btn);
 }
 
 .pac-item-query {
   color: white;
-  font-size: var(--font-size-extra-small);
+  font-size: 16px;
   font-weight: var(--font-weight-bold);
-  border-radius: var(--border-radius-btn);
+  /* border-radius: var(--border-radius-btn); */
 }
 
 .pac-matched {
   color: white;
-  font-size: var(--font-size-small);
-}
-
-.pac-item {
-  color: rgb(215, 215, 215);
-  border-top: 1px solid rgba(173, 173, 173, 0.3);
-  font-size: var(--font-size-small);
-  padding: 10px;
+  font-weight: 800;
+  font-size: var(--font-size-small) !important;
 }
 
 .pac-item:hover {
-  background-color: rgba(0, 255, 0, 0.2);
+  background-color: var(--v-dark);
 }
 
 .pac-item-selected:hover {
-  background-color: rgba(52, 114, 63, 0.5);
-  color: rgba(52, 114, 63, 0.15);
+  background-color: var(--v-dark);
 }
 
 .destination-customize-trip {

@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 100vh;
   min-height: 100%;
-  margin-left: var(--margin-medium);
+  /* margin-left: var(--margin-medium); */
   width: 95dvw;
   padding-left: 2.5dvw;
   padding-right: 2.5dvw;
@@ -17,9 +17,10 @@
 
 #trip-name {
   margin-top: var(--m-top) !important;
-  font-size: var(--font-size-medium);
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+  /* backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px); */
 }
 
 /* destination */
@@ -70,6 +71,19 @@
   max-width: 100%;
   text-align: left;
   margin-top: var(--margin-medium);
+}
+
+#autocomplete-container {
+  color: var(--white);
+  font-family: var(--main-font);
+  font-size: var(--font-size-small);
+  border: var(--glass-border);
+  border-radius: var(--border-radius-btn);
+  background: var(--glass-background);
+  width: 92.5dvw;
+  margin-top: var(--margin-form-response);
+
+  /* cursor: pointer; */
 }
 
 .customize-trip-modal {

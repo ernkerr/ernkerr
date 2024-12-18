@@ -113,13 +113,13 @@ const Destination = forwardRef(
         placeholder={
           destination.name ? destination.name : "Choose your destination"
         }
-        className={`form-response ${isPreviewingTrip ? "disabled" : ""}`}
-        style={{
-          background: isPreviewingTrip
-            ? "transparent"
-            : formData?.tripBackground?.scrim || undefined,
-          pointerEvents: isPreviewingTrip ? "none" : "auto",
-        }}
+        className="autocomplete-component"
+        // style={{
+        //   background: isPreviewingTrip
+        //     ? "transparent"
+        //     : formData?.tripBackground?.scrim || undefined,
+        //   pointerEvents: isPreviewingTrip ? "none" : "auto",
+        // }}
       />
     );
   }

@@ -180,60 +180,58 @@ export default function CustomizeTrip({ isAdmin }) {
 
         <TripName isPreviewingTrip={isPreviewingTrip} />
 
-        {isAddress && (
+        {isAddress ? (
           <div
             className="destination-container"
             style={formResponseStyle({ formData, isPreviewingTrip })}
           >
             {/* make a map */}
-            {isAddress && (
-              <DestinationMap destination={formData?.destination} />
-            )}
-
+            <DestinationMap destination={formData?.destination} />
             <div className="address-directions-container">
-              <div className={isAddress ? "address-container" : ""}>
-                {isAddress ? (
-                  <>
-                    <img
-                      className="location-icon"
-                      src={locationIcon}
-                      alt="Location Icon"
-                    />
-                    <button
-                      onClick={handleEditDestination}
-                      className="destination-btn"
-                    >
-                      {formData?.destination?.name}
-                    </button>
-                  </>
-                ) : (
-                  <Destination isPreviewingTrip={isPreviewingTrip} />
-                )}
-              </div>
-              {isAddress && (
+              <div className="address-container">
                 <>
+                  <img
+                    className="location-icon"
+                    src={locationIcon}
+                    alt="Location Icon"
+                  />
                   <button
-                    className="get-directions-btn"
-                    onClick={handleGetDirections}
+                    onClick={handleEditDestination}
+                    className="destination-btn"
                   >
-                    <img
-                      className="nav-arrow"
-                      src={navArrow}
-                      alt="Navigational Arrow"
-                    />
-                    Get Directions
+                    {formData?.destination?.name}
                   </button>
                 </>
-              )}
+              </div>
+
+              <>
+                <button
+                  className="get-directions-btn"
+                  onClick={handleGetDirections}
+                >
+                  <img
+                    className="nav-arrow"
+                    src={navArrow}
+                    alt="Navigational Arrow"
+                  />
+                  Get Directions
+                </button>
+              </>
             </div>
           </div>
+        ) : (
+          <>
+            <div
+              // className="form-response"
+              id="autocomplete-container"
+              style={formResponseStyle({ formData, isPreviewingTrip })}
+            >
+              <Destination isPreviewingTrip={isPreviewingTrip} />
+            </div>
+          </>
         )}
 
         <div className="date-selector">
-          {/* <div
-          className={isAddress ? "destination-container" : ""}
-          style={formResponseStyle({ formData, isPreviewingTrip })}
-        ></div> */}
           <DateSelector isPreviewingTrip={isPreviewingTrip} />
         </div>
 

@@ -19,16 +19,6 @@
   margin-top: 80px;
 }
 
-/* .back-btn {
-  color: var(--placeholder);
-  background: none;
-  border: none;
-  position: fixed;
-  bottom: 2px;
-  left: 10px;
-  margin-bottom: var(--margin-btn);
-} */
-
 #driverName {
   position: absolute;
   top: 90px;
