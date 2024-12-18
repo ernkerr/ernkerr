@@ -51,15 +51,23 @@
   margin-bottom: var(--margin-btn);
 }
 
-/* .back-btn {
+.back-btn {
   color: var(--placeholder);
   background: none;
   border: none;
   position: fixed;
-  bottom: 2px;
-  left: 10px;
+  bottom: 3px;
+  left: 5px;
   margin-bottom: var(--margin-btn);
-} */
+}
+
+#new-car-delete-btn {
+  font-size: var(--font-size-extra-small);
+  position: fixed;
+  bottom: 0;
+  left: 13dvw;
+  margin-bottom: 4.5dvh;
+}
 
 /* progress bar  */
 
@@ -120,7 +128,7 @@
   pointer-events: none;
 }
 
-/* Add glass morphism effect */
+/* glass morphism effect */
 .progress-track::before {
   content: "";
   position: absolute;
@@ -138,7 +146,7 @@
   z-index: 0;
 }
 
-/* Add neon glow effect */
+/* glow effect */
 .progress-fill::after {
   content: "";
   position: absolute;
@@ -151,41 +159,6 @@
   opacity: 0.7;
   border-radius: 20px;
 }
-
-/* .text-input {
-  border: 2px solid rgb(52, 189, 52);
-  border-radius: 15px;
-  background-color: #4bfe4b52;
-  height: 50px;
-  width: 30vw;
-  padding: 15px;
-  box-sizing: border-box;
-  color: white;
-  text-align: center;
-  font-family: var(--main-font);
-  font-size: 1.3em;
-}
-
-.text-input::placeholder {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
-  font-family: var(--main-font);
-  font-size: 1.3rem;
-} */
-
-/* .button-container {
-  display: flex;
-  justify-content: space-between; 
-  width: 50%; 
-} */
-
-/* #left-button {
-  margin-left: auto;
-}
-
-#right-button {
-  margin-right: auto;
-} */
 
 .calendar-container {
   display: flex;

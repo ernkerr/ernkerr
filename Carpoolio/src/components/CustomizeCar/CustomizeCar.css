@@ -74,15 +74,6 @@ body.active-modal {
   bottom: 1px;
 }
 
-#save-car-btn {
-  z-index: 2;
-  width: auto;
-  /* left: 80%;
-  bottom: 0;
-  margin-bottom: 0;
-  transform: translateX(-50%); */
-}
-
 #delete-car-btn {
   position: relative;
   margin-left: auto;
@@ -104,6 +95,4 @@ body.active-modal {
   position: fixed;
   top: 15px;
   right: 15px;
-
-  z-index: 2;
 }

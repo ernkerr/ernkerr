@@ -47,6 +47,13 @@ export const secondaryBtn = (formData) => ({
   }),
 });
 
+// tertiary btn
+export const tertiaryBtn = (formData) => ({
+  color: `${formData?.glowColor}`,
+  backdropFilter: "blur(7.6px)",
+  WebkitBackdropFilter: "blur(7.6px)",
+});
+
 export const glowBorder = (formData) => ({
   border: `2px solid ${formData?.glowColor}`,
   boxShadow: `inset 0 0 5px ${formData?.glowColor},

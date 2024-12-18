@@ -10,6 +10,7 @@ export default function DeleteCarBtn({
   children,
   className,
   id,
+  style,
 }) {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const { formData, setFormData } = useContext(TripContext);
@@ -57,7 +58,7 @@ export default function DeleteCarBtn({
       <button
         className={className}
         id={id}
-        style={secondaryBtn(formData)}
+        style={style}
         onClick={handleDeleteCarModal}
       >
         {children || "Delete car"}

@@ -17,7 +17,9 @@ export default function DeleteModal({ onCancel, onDelete }) {
               border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
-            <h3>Are you sure you want to delete this car?</h3>
+            <h3 className="warning-text">
+              Are you sure you want <br /> to delete this car?
+            </h3>
             <div className="modal-btn-container">
               <button className="modal-secondary-btn" onClick={onCancel}>
                 Cancel

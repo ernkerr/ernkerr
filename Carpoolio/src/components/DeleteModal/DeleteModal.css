@@ -19,6 +19,11 @@
   transform: translateX(-50%);
 }
 
+.warning-text {
+  font-size: var(--font-size-medium);
+  text-align: center;
+}
+
 .card {
   position: relative;
   padding: 32px;

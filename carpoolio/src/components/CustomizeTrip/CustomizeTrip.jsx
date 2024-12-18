@@ -314,7 +314,7 @@ export default function CustomizeTrip({ isAdmin }) {
             {/* pass handler to NewCar */}
             <NewCar triggerHandleYes={true} />
             <button
-              className="next-modal-btn"
+              className="primary-btn"
               style={glowStyle}
               onClick={() => {
                 setIsNewCarVisible(false); // close new car modal when done

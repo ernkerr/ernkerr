@@ -4,6 +4,7 @@ import {
   formResponseStyle,
   formResponseFocusStyle,
   glowBtn,
+  tertiaryBtn,
 } from "@styles/styles";
 import CustomizeCar from "../CustomizeCar/CustomizeCar";
 import RenderCar from "../RenderCar/RenderCar";
@@ -219,25 +220,31 @@ export default function NewCar({ triggerHandleYes }) {
           {/* if num seats is set render car and customize car btn */}
           {driverName && (isNumSeatsSet || formData?.numSeats) && (
             <>
-              {isCustomizingCar ? (
-                <CustomizeCar
-                  activeCarIndex={activeCarIndex}
-                  setIsCustomizingCar={setIsCustomizingCar}
-                />
-              ) : (
-                <RenderCar
-                  car={formData.cars[activeCarIndex]}
-                  carIndex={activeCarIndex}
-                  setIsCustomizingCar={setIsCustomizingCar}
-                  setActiveCarIndex={setActiveCarIndex}
-                />
-              )}
+              {formData.cars[activeCarIndex]?.carId ? (
+                isCustomizingCar ? (
+                  <CustomizeCar
+                    activeCarIndex={activeCarIndex}
+                    setIsCustomizingCar={setIsCustomizingCar}
+                    onDeleteCar={handleDeleteCar}
+                  />
+                ) : (
+                  <RenderCar
+                    car={formData.cars[activeCarIndex]}
+                    carIndex={activeCarIndex}
+                    setIsCustomizingCar={setIsCustomizingCar}
+                    setActiveCarIndex={setActiveCarIndex}
+                  />
+                )
+              ) : null}
             </>
           )}
 
           <DeleteCarBtn
             carId={formData.cars[activeCarIndex]?.carId}
             onDelete={handleDeleteCar}
+            className="tertiary-btn"
+            id="new-car-delete-btn"
+            style={tertiaryBtn(formData)}
           >
             Cancel
           </DeleteCarBtn>
@@ -245,20 +252,4 @@ export default function NewCar({ triggerHandleYes }) {
       )}
     </>
   );
-}
-
-{
-  /* toggle  */
-}
-{
-  /* <div className="checkbox">
-          <input
-            className="tgl"
-            id="toggle"
-            type="checkbox"
-            checked={isAddingCar}
-            onChange={handleToggle}
-          />
-          <label className="tgl-btn" htmlFor="toggle"></label>
-        </div> */
 }

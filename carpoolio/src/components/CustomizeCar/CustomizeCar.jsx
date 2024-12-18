@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, act } from "react";
 // import axios from "axios";
 import { TripContext } from "@components/TripContext";
-import { formResponseStyle, glowBtn } from "@styles/styles";
+import { formResponseStyle, glowBtn, secondaryBtn } from "@styles/styles";
 import DefaultCar from "../CustomizeCar/DefaultCar.jsx";
 
 import "./CustomizeCar.css";
@@ -12,7 +12,11 @@ import DepartureDetails from "../DepartureDetails/DepartureDetails.jsx";
 // import DeleteModal from "../DeleteModal/DeleteModal.jsx";
 import DeleteCarBtn from "../DeleteCarBtn/DeleteCar.jsx";
 
-export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
+export default function CustomizeCar({
+  activeCarIndex,
+  setIsCustomizingCar,
+  onDeleteCar,
+}) {
   const { formData, setFormData } = useContext(TripContext);
   const car = formData?.cars?.[activeCarIndex];
 
@@ -109,6 +113,8 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
 
   const handleDeleteCar = () => {
     setIsCustomizingCar(false);
+    // notify the parent component (NewCar in this case)
+    if (onDeleteCar) onDeleteCar();
   };
 
   const handleMoreOptions = () => {
@@ -307,6 +313,7 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
           <DeleteCarBtn
             carId={car?.carId}
             onDelete={handleDeleteCar}
+            style={secondaryBtn(formData)}
             className="secondary-btn"
             id="customize-car-delete-btn"
           >
@@ -315,7 +322,6 @@ export default function CustomizeCar({ activeCarIndex, setIsCustomizingCar }) {
 
           <button
             className="primary-btn"
-            id="save-car-btn"
             onClick={handleSaveCar}
             style={glowBtn(formData)}
           >
