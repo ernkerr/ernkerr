@@ -137,6 +137,7 @@ export default function NewTripForm() {
             <button
               style={glowBtn(formData)}
               className="primary-btn"
+              id="next-btn"
               onClick={handleNext}
             >
               Next

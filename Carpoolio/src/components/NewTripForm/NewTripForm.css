@@ -61,6 +61,10 @@
   margin-bottom: var(--margin-btn);
 }
 
+#next-btn {
+  z-index: 4 !important;
+}
+
 #new-car-delete-btn {
   font-size: var(--font-size-extra-small);
   position: fixed;
