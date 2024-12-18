@@ -3,7 +3,9 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 
 const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+require("dotenv").config({
+  path: path.resolve(__dirname, "../.env.development"),
+});
 
 if (!process.env.POSTGRES_PRISMA_URL) {
   console.log("Database URL:", process.env.POSTGRES_PRISMA_URL); // Debug
@@ -18,7 +20,7 @@ const prisma = new PrismaClient();
 //
 // server debugging
 console.log("Starting server setup...");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 app
   .listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
