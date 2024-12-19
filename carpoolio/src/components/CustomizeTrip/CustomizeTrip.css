@@ -17,7 +17,7 @@
 
 #trip-name {
   margin-top: var(--m-top) !important;
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-medium);
   font-weight: var(--font-weight-bold);
   /* backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px); */
@@ -61,14 +61,14 @@
 .destination-btn {
   color: var(--white);
   font-family: var(--main-font);
-  font-size: var(--font-size-extra-small);
+  font-size: var(--font-size-small);
   background: none;
   border: none;
   white-space: pre-wrap;
   word-wrap: break-word;
   line-height: 1.5;
   display: block;
-  max-width: 100%;
+  width: 100%;
   text-align: left;
   margin-top: var(--margin-medium);
 }
