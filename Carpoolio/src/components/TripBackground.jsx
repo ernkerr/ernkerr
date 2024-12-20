@@ -96,7 +96,7 @@ const backgrounds = [
 
   // batting order
   { name: "marble", path: marble, scrim: "rgba(0, 0, 0, 0.10)" },
-  { name: "purple", path: purple },
+  { name: "purple", path: purple, scrim: "rgba(0, 0, 0, 0.10)" },
   //
   //
 
