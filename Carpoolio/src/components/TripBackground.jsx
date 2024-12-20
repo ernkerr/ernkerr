@@ -13,7 +13,7 @@ import "@/components/CustomizeTrip/CustomizeTrip.css";
 // import wavelike from "../assets/gifs/wavelike.gif";
 // import yellow from "../assets/gifs/yellow.gif";
 // import purpleblobs from "../assets/gifs/purpleblobs.gif";
-// import icy from "../assets/gifs/icy.gif";
+import purple from "../assets/gifs/purple.gif";
 
 import bluegoo from "../assets/gifs/bluegoo.gif";
 // patterns
@@ -96,7 +96,7 @@ const backgrounds = [
 
   // batting order
   { name: "marble", path: marble, scrim: "rgba(0, 0, 0, 0.10)" },
-
+  { name: "purple", path: purple },
   //
   //
 
@@ -165,7 +165,7 @@ const backgrounds = [
 //   scrim: "rgba(183, 111, 39, 0.732)",
 // },
 //  // { name: "waterfall", path: waterfall, scrim: "rgba(128, 147, 147, 0.50)" },
-// { name: "purple", path: purple },
+
 // { name: "pink", path: pink },
 // { name: "orange", path: orange },
 // { name: "pixelcity", path: pixelcity, scrim: null },
