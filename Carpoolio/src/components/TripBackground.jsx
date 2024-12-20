@@ -13,7 +13,6 @@ import "@/components/CustomizeTrip/CustomizeTrip.css";
 // import wavelike from "../assets/gifs/wavelike.gif";
 // import yellow from "../assets/gifs/yellow.gif";
 // import purpleblobs from "../assets/gifs/purpleblobs.gif";
-import purple from "../assets/gifs/purple.gif";
 
 import bluegoo from "../assets/gifs/bluegoo.gif";
 // patterns
