@@ -221,13 +221,7 @@ export default function CustomizeTrip({ isAdmin }) {
           </div>
         ) : (
           <>
-            <div
-              // className="form-response"
-              id="autocomplete-container"
-              style={formResponseStyle({ formData, isPreviewingTrip })}
-            >
-              <Destination isPreviewingTrip={isPreviewingTrip} />
-            </div>
+            <Destination isPreviewingTrip={isPreviewingTrip} />
           </>
         )}
 

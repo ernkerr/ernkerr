@@ -17,7 +17,7 @@
 
 #trip-name {
   margin-top: var(--m-top) !important;
-  font-size: var(--font-size-medium);
+  font-size: 20px;
   font-weight: var(--font-weight-bold);
   /* backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px); */
@@ -74,16 +74,15 @@
 }
 
 #autocomplete-container {
-  color: var(--white);
+  /* color: var(--white);
   font-family: var(--main-font);
   font-size: var(--font-size-small);
   border: var(--glass-border);
   border-radius: var(--border-radius-btn);
   background: var(--glass-background);
   width: 92.5dvw;
-  margin-top: var(--margin-form-response);
-
-  /* cursor: pointer; */
+  margin-top: var(--margin-form-response); */
+  border: none;
 }
 
 .customize-trip-modal {

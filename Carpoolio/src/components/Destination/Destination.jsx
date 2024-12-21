@@ -1,12 +1,17 @@
 import { useState, useEffect, useRef, useContext, forwardRef } from "react";
 import Autocomplete from "react-google-autocomplete";
 import { TripContext } from "@components/TripContext";
+
+import { formResponseStyle, formResponseFocusStyle } from "@styles/styles";
+
 import "./Destination.css";
 
 const Destination = forwardRef(
   ({ isPreviewingTrip, onDestinationUpdate, onKeyDown }, ref) => {
     const { formData, setFormData } = useContext(TripContext);
     const [placeSelected, setPlaceSelected] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
+
     const [destination, setDestination] = useState(
       formData?.destination || { name: "", address: "", location: null }
     );
@@ -44,7 +49,6 @@ const Destination = forwardRef(
         };
 
         console.log("Formatted destination object:", tripDestination);
-
         console.log("Selected Place Name:", tripDestination.name);
         console.log("Selected Address:", tripDestination.address);
         console.log("Selected Location:", tripDestination.location);
@@ -98,6 +102,19 @@ const Destination = forwardRef(
     //   }
     // }, [destination]); // Update the input value when the destination changes
 
+    const handleFocus = () => {
+      setIsFocused(true);
+    };
+
+    const handleBlur = () => {
+      setIsFocused(false);
+    }; // remove focus style}
+
+    const dynamicStyles = {
+      ...formResponseStyle({ formData, isPreviewingTrip }),
+      ...(isFocused && formResponseFocusStyle(formData)), // add focus styles dynamically
+    };
+
     return (
       <Autocomplete
         apiKey={import.meta.env.VITE_GMAPS_API_KEY} //needs to be passed directly to the component as a prop
@@ -110,16 +127,13 @@ const Destination = forwardRef(
         value={destination.name}
         onChange={handleInputChange}
         onKeyDown={onKeyDown}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         placeholder={
           destination.name ? destination.name : "Choose your destination"
         }
-        className="autocomplete-component"
-        // style={{
-        //   background: isPreviewingTrip
-        //     ? "transparent"
-        //     : formData?.tripBackground?.scrim || undefined,
-        //   pointerEvents: isPreviewingTrip ? "none" : "auto",
-        // }}
+        className="form-response"
+        style={dynamicStyles}
       />
     );
   }
