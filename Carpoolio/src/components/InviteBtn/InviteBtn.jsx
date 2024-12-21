@@ -13,21 +13,27 @@ export default function InviteBtn({ isVisible, setIsVisible }) {
   const navigate = useNavigate();
   const { formData } = useContext(TripContext);
   const { tripId } = useParams();
-  // const [isVisible, setIsVisible] = useState(false);
 
+  const handleShowModal = () => setIsVisible(true);
   const closeModal = () => setIsVisible(false);
 
   const shareURL = `${window.location.origin}/trip/${tripId}`;
 
-  const handleShowModal = () => {
-    setIsVisible(true);
-  };
+  // "Ready to go? Pick your spot and join the ride"
+  // "Your spot is waiting—don’t miss out!"
+  // "You’ve been invited—reserve your spot now"
+  // `You've been invited to ${formData.tripName}, reserve your spot now!`
+
+  const emailSubject = `You've been invited to ${formData.tripName}, reserve your spot now!`;
+  const emailBody = `Pick your spot and join the ride: ${shareURL}`;
+  const mailtoLink = `mailto:?subject=${encodeURIComponent(
+    emailSubject
+  )}&body=${encodeURIComponent(emailBody)}`;
 
   return (
     <>
       <button
         className="invite-btn"
-        // style={glowBtn(formData)}
         onClick={handleShowModal} // show modal when clicked
       >
         <svg
@@ -41,77 +47,76 @@ export default function InviteBtn({ isVisible, setIsVisible }) {
       </button>
 
       {isVisible && (
-        <div className="modal">
-          <div className="customize-trip-modal-content">
-            <button onClick={closeModal} className="close-modal-btn">
-              X
-            </button>
-            <p className="bottom-drawer-title">Share your trip!</p>
-            <div className="share-icon-container-row">
-              {/* share via SMS */}
-              <div className="share-icon-container" id="share-sms">
-                <a
-                  // href={`sms:?body=${encodeURIComponent(shareText + shareURL)}`}
-                  href={`sms:?body=${encodeURIComponent(shareURL)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="share-text"
-                >
-                  <img
-                    className="share-icon"
-                    src={messageIcon}
-                    alt="Message Bubble Icon"
-                  />
-                  <p className="share-text">Message</p>
-                </a>
-              </div>
+        <div className="confirm-delete-modal">
+          <div className="modal-card-container">
+            <div
+              className="card"
+              style={{
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+              }}
+            >
+              <button onClick={closeModal} className="close-modal-btn">
+                X
+              </button>
+              <p className="bottom-drawer-title">Share your trip!</p>
+              <div className="share-icon-container-row">
+                {/* share via SMS */}
+                <div className="share-icon-container" id="share-sms">
+                  <a
+                    // href={`sms:?body=${encodeURIComponent(shareText + shareURL)}`}
+                    href={`sms:?body=${encodeURIComponent(shareURL)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="share-text"
+                  >
+                    <img
+                      className="share-icon"
+                      src={messageIcon}
+                      alt="Message Bubble Icon"
+                    />
+                    <p className="share-text">Message</p>
+                  </a>
+                </div>
 
-              {/* share via email */}
-              <div className="share-icon-container" id="share-email">
-                {/* "Ready to go? Pick your spot and join the ride" "Your spot is
-                waiting—don’t miss out!" "You’ve been invited—reserve your spot
-                now" */}
-                <a
-                  href={`mailto:?subject=You%27ve%20beenbeen%20invited%E2%80%93reserve%20your%20spot%20now!&body=${encodeURIComponent(
-                    shareURL
-                  )}`}
-                  className="share-text"
-                >
-                  <img
-                    className="email-icon"
-                    src={emailIcon}
-                    alt="Email Message Bubble Icon"
-                  />
-                  <p className="share-text">Email</p>
-                </a>
-              </div>
+                {/* share via email */}
+                <div className="share-icon-container" id="share-email">
+                  <a href={mailtoLink} className="share-text">
+                    <img
+                      className="email-icon"
+                      src={emailIcon}
+                      alt="Email Message Bubble Icon"
+                    />
+                    <p className="share-text">Email</p>
+                  </a>
+                </div>
 
-              {/* copy link */}
-              <div className="share-icon-container" id="copy-link">
-                <a
-                  onClick={() => {
-                    // this won't work until carpoolio is running on https
-                    navigator.clipboard
-                      .writeText(shareURL)
-                      .then(() => {
-                        alert("Link copied to clipboard!");
-                      })
-                      .catch((err) => {
-                        console.error("Failed to copy link: ", err);
-                        alert("Failed to copy the link. Please try again.");
-                      });
-                  }}
-                >
-                  <img
-                    className="copy-link-icon"
-                    src={copyLink}
-                    alt="Email Message Bubble Icon"
-                  />
-                  <p className="share-text">Copy Link</p>
-                </a>
-              </div>
+                {/* copy link */}
+                <div className="share-icon-container" id="copy-link">
+                  <a
+                    onClick={() => {
+                      // this won't work until carpoolio is running on https
+                      navigator.clipboard
+                        .writeText(shareURL)
+                        .then(() => {
+                          alert("Link copied to clipboard!");
+                        })
+                        .catch((err) => {
+                          console.error("Failed to copy link: ", err);
+                          alert("Failed to copy the link. Please try again.");
+                        });
+                    }}
+                  >
+                    <img
+                      className="copy-link-icon"
+                      src={copyLink}
+                      alt="Email Message Bubble Icon"
+                    />
+                    <p className="share-text">Copy Link</p>
+                  </a>
+                </div>
 
-              {/* share-icon-row */}
+                {/* share-icon-row */}
+              </div>
             </div>
           </div>
         </div>

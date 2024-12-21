@@ -33,6 +33,11 @@ export default function MoreBtn({
     togglePreview();
   };
 
+  const handleShareTrip = () => {
+    setOpen(false);
+    setIsInviteModalVisible(true);
+  };
+
   return (
     <>
       <div className="hamburger-container">
@@ -54,10 +59,7 @@ export default function MoreBtn({
           <div className="side-bar-container">
             <div className="option-container">
               {/* <button className="option-btn">Login</button> */}
-              <button
-                className="option-btn"
-                onClick={() => setIsInviteModalVisible(true)}
-              >
+              <button className="option-btn" onClick={handleShareTrip}>
                 Share Trip
               </button>
               <button className="option-btn" onClick={handleEditTrip}>
