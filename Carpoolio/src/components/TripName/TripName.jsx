@@ -1,6 +1,7 @@
 import { useContext, useState, forwardRef } from "react";
 import { TripContext } from "@components/TripContext";
 import { formResponseStyle, formResponseFocusStyle } from "@styles/styles";
+import "./TripName.css";
 
 const TripName = forwardRef(
   ({ isPreviewingTrip, onTripNameUpdate, onKeyDown }, ref) => {

@@ -39,7 +39,10 @@
 .tertiary-btn {
   color: var(--white);
   font-family: var(--main-font);
-  font-size: var(--font-size-small);
+  input::placeholder {
+    font-size: 0.8em; /* Smaller size for the placeholder */
+    color: #888; /* Placeholder color */
+  }
 
   background: none;
   padding: 10px;

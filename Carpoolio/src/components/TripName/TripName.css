@@ -1,0 +1,11 @@
+#trip-name {
+  margin-top: var(--m-top) !important;
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+  /* backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px); */
+}
+
+input::placeholder {
+  font-size: var(--font-size-small);
+}

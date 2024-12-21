@@ -10,7 +10,7 @@ import RenderCar from "../RenderCar/RenderCar.jsx";
 import CustomizeCar from "../CustomizeCar/CustomizeCar.jsx";
 import Description from "@components/Description/Description.jsx";
 import Destination from "../Destination/Destination.jsx";
-import TripName from "../TripName.jsx";
+import TripName from "../TripName/TripName.jsx";
 import NewCar from "../NewCar/NewCar.jsx";
 
 import DestinationMap from "../Destination/DestinationMap.jsx";
