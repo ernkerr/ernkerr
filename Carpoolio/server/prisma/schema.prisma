@@ -57,6 +57,17 @@ model Car {
 
 }
 
+// from James: sign into google - will send payload back to app - server needs to recieve payload and create a user with it 
+
+model User {
+  id       Int     @id @default(autoincrement())
+  googleId String  @unique
+  email    String  @unique
+  name     String?
+  avatar   String?
+}
+
+
 // This Prisma schema defines two models, each of which will map to a table in the underlying database: User and Post. 
 // Notice that there's also a relation (one-to-many) between the two models, via the author field on Post and the posts field on User.
 

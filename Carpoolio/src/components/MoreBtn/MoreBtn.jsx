@@ -38,6 +38,10 @@ export default function MoreBtn({
     setIsInviteModalVisible(true);
   };
 
+  const handleLogin = () => {
+    window.location.href = `${API_BASE_URL}/api/auth/google`; // Redirect to your backend login endpoint
+  };
+
   return (
     <>
       <div className="hamburger-container">
@@ -58,7 +62,10 @@ export default function MoreBtn({
         <>
           <div className="side-bar-container">
             <div className="option-container">
-              {/* <button className="option-btn">Login</button> */}
+              <button className="option-btn" onClick={handleLogin}>
+                Login
+              </button>
+
               <button className="option-btn" onClick={handleShareTrip}>
                 Share Trip
               </button>

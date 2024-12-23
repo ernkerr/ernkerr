@@ -7,15 +7,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth/express": "^0.8.4",
     "@prisma/client": "^5.21.1",
     "@react-google-maps/api": "^2.20.3",
     "axios": "^1.7.7",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
+    "express-session": "^1.18.1",
     "hamburger-react": "^2.5.1",
     "hex-rgb": "^5.0.0",
     "html-to-image": "^1.11.11",
+    "passport-google-oauth20": "^2.0.0",
     "pg": "^8.13.1",
     "react": "^18.0.0",
     "react-copy-to-clipboard": "^5.1.0",

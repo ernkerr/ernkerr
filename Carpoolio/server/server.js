@@ -1,5 +1,9 @@
 const express = require("express"); // import express
 const cors = require("cors");
+const session = require("express-session");
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+
 const { PrismaClient } = require("@prisma/client");
 
 const path = require("path");
@@ -16,6 +20,105 @@ const app = express(); // create an app instance
 app.use(express.json()); // middleware to parse data
 const prisma = new PrismaClient();
 
+//
+//
+
+//
+//
+// add session middleware for session support (Login w google)
+app.use(
+  session({
+    secret: "p3V7OM0FrwkrI+RUXlwkTaM26lDjQ//RXs/DyhaQFBA=", // Replace with a secure secret
+    resave: false, // Prevents session resave if unmodified
+    saveUninitialized: false, // Does not save empty sessions
+    cookie: {
+      secure: false, // Set to true if using HTTPS
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    },
+  })
+);
+
+console.log("Session Middleware Registered");
+console.log("Passport Middleware Initialized");
+console.log("Routes Registered");
+
+// Initialize Passport.js
+app.use(passport.initialize());
+app.use(passport.session()); // Enables persistent login sessions
+//
+//
+// o auth
+// console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
+// console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID:
+        "223300956871-pg91sll1n7ndbe7mqg8d02gvet8c5ol2.apps.googleusercontent.com",
+      clientSecret: "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",
+      callbackURL: "http://localhost:3000/api/auth/google/callback",
+    },
+
+    async (accessToken, refreshToken, profile, cb) => {
+      try {
+        console.log("Google OAuth Callback Triggered");
+        console.log("Access Token:", accessToken);
+        console.log("Refresh Token:", refreshToken);
+        console.log("Profile Object:", JSON.stringify(profile, null, 2));
+
+        // Check if user exists in the database
+        let user = await prisma.user.findUnique({
+          where: { googleId: profile.id },
+        });
+
+        // If not, create a new user
+        if (!user) {
+          console.log("User not found. Creating new user...");
+          user = await prisma.user.create({
+            data: {
+              googleId: profile.id,
+              email: profile.emails[0].value,
+              name: profile.displayName,
+              avatar: profile.photos[0].value,
+            },
+          });
+        }
+
+        // Pass user to the next middleware
+        return cb(null, user);
+      } catch (error) {
+        console.error("Error in GoogleStrategy callback:", error);
+        return cb(error, null);
+      }
+    }
+  )
+);
+
+// Serialize and deserialize user (required for persistent login sessions)
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser(async (id, done) => {
+  const user = await prisma.user.findUnique({ where: { id } });
+  done(null, user);
+});
+
+app.get(
+  "/api/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+app.get(
+  "/api/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function (req, res) {
+    // Successful authentication, redirect to the React app
+    res.redirect("http://localhost:5173");
+  }
+);
+
+//
+//
 //
 //
 // server debugging
