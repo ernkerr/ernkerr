@@ -28,7 +28,7 @@ const prisma = new PrismaClient();
 // add session middleware for session support (Login w google)
 app.use(
   session({
-    secret: "p3V7OM0FrwkrI+RUXlwkTaM26lDjQ//RXs/DyhaQFBA=", // Replace with a secure secret
+    secret: process.env.AUTH_SECRET, // Replace with a secure secret
     resave: false, // Prevents session resave if unmodified
     saveUninitialized: false, // Does not save empty sessions
     cookie: {
@@ -55,15 +55,13 @@ app.use(passport.session()); // Enables persistent login sessions
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "223300956871-pg91sll1n7ndbe7mqg8d02gvet8c5ol2.apps.googleusercontent.com",
-      clientSecret: "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",
+      clientID: process.env.AUTH_GOOGLE_ID,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
       callbackURL: "http://localhost:3000/api/auth/google/callback",
     },
 
     async (accessToken, refreshToken, profile, cb) => {
       try {
-        console.log("Google OAuth Callback Triggered");
         console.log("Access Token:", accessToken);
         console.log("Refresh Token:", refreshToken);
         console.log("Profile Object:", JSON.stringify(profile, null, 2));
