@@ -52,6 +52,21 @@ app.use(passport.session()); // Enables persistent login sessions
 // console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
 // console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
 
+app.get(
+  "/api/auth/google",
+  (req, res, next) => {
+    // if the tripId is provided store it in the session
+    if (req.query.tripId) {
+      req.session.tripId = req.query.tripId;
+      console.log("set tripId in session: ", req.query.tripId);
+    } else {
+      console.log("No tripId in query parameters.");
+    }
+    next();
+  },
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
 passport.use(
   new GoogleStrategy(
     {
@@ -60,26 +75,47 @@ passport.use(
       callbackURL: "http://localhost:3000/api/auth/google/callback",
     },
 
-    async (accessToken, refreshToken, profile, cb) => {
+    async (accessToken, refreshToken, req, profile, cb) => {
       try {
-        console.log("Access Token:", accessToken);
-        console.log("Refresh Token:", refreshToken);
-        console.log("Profile Object:", JSON.stringify(profile, null, 2));
+        console.log("Inside Google strategy callback");
+        const tripId = req.session.tripId;
+        console.log("Retrieved tripId from session:", tripId); // Log tripId
+        console.log("User Profile:", profile);
 
         // Check if user exists in the database
         let user = await prisma.user.findUnique({
           where: { googleId: profile.id },
         });
 
+        if (user) {
+          console.log("User found in database:", user);
+        } else {
+          console.log("No user found, creating a new user");
+        }
+
+        // if a user already exists, update their record to asssociate them w the trip
+        if (tripId && !user.tripId) {
+          console.log("Updating user with tripId:", tripId); // Log update
+
+          user = await prisma.user.update({
+            where: { id: user.id },
+            data: { trip: { connect: { id: tripId } } },
+          });
+        }
+
         // If not, create a new user
         if (!user) {
-          console.log("User not found. Creating new user...");
+          console.log(
+            "User not found. Creating new user with tripId: ",
+            tripId
+          );
           user = await prisma.user.create({
             data: {
               googleId: profile.id,
               email: profile.emails[0].value,
               name: profile.displayName,
               avatar: profile.photos[0].value,
+              ...(tripId && { trip: { connect: { id: tripId } } }), // Connect to trip if tripId exists
             },
           });
         }
@@ -102,22 +138,50 @@ passport.deserializeUser(async (id, done) => {
 });
 
 app.get(
-  "/api/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
-
-app.get(
   "/api/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
-  function (req, res) {
-    // Successful authentication, redirect to the React app
-    res.redirect("http://localhost:5173");
+  async (req, res) => {
+    // make sure that req.user contains the logged in user's details
+    const userId = req.user.id;
+    console.log("userId: ", user.id);
+    console.log("Authentication successful, redirecting to user profile...");
+    // redirect to the userPage
+    res.redirect(`http://localhost:5173/user/${userId}`);
   }
 );
 
+// fetch a user's trips (!)
 //
 //
+// GET route to retrieve trips by their userId
+app.get("/api/user/:userId", async (req, res) => {
+  console.log("Logged-in user details:", req.user); // Debugging
+
+  const { userId } = req.params;
+  console.log("Fetching trips for userId:", userId); // Log userId from request
+
+  try {
+    const userTrips = await prisma.user.findUnique({
+      where: { id: userId },
+      include: { trip: true },
+    });
+
+    if (userTrips) {
+      console.log("User trips fetched:", userTrips);
+      res.json(userTrips); // Send the trip data as JSON
+    } else {
+      console.log("No trips found for userId:", userId);
+      res.status(404).json({ error: "trips not found" });
+    }
+  } catch (error) {
+    console.error("Error retrieving trip:", error);
+    res.status(500).json({ error: "Failed to retrieve trip" });
+  }
+});
 //
+
+//
+
 //
 // server debugging
 console.log("Starting server setup...");
@@ -308,6 +372,7 @@ app.get("/api/trip/:tripId/:adminId", async (req, res) => {
 
 //
 //
+
 //
 //
 //

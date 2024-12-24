@@ -5,6 +5,7 @@ import { TripContextProvider } from "@components/TripContext"; // Adjust path if
 import HomePage from "./pages/HomePage.jsx";
 import TripPage from "./pages/TripPage.jsx";
 import NewTripForm from "@components/NewTripForm/NewTripForm.jsx";
+import UserPage from "./pages/UserPage.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/trip/create",
     element: <NewTripForm />,
+  },
+  {
+    path: "/trip/:userId",
+    element: <UserPage />,
   },
 ]);
 
