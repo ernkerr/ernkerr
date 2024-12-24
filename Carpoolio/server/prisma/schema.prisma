@@ -35,6 +35,8 @@ model Trip {
   lighterGlowColor     String?
   transparentGlowColor String? @default("#4bfe4b52")
   cars                 Car[] // one-to-many relationship with Car
+  users                 User[] // one-to-many relationship with Car
+
 }
 
 model Car {
@@ -65,6 +67,8 @@ model User {
   email    String  @unique
   name     String?
   avatar   String?
+  tripId           String // Foreign key linking to Trip
+  trip             Trip   @relation(fields: [tripId], references: [tripId]) 
 }
 
 
