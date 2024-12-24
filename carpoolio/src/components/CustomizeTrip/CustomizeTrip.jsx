@@ -31,7 +31,7 @@ export default function CustomizeTrip({ isAdmin }) {
   const [isAddress, setIsAddress] = useState(
     formData?.destination?.location != null
   ); // set initial state based on initial destination
-  //
+
   const [isCustomizingCar, setIsCustomizingCar] = useState(false);
   const [activeCarIndex, setActiveCarIndex] = useState(null);
   const [isNewCarVisible, setIsNewCarVisible] = useState(false);
@@ -45,11 +45,6 @@ export default function CustomizeTrip({ isAdmin }) {
   useEffect(() => {
     // once address changes setIsAddress based on the new value of destination;
     setIsAddress(formData?.destination?.location != null);
-    // console.log("is address? ", isAddress);
-    // if (!isAddress) {
-    //   console.log({ el: selectDestinationInputRef.current });
-    //   selectDestinationInputRef.current?.focus();
-    // }
     console.log(
       "destination location changed: ",
       formData?.destination?.location
@@ -59,8 +54,6 @@ export default function CustomizeTrip({ isAdmin }) {
   const handleEditDestination = () => {
     setIsAddress(false); // remove map, location, icon, etc.
   };
-
-  // const selectDestinationInputRef = useRef();
 
   const handleGetDirections = () => {
     const destination = encodeURIComponent(
@@ -105,12 +98,6 @@ export default function CustomizeTrip({ isAdmin }) {
     boxShadow: `inset 0 0 5px ${formData?.glowColor}, 0 0 10px ${formData?.glowColor}, 0 0 15px ${formData?.lighterGlowColor}`,
   };
 
-  // style for modal
-  // const modalStyle = {
-  //   backgroundImage: `url(${formData?.tripBackground?.path || bluegoo})`,
-  //   backgroundPosition: "center",
-  // };
-
   // sync changes in backend
   useEffect(
     () => {
@@ -138,19 +125,12 @@ export default function CustomizeTrip({ isAdmin }) {
             console.error("Error response from server:", error.response);
             console.error("Error status code:", error.response.status);
             console.error("Error details:", error.response.data);
-            // Log the full error response for debugging
             console.error("Server error details: ", error.response);
           } else {
             console.error("Network or other error: ", error);
           }
         }
       };
-
-      // console.log("Axios configuration:", {
-      //   baseURL: API_BASE_URL,
-      //   url: `${API_BASE_URL}/api/trip/${formData.tripId}`,
-      //   data: formData,
-      // });
 
       const debounceTimer = setTimeout(() => {
         updateTripDetails(); // call after the debounce time

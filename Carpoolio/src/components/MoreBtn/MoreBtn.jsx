@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { TripContext } from "@components/TripContext";
 import { formResponseStyle, glowBtn, glowBorder } from "@styles/styles";
 import { Twirl as Hamburger } from "hamburger-react";
@@ -25,12 +25,14 @@ export default function MoreBtn({
   const navigate = useNavigate();
 
   const { formData, setFormData } = useContext(TripContext);
-
+  const { tripId } = useParams();
   const [isOpen, setOpen] = useState(false);
 
   const handleEditTrip = () => {
     setOpen(false);
     togglePreview();
+    console.log("from MoreBtn tripId: ", tripId);
+    console.log("URL: ", `${API_BASE_URL}/api/auth/google?tripId=${tripId}`);
   };
 
   const handleShareTrip = () => {
@@ -38,8 +40,18 @@ export default function MoreBtn({
     setIsInviteModalVisible(true);
   };
 
+  // make sure that tripId is being sent as apart of the query string during the login request
+  // const handleLogin = () => {
+  //   // console.log("from MoreBtn tripId: ", tripId);
+  //   // const tripId = formData.tripId;
+  //   // window.location.href = `${API_BASE_URL}/api/auth/google`; // Redirect to your backend login endpoint
+  //   window.location.href = `${API_BASE_URL}/api/auth/google?tripId=${tripId}`;
+  //   console.log("from MoreBtn tripId: ", tripId);
+  // };
+
+  // trigger a redirect to the OAuth google login route with the tripId passed as a query parameter
   const handleLogin = () => {
-    window.location.href = `${API_BASE_URL}/api/auth/google`; // Redirect to your backend login endpoint
+    window.location.href = `${API_BASE_URL}/api/auth/google?tripId=${tripId}`;
   };
 
   return (
