@@ -16,13 +16,24 @@ if (!process.env.POSTGRES_PRISMA_URL) {
   console.error("DATABASE_URL not set in environment variables!");
   process.exit(1);
 }
+
+const prisma = new PrismaClient();
 const app = express(); // create an app instance
 app.use(express.json()); // middleware to parse data
-const prisma = new PrismaClient();
+
+const corsOptions = {
+  origin: [
+    "https://carpoolio.vercel.app",
+    "http://localhost:5173",
+    "https://www.carpoolio.co",
+    "https://carpoolio.co",
+  ], // frontend url, change to domain later
+  methods: ["GET", "POST", "PUT", "DELETE"],
+};
+app.use(cors(corsOptions));
 
 //
 //
-
 //
 //
 // add session middleware for session support (Login w google)
@@ -39,46 +50,38 @@ app.use(
   })
 );
 
+// Initialize Passport.js
+app.use(passport.initialize());
+app.use(passport.session()); // Enables persistent login sessions
+
 console.log("Session Middleware Registered");
 console.log("Passport Middleware Initialized");
 console.log("Routes Registered");
 
-// Initialize Passport.js
-app.use(passport.initialize());
-app.use(passport.session()); // Enables persistent login sessions
+app.use((req, res, next) => {
+  console.log("Session Data Middleware:", req.session);
+  next();
+});
 //
 //
 // o auth
 // console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
 // console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
 
-app.get(
-  "/api/auth/google",
-  (req, res, next) => {
-    // if the tripId is provided store it in the session
-    if (req.query.tripId) {
-      req.session.tripId = req.query.tripId;
-      console.log("set tripId in session: ", req.query.tripId);
-    } else {
-      console.log("No tripId in query parameters.");
-    }
-    next();
-  },
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
-
+// after the user logs in the calllback should correctly update the usr and associate them with the tripId stored in the session
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
       callbackURL: "http://localhost:3000/api/auth/google/callback",
+      passReqToCallback: true, // Pass the `req` object to the callback
     },
 
     async (accessToken, refreshToken, req, profile, cb) => {
       try {
-        console.log("Inside Google strategy callback");
         const tripId = req.session.tripId;
+        console.log("Inside Google strategy callback");
         console.log("Retrieved tripId from session:", tripId); // Log tripId
         console.log("User Profile:", profile);
 
@@ -89,8 +92,27 @@ passport.use(
 
         if (user) {
           console.log("User found in database:", user);
+          // console.log("Updating user with tripId:", tripId); // Log update
+
+          // user = await prisma.user.update({
+          //   where: { id: user.id },
+          //   data: { trip: { connect: { id: tripId } } },
+          // });
         } else {
           console.log("No user found, creating a new user");
+          // {console.log(
+          //   "User not found. Creating new user with tripId: ",
+          //   tripId
+          // );
+          // user = await prisma.user.create({
+          //   data: {
+          //     googleId: profile.id,
+          //     email: profile.emails[0].value,
+          //     name: profile.displayName,
+          //     avatar: profile.photos[0].value,
+          //     ...(tripId && { trip: { connect: { id: tripId } } }), // Connect to trip if tripId exists
+          //   },
+          // });}
         }
 
         // if a user already exists, update their record to asssociate them w the trip
@@ -138,13 +160,31 @@ passport.deserializeUser(async (id, done) => {
 });
 
 app.get(
+  "/api/auth/google",
+  (req, res, next) => {
+    console.log("Session data before storing tripId:", req.session);
+    // if the tripId is provided store it in the session
+    if (req.query.tripId) {
+      req.session.tripId = req.query.tripId;
+      console.log("set tripId in session: ", req.query.tripId);
+    } else {
+      console.log("No tripId in query parameters.");
+    }
+    next();
+  },
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+app.get(
   "/api/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   async (req, res) => {
+    console.log("Authenticated user: ", req.user);
+
     // make sure that req.user contains the logged in user's details
     const userId = req.user.id;
-    console.log("userId: ", user.id);
     console.log("Authentication successful, redirecting to user profile...");
+    console.log("userId: ", user.id);
     // redirect to the userPage
     res.redirect(`http://localhost:5173/user/${userId}`);
   }
@@ -199,12 +239,6 @@ app
   });
 
 console.log("Server setup complete.");
-
-const corsOptions = {
-  origin: ["https://carpoolio.vercel.app", "http://localhost:5173"], // frontend url, change to domain later
-  methods: ["GET", "POST", "PUT", "DELETE"],
-};
-app.use(cors(corsOptions));
 
 // create a new trip in the backend
 app.post("/api/trip", async (req, res) => {
