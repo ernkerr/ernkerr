@@ -21,8 +21,6 @@ const prisma = new PrismaClient();
 const app = express(); // create an app instance
 app.use(express.json()); // middleware to parse data
 
-app.options("*", cors(corsOptions));
-
 const corsOptions = {
   origin: [
     "https://carpoolio.vercel.app",
@@ -33,7 +31,7 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 };
 app.use(cors(corsOptions));
-
+// app.options("*", cors(corsOptions));
 //
 //
 //
@@ -45,7 +43,7 @@ app.use(
     resave: false, // Prevents session resave if unmodified
     saveUninitialized: false, // Does not save empty sessions
     cookie: {
-      secure: false, // Set to true if using HTTPS
+      secure: true, // Set to true if using HTTPS
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     },
