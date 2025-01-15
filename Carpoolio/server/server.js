@@ -21,6 +21,8 @@ const prisma = new PrismaClient();
 const app = express(); // create an app instance
 app.use(express.json()); // middleware to parse data
 
+app.options("*", cors(corsOptions));
+
 const corsOptions = {
   origin: [
     "https://carpoolio.vercel.app",
@@ -28,7 +30,7 @@ const corsOptions = {
     "https://www.carpoolio.co",
     "https://carpoolio.co",
   ], // frontend url, change to domain later
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 };
 app.use(cors(corsOptions));
 
@@ -69,156 +71,156 @@ app.use((req, res, next) => {
 // console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
 
 // after the user logs in the calllback should correctly update the usr and associate them with the tripId stored in the session
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.AUTH_GOOGLE_ID,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET,
-      callbackURL: "http://localhost:3000/api/auth/google/callback",
-      passReqToCallback: true, // Pass the `req` object to the callback
-    },
+// passport.use(
+//   new GoogleStrategy(
+//     {
+//       clientID: process.env.AUTH_GOOGLE_ID,
+//       clientSecret: process.env.AUTH_GOOGLE_SECRET,
+//       callbackURL: "http://localhost:3000/api/auth/google/callback",
+//       passReqToCallback: true, // Pass the `req` object to the callback
+//     },
 
-    async (accessToken, refreshToken, req, profile, cb) => {
-      try {
-        const tripId = req.session.tripId;
-        console.log("Inside Google strategy callback");
-        console.log("Retrieved tripId from session:", tripId); // Log tripId
-        console.log("User Profile:", profile);
+//     async (accessToken, refreshToken, req, profile, cb) => {
+//       try {
+//         const tripId = req.session.tripId;
+//         console.log("Inside Google strategy callback");
+//         console.log("Retrieved tripId from session:", tripId); // Log tripId
+//         console.log("User Profile:", profile);
 
-        // Check if user exists in the database
-        let user = await prisma.user.findUnique({
-          where: { googleId: profile.id },
-        });
+//         // Check if user exists in the database
+//         let user = await prisma.user.findUnique({
+//           where: { googleId: profile.id },
+//         });
 
-        if (user) {
-          console.log("User found in database:", user);
-          // console.log("Updating user with tripId:", tripId); // Log update
+//         if (user) {
+//           console.log("User found in database:", user);
+//           // console.log("Updating user with tripId:", tripId); // Log update
 
-          // user = await prisma.user.update({
-          //   where: { id: user.id },
-          //   data: { trip: { connect: { id: tripId } } },
-          // });
-        } else {
-          console.log("No user found, creating a new user");
-          // {console.log(
-          //   "User not found. Creating new user with tripId: ",
-          //   tripId
-          // );
-          // user = await prisma.user.create({
-          //   data: {
-          //     googleId: profile.id,
-          //     email: profile.emails[0].value,
-          //     name: profile.displayName,
-          //     avatar: profile.photos[0].value,
-          //     ...(tripId && { trip: { connect: { id: tripId } } }), // Connect to trip if tripId exists
-          //   },
-          // });}
-        }
+//           // user = await prisma.user.update({
+//           //   where: { id: user.id },
+//           //   data: { trip: { connect: { id: tripId } } },
+//           // });
+//         } else {
+//           console.log("No user found, creating a new user");
+//           // {console.log(
+//           //   "User not found. Creating new user with tripId: ",
+//           //   tripId
+//           // );
+//           // user = await prisma.user.create({
+//           //   data: {
+//           //     googleId: profile.id,
+//           //     email: profile.emails[0].value,
+//           //     name: profile.displayName,
+//           //     avatar: profile.photos[0].value,
+//           //     ...(tripId && { trip: { connect: { id: tripId } } }), // Connect to trip if tripId exists
+//           //   },
+//           // });}
+//         }
 
-        // if a user already exists, update their record to asssociate them w the trip
-        if (tripId && !user.tripId) {
-          console.log("Updating user with tripId:", tripId); // Log update
+//         // if a user already exists, update their record to asssociate them w the trip
+//         if (tripId && !user.tripId) {
+//           console.log("Updating user with tripId:", tripId); // Log update
 
-          user = await prisma.user.update({
-            where: { id: user.id },
-            data: { trip: { connect: { id: tripId } } },
-          });
-        }
+//           user = await prisma.user.update({
+//             where: { id: user.id },
+//             data: { trip: { connect: { id: tripId } } },
+//           });
+//         }
 
-        // If not, create a new user
-        if (!user) {
-          console.log(
-            "User not found. Creating new user with tripId: ",
-            tripId
-          );
-          user = await prisma.user.create({
-            data: {
-              googleId: profile.id,
-              email: profile.emails[0].value,
-              name: profile.displayName,
-              avatar: profile.photos[0].value,
-              ...(tripId && { trip: { connect: { id: tripId } } }), // Connect to trip if tripId exists
-            },
-          });
-        }
+//         // If not, create a new user
+//         if (!user) {
+//           console.log(
+//             "User not found. Creating new user with tripId: ",
+//             tripId
+//           );
+//           user = await prisma.user.create({
+//             data: {
+//               googleId: profile.id,
+//               email: profile.emails[0].value,
+//               name: profile.displayName,
+//               avatar: profile.photos[0].value,
+//               ...(tripId && { trip: { connect: { id: tripId } } }), // Connect to trip if tripId exists
+//             },
+//           });
+//         }
 
-        // Pass user to the next middleware
-        return cb(null, user);
-      } catch (error) {
-        console.error("Error in GoogleStrategy callback:", error);
-        return cb(error, null);
-      }
-    }
-  )
-);
+//         // Pass user to the next middleware
+//         return cb(null, user);
+//       } catch (error) {
+//         console.error("Error in GoogleStrategy callback:", error);
+//         return cb(error, null);
+//       }
+//     }
+//   )
+// );
 
-// Serialize and deserialize user (required for persistent login sessions)
-passport.serializeUser((user, done) => done(null, user.id));
-passport.deserializeUser(async (id, done) => {
-  const user = await prisma.user.findUnique({ where: { id } });
-  done(null, user);
-});
+// // Serialize and deserialize user (required for persistent login sessions)
+// passport.serializeUser((user, done) => done(null, user.id));
+// passport.deserializeUser(async (id, done) => {
+//   const user = await prisma.user.findUnique({ where: { id } });
+//   done(null, user);
+// });
 
-app.get(
-  "/api/auth/google",
-  (req, res, next) => {
-    console.log("Session data before storing tripId:", req.session);
-    // if the tripId is provided store it in the session
-    if (req.query.tripId) {
-      req.session.tripId = req.query.tripId;
-      console.log("set tripId in session: ", req.query.tripId);
-    } else {
-      console.log("No tripId in query parameters.");
-    }
-    next();
-  },
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
+// app.get(
+//   "/api/auth/google",
+//   (req, res, next) => {
+//     console.log("Session data before storing tripId:", req.session);
+//     // if the tripId is provided store it in the session
+//     if (req.query.tripId) {
+//       req.session.tripId = req.query.tripId;
+//       console.log("set tripId in session: ", req.query.tripId);
+//     } else {
+//       console.log("No tripId in query parameters.");
+//     }
+//     next();
+//   },
+//   passport.authenticate("google", { scope: ["profile", "email"] })
+// );
 
-app.get(
-  "/api/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
-  async (req, res) => {
-    console.log("Authenticated user: ", req.user);
+// app.get(
+//   "/api/auth/google/callback",
+//   passport.authenticate("google", { failureRedirect: "/login" }),
+//   async (req, res) => {
+//     console.log("Authenticated user: ", req.user);
 
-    // make sure that req.user contains the logged in user's details
-    const userId = req.user.id;
-    console.log("Authentication successful, redirecting to user profile...");
-    console.log("userId: ", user.id);
-    // redirect to the userPage
-    res.redirect(`http://localhost:5173/user/${userId}`);
-  }
-);
+//     // make sure that req.user contains the logged in user's details
+//     const userId = req.user.id;
+//     console.log("Authentication successful, redirecting to user profile...");
+//     console.log("userId: ", user.id);
+//     // redirect to the userPage
+//     res.redirect(`http://localhost:5173/user/${userId}`);
+//   }
+// );
 
-// fetch a user's trips (!)
-//
-//
-// GET route to retrieve trips by their userId
-app.get("/api/user/:userId", async (req, res) => {
-  console.log("Logged-in user details:", req.user); // Debugging
+// // fetch a user's trips (!)
+// //
+// //
+// // GET route to retrieve trips by their userId
+// app.get("/api/user/:userId", async (req, res) => {
+//   console.log("Logged-in user details:", req.user); // Debugging
 
-  const { userId } = req.params;
-  console.log("Fetching trips for userId:", userId); // Log userId from request
+//   const { userId } = req.params;
+//   console.log("Fetching trips for userId:", userId); // Log userId from request
 
-  try {
-    const userTrips = await prisma.user.findUnique({
-      where: { id: userId },
-      include: { trip: true },
-    });
+//   try {
+//     const userTrips = await prisma.user.findUnique({
+//       where: { id: userId },
+//       include: { trip: true },
+//     });
 
-    if (userTrips) {
-      console.log("User trips fetched:", userTrips);
-      res.json(userTrips); // Send the trip data as JSON
-    } else {
-      console.log("No trips found for userId:", userId);
-      res.status(404).json({ error: "trips not found" });
-    }
-  } catch (error) {
-    console.error("Error retrieving trip:", error);
-    res.status(500).json({ error: "Failed to retrieve trip" });
-  }
-});
-//
+//     if (userTrips) {
+//       console.log("User trips fetched:", userTrips);
+//       res.json(userTrips); // Send the trip data as JSON
+//     } else {
+//       console.log("No trips found for userId:", userId);
+//       res.status(404).json({ error: "trips not found" });
+//     }
+//   } catch (error) {
+//     console.error("Error retrieving trip:", error);
+//     res.status(500).json({ error: "Failed to retrieve trip" });
+//   }
+// });
+// //
 
 //
 
