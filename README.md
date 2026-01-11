@@ -1,4 +1,7 @@
-## Hi there I'm Erin but my friends call me ern : - ) 
+## Hi there I'm Erin but my friends call me ern : - )
+
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
 
 <!--
 **ernkerr/ernkerr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
