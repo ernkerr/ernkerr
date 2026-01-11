@@ -1,39 +1,27 @@
 ## Hi there I'm Erin but my friends call me ern : - )
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-0%20secs-blue?style=flat)
-
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue?style=flat)
 
-**🐱 My GitHub Data** 
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-1.93%20million%20lines%20of%20code-blue?style=flat)
 
-> 📦 647.1 kB Used in GitHub's Storage 
- > 
-> 🏆 19 Contributions in the Year 2026
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 13 Public Repositories 
- > 
-> 🔑 13 Private Repositories 
- > 
 **I'm an Early 🐤** 
 
 ```text
-🌞 Morning                649 commits         ██████░░░░░░░░░░░░░░░░░░░   25.36 % 
-🌆 Daytime                1307 commits        █████████████░░░░░░░░░░░░   51.07 % 
-🌃 Evening                548 commits         █████░░░░░░░░░░░░░░░░░░░░   21.41 % 
+🌞 Morning                649 commits         ██████░░░░░░░░░░░░░░░░░░░   25.35 % 
+🌆 Daytime                1307 commits        █████████████░░░░░░░░░░░░   51.05 % 
+🌃 Evening                549 commits         █████░░░░░░░░░░░░░░░░░░░░   21.45 % 
 🌙 Night                  55 commits          █░░░░░░░░░░░░░░░░░░░░░░░░   02.15 % 
 ```
 📅 **I'm Most Productive on Tuesday** 
 
 ```text
-Monday                   489 commits         █████░░░░░░░░░░░░░░░░░░░░   19.11 % 
+Monday                   489 commits         █████░░░░░░░░░░░░░░░░░░░░   19.10 % 
 Tuesday                  496 commits         █████░░░░░░░░░░░░░░░░░░░░   19.38 % 
 Wednesday                399 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.59 % 
-Thursday                 444 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.35 % 
+Thursday                 444 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.34 % 
 Friday                   365 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.26 % 
-Saturday                 172 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   06.72 % 
+Saturday                 173 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   06.76 % 
 Sunday                   194 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   07.58 % 
 ```
 
@@ -68,12 +56,8 @@ Swift                    1 repo              █░░░░░░░░░░�
 
 
 
-**Timeline**
 
-![Lines of Code chart](https://raw.githubusercontent.com/ernkerr/ernkerr/main/assets/bar_graph.png)
-
-
- Last Updated on 11/01/2026 05:18:12 UTC
+ Last Updated on 11/01/2026 05:44:14 UTC
 <!--END_SECTION:waka-->
 
 <!--
