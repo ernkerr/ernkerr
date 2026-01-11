@@ -1,4 +1,4 @@
-## Hi there 👋
+## Hi there I'm Erin but my friends call me ern : - ) 
 
 <!--
 **ernkerr/ernkerr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
