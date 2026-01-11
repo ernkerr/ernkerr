@@ -19,3 +19,4 @@ jobs:
           BADGE_STYLE: "for-the-badge"
           SHOW_SHORT_INFO: "False"
           SHOW_TOTAL_CODE_TIME: "False"
+          SHOW_PROFILE_VIEWS: "False"
