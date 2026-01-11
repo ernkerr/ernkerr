@@ -1,7 +1,5 @@
 ## Hi there I'm Erin but my friends call me ern : - )
 
-![Visitor Count](https://profile-counter.glitch.me/{ernkerr}/count.svg)
-
 <!--START_SECTION:waka-->
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue?style=flat)
@@ -60,6 +58,8 @@ Swift                    1 repo              █░░░░░░░░░░�
 Last Updated on 11/01/2026 05:44:14 UTC
 
 <!--END_SECTION:waka-->
+
+![](https://komarev.com/ghpvc/?username=ernkerr&style=for-the-badge&abbreviated=true)
 
 <!--
 **ernkerr/ernkerr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
