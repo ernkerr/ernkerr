@@ -42,6 +42,7 @@ Swift                    1 repo              █░░░░░░░░░░�
 
 ![](https://komarev.com/ghpvc/?username=ernkerr&style=for-the-badge&abbreviated=true)
 
+@erin.codes 
 <!--
 **ernkerr/ernkerr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
