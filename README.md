@@ -1,6 +1,8 @@
-## Hi, I'm Erin 👋 
+## Hi, I'm Erin ⋆˙⟡
 
-📍SF |
+Full-stack engineer building thoughtful software.
+
+
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
@@ -14,11 +16,64 @@
 ![SwiftUI](https://img.shields.io/badge/SwiftUI-0062FF?style=for-the-badge&logo=swift&logoColor=white)
 ![Web](https://img.shields.io/badge/Web-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)
 
-# Current Projects 
-
-(close sources) 
+# What I Do 
 
 
+- Ship products from 0 → revenue
+- Build MVPs fast (without building tech debt bombs)
+- Design + engineer end-to-end
+- Turn vague ideas into real shipped features
+
+# Current Projects ✰ 
+
+✎ <br>
+[Automate Blogging](https://www.automateblogging.com) - AI writing companion
+
+⩇:⩇⩇ <br>
+Timestamp Overlay - Automate timelapse timestamping using embedded file metadata
+
+♫ <br>
+Group Sing Along - Lyrics synced in real time  
+ 
+♥ <br>
+Hearts Score Tracker - 
+
+♦ <br>
+Gin Score Tracker - 
+ 
+⛟ <br>
+Carpoolio - Acquired; Coordinate rides to large events
+
+
+👆🏿<br>
+AutoClicker - Automating repetitive clicks on macOS
+
+`⚡︎` 
+ 🃁
+ •ᴗ•
+
+(close sources) ⋆✴︎˚｡⋆
+
+‧₊˚ ⋅  𓐐𓎩 ‧₊˚ ⋅
+🐾
+⍨
+✂
+⍥ 
+✦
+✧ 
+⛓
+✰
+✤
+✣
+✴
+✱
+✽
+❋
+
+WIP 
+`❄` Snow Tycoon - Waitlist 
+`⛷` 
+Live tracking for lift wait times 
 
 <!--START_SECTION:waka-->
 ![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-2.06%20million%20lines%20of%20code-blue?style=flat)
