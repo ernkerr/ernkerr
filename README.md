@@ -52,7 +52,7 @@ Timestamp Overlay - Automate timelapse timestamping using embedded file metadata
 [Carpoolio](https://www.erinkerr.me/carpoolio) - Acquired; Coordinate rides to large events
 
 
-👆🏿<br>
+<br>
 AutoClicker - Automating repetitive clicks on macOS
 <br>
 <br>
