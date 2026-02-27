@@ -37,7 +37,7 @@ Full-stack engineer building thoughtful software.<br>
 [Automate Blogging](https://www.automateblogging.com) - AI writing companion
 
 ⩇:⩇⩇ <br>
-Timestamp Overlay - Automate timelapse timestamping using embedded file metadata
+[Timestamp Overlay](https://github.com/ernkerr/timelapse-timestamps) - Automate timelapse timestamping using embedded file metadata
 
 ♫ <br>
 [Group Sing Along](https://groupsingalong.com/) - Lyrics synced in real time  
