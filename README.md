@@ -8,15 +8,12 @@ Full-stack engineer building thoughtful software.<br>
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
 ![React Native](https://img.shields.io/badge/React%20Native-20232A?style=for-the-badge&logo=react)
 ![Swift](https://img.shields.io/badge/Swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white)
-<br>
 ![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white)
 ![Fast API](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![Codex](https://img.shields.io/badge/Codex-000000?style=for-the-badge)
 ![ClaudeCode](https://img.shields.io/badge/Claude_Code-555?style=for-the-badge&logo=claude)
-
-
 ![CLI](https://img.shields.io/badge/CLI-000000?style=for-the-badge&logo=gnubash&logoColor=white)
 ![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)
 ![Web](https://img.shields.io/badge/Web-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)
@@ -26,10 +23,9 @@ Full-stack engineer building thoughtful software.<br>
 ## What I Do 𓂃𓊝
 
 
-- Ship products from 0 → revenue
-- Build MVPs fast (without building tech debt bombs)
-- Design + engineer end-to-end
-- Turn vague ideas into real products
+Shipping products from 0 → revenue
+<br>
+see my [portfolio](https://www.erinkerr.me/) 
 
 # Current Projects ✰ 
 
@@ -48,14 +44,15 @@ Full-stack engineer building thoughtful software.<br>
 ♦ <br>
 [Gin Score Tracker](https://apps.apple.com/us/app/gin-score-tracker/id6746460027) - A new way to track your Gin Rummy games
  
+
+✧ <br>
+[AutoClicker](https://github.com/ernkerr/autoclicker) - Automating repetitive clicks on macOS
+
 ⛟ <br>
 [Carpoolio](https://www.erinkerr.me/carpoolio) - Acquired; Coordinate rides to large events
 
 
 
-
-✧ <br>
-[AutoClicker](https://github.com/ernkerr/autoclicker) - Automating repetitive clicks on macOS
 
 <br>
 <br>
