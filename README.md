@@ -55,6 +55,9 @@ see my [portfolio](https://www.erinkerr.me/)
 
 <br>
 <br>
+    
+[![Git Racer Stats](https://git-racer.vercel.app/api/badge/ernkerr?theme=dark#gh-dark-mode-only)](https://git-racer.vercel.app)
+
 
 # Current Focus ✰ 
 
