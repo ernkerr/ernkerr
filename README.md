@@ -20,7 +20,7 @@ Full-stack engineer building thoughtful software.<br>
 
 
 
-## What I Do 𓂃𓊝
+# What I Do 𓂃𓊝
 
 
 Shipping products from 0 → revenue
@@ -52,12 +52,7 @@ see my [portfolio](https://www.erinkerr.me/)
 [Carpoolio](https://www.erinkerr.me/carpoolio) - Acquired; Coordinate rides to large events
 
 
-
 <br>
-<br>
-    
-[![Git Racer Stats](https://git-racer.vercel.app/api/badge/ernkerr?theme=dark#gh-dark-mode-only)](https://git-racer.vercel.app)
-
 
 # Current Focus ✰ 
 
@@ -71,6 +66,10 @@ Shipping more than I talk about. <br>
 hello@erinkerr.me
 
 #  
+
+    
+[![Git Racer Stats](https://git-racer.vercel.app/api/badge/ernkerr?theme=dark#gh-dark-mode-only)](https://git-racer.vercel.app)
+
 
 
 <!--START_SECTION:waka-->
