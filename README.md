@@ -1,6 +1,6 @@
 # Hi, I'm Erin ⋆˙⟡
 
-Full-stack engineer building thoughtful software.<br>
+Full-stack engineer building thoughtful software<br>
 <br>
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -18,16 +18,23 @@ Full-stack engineer building thoughtful software.<br>
 ![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)
 ![Web](https://img.shields.io/badge/Web-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)
 
-
-
 # What I Do 𓂃𓊝
 
 
 Shipping products from 0 → revenue
 <br>
 see my [portfolio](https://www.erinkerr.me/) 
+& [cybergoose](https://www.cybergoose.org/) 
+
 
 # Current Projects ✰ 
+
+⚑ <br>
+[Git Racer](https://git-racer.vercel.app/) - Race your friends, race famous developers, and turn your GitHub contributions into a competitive sport
+
+𓁿 <br>
+[ASCII cam](https://ascii-cam.com/) - A real-time webcam to ASCII art converter
+
 
 ✎ <br>
 [Automate Blogging](https://www.automateblogging.com) - AI writing companion
@@ -36,22 +43,27 @@ see my [portfolio](https://www.erinkerr.me/)
 [Timestamp Overlay](https://github.com/ernkerr/timelapse-timestamps) - Automate timelapse timestamping using embedded file metadata
 
 ♫ <br>
-[Group Sing Along](https://groupsingalong.com/) - Lyrics synced in real time  
+[Group Sing Along](https://groupsingalong.com/) - Lyrics synced in real-time  
  
 ♥ <br>
 [Hearts Score Tracker](https://apps.apple.com/us/app/hearts-score-tracker/id6755978632) - Replacing pen-and-paper scoring, one app at a time
 
-♦ <br>
+🂡 <br>
 [Gin Score Tracker](https://apps.apple.com/us/app/gin-score-tracker/id6746460027) - A new way to track your Gin Rummy games
  
-
 ✧ <br>
 [AutoClicker](https://github.com/ernkerr/autoclicker) - Automating repetitive clicks on macOS
 
 ⛟ <br>
-[Carpoolio](https://www.erinkerr.me/carpoolio) - Acquired; Coordinate rides to large events
+[Carpoolio](https://www.erinkerr.me/carpoolio) - Acquired; Ride coordination, like partiful for when you need a ride
 
+<br>
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://git-racer.vercel.app/api/badge/ernkerr?theme=dark">
+  <source media="(prefers-color-scheme: light)" srcset="https://git-racer.vercel.app/api/badge/ernkerr?theme=light">
+  <img alt="Git Racer Stats" src="https://git-racer.vercel.app/api/badge/ernkerr?theme=light" width="100%">
+</picture>
 <br>
 
 # Current Focus ✰ 
@@ -65,12 +77,10 @@ Shipping more than I talk about. <br>
 <br>
 hello@erinkerr.me
 
-#  
-
-    
-[![Git Racer Stats](https://git-racer.vercel.app/api/badge/ernkerr?theme=dark#gh-dark-mode-only)](https://git-racer.vercel.app)
-
-
+<br>
+‧₊˚ ⋅   ‧₊˚ ⋅
+<br>
+<br>
 
 <!--START_SECTION:waka-->
 ![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-2.67%20million%20lines%20of%20code-blue?style=flat)
@@ -134,9 +144,24 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 
 
+𓂜 ꉕ 𓁋<br>
+desk yoga 
+
+🐾<br>
+claude pets 
+
+❍ ◌ ₪<br>
+[OrderSync](https://ordersync.io/) - Contract; Email order processing agent 
+
+𓇗
+
+❍
 `⚡︎` 
+🂱
  🃁
  •ᴗ•
+ ꉕ
+ ☎
 
 (close sources) ⋆✴︎˚｡⋆
 
@@ -162,7 +187,6 @@ Here are some ideas to get you started:
 
 WIP 
 `❄` Snow Tycoon - Waitlist 
-`⛷` 
-Live tracking for lift wait times 
+`⛷` Live tracking for lift wait times 
 
 -->
