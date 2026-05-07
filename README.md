@@ -44,6 +44,9 @@ see my [portfolio](https://www.erinkerr.me/)
 
 ♫ <br>
 [Group Sing Along](https://groupsingalong.com/) - Lyrics synced in real-time  
+
+𓂜 <br>
+[Desk Yoga](https://apps.apple.com/us/app/desk-yoga-stretch-at-work/id6759360269) - Feel better at work 
  
 ♥ <br>
 [Hearts Score Tracker](https://apps.apple.com/us/app/hearts-score-tracker/id6755978632) - Replacing pen-and-paper scoring, one app at a time
