@@ -62,11 +62,11 @@ see my [portfolio](https://www.erinkerr.me/)
 
 <br>
 
-<picture>
+<a href="https://git-racer.vercel.app"><picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://git-racer.vercel.app/api/badge/ernkerr?theme=dark">
   <source media="(prefers-color-scheme: light)" srcset="https://git-racer.vercel.app/api/badge/ernkerr?theme=light">
   <img alt="Git Racer Stats" src="https://git-racer.vercel.app/api/badge/ernkerr?theme=light" width="100%">
-</picture>
+</picture></a>
 <br>
 
 # Current Focus ✰ 
