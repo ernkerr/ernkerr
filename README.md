@@ -29,6 +29,9 @@ see my [portfolio](https://www.erinkerr.me/)
 
 # Current Projects ✰ 
 
+🐾<br>
+[Claude Pets](https://github.com/ernkerr/claude-pets) - Desktop pets for your coding sessions
+
 ⚑ <br>
 [Git Racer](https://git-racer.vercel.app/) - Race your friends, race famous developers, and turn your GitHub contributions into a competitive sport
 
