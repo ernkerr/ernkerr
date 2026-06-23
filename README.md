@@ -65,10 +65,10 @@ see my [portfolio](https://www.erinkerr.me/)
 
 <br>
 
-<a href="https://git-racer.vercel.app"><picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://git-racer.vercel.app/api/badge/ernkerr?theme=dark">
-  <source media="(prefers-color-scheme: light)" srcset="https://git-racer.vercel.app/api/badge/ernkerr?theme=light">
-  <img alt="Git Racer Stats" src="https://git-racer.vercel.app/api/badge/ernkerr?theme=light" width="100%">
+<a href="https://gitracer.com"><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://gitracer.com/api/badge/ernkerr?theme=dark&tz=America%2FLos_Angeles">
+  <source media="(prefers-color-scheme: light)" srcset="https://gitracer.com/api/badge/ernkerr?theme=light&tz=America%2FLos_Angeles">
+  <img alt="Git Racer Stats" src="https://gitracer.com/api/badge/ernkerr?theme=light&tz=America%2FLos_Angeles" width="100%">
 </picture></a>
 <br>
 
