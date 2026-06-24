@@ -89,43 +89,43 @@ hello@erinkerr.me
 <br>
 
 <!--START_SECTION:waka-->
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-3.65%20million%20lines%20of%20code-blue?style=flat)
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-3.63%20million%20lines%20of%20code-blue?style=flat)
 
 **I'm an Early 🐤** 
 
 ```text
-🌞 Morning                1673 commits        ███████░░░░░░░░░░░░░░░░░░   26.45 % 
-🌆 Daytime                2661 commits        ███████████░░░░░░░░░░░░░░   42.08 % 
-🌃 Evening                1778 commits        ███████░░░░░░░░░░░░░░░░░░   28.12 % 
-🌙 Night                  212 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   03.35 % 
+🌞 Morning                1671 commits        ███████░░░░░░░░░░░░░░░░░░   26.42 % 
+🌆 Daytime                2711 commits        ███████████░░░░░░░░░░░░░░   42.87 % 
+🌃 Evening                1736 commits        ███████░░░░░░░░░░░░░░░░░░   27.45 % 
+🌙 Night                  206 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   03.26 % 
 ```
-📅 **I'm Most Productive on Sunday** 
+📅 **I'm Most Productive on Monday** 
 
 ```text
-Monday                   1317 commits        █████░░░░░░░░░░░░░░░░░░░░   20.83 % 
-Tuesday                  928 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.67 % 
-Wednesday                987 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.61 % 
-Thursday                 789 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.48 % 
-Friday                   571 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   09.03 % 
-Saturday                 369 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   05.83 % 
-Sunday                   1363 commits        █████░░░░░░░░░░░░░░░░░░░░   21.55 % 
+Monday                   1320 commits        █████░░░░░░░░░░░░░░░░░░░░   20.87 % 
+Tuesday                  975 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.42 % 
+Wednesday                1000 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.81 % 
+Thursday                 805 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.73 % 
+Friday                   580 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   09.17 % 
+Saturday                 376 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   05.95 % 
+Sunday                   1268 commits        █████░░░░░░░░░░░░░░░░░░░░   20.05 % 
 ```
 
 
 **I Mostly Code in TypeScript** 
 
 ```text
-TypeScript               24 repos            ████████████░░░░░░░░░░░░░   48.98 % 
-JavaScript               11 repos            ██████░░░░░░░░░░░░░░░░░░░   22.45 % 
-Python                   4 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   08.16 % 
-HTML                     4 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   08.16 % 
-Shell                    1 repo              █░░░░░░░░░░░░░░░░░░░░░░░░   02.04 % 
+TypeScript               25 repos            ████████████░░░░░░░░░░░░░   50.00 % 
+JavaScript               11 repos            ██████░░░░░░░░░░░░░░░░░░░   22.00 % 
+Python                   4 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   08.00 % 
+HTML                     4 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   08.00 % 
+Shell                    1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   02.00 % 
 ```
 
 
 
 
- Last Updated on 23/06/2026 20:37:54 UTC
+ Last Updated on 24/06/2026 20:22:12 UTC
 <!--END_SECTION:waka-->
 
 
