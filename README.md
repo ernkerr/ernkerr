@@ -89,28 +89,53 @@ hello@erinkerr.me
 <br>
 
 <!--START_SECTION:waka-->
+![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-737%20hrs%2057%20mins-blue?style=flat)
+
 ![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-4.05%20million%20lines%20of%20code-blue?style=flat)
 
 **I'm an Early 🐤** 
 
 ```text
-🌞 Morning                1885 commits        ██████░░░░░░░░░░░░░░░░░░░   25.75 % 
-🌆 Daytime                3150 commits        ███████████░░░░░░░░░░░░░░   43.03 % 
-🌃 Evening                2042 commits        ███████░░░░░░░░░░░░░░░░░░   27.89 % 
+🌞 Morning                1886 commits        ██████░░░░░░░░░░░░░░░░░░░   25.75 % 
+🌆 Daytime                3151 commits        ███████████░░░░░░░░░░░░░░   43.03 % 
+🌃 Evening                2042 commits        ███████░░░░░░░░░░░░░░░░░░   27.88 % 
 🌙 Night                  244 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   03.33 % 
 ```
 📅 **I'm Most Productive on Monday** 
 
 ```text
-Monday                   1606 commits        █████░░░░░░░░░░░░░░░░░░░░   21.94 % 
+Monday                   1608 commits        █████░░░░░░░░░░░░░░░░░░░░   21.96 % 
 Tuesday                  1145 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.64 % 
 Wednesday                1170 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.98 % 
-Thursday                 860 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.75 % 
+Thursday                 860 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.74 % 
 Friday                   639 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.73 % 
 Saturday                 383 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   05.23 % 
 Sunday                   1518 commits        █████░░░░░░░░░░░░░░░░░░░░   20.73 % 
 ```
 
+
+🤖 **AI Coding This Week** 
+
+```text
+⏱ AI Coding Time: 20 hrs 43 mins (100.0%)
+
+✍️ 4,677 lines written by AI, 0 lines written by hand (100.0% AI-written)
+
+🔤 97,752,878 Input Tokens, 455,440 Output Tokens
+
+💵 $505.90 Estimated AI Cost This Week
+
+🧠 172 AI Sessions, 211 AI Prompts
+
+Opus                     4,769 lines         ████████████████████████░   97.03 % 
+Composer                 146 lines           █░░░░░░░░░░░░░░░░░░░░░░░░   02.97 % 
+
+🔎 AI Coding Insights:
+🤖 AI-Driven — 100.0% of written lines came from AI
+📚 Verbose Prompter — average 60,547 characters per prompt
+🎯 One-Shot Prompter — average 1 prompts per session
+🚀 High AI Trust — 0.0% of changed lines were hand-edited
+```
 
 **I Mostly Code in TypeScript** 
 
@@ -125,7 +150,7 @@ Shell                    1 repo              ░░░░░░░░░░░�
 
 
 
- Last Updated on 26/07/2026 19:48:10 UTC
+ Last Updated on 27/07/2026 20:09:05 UTC
 <!--END_SECTION:waka-->
 
 
