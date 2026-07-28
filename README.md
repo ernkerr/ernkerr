@@ -89,50 +89,48 @@ hello@erinkerr.me
 <br>
 
 <!--START_SECTION:waka-->
-![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-737%20hrs%2057%20mins-blue?style=flat)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-4.05%20million%20lines%20of%20code-blue?style=flat)
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-4.07%20million%20lines%20of%20code-blue?style=flat)
 
 **I'm an Early 🐤** 
 
 ```text
-🌞 Morning                1886 commits        ██████░░░░░░░░░░░░░░░░░░░   25.75 % 
-🌆 Daytime                3151 commits        ███████████░░░░░░░░░░░░░░   43.03 % 
-🌃 Evening                2042 commits        ███████░░░░░░░░░░░░░░░░░░   27.88 % 
-🌙 Night                  244 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   03.33 % 
+🌞 Morning                1896 commits        ██████░░░░░░░░░░░░░░░░░░░   25.64 % 
+🌆 Daytime                3202 commits        ███████████░░░░░░░░░░░░░░   43.29 % 
+🌃 Evening                2052 commits        ███████░░░░░░░░░░░░░░░░░░   27.74 % 
+🌙 Night                  246 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   03.33 % 
 ```
 📅 **I'm Most Productive on Monday** 
 
 ```text
-Monday                   1608 commits        █████░░░░░░░░░░░░░░░░░░░░   21.96 % 
-Tuesday                  1145 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.64 % 
-Wednesday                1170 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.98 % 
-Thursday                 860 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.74 % 
-Friday                   639 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.73 % 
-Saturday                 383 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   05.23 % 
-Sunday                   1518 commits        █████░░░░░░░░░░░░░░░░░░░░   20.73 % 
+Monday                   1618 commits        █████░░░░░░░░░░░░░░░░░░░░   21.88 % 
+Tuesday                  1172 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.85 % 
+Wednesday                1196 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.17 % 
+Thursday                 862 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.65 % 
+Friday                   647 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.75 % 
+Saturday                 383 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   05.18 % 
+Sunday                   1518 commits        █████░░░░░░░░░░░░░░░░░░░░   20.52 % 
 ```
 
 
 🤖 **AI Coding This Week** 
 
 ```text
-⏱ AI Coding Time: 20 hrs 43 mins (100.0%)
+⏱ AI Coding Time: 6 hrs 31 mins (100.0%)
 
-✍️ 4,677 lines written by AI, 0 lines written by hand (100.0% AI-written)
+✍️ 3,221 lines written by AI, 0 lines written by hand (100.0% AI-written)
 
-🔤 97,752,878 Input Tokens, 455,440 Output Tokens
+🔤 38,908,566 Input Tokens, 234,235 Output Tokens
 
-💵 $505.90 Estimated AI Cost This Week
+💵 $227.17 Estimated AI Cost This Week
 
-🧠 172 AI Sessions, 211 AI Prompts
+🧠 48 AI Sessions, 64 AI Prompts
 
-Opus                     4,769 lines         ████████████████████████░   97.03 % 
-Composer                 146 lines           █░░░░░░░░░░░░░░░░░░░░░░░░   02.97 % 
+Opus                     3,579 lines         ████████████████████████░   96.08 % 
+Composer                 146 lines           █░░░░░░░░░░░░░░░░░░░░░░░░   03.92 % 
 
 🔎 AI Coding Insights:
 🤖 AI-Driven — 100.0% of written lines came from AI
-📚 Verbose Prompter — average 60,547 characters per prompt
+📚 Verbose Prompter — average 57,759 characters per prompt
 🎯 One-Shot Prompter — average 1 prompts per session
 🚀 High AI Trust — 0.0% of changed lines were hand-edited
 ```
@@ -140,17 +138,17 @@ Composer                 146 lines           █░░░░░░░░░░�
 **I Mostly Code in TypeScript** 
 
 ```text
-TypeScript               31 repos            █████████████░░░░░░░░░░░░   53.45 % 
-JavaScript               13 repos            ██████░░░░░░░░░░░░░░░░░░░   22.41 % 
-Python                   4 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   06.90 % 
-HTML                     4 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   06.90 % 
-Shell                    1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.72 % 
+TypeScript               32 repos            ██████████████░░░░░░░░░░░   54.24 % 
+JavaScript               13 repos            ██████░░░░░░░░░░░░░░░░░░░   22.03 % 
+Python                   4 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   06.78 % 
+HTML                     4 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   06.78 % 
+Shell                    1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.69 % 
 ```
 
 
 
 
- Last Updated on 27/07/2026 20:09:05 UTC
+ Last Updated on 28/07/2026 20:06:12 UTC
 <!--END_SECTION:waka-->
 
 
