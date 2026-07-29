@@ -89,50 +89,35 @@ hello@erinkerr.me
 <br>
 
 <!--START_SECTION:waka-->
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-4.07%20million%20lines%20of%20code-blue?style=flat)
+![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-737%20hrs%2057%20mins-blue?style=flat)
+
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-4.08%20million%20lines%20of%20code-blue?style=flat)
 
 **I'm an Early 🐤** 
 
 ```text
-🌞 Morning                1896 commits        ██████░░░░░░░░░░░░░░░░░░░   25.64 % 
-🌆 Daytime                3202 commits        ███████████░░░░░░░░░░░░░░   43.29 % 
-🌃 Evening                2052 commits        ███████░░░░░░░░░░░░░░░░░░   27.74 % 
-🌙 Night                  246 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   03.33 % 
+🌞 Morning                1903 commits        ██████░░░░░░░░░░░░░░░░░░░   25.65 % 
+🌆 Daytime                3214 commits        ███████████░░░░░░░░░░░░░░   43.32 % 
+🌃 Evening                2056 commits        ███████░░░░░░░░░░░░░░░░░░   27.71 % 
+🌙 Night                  246 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   03.32 % 
 ```
 📅 **I'm Most Productive on Monday** 
 
 ```text
-Monday                   1618 commits        █████░░░░░░░░░░░░░░░░░░░░   21.88 % 
-Tuesday                  1172 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.85 % 
-Wednesday                1196 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.17 % 
-Thursday                 862 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.65 % 
-Friday                   647 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.75 % 
-Saturday                 383 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   05.18 % 
-Sunday                   1518 commits        █████░░░░░░░░░░░░░░░░░░░░   20.52 % 
+Monday                   1622 commits        █████░░░░░░░░░░░░░░░░░░░░   21.86 % 
+Tuesday                  1177 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.86 % 
+Wednesday                1203 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.22 % 
+Thursday                 863 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.63 % 
+Friday                   653 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.80 % 
+Saturday                 383 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   05.16 % 
+Sunday                   1518 commits        █████░░░░░░░░░░░░░░░░░░░░   20.46 % 
 ```
 
 
 🤖 **AI Coding This Week** 
 
 ```text
-⏱ AI Coding Time: 6 hrs 31 mins (100.0%)
-
-✍️ 3,221 lines written by AI, 0 lines written by hand (100.0% AI-written)
-
-🔤 38,908,566 Input Tokens, 234,235 Output Tokens
-
-💵 $227.17 Estimated AI Cost This Week
-
-🧠 48 AI Sessions, 64 AI Prompts
-
-Opus                     3,579 lines         ████████████████████████░   96.08 % 
-Composer                 146 lines           █░░░░░░░░░░░░░░░░░░░░░░░░   03.92 % 
-
-🔎 AI Coding Insights:
-🤖 AI-Driven — 100.0% of written lines came from AI
-📚 Verbose Prompter — average 57,759 characters per prompt
-🎯 One-Shot Prompter — average 1 prompts per session
-🚀 High AI Trust — 0.0% of changed lines were hand-edited
+No AI Coding Activity Tracked This Week
 ```
 
 **I Mostly Code in TypeScript** 
@@ -148,7 +133,7 @@ Shell                    1 repo              ░░░░░░░░░░░�
 
 
 
- Last Updated on 28/07/2026 20:06:12 UTC
+ Last Updated on 29/07/2026 19:56:29 UTC
 <!--END_SECTION:waka-->
 
 
