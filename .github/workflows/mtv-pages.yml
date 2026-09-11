@@ -2,10 +2,12 @@ name: Publish MTV simulator (GitHub Pages)
 
 # Turns on GitHub Pages for this repository with this branch as the source,
 # so the site is served at https://ernkerr.github.io/ernkerr/mtv-simulator/.
-# Run it once from the Actions tab (or the API); after that every push to the
-# source branch is published automatically by GitHub's own Pages build.
+# It runs on every push to the branch (and is a no-op once Pages is on);
+# after that every push is published automatically by GitHub's own Pages build.
 
 on:
+  push:
+    branches: [claude/mtv-simulator-website-553njz]
   workflow_dispatch:
 
 permissions:
