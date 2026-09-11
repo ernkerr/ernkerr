@@ -1,38 +1,64 @@
-name: Publish MTV simulator (GitHub Pages)
+name: Publish MTV simulator
 
-# Publishes the mtv-simulator/ folder to GitHub Pages on every push to this
-# branch. The first run also switches Pages on for the repository.
+# Creates the ernkerr/mtv-simulator repository (once), mirrors the
+# mtv-simulator/ folder there as its main branch, and turns on GitHub Pages
+# for it, so the site lives at https://ernkerr.github.io/mtv-simulator/.
+#
+# Uses the repository's GH_TOKEN secret (the same one the README stats
+# workflow uses) because the built-in workflow token is not allowed to
+# create repositories or enable Pages.
 
 on:
   push:
     branches: [claude/mtv-simulator-website-553njz]
+    paths: [mtv-simulator/**, .github/workflows/mtv-pages.yml]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      OWNER: ernkerr
+      NAME: mtv-simulator
     steps:
       - uses: actions/checkout@v4
-      - name: Enable and configure Pages
-        uses: actions/configure-pages@v5
         with:
-          enablement: true
-      - name: Upload the site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: mtv-simulator
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+          fetch-depth: 0
+
+      - name: Create the repository if it does not exist
+        run: |
+          set -e
+          if [ -z "$GH_TOKEN" ]; then echo "::error::GH_TOKEN secret is not set"; exit 1; fi
+          if gh api "repos/$OWNER/$NAME" > /dev/null 2>&1; then
+            echo "Repository $OWNER/$NAME already exists."
+          else
+            gh api -X POST user/repos \
+              -f name="$NAME" \
+              -f description="📺 A big 90s TV that only gets music channels. Flip around, check the guide, and it learns your taste." \
+              -F private=false -F has_wiki=false -F has_projects=false > /dev/null
+            echo "Created $OWNER/$NAME."
+          fi
+
+      - name: Push the site folder as the main branch
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git subtree split --prefix=mtv-simulator -b site
+          git push "https://x-access-token:${GH_TOKEN}@github.com/$OWNER/$NAME.git" site:main
+
+      - name: Enable GitHub Pages from main
+        run: |
+          set -e
+          if gh api "repos/$OWNER/$NAME/pages" > /dev/null 2>&1; then
+            echo "Pages already enabled."
+          else
+            gh api -X POST "repos/$OWNER/$NAME/pages" \
+              -f build_type=legacy -f "source[branch]=main" -f "source[path]=/" > /dev/null
+            echo "Pages enabled."
+          fi
+          echo "::notice::Site: https://$OWNER.github.io/$NAME/"
