@@ -1,9 +1,7 @@
 name: Publish MTV simulator (GitHub Pages)
 
-# Turns on GitHub Pages for this repository with this branch as the source,
-# so the site is served at https://ernkerr.github.io/ernkerr/mtv-simulator/.
-# It runs on every push to the branch (and is a no-op once Pages is on);
-# after that every push is published automatically by GitHub's own Pages build.
+# Publishes the mtv-simulator/ folder to GitHub Pages on every push to this
+# branch. The first run also switches Pages on for the repository.
 
 on:
   push:
@@ -13,33 +11,28 @@ on:
 permissions:
   contents: read
   pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  enable-pages:
+  deploy:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ github.token }}
-      REPO: ${{ github.repository }}
-      BRANCH: ${{ github.ref_name }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Enable Pages from this branch
-        run: |
-          set -e
-          if gh api "repos/$REPO/pages" > current.json 2>/dev/null; then
-            echo "Pages is already enabled:"; cat current.json; echo
-            SRC=$(jq -r '.source.branch // empty' current.json)
-            if [ "$SRC" = "$BRANCH" ]; then
-              echo "Source branch already set to $BRANCH — nothing to do."
-              exit 0
-            fi
-            echo "Pages is currently published from '$SRC'. Not changing it automatically."
-            echo "Switch it to '$BRANCH' under Settings → Pages if that is what you want."
-            exit 1
-          fi
-          echo "Enabling Pages with source branch $BRANCH"
-          gh api -X POST "repos/$REPO/pages" \
-            -f build_type=legacy \
-            -f "source[branch]=$BRANCH" \
-            -f "source[path]=/" > result.json
-          cat result.json; echo
-          echo "Site URL: $(jq -r .html_url result.json)mtv-simulator/"
+      - uses: actions/checkout@v4
+      - name: Enable and configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: mtv-simulator
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
