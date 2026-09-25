@@ -5,7 +5,7 @@
     now: $("now"), nowTitle: $("now-title"), nowDomain: $("now-domain"), nowBlurb: $("now-blurb"),
     next: $("next"), start: $("start"), back: $("back"), stoke: $("stoke"), open: $("open"), home: $("home"),
     countN: $("count-n"), chips: $("chips"),
-    quiver: $("quiver"), quiverBtn: $("quiver-btn"), quiverClose: $("quiver-close"),
+    sound: $("sound"), quiver: $("quiver"), quiverBtn: $("quiver-btn"), quiverClose: $("quiver-close"),
     quiverList: $("quiver-list"), quiverEmpty: $("quiver-empty"), quiverN: $("quiver-n"),
     pcTitle: $("pc-title"), pcDomain: $("pc-domain"), pcBlurb: $("pc-blurb"), pcOpen: $("pc-open"),
     wave: $("wave"), rig: $("rig"), rider: $("rider"), rigLabel: $("rig-label"), toast: $("toast"),
@@ -31,6 +31,7 @@
     quiver: store.get("quiver", []),
     wipeouts: new Set(store.get("wipeouts", [])),
     count: store.get("count", 0),
+    sound: store.get("sound", true),
     history: [],
     pos: -1,
     deck: [],
@@ -66,6 +67,51 @@
     return byUrl.get(state.deck.pop());
   }
 
+  // ── wave sound: filtered white noise swelling in and washing out ──
+  let audio;
+  function whoosh() {
+    if (!state.sound || reduceMotion.matches) return;
+    try {
+      audio ||= new (window.AudioContext || window.webkitAudioContext)();
+      audio.resume();
+      const t = audio.currentTime;
+      const len = 2.4;
+      const buf = audio.createBuffer(1, audio.sampleRate * len, audio.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+
+      const noise = audio.createBufferSource();
+      noise.buffer = buf;
+      const filter = audio.createBiquadFilter();
+      filter.type = "lowpass";
+      filter.Q.value = 0.8;
+      filter.frequency.setValueAtTime(300, t);
+      filter.frequency.exponentialRampToValueAtTime(2200, t + 0.8); // the crest
+      filter.frequency.exponentialRampToValueAtTime(400, t + len);  // the wash
+      const gain = audio.createGain();
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(0.35, t + 0.75);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + len);
+
+      noise.connect(filter).connect(gain).connect(audio.destination);
+      noise.start(t);
+      noise.stop(t + len);
+    } catch {}
+  }
+
+  function renderSound() {
+    els.sound.textContent = state.sound ? "🔊" : "🔇";
+    els.sound.setAttribute("aria-pressed", state.sound);
+    els.sound.setAttribute("aria-label", state.sound ? "Mute wave sounds" : "Unmute wave sounds");
+  }
+
+  function toggleSound() {
+    state.sound = !state.sound;
+    store.set("sound", state.sound);
+    renderSound();
+    toast(state.sound ? "Sound on 🌊" : "Sound off");
+  }
+
   // ── the wave ─────────────────────────────────────────────
   const EASE = "cubic-bezier(.5, 0, .25, 1)";
 
@@ -81,6 +127,7 @@
   async function waveIn(label) {
     els.rigLabel.innerHTML = label;
     els.wave.classList.add("active");
+    whoosh();
     document.body.classList.add("riding");
     const { vw, back, rigW, riderW } = measure();
     const surferX = vw * 0.42 - riderW / 2;
@@ -299,17 +346,20 @@
   els.back.addEventListener("click", surfBack);
   els.stoke.addEventListener("click", toggleStoke);
   els.home.addEventListener("click", goHome);
+  els.sound.addEventListener("click", toggleSound);
 
   addEventListener("keydown", (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey || e.target.closest("input, textarea, select")) return;
     if (e.key === " " || e.key === "ArrowRight") { e.preventDefault(); surfNext(); }
     else if (e.key === "ArrowLeft") surfBack();
     else if (e.key === "s" || e.key === "S") toggleStoke();
+    else if (e.key === "m" || e.key === "M") toggleSound();
     else if (e.key === "Escape") closeQuiver();
   });
 
   renderChips();
   renderQuiver();
+  renderSound();
   els.countN.textContent = state.count;
   if (!pool().length) state.category = "all";
 

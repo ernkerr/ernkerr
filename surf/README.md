@@ -9,7 +9,8 @@ StumbleUpon, but make it beachy. Hit **Catch a wave** and a lil surfer rides a b
 - **Quiver**: hit 🤙 to save sites you love (stored in your browser)
 - **Postcards**: sites that refuse to load in an iframe show a postcard with a "Ride it ↗" link instead. If a site stays blank, hit **Wiped out** and it'll use a postcard from then on
 - **Shareable waves**: the URL hash holds the current site, so you can send someone straight to it
-- **Keyboard**: `Space`/`→` next wave · `←` previous · `S` save · `Esc` close the quiver
+- **Wave sounds**: a synthesized ocean whoosh with each wave (toggle with 🔊 or `M`)
+- **Keyboard**: `Space`/`→` next wave · `←` previous · `S` save · `M` mute · `Esc` close the quiver
 - Respects `prefers-reduced-motion`
 
 ## Run it
